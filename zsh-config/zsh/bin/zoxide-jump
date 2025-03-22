@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+# Assign the result of zoxide and fzf to a variable
+local dir="$(zoxide query --list | fzf --height 40% --reverse)"
+if [[ -d "$dir" ]]; then
+# If the directory exists, change to it
+  tmux new-window -c "$dir"
+else
+# If the directory does not exist, print an error message
+fi
+
+

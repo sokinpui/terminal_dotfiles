@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# if $1 is not empty, use it as the directory
+selected=$(tmux list-session -F "#{session_name}" | fzf --preview 'tmux list-windows -t {}' --reverse --height 40%)
+
+tmux switch-client -t $selected

@@ -1,0 +1,371 @@
+[
+  {
+    "background_opacity": 1.0,
+    "id": 25,
+    "is_active": false,
+    "is_focused": false,
+    "last_focused": false,
+    "platform_window_id": 84763,
+    "tabs": [
+      {
+        "active_window_history": [
+          28
+        ],
+        "enabled_layouts": [
+          "splits:split_axis=horizontal"
+        ],
+        "groups": [
+          {
+            "id": 25,
+            "windows": [
+              28
+            ]
+          }
+        ],
+        "id": 25,
+        "is_active": true,
+        "is_focused": false,
+        "layout": "splits",
+        "layout_opts": {
+          "default_axis_is_horizontal": true
+        },
+        "layout_state": {
+          "pairs": {
+            "bias": 0.5,
+            "horizontal": true,
+            "one": 25
+          }
+        },
+        "title": "tmux new",
+        "windows": [
+          {
+            "at_prompt": false,
+            "cmdline": [
+              "/bin/zsh",
+              "--login"
+            ],
+            "columns": 107,
+            "created_at": 1723737041647859000,
+            "cwd": "/Users/mac",
+            "env": {
+              "KITTY_WINDOW_ID": "28",
+              "PWD": "/Users/mac",
+              "WINDOWID": "84763"
+            },
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "tmux",
+                  "new"
+                ],
+                "cwd": "/Users/mac",
+                "pid": 73027
+              }
+            ],
+            "id": 28,
+            "is_active": true,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 35,
+            "pid": 71498,
+            "title": "tmux new",
+            "user_vars": {}
+          }
+        ]
+      }
+    ],
+    "wm_class": "kitty",
+    "wm_name": "kitty"
+  },
+  {
+    "background_opacity": 1.0,
+    "id": 35,
+    "is_active": true,
+    "is_focused": true,
+    "last_focused": true,
+    "platform_window_id": 86052,
+    "tabs": [
+      {
+        "active_window_history": [
+          194
+        ],
+        "enabled_layouts": [
+          "splits:split_axis=horizontal"
+        ],
+        "groups": [
+          {
+            "id": 172,
+            "windows": [
+              194
+            ]
+          }
+        ],
+        "id": 106,
+        "is_active": false,
+        "is_focused": false,
+        "layout": "splits",
+        "layout_opts": {
+          "default_axis_is_horizontal": true
+        },
+        "layout_state": {
+          "pairs": {
+            "bias": 0.5,
+            "horizontal": true,
+            "one": 172
+          }
+        },
+        "title": "vim kitty.conf",
+        "windows": [
+          {
+            "at_prompt": false,
+            "cmdline": [
+              "/bin/zsh",
+              "--login"
+            ],
+            "columns": 215,
+            "created_at": 1723785278905133000,
+            "cwd": "/Users/mac",
+            "env": {
+              "KITTY_WINDOW_ID": "194",
+              "PWD": "/Users/mac",
+              "WINDOWID": "86052"
+            },
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "nvim",
+                  "kitty.conf"
+                ],
+                "cwd": "/Users/mac/repo/dotfiles/Mac/kitty",
+                "pid": 94832
+              }
+            ],
+            "id": 194,
+            "is_active": true,
+            "is_focused": true,
+            "is_self": false,
+            "lines": 69,
+            "pid": 93222,
+            "title": "vim kitty.conf",
+            "user_vars": {}
+          }
+        ]
+      },
+      {
+        "active_window_history": [
+          212
+        ],
+        "enabled_layouts": [
+          "splits:split_axis=horizontal"
+        ],
+        "groups": [
+          {
+            "id": 186,
+            "windows": [
+              212
+            ]
+          }
+        ],
+        "id": 120,
+        "is_active": false,
+        "is_focused": false,
+        "layout": "splits",
+        "layout_opts": {
+          "default_axis_is_horizontal": true
+        },
+        "layout_state": {
+          "pairs": {
+            "bias": 0.5,
+            "horizontal": true,
+            "one": 186
+          }
+        },
+        "title": "vim keymap.conf",
+        "windows": [
+          {
+            "at_prompt": false,
+            "cmdline": [
+              "/bin/zsh",
+              "--login"
+            ],
+            "columns": 215,
+            "created_at": 1723787671026602000,
+            "cwd": "/Users/mac/repo/dotfiles/Mac/kitty",
+            "env": {
+              "KITTY_WINDOW_ID": "212",
+              "PWD": "/Users/mac/repo/dotfiles/Mac/kitty",
+              "WINDOWID": "86052"
+            },
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "nvim",
+                  "keymap.conf"
+                ],
+                "cwd": "/Users/mac/repo/dotfiles/Mac/kitty",
+                "pid": 95770
+              }
+            ],
+            "id": 212,
+            "is_active": true,
+            "is_focused": true,
+            "is_self": false,
+            "lines": 69,
+            "pid": 95440,
+            "title": "vim keymap.conf",
+            "user_vars": {}
+          }
+        ]
+      },
+      {
+        "active_window_history": [
+          214
+        ],
+        "enabled_layouts": [
+          "splits:split_axis=horizontal"
+        ],
+        "groups": [
+          {
+            "id": 188,
+            "windows": [
+              214
+            ]
+          }
+        ],
+        "id": 122,
+        "is_active": true,
+        "is_focused": true,
+        "layout": "splits",
+        "layout_opts": {
+          "default_axis_is_horizontal": true
+        },
+        "layout_state": {
+          "pairs": {
+            "bias": 0.5,
+            "horizontal": true,
+            "one": 188
+          }
+        },
+        "title": "kitty @ ls > kitty-dump.json",
+        "windows": [
+          {
+            "at_prompt": false,
+            "cmdline": [
+              "/bin/zsh",
+              "--login"
+            ],
+            "columns": 215,
+            "created_at": 1723787793093347000,
+            "cwd": "/Users/mac/repo/dotfiles/Mac/kitty",
+            "env": {
+              "KITTY_WINDOW_ID": "214",
+              "PWD": "/Users/mac/repo/dotfiles/Mac/kitty",
+              "WINDOWID": "86052"
+            },
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "kitten",
+                  "@",
+                  "ls"
+                ],
+                "cwd": "/Users/mac/repo/dotfiles/Mac/kitty",
+                "pid": 96455
+              }
+            ],
+            "id": 214,
+            "is_active": true,
+            "is_focused": true,
+            "is_self": true,
+            "lines": 69,
+            "pid": 95803,
+            "title": "kitty @ ls > kitty-dump.json",
+            "user_vars": {}
+          }
+        ]
+      }
+    ],
+    "wm_class": "kitty",
+    "wm_name": "kitty"
+  },
+  {
+    "background_opacity": 1.0,
+    "id": 36,
+    "is_active": false,
+    "is_focused": false,
+    "last_focused": false,
+    "platform_window_id": 86116,
+    "tabs": [
+      {
+        "active_window_history": [
+          204
+        ],
+        "enabled_layouts": [
+          "splits:split_axis=horizontal"
+        ],
+        "groups": [
+          {
+            "id": 182,
+            "windows": [
+              204
+            ]
+          }
+        ],
+        "id": 116,
+        "is_active": true,
+        "is_focused": false,
+        "layout": "splits",
+        "layout_opts": {
+          "default_axis_is_horizontal": true
+        },
+        "layout_state": {
+          "pairs": {
+            "bias": 0.5,
+            "horizontal": true,
+            "one": 182
+          }
+        },
+        "title": "tmux attach-session -t ITSC-2",
+        "windows": [
+          {
+            "at_prompt": false,
+            "cmdline": [
+              "/bin/zsh",
+              "--login"
+            ],
+            "columns": 107,
+            "created_at": 1723786298425183000,
+            "cwd": "/Users/mac/repo/dotfiles/Mac/kitty",
+            "env": {
+              "KITTY_WINDOW_ID": "204",
+              "PWD": "/Users/mac",
+              "WINDOWID": "86116"
+            },
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "tmux",
+                  "attach-session",
+                  "-t",
+                  "ITSC-2"
+                ],
+                "cwd": "/Users/mac",
+                "pid": 94361
+              }
+            ],
+            "id": 204,
+            "is_active": true,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 68,
+            "pid": 94224,
+            "title": "tmux attach-session -t ITSC-2",
+            "user_vars": {}
+          }
+        ]
+      }
+    ],
+    "wm_class": "kitty",
+    "wm_name": "kitty"
+  }
+]

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# find todo.md from the root repo of pwd,
+# if pwd is not in git repo,
+# then create todo.md in pwd
+
+root_repo=$(git rev-parse --show-toplevel 2> /dev/null)
+if [ ! -z $root_repo ] ; then
+  $EDITOR $root_repo/TODO.md
+else
+  $EDITOR $PWD/TODO.md
+fi
+

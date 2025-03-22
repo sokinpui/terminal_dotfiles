@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+LFCD="$HOME/.config/lf/lfcd.sh"
+if [ -f "$LFCD" ]; then
+    source "$LFCD"
+fi
+
+alias lf="lfcd"
+

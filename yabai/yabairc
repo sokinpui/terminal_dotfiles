@@ -1,0 +1,59 @@
+# vi: set ft=conf
+
+borders active_color=0xff4eed32 inactive_color=0xff494d64 width=5.0 &
+
+yabai -m config layout                      bsp
+yabai -m config auto_balance                on
+yabai -m config top_padding                 5
+yabai -m config bottom_padding              5
+yabai -m config left_padding                5
+yabai -m config right_padding               5
+yabai -m config window_gap                  5
+
+# New window spawns to the right if vertical split, or bottom if horizontal split
+yabai -m config window_placement second_child
+# yabai -m config window_topmost              on
+yabai -m config split_type              auto
+
+# floating windows are always on top (default: off)
+
+yabai -m config mouse_modifier              cmd
+yabai -m config focus_follows_mouse         autofocus
+# yabai -m config mouse_follows_focus         on
+
+# enable debug on
+yabai -m config debug_output                off
+
+# disable those app
+# yabai -m rule --add app="Dropbox Transfer"   manage=off
+# yabai -m rule --add app="NCalc"   manage=off
+yabai -m rule --add app="App Store"  manage=off
+yabai -m rule --add app="Logi Options+"  manage=off
+yabai -m rule --add app="WeChat"  manage=on
+# yabai -m rule --add app="哔哩哔哩"   manage=off
+# yabai -m rule --add app="Stickies"   manage=off
+# yabai -m rule --add app="MAT manage=off
+# yabai -m rule --add app="Terminal"   manage=off
+# yabai -m rule --add app="Incoming File Transfer"   manage=off
+# yabai -m rule --add app="MAT manage=off
+# yabai -m rule --add app="ProtonVPN"   manage=off
+yabai -m rule --add app="Preview"   manage=on
+# yabai -m rule --add app="Notion"   manage=off
+# yabai -m rule --add app="Mail"   manage=off
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="Karabiner-Elements" manage=off
+yabai -m rule --add app="Karabiner-EventViewer" manage=off
+# yabai -m rule --add app="Finder"   manage=off
+# yabai -m rule --add app="Alfred Preferences"   manage=off
+# yabai -m rule --add app="Disk Utility"   manage=off
+yabai -m rule --add app="System Information" manage=off
+yabai -m rule --add app="Obsidian" manage=on
+# yabai -m rule --add app="Activity Monitor"   manage=off
+# yabai -m rule --add app="Path Finder" manage=off
+# yabai -m rule --add app="Time Out" manage=off
+# yabai -m rule --add app="perl_client_app" manage=off
+# yabai -m rule --add app="console" manage=off
+# yabai -m rule --add app="Logi Options" manage=off
+# yabai -m rule --add app="Private Internet Access" manage=off
+
+# yabai -m rule --add title="^todo$" manage=off grid=4:3:1:1:1:2

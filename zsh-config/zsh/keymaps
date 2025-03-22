@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+# keyboard shortcut
+# fzf search directory name and change directory
+#fzfcd(){
+#  directory=$(fd --unrestricted --type directory | fzf)
+#  [ -z $directory ] && return
+#  cd $directory
+#  ls -l --group-directories-first
+#}
+
+# shell mapping
+#fzf-tmux-session-attach () fzf-tmux-session-attach ; zle -N fzf-tmux-session-attach
+
+# paste using ctrl-v
+_paste-copy-using-pbpaste() {
+  LBUFFER+="$(pbpaste)"
+}
+
+zle -N _paste-copy-using-pbpaste
+bindkey '^v' _paste-copy-using-pbpaste # Paste from clipboard
+bindkey -M vicmd '^v' _paste-copy-using-pbpaste # Paste from clipboard
+
+vi-yank-pbcopy () {
+    zle vi-yank
+   echo "$CUTBUFFER" | pbcopy
+}
+
+zle -N vi-yank-pbcopy
+bindkey -M vicmd 'y' vi-yank-pbcopy
+
+#bindkey -s '^z' 'fg\n'
+#bindkey -M vicmd '^z' 'ifg\n'
+
+bindkey -s '^k' '^[k'
+
+# delte whole word using ctrl + backspace
+bindkey -s '^H' '^w'
+
+#bindkey -s '^n' 'tmux-startup-session\n'
+
+# edit line in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+
+#bindkey -s '^e' 'lf\n'
+
+#bindkey -s '^o' '$EDITOR -c "FzfLua oldfiles"\n'
+
+
+# tmux-sessionor () {
+#   tmux_running=$(pgrep tmux)
+#   if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+#     tmux new-session -s $selected_name -c $selected
+#     zle accept-line
+#     return
+#   fi
+#   selected_name=$(basename "$selected" | tr . _)
+#   if ! tmux has-session -t=$selected_name 2> /dev/null; then
+#     tmux new-session -d -s $selected_name -c $selected
+#   fi
+#   tmux switch-client -t $selected_name
+#   zle accept-line
+# }
+# zle -N tmux-sessionor
+# bindkey '^g' tmux-sessionor

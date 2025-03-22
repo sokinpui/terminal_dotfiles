@@ -1,0 +1,59 @@
+#!/usr/bin/env zsh
+
+autoload -Uz compinit
+compinit
+
+#   Completion
+## Hugo completion
+#alias hcom="source <(hugo completion zsh); compdef _hugo hugo"
+
+## completion sytle
+zstyle ':completion:*' completer _extensions _complete _approximate
+zstyle ':completion:*' complete true
+zstyle ':completion:alias-expension:*' completer _expand_alias
+
+zstyle ':completion:*' group-name ''
+
+zstyle ':completion:*:*:-command-:*:*' group-order aliases builtins functions commands
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+zstyle ':completion:*' menu select
+
+#zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
+#zstyle ':completion:*:*:*:*:descriptions' format '%F{blue}-- %D %d --%f'
+#zstyle ':completion:*:*:*:*:messages' format ' %F{purple} -- %d --%f'
+#zstyle ':completion:*:*:*:*:warnings' format ' %F{red}-- no matches found --%f'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+zstyle ':completion:*' completer _extensions _complete _approximate
+
+## Use cache for commands using cache
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
+
+## sort by modification time
+zstyle ':completion:*' file-sort modification
+
+# Custom completion function
+zstyle ':completion:*' insert-unambiguous no
+zstyle ':completion:*' ignore-space yes
+
+compctl -K _my_cpl -S '' ls
+
+## Use vim keys in tab complete menu:
+zmodload zsh/complist
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+
+bindkey '^[[Z' reverse-menu-complete
+bindkey -M menuselect '^[' vi-cmd-mode
+bindkey -M menuselect '^e' undo
+
+setopt MENU_COMPLETE        # Automatically highlight first element of completion menu
+setopt AUTO_LIST            # Automatically list choices on ambiguous completion.
+setopt COMPLETE_IN_WORD     # Complete from both ends of a word.
+unsetopt AUTO_MENU
+

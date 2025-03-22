@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# create executable temporary shell script
+touch tmp.sh && chmod +x tmp.sh && $EDITOR tmp.sh

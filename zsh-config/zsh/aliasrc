@@ -1,0 +1,247 @@
+#!/usr/bin/env bash
+
+#restart_shell() {
+#  clear && echo "restart shell"
+#  exec $SHELL
+#}
+
+# change directory with fzf, $1 is parent dir of the target.
+#cdf() {
+#  [ -z "$1" ] && echo "Usage: change directory with fancy find. cdf <dir>"
+#  # TODO support options
+#  cd $(find $1 | fzf)
+#}
+
+mkdc () { mkdir -p "$@" && eval cd "\"\$$#\""; }
+
+# $1 numbers of files going to be moved, $2 target directory
+#move_recent_download_to_dir() {
+#  dfiles=$( ls -td ~/Downloads/* | head -n $1)
+#  mv $dfiles $2
+#}
+
+# CSE gateway
+#gw() {
+#  echo "usage: connect to CSE gateway."
+#  echo "After connection, use ssh linux[1-16] to connect remote machine."
+#  ssh kpso2@gw.cse.cuhk.edu.hk
+#}
+
+# quick editing ::Editor
+alias \
+  vim="$EDITOR" \
+  viM="$EDITOR" \
+  vIM="$EDITOR" \
+  vIm="$EDITOR" \
+  vi="$EDITOR" \
+  vI="$EDITOR" \
+  v="$EDITOR" \
+  nvIm="$EDITOR" \
+  nvIM="$EDITOR" \
+  nvMi="$EDITOR" \
+  nvMI="$EDITOR" \
+  nvmI="$EDITOR" \
+  nvIm="$EDITOR" \
+  nv="$EDITOR" \
+  nV="$EDITOR" \
+  nvi="$EDITOR" \
+  nvI="$EDITOR" \
+  sz="source $HOME/.zshrc" \
+  vzz="$EDITOR $HOME/.zshrc" \
+  vza="$EDITOR $HOME/.config/zsh/aliasrc" \
+  vzp="$EDITOR $HOME/.zprofile" \
+  vze="$EDITOR $HOME/.zshenv" \
+  vzs="$EDITOR $HOME/.config/zsh/keymaps" \
+  vt="$EDITOR $HOME/.config/zsh/script/ts" \
+  vvv="$EDITOR $HOME/.config/nvim/init.lua" \
+  vvm="$EDITOR $HOME/.config/nvim/after/plugin/mapping.vim" \
+  vvs="$EDITOR $HOME/.config/nvim/after/plugin/setting.vim" \
+  vvf="$EDITOR $HOME/.config/nvim/after/plugin/format.vim" \
+  vvl="$EDITOR $HOME/.config/nvim/lua/setup.lua" \
+  vva="$EDITOR $HOME/.config/nvim/after/plugin/appearance.vim" \
+  vvp="$EDITOR $HOME/.config/nvim/after/plugin/plugins.vim"
+
+# Directories
+setopt autopushd pushdignoredups
+alias \
+  ..='cd ..' \
+  ...='cd ../..' \
+  ....='cd ../../..' \
+  .....='cd ../../../..' \
+  ......='cd ../../../../..' \
+  d-='cd -' \
+  1="cd +1" \
+  2="cd +2" \
+  3="cd +3" \
+  4="cd +4" \
+  5="cd +5" \
+  6="cd +6" \
+  7="cd +7" \
+  8="cd +8" \
+  9="cd +9" \
+  mkd='mkdir -p'
+
+
+#vpmkd(){
+#  [ -z $1 ] && echo "Usage: vpmkd <name of plugin directory>, create a simple vim plugin structure" && return
+#  mkdir -p ~/.vim/pack/myplugins/start/$1/autoload ~/.vim/pack/myplugins/start/$1/plugin
+#  cd ~/.vim/pack/myplugins/start/$1
+#}
+
+d() {
+  [[ $1 == "-" ]] && cd - && return
+  [ -z "$1" ] && dirs -v && return || cd +"$1"
+}
+
+# Tmux
+alias \
+  tls="tmux ls" \
+  tn="tmux new -t" \
+  ta="tmux a -t"
+
+# cmd too short, verbose output
+alias \
+  mv="mv -v" \
+  rm="$HOME/.local/bin/trash-put" \
+  rs="$HOME/.local/bin/trash-restore" \
+  cp="cp -r -v"
+
+# git
+alias \
+  g="git" \
+  ga="git add" \
+  gm="git commit" \
+  gmm="git commit -m" \
+  gp="git push" \
+  gcl="git clone" \
+  cgpush="config_git_push" \
+  gb="git branch" \
+  gna="git notes add" \
+  gl="git log" \
+  gd="git diff" \
+  gdt="git difftool" \
+  gs="git status" \
+  gsu="git status --untracked-files" \
+  gsw="git switch"
+
+gi(){
+  git init
+  git add --all $PWD
+  git commit -m "First commit"
+}
+
+# fedora package manager dnf
+alias \
+  dnf="dnf" \
+  dnfa="sudo dnf autoremove" \
+  dnfs="dnf search"
+
+# customized function
+alias \
+  qn="quick_note" \
+  fnrs="file-name-remove-space" \
+
+# Readalbe & color
+alias \
+  fd="fd --color auto -i" \
+  grep="grep -i --color=auto" \
+  rg="rg -i" \
+  htop="TERM=xterm-256color htop" \
+  news="TERM=xterm-256color newsboat" \
+  ll="gls --group-directories-first --color=always -hl" \
+  ls="gls --group-directories-first --color=always -h" \
+  la="gls --group-directories-first -lah --color=always" \
+  lb="list-book" \
+  mc="mc -b" \
+  df="df -h"
+
+# ls
+l() {
+  [ -z "$*" ] && ls -h --color=auto && return
+  command ls -h --color=auto -"$1" "${@:2}"
+}
+
+# hugo
+# list all create new hugo post and edit it
+alias h="hugo"
+
+#hnew() {
+#  cd ~/git_repo/mine/myblog/
+#  [ -z $* ] && tree -dt -L 1 ~/git_repo/mine/myblog/content/post \
+#    && echo "Please provide name of 1:directory, 2:post" \
+#    && return
+#  [ -z $2 ] && tree -dt ~/git_repo/mine/myblog/content/$1 && return
+#
+#  if [[ $# -ge 2 ]]; then
+#    mkdir -p ~/git_repo/mine/myblog/content/$1/$2
+#    hugo new $1/$2/index.md
+#    cd -
+#    $EDITOR ~/git_repo/mine/myblog/content/$1/$2/index.md
+#  fi
+#}
+
+# kmoand
+alias \
+  kk="systemctl --user restart kanata@carbon.service " \
+  kkk="systemctl --user status kanata@carbon.service " \
+  kkkk="systemctl --user stop kanata@carbon.service " \
+  KK="systemctl --user restart kanata@carbon.service " \
+  KKK="systemctl --user status kanata@carbon.service " \
+  KKKK="systemctl --user stop kanata@carbon.service "
+  # kk="systemctl --user restart kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
+  # kkk="systemctl --user status kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
+  # kkkk="systemctl --user stop kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
+  # KK="systemctl --user restart kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
+  # KKK="systemctl --user status kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
+  # KKKK="systemctl --user stop kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
+  # \
+  # kkcarbon="systemctl --user restart kanata@carbon.service" \
+  # kkkcarbon="systemctl --user status kanata@carbon.service" \
+  # kkkkcarbon="systemctl --user stop kanata@carbon.service" \
+  # KKcarbon="systemctl --user restart kanata@carbon.service" \
+  # KKKcarbon="systemctl --user status kanata@carbon.service" \
+  # KKKKcarbon="systemctl --user stop kanata@carbon.service" \
+  # \
+  # kkus="systemctl --user restart  kanata@us100-port.service kanata@us-right.service" \
+  # kkkus="systemctl --user status  kanata@us100-port.service kanata@us-right.service" \
+  # kkkkus="systemctl --user stop  kanata@us100-port.service kanata@us-right.service" \
+  # KKus="systemctl --user restart  kanata@us100-port.service kanata@us-right.service" \
+  # KKKus="systemctl --user status  kanata@us100-port.service kanata@us-right.service" \
+  # KKKKus="systemctl --user stop  kanata@us100-port.service kanata@us-right.service" \
+
+
+# open obsidian
+#obsidian() {
+#  xdg-open "obsidian://open" &> /tmp/obsidian.log
+#}
+
+# steam
+alias steam="steam -forcedesktopscaling 1.5"
+
+# python
+alias \
+  python="python3" \
+  pip="pip3"
+  # python="$(brew --prefix python)/bin/python3.12" \
+  # pip="pip3" \
+  # python="$(brew --prefix python)/bin/python3.12" \
+  # pip="~/.local/bin/pip3.12" \
+  # pip3="~/.local/bin/pip3.12"
+
+#brew
+alias \
+    b="brew" \
+    bi="brew install"
+alias \
+  e="emacs -nw" \
+  doom="~/.config/emacs/bin/doom"
+
+
+# alias \
+  # yabai="yabai --restart-service" \
+
+alias conda-init="source $HOME/.config/zsh/bin/conda-init"
+
+alias vpn="export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;export ALL_PROXY=socks5://127.0.0.1:1080"
+
+alias cd="z"

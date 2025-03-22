@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+
+source $HOME/anaconda3/bin/activate
+conda init
+
+

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+tmux rename-window "kmonad"
+cd $HOME/.config/kmonad
+$EDITOR $HOME/.config/kmonad/us100.kbd $HOME/.config/kmonad/config.kbd

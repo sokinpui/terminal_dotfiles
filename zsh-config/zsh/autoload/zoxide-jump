@@ -1,0 +1,7 @@
+# Check if the directory string is non-empty
+if [[ -n "$dir" ]]; then
+  cd "$dir" || cd $HOME
+fi
+
+
+

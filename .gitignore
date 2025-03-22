@@ -1,0 +1,17 @@
+tmux/resurrect/*
+!tmux/resurrect/
+zsh/.zcompdump
+zsh/.zsh_history
+tmux/plugins/
+
+tmux/resurrect/*
+!tmux/resurrect/
+zsh/.zcompdump
+zsh/.zsh_history
+tmux/plugins/
+
+zsh-config/.zcompdump
+zsh-config/.zsh_sessions/
+
+.DS_Store
+

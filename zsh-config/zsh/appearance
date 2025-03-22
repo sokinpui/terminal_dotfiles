@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+#   Appearance
+# Prompt
+# git branch
+setopt PROMPT_SUBST
+
+function virtualenv_info {
+    [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`')'
+}
+
+precmd () {
+  __git_ps1 "$(virtualenv_info)%B%F{red}[%f%n@%m${shellEmulator} %F{cyan}%~%f%F{red}]%f%b" "
+%B»%b " "|%s"
+}
+PS2='%F{green}%_>%f '

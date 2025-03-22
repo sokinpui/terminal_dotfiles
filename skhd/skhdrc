@@ -1,0 +1,71 @@
+#vi:set ft=conf
+
+# change focus
+alt - h : yabai -m window --focus west &> /dev/null
+alt - j : yabai -m window --focus south &> /dev/null
+alt - k : yabai -m window --focus north &> /dev/null
+alt - l : yabai -m window --focus east &> /dev/null
+
+# swap window
+alt + shift - h : yabai -m window --swap west &> /dev/null
+alt + shift - j : yabai -m window --swap south &> /dev/null
+alt + shift - k : yabai -m window --swap north &> /dev/null
+alt + shift - l : yabai -m window --swap east &> /dev/null
+
+alt - g : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2 &> /dev/null; yabai -m window --focus `yabai -m query --windows --window | jq '.id'`
+alt - f : yabai -m window --toggle zoom-fullscreen &> /dev/null ; yabai -m window --focus `yabai -m query --windows --window | jq '.id'`
+alt - t : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end') &> /dev/null
+
+
+alt - e : yabai -m space --layout bsp
+# alt - s : yabai -m space --layout stack
+# alt + ctrl - e :  /Users/mac/.config/skhd/toggle-auto-balance.sh
+# alt - e :  yabai -m space --equalize
+
+
+
+# i3-style resize
+alt + ctrl - left : yabai -m window --resize left:-100:0; \
+                  yabai -m window --resize right:-100:0
+alt + ctrl - right : yabai -m window --resize right:100:0; \
+                  yabai -m window --resize left:100:0
+alt + ctrl - up : yabai -m window --resize top:0:-100; \
+                  yabai -m window --resize bottom:0:-100
+alt + ctrl - down : yabai -m window --resize bottom:0:100; \
+                    yabai -m window --resize top:0:100
+
+
+# resize window to one-third
+cmd - f1 : $HOME/.config/skhd/resize.sh 0.66
+cmd - f2 : $HOME/.config/skhd/resize.sh 0.33
+# cycle swap window
+cmd - f3 : source $HOME/.config/skhd/cycle_clockwise.sh &> /dev/null
+# copy, paste, seearch in new tab
+cmd - 6 : skhd -k "cmd - c" ; skhd -k "cmd - t" ; skhd -k "cmd - v" ; skhd -k "return"
+
+# # tmux like switch
+# :: default
+# :: yabai : sleep 5 ; skhd -k "escape"
+#e ctrl - 0x29 ; yabai
+# yabai < h : yabai -m window --focus west &> /dev/null   ; sleep 0.5 ; skhd -k "escape"
+# yabai < j : yabai -m window --focus south &> /dev/null  ; sleep 0.5 ; skhd -k "escape"
+# yabai < k : yabai -m window --focus north &> /dev/null  ; sleep 0.5 ; skhd -k "escape"
+# yabai < l : yabai -m window --focus east &> /dev/null   ; sleep 0.5 ; skhd -k "escape"
+# yabai < escape ; default
+
+# switch desktop
+alt + shift - f : skhd -k "hyper - 1"
+alt + shift - g : skhd -k "hyper - 2"
+alt + shift - h : skhd -k "hyper - 3"
+alt + shift - j : skhd -k "hyper - 4"
+alt + shift - k : skhd -k "hyper - 5"
+alt + shift - l : skhd -k "hyper - 6"
+
+alt + shift - t : open -n -a Kitty --args --single-instance -d ~
+alt + shift - r : yabai -m window --focus `yabai -m query --windows --window first | jq ".id"` ; open -na "Google Chrome"
+
+# reload config
+alt + shift - c : yabai --restart-service &> /dev/null
+
+cmd - m :
+cmd - h : echo 1234
