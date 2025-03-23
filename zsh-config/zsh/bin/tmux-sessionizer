@@ -14,6 +14,7 @@ if [[ -z "$selected" ]]; then
       -not -path '*/.*' \
       | fzf --height 40% --reverse --header "Select a directory to open in tmux")
     # Exit if no selection made
+    [[ -z "$selected" ]] && exit 1
 fi
 
 # If no name provided, generate one from directory basename
@@ -52,5 +53,8 @@ else
         tmux new-session -c "$selected" -ds "$selected_name"
     fi
     # Switch to the session
-    tmux switch-client -t "$selected_name"
+    temp_session="${selected_name}_${RANDOM}"
+    tmux new-session -d -t "$selected_name" -s "$temp_session"
+    tmux switch-client -t "$temp_session"
+
 fi

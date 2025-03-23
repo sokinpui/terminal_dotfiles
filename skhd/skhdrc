@@ -1,23 +1,21 @@
 #vi:set ft=conf
 
 # change focus
-alt - h : yabai -m window --focus west &> /dev/null
-alt - j : yabai -m window --focus south &> /dev/null
-alt - k : yabai -m window --focus north &> /dev/null
-alt - l : yabai -m window --focus east &> /dev/null
+cmd - h : yabai -m window --focus west &> /dev/null
+cmd - j : yabai -m window --focus south &> /dev/null
+cmd - k : yabai -m window --focus north &> /dev/null
+cmd - l : yabai -m window --focus east &> /dev/null
 
 # swap window
-alt + shift - h : yabai -m window --swap west &> /dev/null
-alt + shift - j : yabai -m window --swap south &> /dev/null
-alt + shift - k : yabai -m window --swap north &> /dev/null
-alt + shift - l : yabai -m window --swap east &> /dev/null
+cmd + shift - h : yabai -m window --swap west &> /dev/null
+cmd + shift - j : yabai -m window --swap south &> /dev/null
+cmd + shift - k : yabai -m window --swap north &> /dev/null
+cmd + shift - l : yabai -m window --swap east &> /dev/null
 
-alt - g : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2 &> /dev/null; yabai -m window --focus `yabai -m query --windows --window | jq '.id'`
-alt - f : yabai -m window --toggle zoom-fullscreen &> /dev/null ; yabai -m window --focus `yabai -m query --windows --window | jq '.id'`
-alt - t : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end') &> /dev/null
+cmd - g : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2 &> /dev/null; yabai -m window --focus `yabai -m query --windows --window | jq '.id'`
 
 
-alt - e : yabai -m space --layout bsp
+cmd - e : yabai -m space --layout bsp
 # alt - s : yabai -m space --layout stack
 # alt + ctrl - e :  /Users/mac/.config/skhd/toggle-auto-balance.sh
 # alt - e :  yabai -m space --equalize
@@ -36,12 +34,12 @@ alt + ctrl - down : yabai -m window --resize bottom:0:100; \
 
 
 # resize window to one-third
-cmd - f1 : $HOME/.config/skhd/resize.sh 0.66
-cmd - f2 : $HOME/.config/skhd/resize.sh 0.33
+cmd - f4 : $HOME/.config/skhd/resize.sh 0.66
+cmd - f5 : $HOME/.config/skhd/resize.sh 0.33
 # cycle swap window
-cmd - f3 : source $HOME/.config/skhd/cycle_clockwise.sh &> /dev/null
+cmd - f6 : source $HOME/.config/skhd/cycle_clockwise.sh &> /dev/null
 # copy, paste, seearch in new tab
-cmd - 6 : skhd -k "cmd - c" ; skhd -k "cmd - t" ; skhd -k "cmd - v" ; skhd -k "return"
+cmd - f3 : skhd -k "cmd - c" ; skhd -k "cmd - t" ; skhd -k "cmd - v" ; skhd -k "return"
 
 # # tmux like switch
 # :: default
@@ -68,4 +66,4 @@ alt + shift - r : yabai -m window --focus `yabai -m query --windows --window fir
 alt + shift - c : yabai --restart-service &> /dev/null
 
 cmd - m :
-cmd - h : echo 1234
+cmd - h :

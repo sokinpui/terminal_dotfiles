@@ -22,6 +22,7 @@ cd $HOME
 git clone https://github.com/sokinpui/terminal_dotfiles.git dotfiles
 cd dotfiles
 
+
 echo "Installing command-line tools..."
 brew install automake            # Tool for generating GNU Standards-compliant Makefiles
 brew install bat                 # Clone of cat(1) with syntax highlighting
@@ -115,6 +116,9 @@ brew install --cask betterdisplay
 brew install --cask maccy
 brew install --cask dropbox
 brew install onedrive
+
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin installer=version-0.40.0
+sudo ln -sf /Applications/kitty.app/Contents/MacOS/kitty /usr/local/bin/kitty
 
 # Step 1: Create ~/.config directory if it doesn't exist
 if [ ! -d "$CONFIG_DIR" ]; then

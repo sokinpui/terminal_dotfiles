@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-cd $HOME/Task-manage
-
-tmux rename-window "buffer"
-tmux send-keys -t task:1.1 "vim index.org" enter
-
-tmux select-window -t "buffer"
-

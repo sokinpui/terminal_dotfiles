@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# Function to check if session exists
+session_exists() {
+    tmux has-session -t "$1" 2>/dev/null
+    return $?
+}
+
+# check if insdie tmux
+# if [ -n "$TMUX" ]; then
+#   # save the last session name to env
+#  export LAST_TMUX_SESSION_NAME=$(tmux display-message -p '#S')
+# fi
+
+# Use $1 as directory if provided, $2 as session name
+if [[ "$#" -eq 2 ]]; then
+  selected="$1"
+  selected_name="$2"
+  if ! session_exists "$selected_name"; then
+      # Create new detached session
+      tmux new-session -c "$selected" -ds "$selected_name"
+  fi
+
+  tmux switch-client -t "$selected_name"
+fi

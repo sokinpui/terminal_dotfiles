@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-[ -z "$*" ] && echo "Please commit the change" && exit 1
-git init
-gh repo create
-git add --all
-git commit -m "$*"
-git push --set-upstream origin main
-
