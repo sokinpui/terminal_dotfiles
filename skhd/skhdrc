@@ -14,7 +14,6 @@ cmd + shift - l : yabai -m window --swap east &> /dev/null
 
 cmd - g : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2 &> /dev/null; yabai -m window --focus `yabai -m query --windows --window | jq '.id'`
 
-
 cmd - e : yabai -m space --layout bsp
 # alt - s : yabai -m space --layout stack
 # alt + ctrl - e :  /Users/mac/.config/skhd/toggle-auto-balance.sh
