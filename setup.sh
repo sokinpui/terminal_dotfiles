@@ -116,6 +116,7 @@ brew install --cask betterdisplay
 brew install --cask maccy
 brew install --cask dropbox
 brew install onedrive
+brew install --cask marta
 
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin installer=version-0.40.0
 sudo ln -sf /Applications/kitty.app/Contents/MacOS/kitty /usr/local/bin/kitty
