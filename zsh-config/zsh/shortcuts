@@ -59,10 +59,16 @@ bindkey '^z' zoxide-jump
 # tmux-sessionor
 # In ~/.zshrc
 # tmux-sessionor widget
+
 # sessionor() {
 #     if [[ -f $HOME/.config/zsh/bin/tmux-sessionizer ]]; then
-#         $HOME/.config/zsh/bin/tmux-sessionizer
+#       if [[ -z $TMUX ]]; then
+#         tmux neww -n 'run-shell' $HOME/.config/zsh/bin/tmux-sessionizer
 #         zle accept-line
+#       else
+#         tmux neww -n 'run-shell' $HOME/.config/zsh/bin/tmux-sessionizer
+#         zle accept-line
+#       fi
 #     else
 #         echo "Error: tmux-sessionizer script not found"
 #         return 1

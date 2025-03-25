@@ -66,3 +66,8 @@ alt + shift - c : yabai --restart-service &> /dev/null
 
 cmd - m :
 cmd - h :
+
+# tmux
+ctrl - 0x2B : [[ `yabai -m query --windows --window | jq -r ".app"` == "kitty" ]] && tmux select-window -t :-
+ctrl - 0x2F : [[ `yabai -m query --windows --window | jq -r ".app"` == "kitty" ]] && tmux select-window -t :+
+
