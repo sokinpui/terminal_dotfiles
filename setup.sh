@@ -118,6 +118,9 @@ brew install --cask dropbox
 brew install onedrive
 brew install --cask marta
 
+brew tap dimentium/autoraise
+brew install autoraise
+
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin installer=version-0.40.0
 sudo ln -sf /Applications/kitty.app/Contents/MacOS/kitty /usr/local/bin/kitty
 
@@ -131,7 +134,7 @@ fi
 echo "Creating symbolic links for configuration files..."
 
 # Files/Directories that go in ~/.config/
-for tool in tmux alacritty kitty lf skhd wezterm yabai; do
+for tool in AutoRaise tmux alacritty kitty lf skhd wezterm yabai; do
     if [ -d "$REPO_DIR/$tool" ] || [ -f "$REPO_DIR/$tool" ]; then
         ln -sfv "$REPO_DIR/$tool" "$CONFIG_DIR/$tool"
     else
@@ -151,3 +154,10 @@ ln -sfv $REPO_DIR/zsh-config/.zprofile $HOME/.zprofile
 ln -sfv $REPO_DIR/karabiner.edn $HOME/.config/karabiner.edn
 
 ln -sfv $REPO_DIR/gitconfig $HOME/.gitconfig
+
+cd /tmp
+git clone https://github.com/sbmpost/AutoRaise.git
+cd AutoRaise
+make CXXFLAGS="-DOLD_ACTIVATION_METHOD -DEXPERIMENTAL_FOCUS_FIRST" && make install
+
+cd $REPO_DIR
