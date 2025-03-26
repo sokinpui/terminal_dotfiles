@@ -149,3 +149,5 @@ ln -sfv $REPO_DIR/zsh-config/.zshrc $HOME/.zshrc
 ln -sfv $REPO_DIR/zsh-config/.zprofile $HOME/.zprofile
 
 ln -sfv $REPO_DIR/karabiner.edn $HOME/.config/karabiner.edn
+
+ln -sfv $REPO_DIR/gitconfig $HOME/.gitconfig
