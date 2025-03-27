@@ -188,3 +188,57 @@ brew services start autoraise
 
 echo "remove dock appear/dissapear animation"
 defaults write com.apple.dock autohide-delay -int 0; killall Dock
+
+echo "download open tablet driver"
+#!/bin/bash
+
+# Define the URL and download destination
+URL="https://github.com/OpenTabletDriver/OpenTabletDriver/releases/latest/download/OpenTabletDriver-0.6.5.1_osx-x64.tar.gz"
+DOWNLOAD_DIR="$HOME/Downloads"
+FILE_NAME="OpenTabletDriver-0.6.5.1_osx-x64.tar.gz"
+APP_FILE="$DOWNLOAD_DIR/OpenTabletDriver.app"
+
+# Create Downloads directory if it doesn't exist
+mkdir -p "$DOWNLOAD_DIR"
+
+# Download the file
+echo "Downloading OpenTabletDriver from $URL..."
+curl -L -o "$DOWNLOAD_DIR/$FILE_NAME" "$URL"
+
+# Check if download was successful
+if [ $? -eq 0 ]; then
+    echo "Download completed!"
+else
+    echo "Error: Failed to download the file."
+    exit 1
+fi
+
+# Extract the tar.gz file directly (assuming it contains OpenTabletDriver.app)
+echo "Extracting $FILE_NAME..."
+tar -xzf "$DOWNLOAD_DIR/$FILE_NAME" -C "$DOWNLOAD_DIR"
+
+# Check if extraction was successful and the .app exists
+if [ $? -eq 0 ] && [ -d "$APP_FILE" ]; then
+    echo "Extraction completed!"
+else
+    echo "Error: Failed to extract the file or OpenTabletDriver.app not found."
+    exit 1
+fi
+
+# Move the .app to /Applications (requires sudo for system-wide access)
+echo "Moving OpenTabletDriver.app to /Applications..."
+sudo mv "$APP_FILE" /Applications/
+
+# Check if move was successful
+if [ $? -eq 0 ]; then
+    echo "Successfully moved OpenTabletDriver.app to /Applications!"
+else
+    echo "Error: Failed to move the .app file to /Applications."
+    exit 1
+fi
+
+# Clean up: remove the downloaded tar.gz
+echo "Cleaning up..."
+rm "$DOWNLOAD_DIR/$FILE_NAME"
+
+echo "downloaded open tablet driver!"
