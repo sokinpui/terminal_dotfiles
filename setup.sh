@@ -185,3 +185,6 @@ make CXXFLAGS="-DOLD_ACTIVATION_METHOD -DEXPERIMENTAL_FOCUS_FIRST" && make insta
 cd $REPO_DIR
 
 brew services start autoraise
+
+echo "remove dock appear/dissapear animation"
+defaults write com.apple.dock autohide-delay -int 0; killall Dock

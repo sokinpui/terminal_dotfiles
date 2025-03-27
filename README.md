@@ -24,3 +24,16 @@ runn the scipt
 ```sh
 curl https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/main/setup.sh | sh
 ```
+
+## macOS system preferences after script
+1. keyboard shortcut for switching desktop
+2. keyboard shortcut for screenshot
+3. betterdisplay scaling resolution
+4. logioptions+ setting
+  - set mouse scroll direction
+  - keys mapping
+  - keys mappping per app
+    - chrome: disable the horizontal scroll of switching tabs
+
+- Last step: restart the computer
+
