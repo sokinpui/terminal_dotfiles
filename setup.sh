@@ -5,6 +5,16 @@
 # Variables
 REPO_DIR="$(pwd)"  # Assumes the script is run from the root of the repository
 CONFIG_DIR="$HOME/.config"
+echo "Repository directory: $REPO_DIR"
+echo "Configuration directory: $CONFIG_DIR"
+
+# ask user for confirmation
+read -p "This script will install Homebrew and various command-line tools. Do you want to continue? (y/n) " -n 1 -r
+echo ""
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    echo "Exiting script..."
+    exit 1
+fi
 
 # Step 1: Ensure Homebrew is installed
 if ! command -v brew &> /dev/null; then
@@ -119,7 +129,9 @@ brew install onedrive
 brew install --cask marta
 
 brew tap dimentium/autoraise
-brew install autoraise
+brew install autoraise --with-dexperimental_focus_first
+
+echo ""
 
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin installer=version-0.40.0
 sudo ln -sf /Applications/kitty.app/Contents/MacOS/kitty /usr/local/bin/kitty
@@ -134,7 +146,7 @@ fi
 echo "Creating symbolic links for configuration files..."
 
 # Files/Directories that go in ~/.config/
-for tool in AutoRaise tmux alacritty kitty lf skhd wezterm yabai; do
+for tool in AutoRaise tmux  kitty lf skhd yabai; do
     if [ -d "$REPO_DIR/$tool" ] || [ -f "$REPO_DIR/$tool" ]; then
         ln -sfv "$REPO_DIR/$tool" "$CONFIG_DIR/$tool"
     else
@@ -146,14 +158,24 @@ echo "Symbolic linking complete! Please check the links and start your terminal 
 
 ln -sfv $REPO_DIR/zsh-config/zsh $CONFIG_DIR/zsh
 
+echo "Creating symbolic links for zsh configuration files..."
+echo "Removing existing zsh configuration files..."
 rm -f $HOME/.zprofile
+rm -f $HOME/.zshrc
+rm -f $HOME/.zshenv
+echo ""
 
 ln -sfv $REPO_DIR/zsh-config/.zshrc $HOME/.zshrc
 ln -sfv $REPO_DIR/zsh-config/.zprofile $HOME/.zprofile
 
+echo "Creating symbolic links for karabiner configuration files..."
 ln -sfv $REPO_DIR/karabiner.edn $HOME/.config/karabiner.edn
+echo ""
 
+echo "Creating symbolic links for git configuration files..."
+rm -f $HOME/.gitconfig
 ln -sfv $REPO_DIR/gitconfig $HOME/.gitconfig
+echo ""
 
 cd /tmp
 git clone https://github.com/sbmpost/AutoRaise.git
@@ -161,3 +183,5 @@ cd AutoRaise
 make CXXFLAGS="-DOLD_ACTIVATION_METHOD -DEXPERIMENTAL_FOCUS_FIRST" && make install
 
 cd $REPO_DIR
+
+brew services start autoraise
