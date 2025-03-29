@@ -100,11 +100,14 @@ alias \
   ta="tmux a -t"
 
 # cmd too short, verbose output
-alias \
-  mv="mv -v" \
-  rm="$HOME/.local/bin/trash-put" \
-  rs="$HOME/.local/bin/trash-restore" \
-  cp="cp -r -v"
+# if user name is mac, then don't alias for this
+if [ "$USER" != "mac" ]; then
+  alias \
+    mv="mv -v" \
+    rm="$HOME/.local/bin/trash-put" \
+    rs="$HOME/.local/bin/trash-restore" \
+    cp="cp -r -v"
+fi
 
 # git
 alias \
