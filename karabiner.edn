@@ -14,6 +14,14 @@
              ]
      }
     {
+     :des "ctrl+, -> option+,"
+     :rules [
+
+            [:!Tcomma :!Ocomma]
+            [:!Tperiod :!Operiod]
+             ]
+     }
+    {
      :des "mod tap spacebar, capslock"
      :rules
             [
