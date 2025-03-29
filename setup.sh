@@ -146,7 +146,7 @@ fi
 echo "Creating symbolic links for configuration files..."
 
 # Files/Directories that go in ~/.config/
-for tool in AutoRaise tmux  kitty lf skhd yabai; do
+for tool in AutoRaise tmux  kitty bat lf skhd yabai; do
     if [ -d "$REPO_DIR/$tool" ] || [ -f "$REPO_DIR/$tool" ]; then
         ln -sfv "$REPO_DIR/$tool" "$CONFIG_DIR/$tool"
     else
@@ -165,8 +165,8 @@ rm -f $HOME/.zshrc
 rm -f $HOME/.zshenv
 echo ""
 
-ln -sfv $REPO_DIR/zsh-config/.zshrc $HOME/.zshrc
-ln -sfv $REPO_DIR/zsh-config/.zprofile $HOME/.zprofile
+ln -sfv $REPO_DIR/zsh-config/zshrc $HOME/.zshrc
+ln -sfv $REPO_DIR/zsh-config/zprofile $HOME/.zprofile
 
 echo "Creating symbolic links for karabiner configuration files..."
 ln -sfv $REPO_DIR/karabiner.edn $HOME/.config/karabiner.edn

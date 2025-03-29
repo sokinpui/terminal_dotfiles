@@ -3,4 +3,5 @@
     name = sokinpui
 
 [core]
-    pager = cat
+	pager = bat
+
