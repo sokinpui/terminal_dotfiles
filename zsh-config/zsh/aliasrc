@@ -254,3 +254,5 @@ alias conda-init="source $HOME/.config/zsh/bin/conda-init"
 alias vpn="export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;export ALL_PROXY=socks5://127.0.0.1:1080"
 
 alias cd="z"
+
+alias marta="marta --new-window"

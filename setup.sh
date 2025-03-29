@@ -128,6 +128,8 @@ brew install --cask dropbox
 brew install onedrive
 brew install --cask marta
 
+sudo ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
+
 brew tap dimentium/autoraise
 brew install autoraise --with-dexperimental_focus_first
 
