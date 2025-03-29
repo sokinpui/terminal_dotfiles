@@ -109,9 +109,10 @@ if [[ "$USER" == "so" ]]; then
     cp="cp -r -v"
 elif [[ "$USER" == "mac" ]]; then
   alias \
-    mv="mv" \
-    rm="trash-put"
-    cp="cp -r"
+    mv="mv -v" \
+    rm="trash-put" \
+    rs="trash-restore" \
+    cp="cp -r -v"
 fi
 
 # git

@@ -9,6 +9,11 @@ if [ -n "$TMUX" ]; then
     export TERM=screen-256color
 fi
 
+if [[ "$USER" == "mac" ]]; then
+  export HOME="/Users/mac"
+fi
+
+
 export MANPAGER='nvim +Man!'
 export MANWIDTH=99
 #!/usr/bin/env bash
@@ -51,3 +56,5 @@ export VIRTUAL_ENV_DISABLE_PROMPT=
 export YABAI_SWAP_NEXT=1
 export YABAI_AUTO_BALANCE="on"
 export PATH="/Library/TeX/texbin:$PATH"
+
+export PIPX_HOME="$HOME/.local/pipx"
