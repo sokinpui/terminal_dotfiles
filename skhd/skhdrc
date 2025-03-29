@@ -60,6 +60,7 @@ alt + shift - l : skhd -k "hyper - 6"
 
 alt + shift - t : open -n -a Kitty --args --single-instance -d ~
 alt + shift - r : yabai -m window --focus `yabai -m query --windows --window first | jq ".id"` ; open -na "Google Chrome"
+cmd - 0x2A : source $HOME/.config/skhd/open-chrome.sh
 
 # reload config
 alt + shift - c : yabai --restart-service &> /dev/null
