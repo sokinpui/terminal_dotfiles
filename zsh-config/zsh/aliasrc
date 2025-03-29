@@ -101,12 +101,17 @@ alias \
 
 # cmd too short, verbose output
 # if user name is mac, then don't alias for this
-if [ "$USER" != "mac" ]; then
+if [[ "$USER" == "so" ]]; then
   alias \
     mv="mv -v" \
     rm="$HOME/.local/bin/trash-put" \
     rs="$HOME/.local/bin/trash-restore" \
     cp="cp -r -v"
+elif [[ "$USER" == "mac" ]]; then
+  alias \
+    mv="mv" \
+    rm="trash-put"
+    cp="cp -r"
 fi
 
 # git
