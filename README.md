@@ -34,6 +34,7 @@ curl https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/main/setup.sh 
   - keys mapping
   - keys mappping per app
     - chrome: disable the horizontal scroll of switching tabs
+5. disable vimimum in overleaf.com to use vim mode in overleaf
 
 - Last step: restart the computer
 
