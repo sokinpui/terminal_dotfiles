@@ -259,3 +259,5 @@ if command -v zoxide &> /dev/null; then
 fi
 
 alias marta="marta --new-window"
+
+alias pyvenv="python -m venv .env ; source .env/bin/activate"

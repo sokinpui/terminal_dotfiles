@@ -44,8 +44,6 @@ setopt HIST_SAVE_NO_DUPS
 # smarter cd like z
 eval "$(zoxide init zsh)"
 
-eval $(opam env)
-
 export ES_JAVA_HOME=/opt/homebrew/Cellar/openjdk/21.0.2/libexec/openjdk.jdk/Contents/Home
 
 function remove_skhd_lock_file_on_end() {
@@ -82,3 +80,4 @@ fi
 defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
 defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 
+eval "$(direnv hook zsh)"

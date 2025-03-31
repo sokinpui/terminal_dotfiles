@@ -108,6 +108,9 @@ brew install zoxide              # Shell extension for navigation
 brew install zsh-completions     # Additional completion definitions for zsh
 brew install zsh-syntax-highlighting  # Syntax highlighting for zsh
 brew install yqrashawn/goku/goku
+brew install direnv
+
+brew install font-lxgw-wenkai
 
 brew install --cask basictex
 brew install --cask discord
