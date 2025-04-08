@@ -245,7 +245,6 @@ alias \
   e="emacs -nw" \
   doom="~/.config/emacs/bin/doom"
 
-
 # alias \
   # yabai="yabai --restart-service" \
 

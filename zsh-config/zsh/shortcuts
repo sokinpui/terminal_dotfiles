@@ -3,8 +3,11 @@
 # fzf edit recent file
 open-recent-edit-file () {
   cwd=$(pwd)
-  select_file=$(find . -type f -not -path '*/.*' -exec ls -lt1 -- {} + \
-    | sed 's|^\./||' \
+  # select_file=$(find . -type f -not -path '*/.*' -exec ls -lt1 -- {} + \
+  #   | sed 's|^\./||' \
+  #   | fzf --height 40% --reverse \
+  #   --header="cwd=$cwd  | cmd='$EDITOR <file>'  ")
+  select_file=$(fd . --type=file | xargs ls -1t \
     | fzf --height 40% --reverse \
     --header="cwd=$cwd  | cmd='$EDITOR <file>'  ")
   if [ -z $select_file ]; then
