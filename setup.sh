@@ -131,6 +131,8 @@ brew install --cask maccy
 brew install --cask dropbox
 brew install onedrive
 brew install --cask marta
+brew install --cask microsoft-outlook
+brew install --cask microsoft-word
 
 sudo ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
 
