@@ -58,3 +58,5 @@ export YABAI_AUTO_BALANCE="on"
 export PATH="/Library/TeX/texbin:$PATH"
 
 export PIPX_HOME="$HOME/.local/pipx"
+
+export JAVA_HOME=/opt/homebrew/opt/openjdk

@@ -48,6 +48,8 @@ yabai -m rule --add app="Karabiner-EventViewer" manage=off
 # yabai -m rule --add app="Disk Utility"   manage=off
 yabai -m rule --add app="System Information" manage=off
 yabai -m rule --add app="Raycast" manage=off
+yabai -m rule --add app="minecraft" manage=off
+yabai -m rule --add app="java" manage=off
 yabai -m rule --add app="Obsidian" manage=on
 # yabai -m rule --add app="Activity Monitor"   manage=off
 # yabai -m rule --add app="Path Finder" manage=off
