@@ -1,10 +1,10 @@
 #vi:set ft=conf
 
 # change focus
-cmd - h : yabai -m window --focus west || yabai -m display --focus recent &> /dev/null
+cmd - h : yabai -m window --focus west &> /dev/null || yabai -m display --focus recent &> /dev/null
 cmd - j : yabai -m window --focus south &> /dev/null
 cmd - k : yabai -m window --focus north &> /dev/null
-cmd - l : yabai -m window --focus east || yabai -m display --focus recent &> /dev/null
+cmd - l : yabai -m window --focus east &> /dev/null || yabai -m display --focus recent &> /dev/null
 
 # swap window
 cmd + shift - h : yabai -m window --swap west &> /dev/null
@@ -50,17 +50,10 @@ cmd - f3 : skhd -k "cmd - c" ; skhd -k "cmd - t" ; skhd -k "cmd - v" ; skhd -k "
 # yabai < l : yabai -m window --focus east &> /dev/null   ; sleep 0.5 ; skhd -k "escape"
 # yabai < escape ; default
 
-# switch desktop
-alt + shift - f : skhd -k "hyper - 1"
-alt + shift - g : skhd -k "hyper - 2"
-alt + shift - h : skhd -k "hyper - 3"
-alt + shift - j : skhd -k "hyper - 4"
-alt + shift - k : skhd -k "hyper - 5"
-alt + shift - l : skhd -k "hyper - 6"
-
 # alt + shift - t : open -n -a Kitty --args --single-instance -d ~
 # alt + shift - r : yabai -m window --focus `yabai -m query --windows --window first | jq ".id"` ; open -na "Google Chrome"
-# cmd - 0x2A : source $HOME/.config/skhd/open-chrome.sh
+cmd - space : ray google-chrome new-window
+alt + cmd - space : open -n -a Kitty --args --single-instance -d ~
 
 # reload config
 alt + shift - c : yabai --restart-service &> /dev/null
