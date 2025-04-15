@@ -15,11 +15,6 @@ cmd + shift - l : yabai -m window --swap east &> /dev/null
 cmd - g : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2 &> /dev/null; yabai -m window --focus `yabai -m query --windows --window | jq '.id'`
 
 cmd - e : yabai -m space --layout bsp
-# alt - s : yabai -m space --layout stack
-# alt + ctrl - e :  /Users/mac/.config/skhd/toggle-auto-balance.sh
-# alt - e :  yabai -m space --equalize
-
-
 
 # i3-style resize
 alt + ctrl - left : yabai -m window --resize left:-25:0; \
@@ -40,28 +35,10 @@ cmd - f6 : source $HOME/.config/skhd/cycle_clockwise.sh &> /dev/null
 # copy, paste, seearch in new tab
 cmd - f3 : skhd -k "cmd - c" ; skhd -k "cmd - t" ; skhd -k "cmd - v" ; skhd -k "return"
 
-# # tmux like switch
-# :: default
-# :: yabai : sleep 5 ; skhd -k "escape"
-#e ctrl - 0x29 ; yabai
-# yabai < h : yabai -m window --focus west &> /dev/null   ; sleep 0.5 ; skhd -k "escape"
-# yabai < j : yabai -m window --focus south &> /dev/null  ; sleep 0.5 ; skhd -k "escape"
-# yabai < k : yabai -m window --focus north &> /dev/null  ; sleep 0.5 ; skhd -k "escape"
-# yabai < l : yabai -m window --focus east &> /dev/null   ; sleep 0.5 ; skhd -k "escape"
-# yabai < escape ; default
-
 # alt + shift - t : open -n -a Kitty --args --single-instance -d ~
 # alt + shift - r : yabai -m window --focus `yabai -m query --windows --window first | jq ".id"` ; open -na "Google Chrome"
-cmd - space : ray google-chrome new-window
-alt + cmd - space : open -n -a Kitty --args --single-instance -d ~
+cmd - escape : open -n -a Kitty --args --single-instance -d ~
+# cmd - space : ray google-chrome new-window
 
-# reload config
-alt + shift - c : yabai --restart-service &> /dev/null
-
-cmd - m : yabai -m display --focus recent &> /dev/null
+cmd - m :
 cmd - h :
-
-# tmux
-# ctrl - 0x2B : [[ `yabai -m query --windows --window | jq -r ".app"` == "kitty" ]] && tmux select-window -t :-
-# ctrl - 0x2F : [[ `yabai -m query --windows --window | jq -r ".app"` == "kitty" ]] && tmux select-window -t :+
-
