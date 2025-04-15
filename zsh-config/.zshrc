@@ -46,30 +46,31 @@ eval "$(zoxide init zsh)"
 
 export ES_JAVA_HOME=/opt/homebrew/Cellar/openjdk/21.0.2/libexec/openjdk.jdk/Contents/Home
 
-function remove_skhd_lock_file_on_end() {
-  local process_name="$(ps -p $SKHD_PID | tail -n 1 | awk '{print $4}')"
-
-  while [[ $process_name == "skhd" ]]; do
-    local process_name="$(ps -p $SKHD_PID | tail -n 1 | awk '{print $4}')"
-    sleep 1
-  done
-
-  rm /tmp/skhd.lock
-  rm /tmp/skhd_$(whoami).pid
-}
-
-if [ -z "$SSH_CONNECTION" ]; then
-  if [ ! -f /tmp/skhd.lock ]; then
-    echo "skhd is not running. Starting skhd..."
-    echo "skhd is running" > /tmp/skhd.lock
-    skhd &!
-    SKHD_PID=$!
-
-    remove_skhd_lock_file_on_end &
-  fi
-else
-  echo "skhd will not run in an SSH session."
-fi
+skhd &!
+# function remove_skhd_lock_file_on_end() {
+#   local process_name="$(ps -p $SKHD_PID | tail -n 1 | awk '{print $4}')"
+#
+#   while [[ $process_name == "skhd" ]]; do
+#     local process_name="$(ps -p $SKHD_PID | tail -n 1 | awk '{print $4}')"
+#     sleep 1
+#   done
+#
+#   rm /tmp/skhd.lock
+#   rm /tmp/skhd_$(whoami).pid
+# }
+#
+# if [ -z "$SSH_CONNECTION" ]; then
+#   if [ ! -f /tmp/skhd.lock ]; then
+#     echo "skhd is not running. Starting skhd..."
+#     echo "skhd is running" > /tmp/skhd.lock
+#     skhd &!
+#     SKHD_PID=$!
+#
+#     remove_skhd_lock_file_on_end &
+#   fi
+# else
+#   echo "skhd will not run in an SSH session."
+# fi
 
 # # The next line updates PATH for the Google Cloud SDK.
 # if [ -f '/Users/mac/tmp/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mac/tmp/google-cloud-sdk/path.zsh.inc'; fi
