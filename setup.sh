@@ -133,6 +133,7 @@ brew install onedrive
 brew install --cask marta
 brew install --cask microsoft-outlook
 brew install --cask microsoft-word
+brew install pomdtr/tap/ray
 
 sudo ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
 
@@ -250,3 +251,5 @@ echo "Cleaning up..."
 rm "$DOWNLOAD_DIR/$FILE_NAME"
 
 echo "downloaded open tablet driver!"
+
+ray completion zsh > $HOME/.config/zsh/autoload/_zay

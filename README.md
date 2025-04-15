@@ -36,5 +36,8 @@ curl https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/main/setup.sh 
     - chrome: disable the horizontal scroll of switching tabs
 5. disable vimimum in overleaf.com to use vim mode in overleaf
 
+## raycast
+  - install google-chrome extension, and use skhd to trigger hotkey
+
 - Last step: restart the computer
 
