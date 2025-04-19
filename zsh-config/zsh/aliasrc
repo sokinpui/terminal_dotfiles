@@ -131,7 +131,8 @@ alias \
   gdt="git difftool" \
   gs="git status" \
   gsu="git status --untracked-files" \
-  gsw="git switch"
+  gbb="git checkout -b" \
+  gsw="git branch | grep -v \"^\*\" | fzf --height=20% --reverse --info=inline | xargs git checkout"
 
 gi(){
   git init
