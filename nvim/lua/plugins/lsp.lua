@@ -12,8 +12,9 @@ return {
             ---@type string[]
             ensure_installed = {
               "lua_ls",
-              "pyright",
+              "ruff",
               "jdtls",
+              "eslint",
             },
 
             -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed.
@@ -58,7 +59,7 @@ return {
       "MasonUninstall",
       "MasonUninstallAll",
       "MasonLog",
-      "MasonUpdate", -- AstroNvim extension here as well
+      "MasonUpdate",    -- AstroNvim extension here as well
       "MasonUpdateAll", -- AstroNvim specific
     },
     config = function()
@@ -70,8 +71,8 @@ return {
     ft = "java",
     config = function()
       local config = {
-        cmd = {'/home/so/.local/share/nvim/mason/bin/jdtls'},
-        root_dir = vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true })[1]),
+        cmd = { '/home/so/.local/share/nvim/mason/bin/jdtls' },
+        root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
       }
       require('jdtls').start_or_attach(config)
     end

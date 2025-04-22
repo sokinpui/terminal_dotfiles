@@ -9,7 +9,7 @@ lspformat.setup {}
 local servers = {
   "lua_ls",
   "jdtls",
-  "pyright",
+  "ruff",
   "clangd",
   "jqls",
   "asm_lsp",
