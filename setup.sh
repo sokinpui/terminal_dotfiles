@@ -156,7 +156,7 @@ fi
 echo "Creating symbolic links for configuration files..."
 
 # Files/Directories that go in ~/.config/
-for tool in AutoRaise tmux  kitty bat lf skhd yabai; do
+for tool in nvim AutoRaise tmux  kitty bat lf skhd yabai; do
     if [ -d "$REPO_DIR/$tool" ] || [ -f "$REPO_DIR/$tool" ]; then
         ln -sfv "$REPO_DIR/$tool" "$CONFIG_DIR/$tool"
     else
