@@ -41,3 +41,5 @@ curl https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/main/setup.sh 
 
 - Last step: restart the computer
 
+# logi mouse config
+![](images/Pasted%20image%2020250422184527.png)![](images/Pasted%20image%2020250422184651.png)

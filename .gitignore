@@ -16,3 +16,4 @@ zsh-config/.zsh_sessions/
 .DS_Store
 
 tmp*
+/.obsidian/
