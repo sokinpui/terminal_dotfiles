@@ -110,6 +110,7 @@ brew install zsh-syntax-highlighting  # Syntax highlighting for zsh
 brew install yqrashawn/goku/goku
 brew install direnv
 brew install cmake
+brew install cloc
 
 brew install font-lxgw-wenkai
 
