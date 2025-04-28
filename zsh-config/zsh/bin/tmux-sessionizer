@@ -9,7 +9,10 @@ if [[ -z "$selected" ]]; then
     selected=$(find \
       ~/projects \
       ~/Obsidian \
-      ~/cuhk/year* \
+      ~/Obsidian/obsidian-mobile/cuhk/year1 \
+      ~/Obsidian/obsidian-mobile/cuhk/year2 \
+      ~/Obsidian/obsidian-mobile/cuhk/year3 \
+      ~/Obsidian/obsidian-mobile/cuhk/year4 \
       -mindepth 1 -maxdepth 1 -type d \
       -not -path '*/.*' \
       | fzf --height 40% --reverse --header "Select a directory to open in tmux")

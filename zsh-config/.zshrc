@@ -84,3 +84,7 @@ defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 eval "$(direnv hook zsh)"
 
 autoload -U compinit && compinit
+
+set -o ignoreeof
+
+

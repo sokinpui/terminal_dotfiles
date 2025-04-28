@@ -7,7 +7,43 @@ open-recent-edit-file () {
   #   | sed 's|^\./||' \
   #   | fzf --height 40% --reverse \
   #   --header="cwd=$cwd  | cmd='$EDITOR <file>'  ")
-  select_file=$(fd . --type=file | xargs ls -1t \
+  select_file=$(\
+    fd . --type=file \
+    -E "*.png" \
+    -E "*.jpg" \
+    -E "*.jpeg" \
+    -E "*.mp3" \
+    -E "*.mp4" \
+    -E "*.docx" \
+    -E "*.doc" \
+    -E "*.xlsx" \
+    -E "*.wav" \
+    -E "*.gif" \
+    -E "*.psd" \
+    -E "*.pdf" \
+    -E "*.tiff" \
+    -E "*.avif" \
+    -E "*.jfif" \
+    -E "*.pjeg" \
+    -E "*.pjp" \
+    -E "*.svg" \
+    -E "*.wbep" \
+    -E "*.bmp" \
+    -E "*.ico" \
+    -E "*.cur" \
+    -E "*.tif" \
+    -E "*.mov" \
+    -E "*.avi" \
+    -E "*.wmv" \
+    -E "*.flv" \
+    -E "*.mkv" \
+    -E "*.webm" \
+    -E "*.aac" \
+    -E "*.flac" \
+    -E "*.aif" \
+    -E "*.m4a" \
+    -E "*.ogg" \
+    | xargs ls -1t \
     | fzf --height 40% --reverse \
     --header="cwd=$cwd  | cmd='$EDITOR <file>'  ")
   if [ -z $select_file ]; then
@@ -79,5 +115,4 @@ bindkey '^z' zoxide-jump
 # }
 # zle -N sessionor
 # bindkey '^g' sessionor
-
 
