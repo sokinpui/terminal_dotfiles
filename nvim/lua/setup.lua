@@ -42,7 +42,7 @@ require("lazy").setup({
   require("plugins.fzf"),
   -- require("plugins.scroll"),
   -- filetype
-  -- require("plugins.markdown"),
+  require("plugins.markdown"),
 
   -- require("plugins.orgmode"),
   -- { "kmonad/kmonad-vim", ft = "kbd"},

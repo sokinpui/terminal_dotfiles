@@ -13,7 +13,8 @@ local servers = {
   "clangd",
   "jqls",
   "asm_lsp",
-  "eslint",
+  "pyright",
+  -- "eslint",
   --"bashls",
 }
 
@@ -24,6 +25,7 @@ for _, lsp in ipairs(servers) do
     on_attach = lspformat.on_attach,
   })
 end
+
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
