@@ -46,7 +46,11 @@ eval "$(zoxide init zsh)"
 
 export ES_JAVA_HOME=/opt/homebrew/Cellar/openjdk/21.0.2/libexec/openjdk.jdk/Contents/Home
 
-skhd &!
+if ! pgrep -u $USER skhd >/dev/null 2>&1; then
+  skhd --start-service
+fi
+
+
 # function remove_skhd_lock_file_on_end() {
 #   local process_name="$(ps -p $SKHD_PID | tail -n 1 | awk '{print $4}')"
 #
