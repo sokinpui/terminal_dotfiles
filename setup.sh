@@ -166,7 +166,7 @@ done
 
 echo "Symbolic linking complete! Please check the links and start your terminal tools."
 
-ln -sfv $REPO_DIR/zsh-config/zsh $CONFIG_DIR/zsh
+ln -sfv $REPO_DIR/zsh $CONFIG_DIR/zsh
 
 echo "Creating symbolic links for zsh configuration files..."
 echo "Removing existing zsh configuration files..."
@@ -175,8 +175,11 @@ rm -f $HOME/.zshrc
 rm -f $HOME/.zshenv
 echo ""
 
-ln -sfv $REPO_DIR/zsh-config/zshrc $HOME/.zshrc
-ln -sfv $REPO_DIR/zsh-config/zprofile $HOME/.zprofile
+ln -sfv $REPO_DIR/zsh/.zshrc $REPO_DIR/zshrc
+ln -sfv $REPO_DIR/zsh/.zprofile $REPO_DIR/zprofile
+
+ln -sfv $REPO_DIR/zsh/zshrc $HOME/.zshrc
+ln -sfv $REPO_DIR/zsh/zprofile $HOME/.zprofile
 
 echo "Creating symbolic links for karabiner configuration files..."
 ln -sfv $REPO_DIR/karabiner.edn $HOME/.config/karabiner.edn

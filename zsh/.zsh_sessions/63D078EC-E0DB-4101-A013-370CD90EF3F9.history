@@ -1,0 +1,4252 @@
+cd Mac/zsh
+z dfot
+g clone https://github.com/sokinpui/dotfiles.git
+mv Git repo
+mkd Mac
+rm dotfiles
+cd dotfiles/Mac/zsh
+sasd;fl
+;
+vim app
+rm fcitx5
+rm kanata kmonad
+rm systemd
+rm repos_backup.tar.gz
+rm packages
+rm install.sh
+vim zsh/.zprofile
+vim .zshenv
+d 4
+chmod +x move-config.sh
+mv app app.txt
+z confgi
+./move-config.sh
+d 1
+vim move-config.sh
+vim lf/lfrc
+vim zsh/keymaps
+vim kitty/kitty.conf
+echo $HOME
+vze
+brwe
+brew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+vscode
+code
+cd repo/dotfiles/Mac
+vim .zprofile
+nano
+cd repo/dotfiles/Mac/zsh
+nano .zprofile
+z kitt
+vi kitty.conf
+ope
+open firefox
+open Firefox
+fire
+firefox
+cp zmk-local-env-setup firefox
+mv firefox firefoxn
+which lf
+rm lfcd.sh
+which firefox
+google
+grew install google
+brew install google
+brew install chrome
+brew install google-chrome
+/Applications/Google Chrome.app
+~/Applications/Google Chrome.app
+/Applications/Google\ Chrome.app
+sudo /Applications/Google\ Chrome.app
+sudo ~/Applications/Google\ Chrome.app
+~/Applications/Google\ Chrome.app
+defaults write com.apple.Terminal FocusFollowsMouse -bool true
+g clone https://github.com/sbmpost/AutoRaise.git
+make CXXFLAGS="-DEXPERIMENTAL_FOCUS_FIRST" && make install
+cp -r AutoRaise.app /Applications
+sudo rm /Applications/AutoRaise.app
+sudo rm -rf /Applications/AutoRaise.app
+brew tap dimentium/autoraise
+defaults write -g AppleFontSmoothing -int 0
+brew service stop
+brew stop
+cp karabiner.edn-old
+cp karabiner.edn karabiner.edn-old
+echo fpath
+echo $path
+lf -version
+gcc lab2.c && ./a.out
+gcc lab2_3.c && ./a.out
+brew upgrade
+rm lab2.c
+cp lab1.c lab2.c
+java -jar ~/Downloads/OptiFine_1.20.1_HD_U_I6.jar
+cd CSCI1130/
+cd CSCI2100
+vim lab2.c
+mv lab2.c
+mv lab2.c lab2_1.c
+vim lab2_2.c
+vim lab2_3.c
+vim lab2_4.c
+vim lab2_5.c
+gcc lab2_4.c && ./a.out
+gcc lab2_5.c && ./a.out
+python script.py
+python3 script.py
+vim tmp.py
+python3 tmp.py
+Sample Output 1:
+Input the number of characters in the sequence:
+Input these characters:
+All possible sequences:
+(()[]([()]))
+(()[][]())()
+[()[][]()]()
+./script.py
+python 3./script.py
+vim input.txt
+vim script.py
+python3 ./script.py
+(()[][[()]()
+gcc lab2_6.c && ./a.out
+cd wezterm
+rm wezterm
+brew install jdtls
+gcc test.c ; ./a.out
+cd /Library/Application Support/Microsoft/MAU2.0
+cd /Library/Application\ Support
+cd Microsoft
+cd MAU2.0
+sudo rm -rf Microsoft\ AutoUpdate.app
+sudo rm -rf "/Library/LaunchDaemons/com.microsoft.autoupdate.helper.plist"
+sudo rm -rf "/Library/LaunchAgents/com.microsoft.update.agent.plist"
+sudo rm -rf "/Library/PrivilegedHelperTools/com.microsoft.autoupdate.helpe"
+sudo rm -rf "/Library/PrivilegedHelperTools/com.microsoft.autoupdate.helper"
+cd PrivilegedHelperTools
+ls a
+ls -a
+brew install --cask betterdisplay
+git clone https://github.com/sokinpui/Obsidian.git
+git merge
+gcc
+vim lab2_6.c
+gcc cheat.c ; ./a.out
+vim cheat.c
+vim git_repo
+git clone https://github.com/sbmpost/AutoRaise.git
+cd AutoRaise
+make CXXFLAGS="-DOLD_ACTIVATION_METHOD -DEXPERIMENTAL_FOCUS_FIRST" && make install\
+
+AutoRaise
+cd .config
+mkdc AutoRaise
+AutoRaise 
+/Applications/AutoRaise.app
+/Applications/AutoRaise.app/Contents/MacOS/AutoRaise delay=0 focusDelay=1\
+
+/Applications/AutoRaise.app/Contents/MacOS/AutoRaise -delay=0 -focusDelay=1\
+
+ps -a
+brew install autoraise --with-dexperimental_focus_first
+z Obs
+z Obsidian
+mkd ELTU2014
+gcc lab2_6.c ; ./a.out
+cd repo
+ mkdc project
+mkdc itsc
+mv itsc ITSC
+mkdc server_map
+mkdc execl_file
+   pip install openpyxl\
+
+python3 -m pip install --upgrade setuptools
+brew install openpyxl
+python3 -m pip --user install modern_robotics
+ls  /opt/homebrew/opt/python@3.12/
+python3 -m venv ~/.local --system-site-packages\
+
+~/.local/bin/pip3.12 install openpyxl
+python3 -m pip install modern_robotics
+pip install modern_robotics
+ls ~/.local/bin/python3.12
+which ~/.local/bin/python3.12
+la ~/.local/bin/python3.12
+brew --prefix python
+/opt/homebrew/opt/python@3.12/bin/python3.12
+cd pip
+mkdc/pip
+mkdc pip
+vim pip.conf
+source ~/.local/bin/activate
+pip3 install openpyxl
+open datacenter_machines.xlsx
+pip install openpyxl
+cd server_map/execl_file
+open people.xlsx
+z itsc2
+cd gpt\ 4193136708\ -\ Bots\ -\ Coze_files
+rm gpt\ 4193136708\ -\ Bots\ -\ Coze.html gpt\ 4193136708\ -\ Bots\ -\ Coze_files
+open datacenter_map_visualized.xlsx
+v draw_map.py
+mv server_map data_center_machine_visualization
+cd data_center_machine_visualization
+mv datacenter_map_visualized.xlsx people.xlsx datacenter_machines.xlsx execl_file
+rg
+rg compinit
+rm *.xlsx
+git clone https://github.com/tmux-plugins/tpm plugins/tpm
+fd ~
+find ~
+for i in {1..1000}; do\
+echo $i\
+done
+vim vim_mode
+b
+ga draw_map.py ; gm
+gm rm .venv/
+g rm .venv/
+g rm --cache .venv/
+g rm -r --cache .venv/
+ga conflict.py
+pi
+pip
+pip3
+cp ~/.config/AutoRaise ./
+rm ~/.config/AutoRaise
+man ln
+ln -sfv $PWD/AutoRaise ~/.config/AutoRaise
+cd Mac/AutoRaise
+brew services restart autoraie
+brew services restart autoraise
+cd /Library/LaunchDaemons/
+mkd keyboard
+g clone https://github.com/sokinpui/zmk-config.git
+brew install cmake ninja gperf python3 ccache qemu dtc wget libmagic
+echo $PATH | rg local
+echo $PATH | rg local/bin
+echo $PATH | rg .local/bin
+echo $PATH | rg \.local/bin
+echo $PATH | rg ".local/bin"
+defaults write -g KeyRepeat -int 3
+defaults write -g KeyRepeat -int 1
+cp conflict.py test.py
+vim conflict.py
+mv execl_file excel
+mkd drawer
+cp draw_map.py drawer
+vim drawer/README.md
+vim requirement.txt
+vim drawer/__init__.py
+rm draw_map.py
+mv __init__.py __main__.py
+v drawer/__main__.py
+git rm --cached drawer/__pycache__/ .DS_Store
+git rm -r --cached drawer/__pycache__/ .DS_Store
+rm excel/people.xlsx
+ls excel
+rm excel/conflict.xlsx
+python3 -m venv ~/zephyrproject/.venv
+source ~/zephyrproject/.venv/bin/activate
+pip install west
+zk
+python conflict.py
+g checkout
+g merge f5a04f0
+vim draw_map.py
+python draw_map.py
+rm datacenter_machines.xlsx.\~1\~
+cp datacenter_machines.xlsx conflict.xlsx
+mma/jre.bundle/Contents/\
+Library/Application Support/minecraft/runtime/java-runtime-gamma/mac-os/java-runtime-gamma/jre.bundle/Contents/Info.plist\
+Library/Application Support/minecraft/runtime/java-runtime-gamma/mac-os/java-runtime-gamma/jre.bundle/Contents/MacOS/\
+Library/Application Support/minecraft/runtime/java-runtime-gamma/mac-os/java-runtime-gamma/jre.bundle/Contents/MacOS/libjli.dylib\
+Library/Application Support/minecraft/runtime/java-runtime-gamma/mac-os/java-runtime-gamma/jre.bundle/Contents/Home/\
+Library/Application Support/minecraft/runtime/java-runtime-gamma/mac-os/java-runtime-gamma/jre.bundle/Contents/Home/conf/
+rg nzz
+b install cargo
+b install rust
+cargo
+rust
+ls .cargo
+vap
+ls cuhk
+cd CUHK_files
+mv CUHK_files CUHK
+cd CUHK
+cd year2/CENG3420
+mkdc lab2
+fd addi
+./asm
+./asm benchmarks/swap.asm benchmarks/swap.bin
+ls ben
+ls benchmarks
+vim util.c
+./benchmarks/swap.asm
+./asm isa.asm isa.bin
+vim isa.bin
+../asm isa.asm isa.bin
+cd tools
+vim report
+vim 1.bin
+vim *.asm
+vim ../test.asm
+cd ceng3420/benchmarks
+vim isa.asm
+open risc-v-asm-manual.pdf
+rm ceng3420
+git checkout lab2.1
+cd benchmarks
+./asm swap.asm 1.bin
+../asm swap.asm 1.bin
+vi 1.bin
+vim swap.asm
+./asm benchmarks/swap.asm benchmarks/1.bin
+echo halt > test.asm
+cat test.bin
+cat test.asm
+rm asm ; make asm
+rm asm ; make asm ; ./asm test.asm test.bin ; cat test.asm ; cat test.bin
+rm asm ; make valide
+rm asm ; make validate
+cat *.bin
+m *.bin
+vim add4.bin
+vim *.bin
+diff count10.bin benchmarks/count10.bin
+rm *.bin ; rm asm ; ./asm test.asm test.bin
+rm *.bin ; rm asm ; make ; ./asm test.asm test.bin
+rm *.bin ; rm asm ; make ; ./asm test.asm test.bin ; cat test.bin
+vim count10.bin
+v test.asm
+vim te
+v tools/report
+vim swap.bin
+make validate
+vim benchmarks/*.asm
+vim benchmarks/isa*
+z mac
+g merge
+vim zmk-config
+rm zmk-config
+git clone https://github.com/sokinpui/zmk-config.git
+z zmk-config
+brew install alacritty
+akac
+rg remap
+rg keymap
+./asm test.asm test.bin ; cat test.bin
+rm *.bin ; rm asm ; make validate
+z mtux
+b install sl
+vim sl
+vim tools/report
+v benchmarks/add4.asm
+as, 
+rm  test.bin asm
+rm test.asm
+mv test.asm.\~1\~ test.asm.\~1\~
+mv test.asm.\~1\~ test.asm
+asm test.asm test.bin
+rm *.bin
+rm asm
+vim add4.asm
+vim test.bin
+./asm benchmarks/isa.asm isa.bin
+vim asm.c
+mkdc lab2-2
+git clone https://github.com/MingjunLi99/ceng3420.git
+b install maccy
+git checkout origin/lab2.2
+g switch lab2.2
+./sim benchmarks/isa.bin
+vim benchmarks/isa.bin
+rm sim ; make ; ./sim benchmarks/isa.bin     
+vim benchmarks/add4.bin
+vim benchmarks/add4.asm
+rm sim ; make ; ./sim test.asm
+vim benchmarks/count10.asm
+rm a.out ; gcc test.c ; ./a.out
+z code
+z git
+z Git
+open docs/risc-v-asm-manual.pdf
+vim dumpsim
+vim benchmarks/isa.asm
+rm is
+vim sim.c
+z ceng
+vim test.asm
+rm sim ; make ; ./asm benchmarks/swap.bin
+rm sim ; make ; ./sim benchmarks/count10.bin
+rm sim ; make ; ./sim benchmarks/add4.bin
+rm sim ; make ; ./sim benchmarks/swap.bin
+rm test.bin
+rm sim ; make ; ./sim test.bin
+mv is isa2.bin
+./sim isa2.bin
+cat isa2.bin
+./asm benchmarks/isa.asm is
+./asm benchmarks/isa.asm isa1
+./sim isa1
+v diff benchmarks/isa.bin isa1
+v -d benchmarks/isa.bin isa1
+rm isa1
+cat dumpsim
+cat benchmarks
+./asm benchmarks/isa.asm benchmarks/isa.bin
+rm sim ; make ;  ./sim benchmarks/count10.bin 
+rm sim ; make ;  ./sim benchmarks/add4.bin 
+rm sim ; make ;  ./sim benchmarks/swap.bin 
+rm sim ; make ; ./sim ../isa.bin
+rm sim ; make ;  ./sim benchmarks/isa.bin
+./asm test.asm ../../lab2-2/ceng3420/test.bin
+./asm test.asm test.bin
+rm asm ;./asm test.asm test.bin ; rm sim ; make ; ./sim test.bin
+rm *.bin ;rm asm ;./asm test.asm test.bin ; rm sim ; make ; ./sim test.bin
+rm *.bin ;./asm test.asm test.bin ; rm sim ; make ; ./sim test.bin
+brew install  mission-control-plus
+b install gh
+gh auth
+gh auth login
+b install cakebrew
+cat wayland.conf >> kitty.conf
+vIm kitty.conf
+mac
+gcc 2.c ; ./a.out
+gcc 3.c
+gcc 3.c ; ./a.out
+rg match
+rg config.auot
+rg config.auto
+rg config
+rg config.nvim
+va
+// Output:
+// Each line is the result of get or size or print.
+//
+// Sample Input 1:
+// 20
+// put 7 7
+// put 9 9
+// put 11 11
+// put 5 5
+// put 4 4
+// put 6 6
+// put 8 8
+// put 12 12
+// put 15 15
+// put 10 10
+// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge// );// ge// gst// ge// ge// ge// ge// ge// ge// ge// ge// ge// ge e/se// ge// ge// ge//"g// g =// ge// g  // ge// gn // ge// ge/el// ge// grc// ge// ger// ge// g0) {
+print
+vim AVLTree.py
+b install kindle
+b install redquits
+redquits
+brew install --cask redquits
+brew install --cask logi-options-plus
+b install kicad
+ghclone
+b install github-clone
+pip install github-clone
+rm hotswap
+ghclone https://github.com/jimmerricks/swoop/tree/main/pcbs/swoop-mx
+ghclone https://github.com/foostan/crkbd/tree/main/pcbs/corne-cherry/hotswap dactyl
+tldr ghclone
+ghclone -h
+ghclone https://github.com/foostan/crkbd/tree/main/pcbs/corne-cherry/hotswap
+mv hotswap dactylo
+mv dactylo dactyl
+ghclone https://github.com/foostan/crkbd/tree/main/pcbs/common
+ghclone https://github.com/foostan/crkbd/tree/main/pcbs
+g clone https://github.com/ergomechstore/Corne-chocoflan.git
+z csci
+z CSCI
+mkd lab1
+mkd lab3
+cd lab3
+gcc 2.c
+vim 4-cheat.c
+mv 4-cheat.c 4.c
+lksdjfalks;jdflkasfkj
+gcc 4.c
+put 5 5 
+put 4 4 
+put 6 6 
+put 8 8 
+put 12 12 
+put 15 15 
+put 10 10
+put 4 1
+erase 4
+get 4
+erase 6
+erase 15
+erase 12
+size
+python AVLTree.py
+TreeNode Lchild(TreeNode root) {
+TreeNode Rchild(TreeNode root) {
+int Data(TreeNode root) {
+bool isEmpty(TreeNode root) {
+void Preorder(TreeNode root) {
+void Inorder(TreeNode root) {
+void Postorder(TreeNode root) {
+>key, root->value);
+oot));
+// print each level line by lineif (isEmpty\
+// void Levelorder(TreeNode root) {\
+//     if (isEmpty(root)) {\
+//         return;
+//     }
+re[re[re[re[re[re[re[re[ntre[re[re[re[re[re[re[r qre[re[re[re[re[re[re[re  re[re[re[re[re[ < rere[re[re[re[re[re[re[re[ntre[re= re[re[re[re[re[re[re[     re[re[re[re[re[re[re[re[ntre[retere[re[re[re[re[re[re[r if (re[re[re[re[re[re[re[re[//re[re[re[re[re[re[reear++re[re[re[re[re[re[re[re[ntre\
+////////////////////////temp-////////////////////////temp-ue//////////////////////////////////////////////////temp-/////////////////////  ////////////////////////temp-/a;////////////////////////temp-/rn////    }////////////////////////temp) //////////////////////// {////////////////////////temp-re////////////////////////temp-/////////////////////
+b install wacom
+b install wacom-tablet
+vim ruby
+vim brew
+chruby ruby-3.1.3
+ruby-install ruby 3.1.3
+ruby
+ruby -c
+ruby -v
+b install ruby gem
+b install ruby 
+gem
+gem -v
+b install chruby
+b install ruby-install
+jekyll new blog
+z blog
+gem install jekyll
+cd blog
+jekyll build
+jekyll serve
+cd ITSC/data_center_machine_visualization
+mv data_center_machine_visualization server_rack
+vim server_rack/drawer/__main__.py
+cd server_rack
+vim server_rack_oop
+mkdc server_rack_oop
+mkdc drawer/__main__.py
+rm __main__.py
+vim lab2.
+rm lab2.
+vIm test/test.py
+ga . ;
+python drawer/__main__.py
+touch drawer/__init__.py
+python server_rack_oop/drawer/__main__.py
+vim test/test.py
+pip install numpy
+pip install scipy
+rm todo.md
+z rack
+which gb
+g merge main
+g merge cc2e5a3
+gb test 
+vim test/tesst2.py
+which todo
+cat $(which todo)
+g merge 8b5daff
+g reset --hard 8b5daff
+g merge e7bc137
+fd todo
+v `do todo`
+v `fd todo`
+b install xouralpp
+b install xournalpp
+b install xournal-plus-plus
+b install inkspace
+b install wacom-inkspace
+cim
+z keyboard
+git clone https://github.com/jimmerricks/swoop.git
+kjjk//////////////;;;;/;u;u///uuii;;;iiii//i/i/;pipkj;;l;ppp00000
+v 5.c
+vim 6.c
+vikm
+gcc 5.c ; ./a.out
+gcc 6.c ; ./a.out
+b install zellij
+zellij
+tod
+g merge 04f3d03
+g rm --cached data.xlsx
+gb test ; gsw test
+g merge 4412d1d
+rm \~\$data.xlsx
+vim drawer/__main__.py drawer/map.py
+g merge 35c9f9e
+gb v1
+gsw v1
+Given an undirected weighted graph, a source node s, a distance threshold k, report the number of its close neighbors.
+If a node u is the close neighbor of s, then the shortest path distance between u and s is no larger than k.
+The close neighbors do not include the source node itself.
+Note that your algorithm must run in O((m+n)*log(n)) time.
+Besides, please remove any redundant part of your codes and try to make it more efficient.
+In addition, can you figure out a way to stop early instead of directly calculating the distance between the source node and every other node?
+If your algorithm does not meet the above conditions, you may get "Out Of Time".
+Input:
+The first line contains three integer: n, m, k, which are the number of nodes, the number of edges, and the distance threshold, respectively.
+The next m lines, each of which contains three integer: u, v, w, where u and v are the node of the edge, and w is the edge weight.
+zza
+mv cleverf.lua jump.lua
+vvq
+delta
+b install delta
+bi delta
+bi git-delta
+git diff
+gd 3aa1287
+grep
+grep lua
+brew services stop goku
+vim .gitconfig
+z lua
+git diff a35e2c3
+bat lazy-init.lua
+z kara
+mv karabiner.edn karabiner.edn.backup
+vim karabiner/karabiner.json
+vim karabiner.edn karabiner.edn-old
+vIM karabiner.edn
+vim :w
+rm :w
+z julia
+b install julia
+julia import Pkg; Pkg.add("Distributions")
+import Pkg; Pkg.add("Distributions")
+vim tmp.jl
+julia tmp.jl
+did
+ls plugins
+cp lazy-init.lua plugins/init.lua
+rm lua/plugins/init.lua
+z plugin
+z nvim plugin
+z nvi lua
+vimm
+vim plugins/buffer.lua
+zzzzzzzzzzzzzzzzz
+rm Obsidian
+vim lazy-lock.json TODO.md
+vim TODO.md init.lua
+vim md
+cp lazy-init.lua > init.lua
+cp lazy-init.lua  init.lua
+cat lua/init.lua >> init.lua
+vim lazy-init.lua
+which gd
+z nim
+sync
+tldr sync
+b install syncthing
+syncthing
+python test/q.py
+gd 8b5daff
+vim bin/todo
+rg lualine
+b install ttf-unifont
+rm lua/plugins/config/lualine.lua
+rg C-W
+rg bd
+b install ttf-joypixels
+b install ttf
+z kit
+z we
+vlvl
+brew install font-jetbrains-mono-nerd-font
+brew install font-jetbrainsmono-nerd-font
+brew install font-jetbrains
+brew serach jetbrains
+brew search jetbrains
+brew search font
+kitty list-fonts
+z zmk
+g checkout -b swoop
+vim zephyr/module.yml
+ks
+vim build.yaml
+git clone https://github.com/kuolemax/zmk-swoop.git
+g push origin swoop
+tmux -version
+tmux -V
+b upgrade tmux
+go
+kitty -V
+kitty -version
+which kitty
+b upgrade kitty
+gcc 4.c ; ./a.out
+z swap
+cd lab4
+mkdc lab4
+vim 1.c
+vim 2.c
+vim 4.c
+vim 3.c
+vim test/q.py
+vim \~\$data.xlsx -
+vi test/test.py
+vim drawer/*
+cd drawer/
+vim utility.py
+vim style.py
+vim draw.py
+vim data.py
+mv __main__.py oldmain.py
+cp oldmain.py __main__.py
+gb test;gsw test
+vim map.py
+mv drawer/oldmain.py test/
+vim drawer/*.py
+vim drawer/map.py
+vim drawer/__main__.py
+vim drawer/draw.py
+vim drawer/data.py
+cd drawer
+python drawer
+vim *.py
+vim drawer/__pycache__
+cd /Users/mac/Library/CloudStorage/OneDrive-TheChineseUniversityofHongKong
+b upgrade firefox
+ghclone https://github.com/jackielii/dotfiles/tree/main/.config/lf
+vim icons
+vIM lfrc
+z pic
+z auto
+z config auto
+vim config
+brew services restart autoraise 
+vim .emacs.d
+mkd org
+mv emacs emacs-old
+~/.config/emacs/bin/doom install
+b uninstall fish
+bi fish
+mv emacs .emacs.d
+mv doom .doom.d
+vim .emacs.d/lisp/init.el
+rm .doom.d
+LC_ALL=C ls
+LC_ALL=C ls -l
+mkd emacs
+mkd doom
+bi emacs
+bi emacs-mac
+brew reinstall emacs-mac
+brew install emacs-mac --with-modules
+ln -s /usr/local/opt/emacs-mac/Emacs.app /Applications/Emacs.app
+brew install --cask emacs-mac --with-modules
+brew reinstall --cask emacs-mac 
+brew install --cask emacs-mac 
+ls -t
+git clone https://github.com/hlissner/doom-emacs ~/config/emacs
+doom install
+z emasc
+brew reinstall --cask emacs-mac --with-native-comp
+brew reinstall emacs-mac --with-native-comp
+./doom doctor
+emacs brew install emacs-mac --with-native-comp
+brew install --cask emacs-plus@29
+brew install emacs-plus@29
+brew install coreutils fd
+xcode-select --install
+bi libgccjit
+b uninstall emacs-mac emacs-plus@28
+git clone git://git.savannah.gnu.org/emacs.git
+git checkout emacs-29
+brew install autoconf
+brew install automake
+make -j$(nproc)
+./autogen.sh
+./configure --with-native-compilation
+make check
+./src/emacs
+sudo cp emacs ~/.local/bin/
+sudo cp ./src/emacs ~/.local/bin/
+z local bin
+./emacs
+brew tap jimeh/emacs-builds
+brew install --cask emacs-app-nightly
+emacs -V
+z em
+./bin
+b uninstall emacs-app-nightly
+brew install --cask emacs-app-nightly-29
+b uninstall emacs-app-nightly-29
+brew install --cask emacs-app
+b uninstall emacs-app
+brew install --casks --build-from-source emacs
+brew install --cask --build-from-source emacs
+brew install --build-from-source --cask emacs
+brew install --build-from-source emacs
+brew install --build-from-source homebrew/cask/emacs
+which nvim
+b uninstall wm
+fd emacs
+brew install --cask emacs-app-monthly
+./bin/doom doctor
+brew info emacs-mac?
+brew info emacs-mac
+b uninstall emacs-app-monthly
+bi install emacs-mac --with-native-compilation
+brew tap railwaycat/emacsmacport
+brew install railwaycat/emacsmacport/emacs-mac --with-native-compilation
+brew install emacs-mac --with-native-compilation
+bi railwaycat/emacsmacport/emacs-mac --without-modules --with-native-compilation
+brew install railwaycat/emacsmacport/emacs-mac --with-native-comp
+brew install emasc-plus@29 --with-native-comp 
+brew tap d12frosted/emacs-plus
+bi emacs-plus@29 --with-native-comp
+brew install emacs-plus --with-xwidgets
+emacs 
+bi emacs-plus@29 --cask --with-native-comp
+brew install emacs-plus@29 --with-xwidgets --with-native-comp
+$(brew --cache)
+(brew --cache)
+ls $(brew --cache)
+brew reinstall gcc
+brew reinstall libgccjit
+brew install emacs-plus@29 --with-xwidgets
+emacs -nw
+$(which emacs)
+sudo ln -sf $(which emacs) /Applications/Emacs.app
+ln -sf /usr/local/opt/emacs-plus/Emacs.app /Applications/Emacs.app
+ln -sf $(which emacs) /Applications/Emacs.app
+sed "1d" $HOME/.cache/neomru/file
+sed "1d" $HOME/.cache/
+ls  $HOME/.cache/
+ls  $HOME/.cache/nvim/luac/
+fzf-vim-history
+nvim -c "lua require("fzf-lua").oldfiles()"
+nvim -c "echo 123"
+nvim -c "echo hello"
+/opt/homebrew/Cellar/emacs-plus@29/29.2/bin/emacs ; exit;
+emacs --deubg-init
+make  ; ./riscv-lc uop benchmarks/add4.bin
+rm lab3-2
+git clone https://github.com/MingjunLi99/ceng3420.git lab3-2
+cd lab3-2
+gsw lab3.2
+./riscv-lc uop benchmarks/swap.bin 
+cp riscv-lc.c ../sokinpui-1155193506-lab3-2.c
+b uninstall syncthing
+b uninstall --cask syncthing
+rg tree
+rg netrw
+rg trw
+vIM
+bi --cask emacs
+b reinstall --cask emacs
+b install --cask emacs
+mkdc .emacs.d
+rm .emacs.d
+mkdc emacs
+git submodule add elpaca elpaca
+git rm --cached elpaca/cache/melpa
+g checkout -b straight
+gm init.el
+g checkout -b main
+git rm --cached elpaca/repos/atom-one-dark-theme
+gsw straight
+lisp
+bi lisp
+gs 
+ga init.el
+ga . ;gm
+z obsidian
+vim Dairy/2024-05-05.md
+git clone https://github.com/MingjunLi99/ceng3420.git lab3-1
+g checkout origin/lab3.1
+sdl
+z .local
+vim lisp/init.el
+brew uninstall emacs
+mtp
+mv .emacs.d emacs
+mv .doom.d doom
+./emacs/bin/doom sync
+./bin/doom install
+ls lisp
+cd doom
+gb doom
+gsw screenshots
+gsw master
+while ( echo '0' | trash-restore ) ; do true; done;
+rm straight
+while ( echo '2' | trash-restore ) ; do true; done;
+rm emacs
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+cd emacs
+rm .git
+rm .github
+g checkout -b doom
+g checkout -b
+g checkout -b vanilla
+rm *
+b uninstall emacs-plus@29
+bi --cask emacs-mac
+git clone https://github.com/MingjunLi99/ceng3420.git lab3-3
+./riscv-lc
+./riscv-lc uop benchmarks/isa.bin
+./riscv-lc uop benchmarks/count10.bin
+./riscv-lc uop benchmarks/add4.bin
+cp riscv-lc.c ../sokinpui-1155193506-lab3-3.c
+which e
+emacs -nw init.org
+emacs init.org
+z lab
+z ceng lab
+vi uop
+vim riscv-lc.c
+gcc riscv-lc.c
+bi clang
+bi gcc
+echo $CC
+gcc riscv-lc.c functions.c
+vim functions.c
+rg fucntion.c
+gcc sim.c
+b reinstall gcc
+vim test
+vim test.c
+clang riscv-lc.c -o riscv-lc
+b reisntall clang
+b reinstall clang
+gcc test.c
+gcc functions.c
+gcc riscv-lc.c -o riscv-lc
+rg function.c
+rg function
+vim riscv-lc.h
+vim tools/macos
+shell uname -a
+vim Makefile
+sh uname -a
+bi uname
+make riscv-lc.c
+rm test.c
+vim uop
+./riscv-lc uop output.bin ; cat output.bin
+./riscv-lc uop
+vim benchmarks/swap.bin
+z lab2
+gsw
+cd ceng3420
+gsw lab3.1
+cd lab3-1
+cat uop
+make ; ./riscv-lc uop benchmarks/swap.bin
+./riscv-lc uop benchmarks/swap.bin
+make ; ./riscv-lc uop benchmarks/add4.bin 
+make ; ./riscv-lc uop benchmarks/swap.bin 
+./riscv-lc uop benchmarks/isa.bin 
+./riscv-lc uop benchmarks/{.bin 
+./riscv-lc uop benchmarks/count10.bin 
+cp riscv-lc.c ../sokinpui-1155193506-lab3-1.c
+cp uop ../name
+cp uop ../sokinpui-1155193506-uop
+rm name
+rg orgmode
+nvim --version
+vim https://gocuhk-my.sharepoint.com/:o:/g/personal/anny_cheung_cuhk_edu_hk/EqTXhzNT56xGolSHoiejX60BqWV_j3A0qOiodvcxLkoBbg
+echo $VIM
+z config zsh
+find . -printf "%T@ %Tc %p\n" | sort -n
+print -lr -- $dir/**/$str*(om[1,10])
+fd --type file | sort
+fd --type file
+fd --type file | sort -n
+ls -1t
+ll -t
+ls -ltR
+ls -1t4
+ls -1tR
+find . -maxdepth 3 -type f -printf '%AY%Am%Ad %AT %p\n'
+find . -maxdepth 3 -type f -exce printf '%AY%Am%Ad %AT %p\n'
+find . -maxdepth 3 -type f -exec printf '%AY%Am%Ad %AT %p\n'
+find . -maxdepth 3 -type f -exec printf '%AY%Am%Ad %AT %p\n' {}\;
+> fd -0 foo | xargs -0 ls -ltr
+fd -X ls -t
+fd -1
+fd -t
+fd -l
+fd --change
+fd --change-after
+fd --changed-after
+fd --changed-before
+fd --changed-before --help
+fd --help
+date
+fd . | xargs -I {} ls -lt "{}" | sort\
+
+fd . | xargs -I {} ls -1t "{}" | sort\
+
+fd | xargs -I {} ls -1t "{}" | sort\
+
+fd -0 . | xargs -0 ls -lt\
+
+fd | xargs -I {} ls -lt "{}" | sort\
+
+man fd
+fd --owner
+fd --changed-before=2
+fd --changed-before="2 weeks"
+fd --changed-before="0 second"
+fd --changed-before="0 second" -l
+fd --changed-before="0 second" -l --type=file
+fd -0 . | xargs -0 stat --format='%Y :%y %n' | sort -n | cut -d ' ' -f 2-\
+
+fd -0 . | xargs -0 stat --format='%Y :%y %n' | sort -rn | cut -d ' ' -f 2-\
+
+ls -l --time-style=long-iso
+ls -l --time-style
+ls -l5
+ls -lT
+$(git rev-parse --show-cdup)
+fd $(git rev-parse --show-cdup)
+find $(git rev-parse --show-cdup)
+find -path $(git rev-parse --show-cdup)
+find -path .
+find --path
+find -path "$(git rev-parse --show-cdup)"
+find -path "$(git rev-parse --show-toplevel)"
+find "$(git rev-parse --show-toplevel)" -type f ! -name ".*" -exec ls -lt1 -- {} + | fzf\
+
+find "$(git rev-parse --show-cdup)" -type f ! -name ".*" -exec ls -lt1 -- {} + | fzf | nvim\
+
+find "$(git rev-parse --show-cdup)" -type f ! -name ".*" -exec ls -lt1 -- {} + | fzf\
+
+realpath ../..//.git/hooks/pre-applypatch.sample\
+
+echo $INPUTRC
+set mark-directories off
+z zs
+vim inputrc
+pbcopy
+git rev-parse --show-prefix
+git rev-parse --show-cdup
+ls $(git rev-parse --show-cdup)
+cd $(pwd)
+git rm --cached .venv/
+git rm -r --cached .venv/
+cwd
+fzf
+find "$(git rev-parse --show-cdup)" -type f ! -name ".*" -exec ls -lt1 -- {} +\
+
+fzf --header "this "
+cd $(git rev-parse --show-cdup)
+find $PWD -type f ! -name ".*" -exec ls -lt1 -- {} +\
+
+find ${rootDir} -type f ! -name ".*" -exec ls -lt1 -- {} +\
+
+find . -type f ! -name ".*" -execdir ls -lt1 -- {} +\
+
+find . -type f ! -name "./.*" | sed 's|^\./||'\
+
+find . -type f ! -name ".*" | sed 's|^\./||'\
+
+find . -type f ! -name ".\/.*" | sed 's|^\./||'\
+
+find . -type f ! -name "\.\/.*" | sed 's|^\./||'\
+
+find . -type f ! -name "\.\/\.*" | sed 's|^\./||'\
+
+find . -type f ! -name ".\/.*" -exec ls -lt1 -- {} +\
+
+find . -type f -not -path '*/.' -exec ls -lt1 -- {} +\
+
+find . -not -path '*/.*'
+find . -type f -not -path '*/.*' -exec ls -lt1 -- {} +\
+
+find . -type f -not -path '*/.*' -exec ls -lt1 -- {} + | sed 's|^\./||'\
+
+find . -type f -not -path '*/.*' -exec ls -lt1 -- {} + | sed 's|^\./||' | fzf
+find . -type f -not -path '*/.*' -exec ls -lt1 -- {} + | sed 's|^\./||' | fzf --header=$(pwd)
+find . -type f -not -path '*/.*' -exec ls -lt1 -- {} + | sed 's|^\./||' | fzf --header="cwd=$(pwd)"
+cd $repo
+z 
+git rev-parse --show-toplevel
+git rev-parse --show-toplevel &> /dev/null
+ls -t1
+ls -t1l
+ls -t1R
+ls **/*
+ls **
+ls **/* -1
+ls **/* -1r
+ls -t **/* 
+ls -1t **/* 
+ls -1t **/*  | fzf
+ls -l | fzf
+ls -1tR | fzf
+ls | fzf
+find . -type f -exec ls -lt1 -- {} +\
+
+man find
+find . -type f ! -name ".*" -exec ls -lt1 -- {} +\
+
+find . -type f -exec ls -lt1 -- {} + | fzf\
+
+fd | fzf
+fd -I --exclude '.*' -tf -x ls -ltu\
+
+fd -I --exclude '.*' -tf -x ls -1t\
+
+fd -I --exclude '.*' -tf -x ls -lt\
+
+vim som.md
+repo=$(git rev-parse --show-toplevel &> /dev/null)
+repo=$(git rev-parse --show-toplevel )
+repo=$(git rev-parse --show-toplevel 2> /dev/null)
+echo $repo
+z obsidia
+vim .zsh_sessions/3C1E5C6D-5A9F-4E4C-BE0E-DB0DDD4A3CEB.history
+git rm --cached .zsh_sessions/
+git rm -r --cached .zsh_sessions/
+vim \#init.org\#
+rm \#init.org\#
+mkd intern
+touch intern/index.org
+mv init.org index.org
+mv index.org todo.org
+cd intern
+mkd ÊÉµ¶ÁÉ•É¨
+mv ÊÉµ¶ÁÉ•É¨ dunhaung
+mv dunhaung DunHuang
+vim DunHuang/index.org
+z obsi
+z lisp
+vim setting.el
+vim variable.el
+v org.el
+vim mapping.el
+vim utilies.el
+mkd book
+ÊÉ§Éª‰∏É™ÊÉ©•ÊÉ§Éª‰∏É™ÊÉ©•
+mkd ÁÉ∫É§
+echo $LANG
+zzp
+gsw vanilla
+vim early-init.el
+rm \#init.el\#
+vim load-directory.el
+mkdc evil
+touch evil.el
+rm evil
+rm load-directory.el
+vIM elpaca.el
+vim elpaca.el
+vim evil.el
+e evil.el
+vim theme.el
+emacs init.el
+vIm init.el
+vim .dir-locals.el
+rm .dir-locals.el
+rm .doomrc 
+vim doom-one.el
+rm doom-one.el
+e init.el\~
+rm init.el\~
+mkd lisp
+vim lisp/mapping.el
+vim lisp/utilies.el
+gsw doom
+fd keymap
+echo $LC_CTYPE
+z or bo
+rm ÁÉ∫É§
+e fiction.org
+vi fiction.org
+vim animation.org
+vim book.org l
+vim comic.org
+vim g
+vim galGame.org
+e *
+vIM movie.org
+rg *
+rg "* "
+rg \*
+ls-book
+rg --file=book.org "\* "
+rg --file=book.org "\*"
+rg --file=book.org "*"
+rg "*" --files=book.org
+rg "\*" --file=book.org
+rg "\*"
+rg "\^\*"
+rg "^\*"
+rg book
+list-book bok
+list-book book
+list-book
+rg "\* " book.org
+list-book animation
+viM config.el
+mkd from-notion
+rm todo.org\~
+touch index.org
+mv ËÉß™Âª∫ÁøªÂÉÇª.org ÁøªÂÉÇª.org
+vim ÁøªÂÉÇª.org
+git clone https://github.com/sucong426/build_personal_v2ray.git
+wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/%E8%87%AA%E5%BB%BAV2Ray%2BTLS%E7%BF%BB%E5%A2%99%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95.md
+vim ËÉß™Âª∫V2Ray+TLSÁøªÂÉÇÉπÈÉ•É≠ÁΩÆÊÉ∂πÊ≥Éµ.md
+export PATH="$PATH:~/.config/emacs/bin"\
+
+dooom
+vim ls-book
+mv ls-book lsbook
+mv lsbook list-book
+vIM list-book
+z book
+lb
+cd book
+v movie.org
+vim user_guide
+mv user_guide user_guide.md
+vIM user_guide.md
+z obis
+vim VPN.md
+vIM kitty.conf
+rg vscode
+cdd snipmates
+cd snipmates
+vIM init.el
+rg define
+rg bindings
+qls
+ls modules/
+z doome
+vi init.el
+brew install --cask appflowy
+brew install brew
+brew install cargo
+brew install rust
+cd /Users/mac/Library/Application Support/com.appflowy.appflowy.flutter/data_aHR0cHM6Ly9iZXRhLmFwcGZsb3d5LmNsb3Vk/326921215505600512
+cd /Users/mac/Library/Application\ Support/com.appflowy.appflowy.flutter/data_aHR0cHM6Ly9iZXRhLmFwcGZsb3d5LmNsb3Vk/326921215505600512
+nvi
+cd bok
+z bo
+vi book.org
+vi tmp/book
+vim tmp/book.org
+vim tmp/book.org book.org
+vim audioBook.org
+vim book.org
+vi  movie.org
+vim *
+rm tmp  tmp.sh
+vi tmux.conf
+mkd wiki
+vim  wiki/emacs/brew-install-formula.org
+vIM wiki/emacs/brew-install-formula.org
+mkd dairy
+rm dairy
+e journal.org
+mkd capture
+mv journal.org notes.org capture
+e index.org
+cat index.org
+cat journal.org
+cp todo.org todo-old.org
+e notes.org
+rm todo-old.org
+mv  capture/journal.org journal.org
+vium 
+cat journal.org >> capture/journal.org
+cat capture/journal.org
+rm journal.org
+mv todo.org capture/
+vim capture/todo.org
+cat todo.org
+cat notes.org
+rm notes.org
+vi todo.org
+mv todo.org capture/todo.org
+git rm --cached build_personal_v2ray
+git rm -f --cached build_personal_v2ray
+b info emacs
+b install emacs-mac
+b install emacs-plus
+b install emacs
+b install emacs-mac --with-dbus --with-glib --with-imagemagick --with-mac-metal --with-natural-title-bar --with-rsvg --with-starter
+b install emacs-mac --with-dbus --with-glib --with-imagemagick --with-mac-metal --with-natural-title-bar --with-librsvg --with-starter
+brew link --overwrite emacs-mac
+vim journal.org
+ghrc
+z kityy
+vim theme/modus-operandi.el
+which screencapture
+e 
+e this.txt
+e txt
+e init.el
+cat config.e
+e config.el
+;s
+vIm packages.el
+doom ysnc
+¬ª b install emacs-mac --with-dbus --with-glib --with-imagemagick --with-mac-metal --without-title-bar --with-librsvg --with-starter\
+
+b install emacs-mac --with-dbus --with-glib --with-imagemagick --with-mac-metal --without-title-bar --with-librsvg --with-starter\
+
+¬ª b install emacs-mac --with-dbus --with-glib --with-imagemagick --with-mac-metal --with-no-title-bar --with-librsvg --with-starter\
+
+b reinstall emacs-mac --with-dbus --with-glib --with-imagemagick --with-mac-metal --with-no-title-bar --with-librsvg --with-starter\
+
+v config.el
+b uninstall emacs
+b uninstall emacs-pluis
+b uninstall emacs-plus
+b uninstall --cask emacs-mac
+b uninstall --cask emacs
+brew link emacs-mac emacs
+ln -sf `which emacs` /Applications/Emacs.app
+ln -sfv `which emacs` /Applications/Emacs.app
+ln -sfv `which emacs` /Applications/emacs.app
+emacs-mac
+wh
+brew casks
+brew casks | rg emacs
+b cask install emacs-mac --with-dbus --with-glib --with-imagemagick --with-mac-metal --with-no-title-bar --with-librsvg --with-starter\
+
+b --cask install emacs-mac --with-dbus --with-glib --with-imagemagick --with-mac-metal --with-no-title-bar --with-librsvg --with-starter\
+
+b  install --cask emacs-mac --with-dbus --with-glib --with-imagemagick --with-mac-metal --with-no-title-bar --with-librsvg --with-starter\
+
+b  install emacs-mac --casks --with-glib --with-imagemagick --with-mac-metal --with-no-title-bar --with-librsvg --with-starter\
+
+b  install --cask emacs-mac  --with-imagemagick --with-mac-metal --with-no-title-bar --with-librsvg --with-starter\
+
+b  install --cask emacs-mac   --with-mac-metal --with-no-title-bar --with-librsvg --with-starter\
+
+b  install --cask emacs-mac    --with-no-title-bar --with-librsvg --with-starter\
+
+b  install info emacs-mac\
+
+b  install  emacs-mac --with-t\
+
+b  reinstall  emacs-mac --with-t\
+
+b  reinstall  emacs-mac --with-ibus\
+
+unlink /Applications/emacs.app
+b  reinstall --cask emacs-mac    \
+
+brew unlink emacs-mac
+b install emacs-mac --with-dbus --with-glib --with-imagemagick --with-mac-metal --with-no-title-bar --with-librsvg --with-starter\
+
+emasc
+brew link help
+tldr brew link
+brew --help link
+ln `
+ln -sfv $(which emasc) /Applications/Emacs.app
+ln -sfv $(which emacs) /Applications/Emacs.app
+brew link emacs
+brew unlink emacs-mac && brew link emacs-mac
+which emacsc
+b reinstall emacs-mac --with-dbus --with-glib --with-imagemagick --with-mac-metal --with-natural-title-bar --with-librsvg --with-starter\
+\
+
+b uninstall emacs-mac
+b  install --cask emacs-mac    \
+
+b  install --casks emacs-mac    \
+
+vIm config.el
+b install --casks Thunderbird
+ga config.el
+brew services start emacs
+brew services start emacs-mac
+brew link emacs-mac
+brew link --cask emacs-mac
+which emasc
+which emacs
+emacs --daemon
+emacsclient -nw config.el
+brew services stop emacs
+emacsclient
+emacsclient config.el
+git reset --hard d1588a2
+vim theme
+wget https://raw.githubusercontent.com/11111000000/tao-theme-emacs/master/tao-yang-theme.el
+ds
+cd theme
+v nano-dark-theme.el
+vim init.el
+vim *.el
+z keyboar
+git clone https://github.com/foostan/crkbd.git
+z doom 
+vim packages.el config.el
+\
+z bok
+z b
+vim fiction.org
+z nvi
+doom
+echo $zsh_bin
+echo $PATH | rg emacs
+./bin/doom sync
+ls img
+mkd .archive
+mv from-notion .archive
+mkd blog
+z emacs
+rg journal
+rg "o a t"
+z org book
+echo "#+FILETAGS: HOME" >> *.org
+vim movie.org
+vim **/*.lua
+which ghrc
+tldr ghrc
+gh
+vim README.org
+rm index.org
+git rm --cached vpn/build_personal_v2ray
+git rm -f --cached vpn/build_personal_v2ray
+unlink /Applications/Emacs.app
+emacs
+vi wiki/qmk.org
+wls
+finder
+z org vpn
+v packages.el
+bi pngpaste
+doom clean
+doom --help
+vim doom
+vi config.el
+vim theme/doom-one
+vim theme/doom-one.el
+mv doom-one.el doom-one-modified
+mv doom-one-modified doom-one-modified.el
+vim doom-one-modified.el
+mkdc aws-vps
+brew vscode-json
+brew install vscode-json
+jq
+bi v2ray
+jq . config.json
+vIM config.json
+date  -R
+cd aws-vps
+vim config.json
+\:wq
+ls .vpn
+ls .vps
+mkd .vps
+cd .vps
+mv tokyo\ vps\ key.pem tokyo-vps-key.pem
+vIM tokyo-vps-key.pem
+chmod 400 tokyo-vps-key.pem
+ssh
+ssh -i "tokyo-vps-key.pem"
+ssh -i "tokyo-vps-key.pem" ubuntu@ec2-54-199-75-63.ap-northeast-1.compute.amazonaws.com
+mv .vps vps
+cd vps
+chmod 400 "tokyo-ec2-key.pem"
+ssh -i "tokyo-ec2-key.pem" ubuntu@ec2-54-250-191-163.ap-northeast-1.compute.amazonaws.com
+ssh -i "tokyo-ec2-key.pem" ubuntu@54.250.191.163
+mkd vultr-vps
+zoxide query
+zoxide query -i
+zoxide query -i | fzf
+cd $(zoxide query | fzf)
+zoxide query --all
+zoxide query --list | fzf
+vzb
+vim m.md
+z ortg
+vas
+PWD="$HOME"
+echo $PWD
+cd $PWD
+tldr exce
+tldr ls
+echo $TLDR_AUTO_UPDATE_DISABLED
+tldr
+tldr ln
+tldr exec
+rm zoxide-jump
+zoxide-jump
+asdfasdzoxide-jump
+tldr builtin
+z z fun
+z z 
+cp bin/zoxide-jump autoload
+fzf -i
+tldr fzf
+fzf --inline-info
+fzf --preview
+fzf --preview 'echo {}' --preview-window up:3:hidden:wrap
+fzf --layout=reverse
+fzf --height 40% --reverse
+z dt
+rg precmd
+fs
+z doom
+vIM packages.el
+fd . $HOME
+fd . $HOME --type=directory
+fd . $HOME/Obsidian
+beautysh
+bi beautysh
+cp zoxide-jump reload
+vim reload
+which doom
+zls
+zle
+tldr zle
+man zle
+ga keymaps
+git rm --cached Mac/tmux/plugins/tpm
+gd b319c7a be5771f
+ls -x
+gls --group-directories-first
+mkd mac
+ls -h
+gls --group-directories-first --color=always -lTh 
+gls --group-directories-first --color=always -lT
+gls --group-directories-first --color=always -l
+gls --group-directories-first --color=always --sort=time
+gls -h
+gls -T
+gls -t
+unlink chromium
+which ls
+/usr/bin/l.s
+/usr/bin/ls
+/bin/ls
+gls -l
+gls -l --group-directories-first
+bi chromium
+brew install --cask chromiu
+brew uninstall --cask chromium
+brew upgrade chroium
+brew upgrade chromium
+/opt/homebrew/bin/chromium
+cd /opt/homebrew/bin/chromium
+cd /opt/homebrew/bin
+fd ch
+ll chromium
+gls --color=always
+chromium
+v2ray ~/vps/aws-vps/config.json
+v2ray --config ~/vps/aws-vps/config.json
+v2ray run --config ~/vps/aws-vps/config.json
+bi v2rayu
+mkdc cluster-machine
+ssh s1155193506@chpc-login.itsc.cuhk.edu.hk\
+
+ssh -L 8888:localhost:8888 s1155193506@chpc-login.itsc.cuhk.edu.hk\
+
+ssh -L 8888:localhost:8888 s1155193506@chpc-login01.itsc.cuhk.edu.hk\
+
+ifconfig
+ifconfig | grep "inet " | grep -v 127.0.0.1 | awk '{print $2}'\
+
+scp s1155193506@chpc-login.itsc.cuhk.edu.hk:~/log . 
+ssh s1155193506@chpc-login.itsc.cuhk.edu.hk -L localhost:8888:localhost:8888 -N
+ssh -N s1155193506@chpc-login.itsc.cuhk.edu.hk -L localhost:8888:localhost:8888
+ssh-keygen -t rsa -b 4096\
+
+ssh-copy-id s1155193506@chpc-login.itsc.cuhk.edu.hk
+ssh s1155193506@chpc-login.itsc.cuhk.edu.hk -L 8888:localhost:8888
+echo 1 ssh s1155193506@chpc-login.itsc.cuhk.edu.hk
+echo 1 | ssh s1155193506@chpc-login.itsc.cuhk.edu.hk
+ssh-copy-id s1155193506@chpc-login01.itsc.cuhk.edu.hk
+tmux a itsc
+tmux a -t itsc
+bi vscode
+brew install visual-studio-code
+ssh s1155193506@chpc-login.itsc.cuhk.edu.hk
+v2ray
+v2ray run
+vim aws-vps/
+vim HongKongVps-config.json
+bi xray
+ufw
+b info ufw
+cd .ssh
+vim id_rsa
+cpo 
+b info x2rayxs
+export http_proxy="http://127.0.0.1:1087"; export HTTP_PROXY="http://127.0.0.1:1087"; export https_proxy="http://127.0.0.1:1087"; export HTTPS_PROXY="http://127.0.0.1:1087"
+xray
+xray help
+bi txray
+mv /Users/mac/Downloads/Txray-macos-64/Txray ./
+./Txray
+dig NS +short vimconfig.store
+ping miguel.ns.cloudflare.com
+ping www.vimconfig.com
+ping 	molly.ns.cloudflare.com
+nslookup vimconfig.store.vimconfig.store
+nslookup vimconfig.store
+nslookup ww.vimconfig.store
+nslookup www.vimconfig.store
+ping 207.148.118.15
+bi lscpu
+719
+curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh
+wget -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh
+wget https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh
+mv install.sh 3x-ui-install.sh
+brew cask install v2rayx
+brew install v2rayx
+mkdc v2rayXS-config
+vim vmess-ws-config.json
+vim vless-vision-reality-config.json
+vim vless-vision-tls-config.json
+vim vless-vision-tls-reality2-config.json
+find $PWD
+brew install sing-box
+brew services start sing-box
+brew services stop sing-box
+mv ec2loginKey.pem aws-vps
+ping vimconfig.store
+sing-box
+ssh -i "ec2loginKey.pem" admin@ec2-16-162-118-103.ap-east-1.compute.amazonaws.com
+zle accept-line
+vzm
+ssh -L localhost:8888:chpc-cn016.rc.cuhk.edu.hk:8888 s1155193506@chpc-login01.itsc.cuhk.edu.hk
+cd jupyter
+vim run_jupyter.sh
+scp s1155193506@chpc-login.itsc.cuhk.edu.hk:~/run_jupyter.sh . 
+cat run_jupyter.sh | pbcopy
+scp s1155193506@chpc-login.itsc.cuhk.edu.hk:~/jupyter-notebook-1584798.log . 
+module
+ssh -N -L localhost:8888:localhost:8888 s1155193506@chpc-login.itsc.cuhk.edu.hk\
+
+ssh -N -L localhost:8888:chpc-cn016.rc.cuhk.edu.hk:8888 s1155193506@chpc-login01.itsc.cuhk.edu.hk\
+
+vim ~/.ssh/config
+mkdc jupyter
+vim hosting-guide.md
+pandoc hosting-guide.md -o "guide.html"
+vim guide.html
+pandoc hosting-guide.md -o "guide.docx"
+vim guide.docx
+mv /Users/mac/Downloads/ec2loginKey.pem vps/key/
+mv /Users/mac/Downloads/ec2loginKey.pem vps/
+z pvs
+chmod 400 "ec2loginKey.pem"
+ssh -i "ec2loginKey.pem" ubuntu@ec2-43-199-42-213.ap-east-1.compute.amazonaws.com
+cd vultr-vps
+ssh-keygen -t ed25519 -C "sosokinpui@gmail.com"
+ssh-keygen -t RSA -C "sosokinpui@gmail.com"
+ssh 8
+ssh -i "id_rsa.pub" root@207.148.118.15 -L 8888:localhost:8888
+ssh -i "id_rsa.pub" root@207.148.118.15
+ipconfig -a
+ip addr
+hostname -l
+ipconfig getifaddr en1
+tldr ipconfig
+ipconfig getfirst
+ping google.com
+dig -4 TXT +short o-o.myaddr.l.google.com @ns1.google.com
+vim http://127.0.0.1:11085/proxy.js
+brew install sfm\
+
+brew uninstall sfm\
+
+sudo xattr -r -d com.apple.quarantine /Applications/Clash\ Verge.app
+qmk
+z qmk
+cd keyboard
+brew install qmk/qmk/qmk
+lscpu
+vim packages.el
+doom refresh
+doom sync
+vim config.el
+rg jupyter
+scp s1155193506@chpc-login.itsc.cuhk.edu.hk:~/tmux-buffer . 
+vim tmux-buffer
+reload
+curl config.me
+tldr curl
+brew install --cask shadowsocksx-ng
+export http_proxy=http://127.0.0.1:1189;export https_proxy=http://127.0.0.1:1189;export ALL_PROXY=socks5://127.0.0.1:1088
+curl cip.cc
+g rm --cached from-notion/*
+g reset 66d603b
+vim todo.org
+vi vpn/client/V2rayU.org
+g rm --cached from-notion
+g rm -r --cached from-notion
+z repo
+z itsc
+ipcoinfig
+ipconfig
+ipconfig getifaddr
+ipconfig getiflist
+brew install ip
+netstat -nr|grep default
+vim id_rsa.pub
+vim config/corne.keymap
+ssh command: ~ssh -i "./id_rsa.pub" root@144.202.62.153\
+
+ssh -i "./id_rsa.pub" root@144.202.62.153\
+
+ping 144.202.62.153
+vim info.org
+ssh -i "./id_rsa.pub" root@207.246.76.150\
+
+z org
+cd intern/DunHuang
+vim index.org
+
+cd vpn/client/
+vim x-ui.org
+vim xray.org
+cd vpn
+vim subscription.org
+vim *.org
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@207.246.76.150
+ping 207.246.76.150
+ping 2[aPULWt6PGzjEcF
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@64.176.53.217
+ssh root@64.176.53.217
+ssh -i "./id_rsa.pub" root@207.246.76.15\
+
+ping 97.64.19.109
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@140.82.32.21
+ssh -i ~/.ssh/id_rsa.pub root@140.82.32.21
+git add . ; gm -m '.'
+ssh -i ~/.ssh/id_rsa.pub root@66.135.29.170
+ssh -i ~/.ssh/id_rsa.pub root@149.28.199.65
+git clone https://github.com/docker/getting-started-todo-app
+cd getting-started-todo-app
+cd getting-started-todo-app/
+docker compose
+bi docker-compose-plugin
+bi docker-compose
+docker 
+docker compose watch
+docker run
+bi docker-machine
+docker-compose watch
+b services start docker
+brew 
+brew uninstall docker
+brew uninstall docker-compose
+brew uninstall docker-machine
+z ala
+rm alacritty
+rm alacritty.toml
+vim alacritty.yml 
+z al
+b clean
+rm ~/.terminfo/61/alacritty-direct
+bi alacritty
+rm /opt/homebrew/etc/bash_completion.d/docker
+b uninstall docker
+b cleanup docker
+b cleanup
+b upgrade
+vim example.yml
+mkdc getData
+vim insert.py
+bi elasticsearch
+brew install elastic/tap/elasticsearch-full
+openjdk
+bi install java
+echo $ES_HOME
+ehco $JAVA_HOME
+echo $JAVA_home
+echo $JAVA_HOME
+javav
+java -version
+vim /opt/homebrew/etc/elasticsearch/homebrew.mxcl.elasticsearch-full.plist\
+
+echo "\nxpack.ml.enabled: false\n" >> /opt/homebrew/etc/elasticsearch/elasticsearch.yml
+bi reinstall openjdk
+bi install openjdk
+brew install openjdk
+brew install java
+brew reinstall openjdk
+ls /usr/libexec/java_home
+cd /usr/libexec/java_home
+vim /usr/libexec/java_home
+java
+ls /Library/Java/JavaVirtualMachines/
+sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+/usr/libexec/java_home
+cd ITSC
+echo "\nexport ES_JAVA_HOME=$(/usr/libexec/java_home)\n" >> ~/.zshrc
+rm .zshrc
+echo $ZDOTDIR
+echo "\nexport ES_JAVA_HOME=$(/usr/libexec/java_home)\n" >> $ZDOTDIR/.zshrc
+vim getData.py
+vIM moveLook.md
+cd /usr/local/var/homebrew/linked/elasticsearch-full
+elasticsearch-certutil http
+brew reinstall kibana
+brew reinstall kibana-full
+brew services start kibana-full
+brew services restart kibana-full
+kibana-plugin
+curl --request DELETE 'http://elastic-search-host:9200/.kibana*'
+curl --request DELETE 'http://localhost:9200/.kibana*'
+vim /opt/homebrew/etc/kibana/kibana.yml
+vim alacritty.toml 
+vim alacritty.yml
+mv alacritty.toml alacritty.toml.t
+vim Requirement\ \&\ Guideline.md
+vim resource.md
+alacritty migrate
+nvim tmux.conf
+vim todo.md
+vim tmux-startup-session
+mkd cert
+cd cert
+touch elastic-stack-ca.p12
+vim $ES_PATH_CONF/elasticsearch.yml
+echo  $ES_PATH_CONF/elasticsearch.yml
+echo  $ES_PATH_CONF
+cd /usr/local/var/homebrew/linked/elasticsearch-full\
+
+cd /opt/homebrew/etc/elasticsearch/
+vim alacritty.toml
+git clone https://github.com/sokinpui/obsidian-mobile.git
+ls _Archive
+export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;export ALL_PROXY=socks5://127.0.0.1:1080
+df
+git add .
+ping www.vimconfig.store
+git oull
+brew update wechat
+brew upgrade wechat
+bi uvr
+brew info uv
+git pull 
+ping 212.50.245.218
+ping 64.176.53.217
+ping 140.82.32.21 
+git reset --hard d7c8f20
+git push --help
+g pull
+git reset --hard 379a4d7
+git reset --hard 87a0ec0
+git opush
+git rebase 
+ga . ; gm -m '.'
+git rebase --continue
+git rebase 2ef94ca
+git rebase --skip
+ga . ; gm -m .
+git push --force
+bi syncthing
+brew services start syncthing
+bi --cask syncthing
+cd Obsidian
+cd obsidian-mobile
+fd | rg ".pdf"
+fd | rg ".pdf" | rg 'ÊÉ®É±'
+g worktree
+g diff-tree
+g log --graph
+gitk
+g log --graph --all
+g lg
+git lg1
+git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+git log --graph --full-history --all --pretty=format:"%h%x09%d%x20%s"
+git log --graph --full-history --all --color \\
+        --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"
+git log --format=onelin
+git log --graph --oneline
+which bi
+bi kibana
+brew install elastic/tap/kibana-full\
+
+brew tap elastic/tap
+brew install elastic/tap/kibana-full
+python -m pip install elasticsearch-async
+elasticsearch -versino
+elasticsearch -version
+vim example.ini
+rm example.ini
+vim /opt/homebrew/etc/elasticsearch/elasticsearch.yml
+pip install panda
+pip install pandas
+python3 -m venv .venv
+python3 -m pip install pandas==1.4.3 notebook==6.3.0 elasticsearch==8.7.0
+brew services start docker
+ls ~/Library/Containers/com.docker.docker/Data/
+sudo ln -s ~/Library/Containers/com.docker.docker/Data/docker.raw.sock /var/run/docker.sock
+ll /var/run/docker.sock
+docker run --rm -p 9200:9200 -p 9300:9300 -e "xpack.security.enabled=false" -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:8.7.0
+mkd utils
+touch database.py
+brew servcice stop syncthing
+brew servcices stop syncthing
+brew services stop syncthing
+z project
+clr
+mkd MySQL
+cd MySQL
+bi mysql
+sudo mysql -u root
+brew services start mysql
+mysql_secure_installation
+mysql -u root
+mysql
+mysql -u root -p
+b info elasticsearch
+mkd docker
+cd docker
+docker extension init tmp
+b info docker
+ssh so@fedora
+ssh so@fedora.local
+rm /opt/homebrew/share/zsh/site-functions/_docker
+rm /opt/homebrew/share/fish/vendor_completions.d/docker.fish
+bi --cask docker
+git clone https://github.com/docker/welcome-to-docker
+cd welcome-to-docker
+vi
+vim Dockerfile
+docker build -t welcome-to-docker .
+docker scout quickview
+b upgrade docker
+docker
+b upgrade --cask docker
+v moveLook.md
+git init
+ga config.yml log/
+g check-attr
+ga processor.py
+g merge c695f12
+mv example.yml config.yml
+for $(ls log); do
+for i in $(ls log); do\
+echo $i\
+done
+for i in $(ls log); do\
+echo -$i \
+done
+for i in $(ls log); do\
+echo -$i >> config.yml\
+done
+for i in $(ls log); do\
+echo `fullname -$i` >> config.yml\
+done
+for i in $(fd log); do\
+echo -$i >> config.yml\
+done
+fd log
+fd .  log
+find $PWD/log
+find $PWD/log | rg log$
+find $PWD/log | rg .log$
+find $PWD/log | rg \.log$
+find $PWD/log | rg \\.log$
+for i in `find $PWD/log | rg \\.log$`; do\
+echo -$i >> config.yml\
+done
+cat config.yml
+for i in `find $PWD/log | rg \\.log$`; do\
+echo `baseanme $i` \npath: $i >> config.yml\
+done
+for i in `find $PWD/log | rg \\.log$`; do\
+echo `basename $i` \npath: $i >> config.yml\
+done
+for i in `find $PWD/log | rg \\.log$`; do\
+echo `basename $i` '\n'path: $i >> config.yml\
+done
+for i in `find $PWD/log | rg \\.log$`; do\
+echo `basename $i`: '\n'path: $i >> config.yml\
+done
+rm config.yml
+for i in `find $PWD/log | rg \\.log$`; do\
+echo `basename $i`: $i >> config.yml\
+done
+python processor.py > log
+time `python processor.py > log.txt`
+time
+python processor.py > log.txt
+python processor.py
+time python processor.py > log.txt
+time python processor.py 
+vim log.txt
+vi log.txt
+python testES.py
+ps -aux | rg elas
+ps -a| rg elas
+jupyter
+brew install jupyter-notebook
+brew install jupyter
+rm Untitled2.ipynb
+rm Untitled.ipynb Untitled1.ipynb
+mkd test
+docker network create elasticsearch-kibana
+curl -XDELETE http://localhost:9200/*kibana*
+docker run \\
+  --name elasticsearch_container \\
+  --network elasticsearch-kibana \\
+  --publish 9200:9200 \\
+  --publish 9300:9300 \\
+  --env "discovery.type=single-node" \\
+  docker.elastic.co/elasticsearch/elasticsearch:7.6.2
+docker run \\
+  --rm\
+  --name elasticsearch_container \\
+  --network elasticsearch-kibana \\
+  --publish 9200:9200 \\
+  --publish 9300:9300 \\
+  --env "discovery.type=single-node" \\
+  docker.elastic.co/elasticsearch/elasticsearch:7.6.2
+docker run \\
+  --rm \\
+  --name elasticsearch_container \\
+  --network elasticsearch-kibana \\
+  --publish 9200:9200 \\
+  --publish 9300:9300 \\
+  --env "discovery.type=single-node" \\
+  docker.elastic.co/elasticsearch/elasticsearch:7.6.2
+docker run \\
+  --rm \\
+  --name elasticsearch_container \\
+  --network elasticsearch-kibana \\
+  --publish 9200:9200 \\
+  --publish 9300:9300 \\
+  --env "discovery.type=single-node" \\
+  docker.elastic.co/elasticsearch/elasticsearch:8.7.0
+cd log/
+wget https://raw.githubusercontent.com/logpai/loghub/master/OpenSSH/OpenSSH_2k.log
+wget https://raw.githubusercontent.com/logpai/loghub/master/OpenSSH/OpenSSH_2k.log --no-check-certificate
+vim OpenSSH_2k.log
+wget https://raw.githubusercontent.com/logpai/loghub/master/OpenStack/OpenStack_2k.log
+wget --no-check-certificate https://raw.githubusercontent.com/logpai/loghub/master/OpenStack/OpenStack_2k.log
+rm OpenStack_2k.log.1
+wget --no-check-certificate https://github.com/logpai/loghub/blob/master/Thunderbird/Thunderbird_2k.log
+wget --no-check-certificate https://raw.githubusercontent.com/logpai/loghub/master/Proxifier/Proxifier_2k.log
+git clone https://github.com/logpai/loghub.git
+fd .log
+fd .log$ --max-depth 1
+rm `fd .log$ --max-depth 1`
+fd .log$
+mv `fd .log$` $PWD
+rm loghub
+curl -s http://localhost:9200
+vim HealthApp_2k.log
+elasticsearch
+kibana
+brew services stop kibana-full
+docker run \\
+  --name kibana \\
+  --publish 5601:5601 \\
+  --network elasticsearch-kibana \\
+  --env "ELASTICSEARCH_HOSTS=http://elasticsearch_container:9200" \\
+  docker.elastic.co/kibana/kibana:7.6.2
+ping 149.28.199.65
+cd CUHK/ÊÉµ¶ÁÉ•É¨
+mkdc proposal
+mv proposal.md notes.md
+pandoc proposal.md -o proposal.pptx
+vim tmux.conf tmux.conf
+brew info neovim
+brew info luajit
+brew install  luajit
+brew info luv
+luajit
+brew install luv
+b upgrade neovim
+vim proposal.md
+vim notes.md
+fd /
+vim pyt.py
+kit
+which vim
+kitty --session
+icat
+tmux new notes
+tmux attach -t ITSC
+tmux new -t ITSC
+cd after/ftplugin/
+vim netrw.vim
+localhost:5601
+echo http://localhost:5601
+mv keymap.conf keymap.confx
+tmux attach -t notes
+tmux attach-session -t ITSC-2
+mv
+wget https://raw.githubusercontent.com/dflock/kitty-save-session/main/kitty-convert-dump.py
+wget https://raw.githubusercontent.com/dflock/kitty-save-session/main/kitty-convert-dump.py --no-check-certificate
+kitty @ ls > kitty-dump.json
+cat kitty-dump.json | python3 ./kitty-convert-dump.py > kitty-session.kitty
+vim kitty-session.kitty
+vim wayland.conf
+rm mac
+vim wayland_no_tmux.conf
+kitty --session kitty-sessoin.kitty
+mkd session
+vim session/startup.conf
+kitty @ ls
+vim session/kitty-dump.json
+echo $KEYMAP
+echo $KYEMAP
+vim startup.conf
+nvim v2rayxs_backup_01-06-2024\ 18:17.json
+vim processor.py
+vim utils
+vim testES.py
+python yml.py
+vim yml.py
+cd ./..
+ga alacritty/ kitty/
+gd tmux/
+gd zsh
+gd zsh/.zshrc
+gd zsh/aliasrc
+gd zsh/keymaps
+ga tmux zsh
+rg tabstop
+vim processor.py utils/database.py
+mv getData.py test
+gd d6f03cd
+vim **/*.py
+fd .py
+fd *.py
+fd \*.py
+fd "*.py"
+fd ".py"
+fd ".py$"
+fd ".py$" --exclude test
+fd ".py$" --exclude test | nvim
+kitty --session kitty-session.kitty
+kitty --session sessoin/kitty-session.kitty
+kitty --session session/kitty-session.kitty
+z ssh
+vim .notes
+rm .notes
+vim .z
+vim .notes\~
+rm .notes\~
+fd .lua
+nvim `fd .lua`
+source .zsh_history 
+rsync
+rsync -r ./zsh s1155193506@chpc-login01.itsc.cuhk.edu.hk:/users/s1155193506/zsh
+rsync -r $PWD/zsh s1155193506@chpc-login01.itsc.cuhk.edu.hk:/users/s1155193506/zsh
+rsync -r $PWD/zsh s1155193506@chpc-login01.itsc.cuhk.edu.hk:/users/s1155193506
+rsync -r $PWD/zsh s1155193506@chpc-login01.itsc.cuhk.edu.hk:/users/s1155193506/
+scp -r $PWD/zsh s1155193506@chpc-login01.itsc.cuhk.edu.hk:/users/s1155193506/
+scp -r $PWD/zsh/. s1155193506@chpc-login01.itsc.cuhk.edu.hk:/users/s1155193506/
+scp -r $PWD/zsh/. s1155193506@chpc-login01.itsc.cuhk.edu.hk:/users/s1155193506/.zsh
+cd /
+ls .zsh
+scp -r s1155193506@chpc-login01.itsc.cuhk.edu.hk:/users/s1155193506/.zsh ./zshddd
+cd zshddd
+cd bin/
+rm nvim-linux64
+rm zshddd
+scp -r s1155193506@chpc-login01.itsc.cuhk.edu.hk:/users/s1155193506/.zsh/. ./zshddd
+cd dotfiles
+mkdc ssh
+mv $HOME/zshddd ./zsh
+vim .zsh_history
+echo $VIRTUAL_ENV
+[ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
+[ $asdas ] && echo '('`basename $VIRTUAL_ENV`') '
+mkdc config.py
+rm config.py
+lg
+add-history
+history -s 
+history =
+history -p nvim lua.
+history
+print -s nvim
+nvim Mac/zsh/keymaps
+ga keymaps appearance
+viM tmux.conf
+im .
+vim asdf.py
+vim asdf.lua
+vim py.py
+z .
+g --rm Mac/zsh/.zsh_history
+g rm --cached Mac/zsh/.zsh_history
+laa
+vim ../moveLook.md
+vim test/yml.py
+,vim 
+vim **/config.yml
+cp config.yml test.yml
+vim **/**.yml
+echo ssh -N -L localhost:8888:chpc-cn016.rc.cuhk.edu.hk:8888 s1155193506@chpc-login01.itsc.cuhk.edu.hk| pbcopy\
+
+ssh -N -L localhost:8888:chpc-cn016.rc.cuhk.edu.hk:8888 s1155193506@chpc-login01.itsc.cuhk.edu.hk
+ssh -L localhost:9200:chpc-cn016.rc.cuhk.edu.hk:9200 -L localhost:92 s1155193506@chpc-login01.itsc.cuhk.edu.hk
+kitten ssh -L localhost:9200:chpc-cn016.rc.cuhk.edu.hk:9200 -L localhost:9300:chpc-cn016.rc.cuhk.edu.hk:9300 -L localhost:5601:chpc-cn016.rc.cuhk.edu.hk:5601 s1155193506@chpc-login01.itsc.cuhk.edu.hk
+ssh -L localhost:9200:chpc-cn016.rc.cuhk.edu.hk:9200 -L localhost:9300:chpc-cn016.rc.cuhk.edu.hk:9300 -L localhost:5601:chpc-cn016.rc.cuhk.edu.hk:5601 s1155193506@chpc-login01.itsc.cuhk.edu.hk
+ssh  s1155193506@chpc-login01.itsc.cuhk.edu.hk
+cd zsh
+z move
+cd src/test
+python test_searchor.py
+python src/test/test_searchor.py
+mv test.\~1\~ test
+rm test
+pip install pth
+pip install -m path
+pip -m install  path
+pip uninstall path
+pip install path.py
+cd Downloads
+./fabric-installer-1.0.1.jar
+sudo ./fabric-installer-1.0.1.jar
+java -jar ./fabric-installer-1.0.1.jar
+mos
+vIM output
+pkill 
+pkill  41015
+sudo pkill  41015
+kill 41015
+vim log.html
+kill 74819
+ps -a | rg python
+kill 51857 
+python crawel.py > output
+python crawel.py | rg lazyloading
+python crawel.py | rg h1
+python crawel.py | rg lazy
+python crawel.py | rg mengqi
+python crawel.py |rg duoliya
+rm imgs
+source ./.venv/bin/activate
+pip install bs4
+pip -m install pypinyin
+pip  install -m pypinyin
+$ pip install pypinyin
+pip install pypinyin
+pip freeze |grep pypinyin
+which pip
+which python
+which pip3
+pip uninstall pypinyin
+pip install pypinyin -i https://pypi.tuna.tsinghua.edu.cn/simple
+python crawel.py | rg 577
+pip install fake_useragent
+pip install requests
+./.venv/bin/python3.12 crawel.py
+pip install selenium 
+pip install webdriver_manager.
+pip install webdriver-manager
+pip install webdrivermanager
+pip install webdriver_manager
+cd /Users/mac/repo/project/ITSC/MoveLook/src/utils/__pycache__
+nc -l 10000
+vim karabiner.edn ]
+goku -version
+goku --version
+goku --help
+brew services status goku
+brew services info goku
+goku stop
+kjaskldfj
+asdfkjlas
+rg completion.cmp
+rg guicursor
+nvim todo.md
+nvim Mac/zsh/bin/todo
+cd /Users/mac/.config/tmux
+cd /Users/mac/repo/project
+mkdc web-crawel
+tmux new -t web-crawel
+cd systemLess
+vim less-Hadoop_2k.log
+z cofnig
+nvim karabiner.edn
+this is the keyboard
+comman
+command
+while\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+rm .venv
+. $ZDOTDIR/.zshrc
+. venv/bin
+vi processor.py
+rm venv
+python -m venv .venv
+. .venv/bin/activate
+nvim `fd ".py$" --exclude test|__init__`
+nvim `fd ".py$" --exclude test|"__init__"`
+nvim `fd ".py$" --exclude test --exclude "__init__"`
+f
+vim searchor.py
+mv searchor.py scanner.py
+mv processor.py collector.py
+vim collector.py scanner.py
+ga collector.py processor.py
+ga searchor.py scanner.py
+ga config.yml
+gl --diff-algorithm
+gl --diff-algorithm=histogram
+gl --diff-algorithm=patience
+this is the keyobard you are using this is not the best keyboar but should be the most comkfortable keyboard you will use
+nvim `fd ".py$" --exclude test --exclude "__init__.py"`
+ga t.py
+mkdir extensions
+rm 1.py
+cd extensions
+for i in 1..10; do\
+echo this is the $i-th module >> $i.py\
+done
+for i in {1..10}; do\
+echo this is the $i-th module >> $i.py\
+done
+rm 1..10.py
+rm 10.py
+cat 9.py
+for i in {1..10}; do\
+echo print("this is the $i-th module") > $i.py\
+done
+for i in {1..10}; do\
+echo print('this is the $i-th module') > $i.py\
+done
+for i in {1..10}; do\
+echo "print('this is the $i-th module')" > $i.py\
+done
+cat 10.py
+rg on_confirm_done
+rg tab
+mv plugins modules
+echo
+python -m modules/sample_plugin.py
+python -m modules/sample_plugin
+python -m sample_plugin
+python sample_plugin.py
+touch modules/__init__.py
+python modules/sample_plugin.py
+rm modules/__init__.py
+python -m .modules.sample_plugin
+python -m plugin-sys.modules.sample_plugin
+python -m modules.sample_plugin
+python interface.py
+treee
+rm sample_plugin.py
+rm main.py
+cd teset
+vim py.test
+vim testyml.ipynb
+vim test/test_searchor.py
+vim test_searchor.py
+mkd plugins-sys
+cd plugins-sys
+touch main.py
+touch plugin_interface.py
+touch plugin_manager.py
+touch sample_plugin.py
+mv plugin_interface.py interface.py
+rm plugin_manager.py
+vim modules/sample_plugin.py interface.py
+vim modules/sample_plugin.py
+python manager.py
+vim modules/sample_plugin.py manager.py interface.py
+rm modules/sample_plugin.py
+vim modules/print.py
+vim manager.py
+vim interface.py
+vim module1/warn.py
+mv tmp/1.py tmp/first.py
+tre
+touch tmp/__init__.py
+vim tmp/1.py
+vim tmp/first.py
+tmux a config
+tmux new -t config
+tmux new -t ITSC-1
+z nvi 
+v tmux.conf
+vim after/ftplugin/vim.vim
+rg encoding
+vs
+ls after/plugin
+set lcs
+rg lcs
+git
+/usr/local/bin/python3 /Users/mac/.vscode/extensions/ms-python.python-2024.12.3-darwin-arm64/python_files/printEnvVariablesToFile.py /Users/mac/.vscode/extensions/ms-python.python-2024.12.3-darwin-arm64/python_files/deactivate/zsh/envVars.txt
+python src/mlsys config.ymol
+python . ../../config.yml
+python mysls
+python mlsys
+python myssl
+love
+sh
+for i in *; do
+nvim lua/plugins/treesitter.lua
+z pro
+mkdc CS50
+mkdc AI
+vim ai.py
+,
+z goku
+fd --unrestricted --type directory | fzf
+fd --type directory
+fd --type directory | fzf
+fd --type=directory --exclude="Parallel"
+fd --type=directory --exclude="Parallel" |fzf 
+fd --type=directory --exclude=".*Parallel.*" |fzf 
+fd 
+c
+ls | rg \b[A-Z]
+ls 
+ls | rg "^[\b[A-Z]|']"
+ls | rg "^[[A-Z]|']"
+ls | rg "[A-Z]"
+ls | rg "\b[A-Z]"
+ls | grep "\b[A-Z]"
+ls -1 | grep "^'"
+ls -1 | rg --regexp="^'"
+ls -1 | rg --regexp="[A-Z]"
+ls -1 | rg --regexp="+[A-Z]"
+ls -1 | rg --regexp="\+[A-Z]"
+ls -1 | rg --regexp=".[A-Z]"
+ls
+ln -sf config ~/.config
+ln -sf ~/.config config
+fd --type=directory
+fd --type=directory --max-depth=1
+fd --type=directory --max-depth=1 --exclude="Applications|Applications (Parallels)"
+fd --type=directory --max-depth=1 --exclude="Applications|Applications\ (Parallels)"
+fd --type=directory --max-depth=1 --exclude="Applications"
+fd --type=directory --max-depth=1 --exclude="(Applications|Applications (Parallels))"
+fd --type=directory --max-depth=1 --exclude="(Applications|Applications\ (Parallels))"
+fd --type=directory --max-depth=1 --exclude=".*Applications.*"
+ls | fd
+ls | fd --max-depth=1
+ls |grep -v Applications | fd --max-depth=1
+ls |grep -v Applications
+fd ` ls |grep -v Applications |`
+fd ` ls |grep -v Applications`
+` ls |grep -v Applications`
+ls | grep -v "Desktop\| \ Documents\| \ Downloads\| \ Drop box\| \ Dropbox\| \ Game\| \ Library\| \ Mail\| \ Movies\| \ Music\| \ Obsidian\| \ OneDrive\| \ OneDrive - The Chinese University of Hong Kong\| \ Parallels\| \ Pictures\| \ Public\| \ Screenshot\| \ Sync\| \ VirtualMachine\|" 
+ls | grep -v "Desktop\| Documents\| Downloads\| Drop box\| Dropbox\| Game\| Library\| Mail\| Movies\| Music\| Obsidian\| OneDrive\| OneDrive - The Chinese University of Hong Kong\| Parallels\| Pictures\| Public\| Screenshot\| Sync\| VirtualMachine\|"\
+
+ls | grep -v "Desktop\| Documents\| Downloads\| Drop box\| Dropbox\| Game\| Library\| Mail\| Movies\| Music\| Obsidian\| OneDrive\| OneDrive - The Chinese University of Hong Kong\| Parallels\| Pictures\| Public\| Screenshot\| Sync\| VirtualMachine"\
+\
+
+ls | grep -v '[A-Z]'
+ls | grep -v '^[A-Z]+'
+fd config
+find config
+find .
+ls | grep -v "Applications (Parallels)"
+ls | grep -vE "^[A-Z]"
+ls | grep -vE "Applications"
+ls | grep -vE "Applications\|Desktop"
+ls | grep -vE "Applications|Desktop"
+ls | grep -vE "Applications|Desktop|Downloads"
+ls | grep -vE "Applications|Desktop|Downloads|Drop"
+ls | grep -vE "Applications|Desktop|Downloads|Drop|Drive"
+ls | grep -v '^[A-Z]'
+find . -maxdepth 1 -type d ! -name '[A-Z]*' -printf '%f\n'\
+
+find . -maxdepth 1 -type d ! -name '[A-Z]*'\
+
+fd !\
+
+find ! -name '[A-Z]*'
+find . -maxdepth 1 -type d ! -name '[A-Z]*'
+find ~ -maxdepth 1 -type d ! -name '[A-Z]*'
+find $PWD -maxdepth 1 -type d ! -name '[A-Z]*'
+V
+ls -1
+mv CUHK cuhk
+mv Obsidian obsidian
+fd --max-depth 1 --type d --exclude '[A-Z]*'\
+
+fd --max-depth 1 --type directory --typesymlink --exclude '[A-Z]*'\
+
+fd --max-depth 1 --type directory --type symlink --exclude '[A-Z]*'\
+
+fd --type directory --type symlink --exclude '[A-Z]*'\
+
+fd --type directory --type symlink --exclude '[A-Z]*' | fzf\
+
+fd --type symlink --exclude '[A-Z]*' | fzf\
+
+vv
+ga config.yml src/mlsys/modules/
+ga src/mlsys/m_api.py src/mlsys/m_manager.py
+gb -D cli-test
+gb cli-test
+move MoveLook movelook
+mv MoveLook movelook
+cd movelook 
+rm child.py
+python modules/m_a/m.py
+cd modules/
+rm tmp
+tmux a -t ITSC-1-12
+source $ZDOTDIR/zshrc
+q
+brew install ca-certificates\
+
+brew reinstall ca-certificates\
+
+wget https://raw.githubusercontent.com/ThePrimeagen/.dotfiles/602019e902634188ab06ea31251c01c1a43d1621/bin/.local/scripts/tmux-sessionizer\
+
+rg repo
+ls -al
+mv obsidian Obsidian
+wget https://raw.githubusercontent.com/ThePrimeagen/.dotfiles/602019e902634188ab06ea31251c01c1a43d1621/bin/.local/scripts/tmux-sessionizer
+vim keymaps
+vim shortcut
+cd ÊÉµ¶ÁÉ•É¨
+tmux switch-client -t ITSC-1-12:
+rg map
+rm keymap.conf
+rg ^map
+rg ^map > keymap.conf
+rg ^map --no-filename > keymap.conf 
+cat keymap.conf
+vim config-with-me
+tmux new
+vim keymap.conf
+ls tmux-sessionizer
+ls $PWD/tmux-sessionizer
+./tmux-sessionizer . aaa
+FZF_CTRL_T_COMMAND= source <(fzf --zsh)\
+
+fzf --zsh
+tmux list-panes -s -F "##{pane_id}"
+tmux list-panes
+tmux send -t ssh:1.1 "echo 123" Enter;
+tmux split-window -v -l 30
+tmux list-panes -a -F '#{session_name}:#{window_index}.#{pane_index}'
+aa
+a
+tmux run -t ssh:1.1 "echo asdf"
+tmux run -t config:5. "source ~/.config/zsh/.zshrc"
+tmux run -t config:5. "source ~/.config/zsh/.zshrc" Enter
+tmux run -t config:5 "source ~/.config/zsh/.zshrc" Enter
+z z zsh
+sz\
+
+source .zshrc
+vim aliasrc
+vim /Users/mac/.config/.zshrc
+./sz
+vim sz
+tmux run-shell sz
+./reload-zsh
+vim reload-zsh
+vim plugin_interface.py
+mkdc plugins
+vim sample_plugin.py
+vim plugin_manager.py
+vim plugins/sample_plugin.py
+rm extensions plugins
+mkdc m
+rm m
+vim m_api.py
+vim m_manager.py
+vim utils/database.py
+vim utils/test.py
+nvim src/modules/module1/warn.py
+vim warn.py
+python warn.py
+cd src/mlsys/modules
+touch utils/__init__.py
+vim scanner.py
+mv utils/repeatTimer.py utils/timer.py
+vim collector.py
+vim modules/module1/warn.py
+pip install dist/mysls-1.0.tar.gz
+rm MoveLook.egg-info
+python setup.py sdist
+vim modules/warn.py
+python modules/warn.py
+vim modules/module1
+rm modules
+mkdc modules
+vim extension1.py
+mkd tmp
+mv extension1.py tmp
+vim tmp/extension1.py
+python extension1.py
+python tmp/extension1.py
+cat m_manager.py >> __init__.py
+cat m_api.py >> __init__.py
+vim __init__.py
+python -m modules
+cd modules
+l;s
+python 1.py
+mv 1.py tmp
+v tmp/1.py
+python tmp/1.py
+cd tmp
+vim 1.py
+nvim `fd ".py$" --exclude test`
+nvim `fd ".py$" --exclude __init__.py`
+echo source $ZDOTDIR/.zshrc| pbcopy
+python __main__.py ../../config.yml
+nvim .
+vim utils/timer.py
+tmux switch-client -t config-16:
+vim modules
+vim modules/m_a/__init__.py
+ga modules/
+ga modules_manager.py
+g merge 6f23a79
+mkd m_b
+rm m_b
+cp m_a m_b
+vim m_b/__init__.py
+vim m_a/__init__.py
+vim modules_manager.py
+nvim __pycache__/main.cpython-312.pyc
+vi .
+gd cf1abf1
+gd cf27a88
+gd cf1abf1 origin/cli
+gd cf27a88 c67953e
+cd src/utils
+cmd
+time python processor.py
+python main.py
+time python main.py
+time python main.py test.yml
+time python main.py config.yml
+time python src/mlsys/main.py config.yml
+time python src/main.py config.yml
+julia
+cd /Users/mac/.config/zsh
+vim appearance
+mv ITSC itsc
+mv CS50 cs50
+python run.py
+vim child.py
+ga config.yml processor.py utils/database.py
+ls test
+rm Untitled1.ipynb
+rm Untitled.ipynb
+vim insert2es.py
+rm insert2es.py
+cat getData.py
+pip install keyboard
+ip
+hostname
+echo $HOSTNAME\
+
+pip install schedule
+ps | rg python
+ls /Users/mac/repo/project/ITSC/MoveLook/getData/log/systemLess/HealthApp_2k.log
+ga log/
+ga .gitignore ; gm
+gd processor.py
+gd main.py
+ga config.yml main.py processor.py utils/
+vim /opt/homebrew/etc/elasticsearch/elasticsearch.yml 
+mkdc searchData
+mv config.yml.\~1\~ test.yml
+pip -V
+python -m venv venv
+source $ZDOTDIR/.zsrhc
+deactivate 
+. venv/bin/activate
+python config.py
+vim config.py
+pip uninstall -e .
+python setup.py develop -u
+pip list
+vim init.py
+rm init.py
+rm __init__.py
+vi main.py
+mv config.py rconfig.py
+pip install elasticsearch
+pip install yaml
+ga .gitignore getData/ searchData/ config.yml main.py  rconfig.py pyproject.toml
+git submodule add getData getData
+git rm --cached getData
+git submodule add ./getData getData
+vim .gitmodules
+pip install pyyaml
+touch init.py
+mkd src
+cd getData
+cd utils
+cd searchData
+git rm -f --cached getData
+git rm --cached pyproject.toml src/MoveLook.egg-info/
+git rm -r --cached pyproject.toml src/MoveLook.egg-info/
+git rm --cached src/getData
+rm src/getData
+gb test
+ls searchData
+rm searchData
+ga searchData/
+tree getData
+rm getData
+mkd mlsys
+mv search.py searchor.py
+pip uninstall movelook
+fd | pbcopy
+python test/test.py
+ga .gitignore
+git rm test/
+git rm -r test/
+git rm -rf test/
+g checkout test
+git rebase test
+ga mlsys/main.py mlsys/processor.py
+ga mlsys/searchor.py
+gd 4703ce2 mlsys/searchor.py
+d
+pip install path
+touch __init__.pyt
+rm __init__.pyt
+touch __init__.py
+python test/test_searchor.py
+gd config.yml
+gd 6a1b4b3
+gd 6a1b4b3 79ce60f
+g rebase test
+gsw test
+todo
+gtodo
+git rev-parse --show-toplevel 2> /dev/null
+mv rconfig.py config.py
+g rm src/__init__.py.\~1\~ src/__pycache__.\~1\~/
+g rm -r src/__init__.py.\~1\~ src/__pycache__.\~1\~/
+ga
+gn
+gb cli
+.s
+python -m modules.module1.warn
+python src/mlsys/main.py
+python src/mlsys/main.py config.yml
+python mlsys/modules/module1/warn.py
+cp main.py __main__.py
+python -m mysls
+python src/mlsys 
+python src/mlsys  config.yml
+pip install build
+python -m build
+pip install setuptools
+mv setup.py ../
+v setup.py
+cd 
+cd src/
+python modules/module1/warn.py
+vim setup.py
+\
+python setup.py sdist bdist_wheel
+pip install mysls
+ls .venv/lib
+ls .venv/bin
+pip info
+pip status
+pip check mysls
+pip show mysls
+rm setup.py
+rm dist
+rm build
+rm mysls.egg-info
+sdfjas
+cd itsc/movelook
+gh repo create
+gs test
+vim .gitignore
+git worktree add ../test test
+log
+for i in *.log ; do\
+cp $i less-$i\
+done
+cat less*
+cat less* | count
+cat less* | count -l
+vim less*
+mkd system1
+mkd systemLess
+mv less* systemLess
+ls .log
+ls *.lgo
+ls *.log
+mv *.log system1
+vim systemLess/less-HealthApp_2k.log
+cd MoveLook
+v config.yml
+source /Users/mac/repo/dotfiles/Mac/zsh/.zshrc
+source /Users/mac/repo/dotfiles/Mac/zsh/.zshrc\
+
+which tmux-sessionor 
+which tmux-sessionizer
+cd /Users/mac/.config
+cd /Users/mac/.config/kitty
+tmux list-keys
+/Users/mac/.config/zsh/bin/tmux-sessionizer
+asdfasdf
+tmux source-file plugins
+tmux neww -n tmp
+cd ../test
+vim src/mlsys/urce
+rm src/mlsys/urce
+gb -D test
+git worktree remove /Users/mac/work/itsc/test 
+export PAGER=cat
+bat
+bat tmux-client-8061.log
+cat tmux-client-8061.log
+ssh -Nf -L localhost:9200:chpc-cn016.rc.cuhk.edu.hk:9200 s1155193506@chpc-login01.itsc.cuhk.edu.hk\
+
+curl -XGET 'http://localhost:9200/_search'
+ssh -Nf -L localhost:9200:chpc-sandbox.rc.cuhk.edu.hk:9200 s1155193506@chpc-login01.itsc.cuhk.edu.hk\
+
+curl --cacert $ES_HOME/config/certs/http_ca.crt -u elastic:$ELASTIC_PASSWORD https://localhost:9200 
+curl -s https://localhost:9200
+echo 123
+curl cht.sh/golang/slice
+curl cht.sh/ls
+curl cht.sh/python/lib
+curl cht.sh/python/read+json
+curl cht.sh/python/yml
+vim karabiner
+vim s
+nvim after/ftplugin/netrw.vim
+mkd ttt
+trash ttt
+vim>
+nvim lua/lazy-init.lua
+nvim after/plugin/mapping.vim
+nvim lua/plugins/oil.lua
+vim after/plugin/format.vim
+ivm .
+nvim indent/markdown.vim
+nvim lua/plugins/markdown.lua
+vl
+vim lua
+cd after/plugin
+vim hi_timeout.vim
+nvim lua/plugins/tmux.lua
+rg icon
+rg devicons
+rg hls
+nvim lua/plugins/visual-multi.lua
+ils
+vvn
+vim lazy-lock.json
+\
+urce /.zshrc
+cd repo mac
+z repo mac
+tmux-sessionor
+nvim bin/tmux-sessionizer
+tmux-sessionor bin asdfasf
+./bin/tmux-sessionizer bin sadf
+aaa
+./bin/tmux-sessionizer autoload
+./bin/tmux-sessionizer
+ls bin
+vim bin
+./tmux-sessionizer
+vim after/ftplugin/toggleterm.vim
+rg jk
+rg j
+rg count
+nvim lua/plugins/jump.lua
+rg autocmd
+nvim
+vlv
+nvim after/plugin/hi_timeout.vim
+vmv
+nvim init.lua
+echo lua/init.lua >>init.lua
+cat lua/init.lua >>init.lua
+vi m.
+brew install luarcoks
+brew install luarocks
+vim plugins/init.lua
+cd plugins
+vm
+nvim copilot.lua
+g reset --hard a0da6b0
+v init.lua
+vim lua/lazy-init.lua
+vimi
+z nimv
+z vn
+z nv
+z kikty
+z kt
+z ki
+vi Doom_One.conf
+vim Doom_One.conf
+brew install --cask nikitabobko/tap/aerospace
+brew services disable skhd
+rm skhd
+mkdc aerospace
+brew install yabai
+brew reinstall yabai
+cd yabai
+rm yabai
+mtuxLs
+t ls
+tmux a -t ITSC-2
+tmux a 
+tmux -v a -t config
+vim tmux-client-8061.log
+z wezterm
+vim wezterm.lua \ 
+vim wezterm.lua
+fg
+vim wrap_nav.sh
+ga>
+cd mac
+nvim Mac/lf/lfrc
+v lfrc
+g push'
+gs>
+gs .
+gs -u
+vim karabiner.edn
+source $ZDOTDIR/.zshrc
+gs lfrc
+touch new
+gsu
+rm new
+vim lfcd.sh
+touch t1 t2 t3
+kkkkkkkkkkkkkklf
+rg v
+rg v --type=sh
+;f
+rg vim
+e
+rm is this new
+find th
+find this
+find t
+fd t
+fd this'
+fd this
+fd th
+fd | less
+zs
+echo $PAGER
+export PAGER=less
+less --color=S
+fd | less --color=S
+fd | less -r
+less -R
+fd | less -R
+lfg
+mkd t
+yabai -m window --focus east
+yabai -m window --focus west
+brew services run brew
+brew services start yabai
+brew run yabai
+brew services run yabai
+yabai -m config layout float
+brew services info autoraise
+brew service stop autoraise
+yabai -m space --focus prev
+brew services info skhd
+brew services enable skhd
+brew services cleanup skhd
+brew services run skhd
+skhd -h
+brew services stop skhd
+loop
+brew install --cask loop
+brew install --cask hammerspoon
+brew services start autoraise
+mkdc .hammerspoon/init.lua
+rm init.lua
+brew install loop
+brew install skhd
+brew uninstall skhd
+z aero
+vim aerospace.toml
+skhd --r
+skhd --start-servic
+yabai -m space --mirror x-axis
+yabai -m space --rotate 90
+yabai -m space --mirror y-axis
+yabai -m space --move prev
+yabai -m space --move next
+yabai -m space --toggle gap
+yabai -m space --toggle gap 10
+yabai -m space --gap abs:0
+yabai -m window --grid 4:4:1:1:2:2
+yabai -m window --toggle zoom-parent
+yabai -m window --toggle native-fullscreen
+yabai -m window --grid 1:2:0:0:1:1
+yabai -r
+h
+man h
+which -
+which h
+hugo
+z ya
+brew install borders
+yabai -m space --gap rel:10\
+
+brew services stop autoraise
+brew jqw
+brew install jq
+yabai -m query --windows --window last | jq '.id'
+win=$(yabai -m query --windows --window last | jq '.id')
+yabai -m window $win --swap prev &> /dev/null
+yabai -m window resize abs:500:800
+yabai -m window --grid 1:3:0:0:2:1
+yabai -m window --toggle float --grid 2:2:1:1:1:1
+yabai -m window --stack
+yabai -m window --stack $(yabai -m query --windows --window first | jq '.id')
+yabai -m config --layout bsp
+yabai -m config ratio abs:0.1
+yabai -m window --ratio abs:0.1
+yabai -m window --ratio abs:0.0q
+yabai -m window --ratio abs:0.01
+yabai -m window --ratio abs:1/e
+yabai -m window --ratio abs:2
+yabai -m window --ratio abs:1
+yabai -m window --ratio abs:0.3
+yabai -m window --ratio rel:0.66
+yabai -m window --ratio abs:0.66
+yabai -m window --move abs:100:200
+yabai -m window --resize abs:500:800
+yabai -m window --resize left:-50:0
+yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app="^System Setting$" manage=off
+yabai -m space --layout --toggle
+yabai -m space --layout float
+(yabai -m query --spaces --space | jq -r
+yabai -m query --spaces --space | jq -r
+yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end'
+yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
+yabai -m rule --add app="^System Settings$" manage=off
+ps | rg ya
+ps | rg yabai
+vIM yabairc
+brew services list
+qes
+brew install qes
+skhd k
+;
+ps auc
+ps a
+ps a | rg skhd | pkill 33765
+ps a | rg skhd | kill 33765
+ps a | rg skhd
+skdh --reload
+skhd --start-service ; yabai --start-service
+skhd --load-sa
+brew reinstall skhd
+skhd --restart-service
+osascript /Users/mac/.config/skhd/space1.scpt
+osa space1.scpt
+open -a "System Events"
+tell application "System Events" to keystroke "ls -la" & return
+osascript -e "tell application "System Events" to keystroke "ls -la" & return"
+osascript -e "tell application "System Events" to keystroke "ls -la"
+osascript -e 'tell application "System Events" to keystroke "ls -la"'
+osascript -e 'tell application "System Events" to key code 53'
+osascript -e 'tell application "System Events" to key down {control, option, command, shift}'; osascript -e 'tell application "System Events" to key code 18'; osascript -e 'tell application "System Events" to key up {control, option, command, shift}'
+brew install cliclick
+vim cycle_clockwise.sh:
+vim yabai/yabairc
+vim ../yabai/yabairc
+./space1.scpt
+skhd -k "hyper - 1"
+osascript -e "tell application "System Events" key code 18 using {control down, command down, option down, shift down} end tell"
+vim space1.scpt
+osascript space1.scpt
+shkd -k "cmd - 4"
+skhd -k "cmd - 4"
+sleep 0.5
+yabai -m query
+yabai -m query window
+yabai -m query space
+cliclick
+cliclick kd:cmd,alt,ctrl,shift t:1 ku:cmd,alt,ctrl,shift 
+yabai -m config mouse_follow_focus on
+yabai -m config mouse_follows_focus on
+yabai -m config mouse_follows_focus off
+yabai -m space 1 --label code
+skhd -o
+yabai -m query --windows --windows last
+yabai -m query --windows --space | jq 'id'
+yabai -m query --windows --space | jq '.id'
+yabai -m query --windows --space > pbcopy
+yabai -m query --windows --space | pbcopy
+yabai -m query --windows --space | jq '.[].id'
+win=$(yabai -m query --windows --space | jq '.[].id') ; yabai -m window $win --wrap prev &> /dev/null
+win=$(yabai -m query --windows --space | jq '.[].id') ; yabai -m window $win --swap prev &> /dev/null
+win=$(yabai -m query --windows --space | jq '.[].id') ; yabai -m window $win --swap next &> /dev/null
+yabai -m query --windows --focus | jq '.[].id'
+yabai -m query --windows --window | jq '.[].id'
+yabai -m query --windows --window | jq 
+win=$(yabai -m query --windows --window | jq ".id")
+yabai -m window --swap $win 
+win=$(yabai -m query --windows --space | jq '.[].id') ; echo $win
+k
+current=$(yabai -m query --windows --window) ; yabai -m window $current --swap prev
+current=$(yabai -m query --windows --window) ; yabai -m window $current --swap next
+./cycle_clockwise.sh
+rm t pbcopy
+rm space1.scpt
+rm example.py
+source $PWD/cycle_clockwise.sh
+tmux source-file ./tmux.conf
+yabai -m space --layout bsp
+skhd -v
+skhd -V
+z config
+ll config
+rm config
+shkd
+skhd --stop-service
+cd Mac
+for i in * ; do\
+name=$(basename $i)\
+echo name\
+done
+*
+echo *
+for i in `echo *` ; do\
+name=$(basename $i)\
+echo name\
+done
+for i in * ; do\
+name=$(basename $i)\
+echo $name\
+done
+for i in * ; do\
+name=$(basename $i)\
+ln -sfv $PWD/$name ~/.config/$name\
+done
+z .config
+cd skhd
+ps aux | rg skhd | kill skhd
+ps aux | rg skhd | kill 39267
+vim tmux-client-7773.log
+tmux -v
+vim tmux-client-7935.log
+rm tmux-client-7935.log tmux-client-7773.log
+r
+rg c-s
+tmux reload
+tmux refresh-client
+tmux source-file tmux.conf
+yabai -m space --layout stack
+yabai -m window --focus next
+yabai -m window --focus prev
+yabai -m window --focus stack
+skhd &
+yabai --stop-service
+brew services start skhd
+skhd &!
+which sz
+is
+rm /tmp/skhd_mac.pid
+echo $ES_JAVA_HOME
+z z
+vim .zshrc
+python src/main.py
+python src/main.py config.yml
+python test/test_searchor.py config.yml
+tmux d
+z,source ~/.config/zsh/.zshrc
+vim moveLook.md
+docker run \\
+  --name kibana \\
+  --publish 5601:5601 \\
+  --network elasticsearch-kibana \\
+  --env "ELASTICSEARCH_HOSTS=http://elasticsearch_container:9200" \\
+  docker.elastic.co/kibana/kibana:8.7.0
+docker run \\
+  --name kibana \\
+  --publish 5601:5601 \\
+  --network elasticsearch-kibana \\
+  --env "ELASTICSEARCH_HOSTS=http://elasticsearch_container:9200" \\
+  docker.elastic.co/kibana/kibana:8.7.source /.zshrc0
+rm __pycache__
+cd mlsys
+cd test
+docker run --rm --name elasticsearch_container --network elasticsearch-kibana -p 9200:9200 -p 9300:9300 -e "xpack.security.enabled=false" -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:8.7.0
+docker run --name elasticsearch_container --network elasticsearch-kibana -p 9200:9200 -p 9300:9300 -e "xpack.security.enabled=false" -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:8.7.0
+docker run --name elasticsearch_container --network elasticsearch-kibana -p 9200:9200 -p 9300:9300 -e "xpack.security.enabled=false" -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:8.7.source /.zshrc0
+vim MoveLook.md
+vim dataStructure.md
+vim Elasticsearch.md
+..l
+cd web-crawel
+cd king_of_glory
+vim crawel.pdfjklasjdklfjdffskdkdfsiidkeidkeikedeeidxik,medx9ikmmmmmmmsource /.zshrc
+cd /Users/mac/.config/nvim
+source .venv/bin/activate
+deactivate
+gb sel
+g merge e288200
+git add crawel.py
+gb group-by-hero
+gb no-grouping
+gsw no-grouping
+vim det-gender.py
+gsw group-by-hero
+gb group-by-girl
+gsw group-by-girl
+mv web-crawel king_of_glory
+mkd web-crawel
+mkd dunhuang
+cd dunhuang
+vim main.py
+g init
+lource /.zshrc
+goku
+gs config.yml
+ga src/mlsys/
+g poush
+safaridriver --enable
+chromedriver
+wget https://storage.googleapis.com/chrome-for-testing-public/128.0.6613.84/mac-arm64/chrome-mac-arm64.zip
+curl https://storage.googleapis.com/chrome-for-testing-public/128.0.6613.84/mac-arm64/chrome-mac-arm64.zip
+wget https://storage.googleapis.com/chrome-for-testing-public/128.0.6613.84/mac-arm64/chrome-mac-arm64.zip --no-check-certificate
+tar x chrome-mac-arm64.zip
+which chromedriver
+brew upgrade chromedriver 
+brew reinstall chromedriver
+vim index.html
+rm imgs ; cp imgs-copy imgs
+g rebase sel
+ga crawel.py
+git rebase --quit
+gsw sel
+g merge sel
+vim crawel.py
+pip install ngender
+python det-gender.py
+python crawel.py
+cd obsidian
+./bin/tmux-sessionizer ~/repo/dotfiles/Mac config
+cd ../movelook
+git pul
+nvim lua/plugins/surround.lua
+vIM remap.conf
+tmux-sessionizer ~/repo/dotfiles/Mac config
+source /.zshrc
+source ~/.config/.zshrc
+source ~/.config/zsh/.zshrc
+vim ~/.gitconfig
+gd cf1abf1 fe8d5e5
+gb -d test
+gsw cli-test
+gd cli cli-test
+git worktree add ../ml-cli-test ; cd ../ml-cli-test
+which gs
+nvim lua/setup.lua
+gls
+alsjdl;jfasjdijfiefjijifjeifjiejfiejfiejifjfjeijfiejfiejfijeif lua   asdvasdfasdf fasdfsadf
+\:q
+brew install poe
+yabai -m window --toggle float ; yabai -m window --grid 1:3:0:0:1:1 ; yabai -m window --toggle float
+yabai -m window --grid 2:2:0:0:1:1 \
+
+yabai -m window --layout float 
+yabai -m window layout float 
+yabai -m config layout float 
+yabai -m window --grid 1:3:0:0:1:1
+yabai -m config layout bsp 
+rg auto
+vim lazy-lock.json init.lua
+rg c-k
+rg c-m
+yabai -m query --spaces --window
+yabai -m query --windows --window last
+source cycle_clockwise.sh
+cat cycle_clockwise.sh > cycle_anticlockwise.sh
+vim cycle_anticlockwise.sh
+tmux a -t config
+tmux 
+gd FETCH_HEAD ddc8e04
+yabai -m ocnfig auto_balance on
+z local nvi
+v yabairc
+z loca sta nvim
+z loca
+z state
+cd swap
+rm %Users%mac%repo%dotfiles%Mac%yabai%yabairc.swp
+rm %Users%mac%projects%web-crawel%king_of_glory%crawel.pdfjklasjdklfjdffskdkdfsiidkeidkeikedeeidxik,medx9ikmmmmmmmsource.swp
+rm %Users%mac%org%from-notion.swp
+2
+3
+4
+which "google chrome"
+chrome
+Google Chrome
+Google\ Chrome
+open -a "Google Chrome"
+echo 'launch --allow-remote-control --type=background kitten @ launch --cwd=current' | kitty --single-instance --session -
+kitty @ launch --type=window
+kitty @ launch --type=os_window
+kitty --single-instance --session
+kitty --single-instance --session -
+kitten @ launch
+z shkd
+ll
+skhd -k "alt + shift - f"
+z dot mac
+g rebase
+yabai -m space --toggle padding; yabai -m space --toggle gap
+vim yabairc 
+kitty @ new_window
+open -a "Google Chrome" --new-window
+open -na "Google Chrome" --args --new-window
+yabai -m query --space
+echo /tmp/yabai_auto_balance_state
+cat /tmp/yabai_auto_balance_state
+yabai -m query --window
+yabai -m query --windows |
+yabai -m query --windows --window first
+yabai -m query --windows --window first | jq ".id"
+yabai -m window --focus `yabai -m query --windows --window first | jq ".id"`
+yabai -m window --focus `yabai -m query --windows --window first | jq ".id"` ; open -na "Google Chrome"
+yabai -m query --spaces | rg auto
+yabai -m query 
+yabai -m query  --displays
+yabai -m space --toggle mission-control
+yabai -m space --toggle show-desktop
+yabai -m query --spaces
+toggle-auto-balance.sh
+pwd/*
+$PWD/*
+ls $PWD/*
+./toggle-auto-balance.sh
+skhd -r 
+yabai -m space --balnace
+yabai -m window --balnace
+yabai -m space --balance 0.33
+yabai -m window --balnace x-axis
+yabai -m space --balnace x-axis
+yabai -m window --toggle zoom-fullscreen
+yabai -m window --toggle zoom-fullscreen ; yabai -m window --focus `yabai -m query --windows --window | jq '.id'`
+shkd -r
+yabai -m config split_ratio 0.35
+yabai -m config split_ratio 0.75
+yabai -m config split_ratio 0.5
+z yab
+cp resize-left-one-third.sh resize-left-one-third.sh
+cp resize-left-one-third.sh resize-right-one-third.sh
+vim resize-right-one-third.sh
+rm resize-right-one-third.sh
+vim resize-left-one-third.sh
+mv resize-left-one-third.sh resize.sh
+./resize.sh 0.33
+./resize.sh 0.66
+yabai -m space --balance x-axis
+yabai -m space --balance y-axis
+yabai -m space --balance y-axis 0.35
+yabai -m space --balance y-axis --ratio 0.35
+yabai -m space --balance y-axis ; yabai -m space --ratio 0.35
+yabai -m space --balance y-axis ; yabai -m window --ratio 0.35
+yabai -m space --balance y-axis ; yabai -m window --ratio rel:0.35
+yabai -m query --spaces --window | jq ".windows"
+yabai -m query --spaces --window | jq ".[].windows"
+yabai -m query --spaces --window | jq ".[].windows" | jq ".[]."
+yabai -m query --spaces --window | jq ".[].windows" | jq ".[]"
+yabai -m query --windows --window | jq ".id"
+z nvimmmmmmmmmmm
+vi lazy-lock.json
+nvim autoload/delete_pair.vim
+nvim lua/plugins/config/nvim-autopairs.lua
+brew install --cask easy-move-plus-resized
+brew install --cask easy-move-plus-resize
+yabai -m query --windows --window | bsp
+yabai -m query --windows --window | rg bsp
+yabai -m query --space --window | rg bsp
+yabai -m query --spaces --window | rg bsp
+yabai -m query --spaces --window 
+yabai -m query --spaces 
+yabai -m query --spaces  |\
+ rg float
+yabai -m query --windows | rg float
+vim yabai -m query --windows < vim
+yabai -m query --windows > t ; vim t
+rm t
+yabai -m query --windows --window | jq ".is-floating"
+yabai -m query --windows --window 
+yabai -m query --windows --window  | jq id
+yabai -m query --windows --window  | jq 'id'
+yabai -m query --windows --window  | jq '.id'
+yabai -m query --windows --window  | jq '.is-floating'
+yabai -m query --windows --window  | jq '.is\-floating'
+yabai -m query --windows --window  | jq 'is-floating'
+yabai -m query --windows --window  | jq '.[].is-floating'
+yabai -m query --windows --window | pbcopy
+yabai -m query --windows --window  | jq '.["is-floating"]'
+z sk
+mkdc sketchybar
+brew tap FelixKratz/formulae
+brew install sketchybar
+brew services run sketchybar
+cd sketchybar
+killall sketchybar
+rm -f /tmp/sketchybar.lock
+kill 76984
+kill 77095
+sketchybar &
+vim sketchybarrc
+ps aux | grep sketchybar
+brew services start sketchybar
+elasticsearch-syskeygen
+sketchybar
+z lf
+vim lfrc
+skhd 
+zsh
+vim cycle_clockwise.sh
+rm /tmp/yabai_${USER}.socket
+rm /tmp/yabai-sa_${USER}.socket
+brew services restart yabai
+brew services stop sketchybar
+rm *yabai*
+rm *skhd*
+rm sketchybar_mac.lock
+sudo sqlite3 /Library/Application\ Support/com.apple.TCC/Tcc.db 'delete from access where client like "%skhd%"'
+ls -l /Library/Application\ Support/com.apple.TCC/Tcc.db
+vim /Library/Application\ Support/com.apple.TCC/Tcc.db
+yabai -
+yabai -m query --windows
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+yabai -m config focus_follows_mouse autofocus
+killall skhd
+which skhd
+yabai --uninstall-servic
+yabai --uninstall-service
+yabai --install-service
+brew services start skhd --file=~/.config/skhd/homebrew.mxcl.skhd.plist
+skhd --install-service
+brew services start skhd --file=/Users/mac/Library/LaunchAgents/com.koekeishiya.skhd.plist
+brew services start --file=/Users/mac/Library/LaunchAgents/com.koekeishiya.skhd.plist skhd
+rm cycle_anticlockwise.sh
+yabai -m space 1 --label main
+brew install --cask whichspace
+brew install --cask spaceid
+z cuhk
+mkdc year3
+mkdc csci3150
+z z b
+bzp
+echo $TERM
+open 
+open -na kitty.app
+open -na kitty
+kitten @ new-window
+ps aux | rg kitty
+/Applications/kitty.app/Contents/MacOS/kitty new-window
+/Applications/kitty.app/Contents/MacOS/kitty @ new-window
+kitty @ new-window
+open -na "kitty"
+asdl;kf
+kd
+tmux new-session -s this
+echo $TMUX
+tmux new -s name -c $PWD
+tmux new -d -s  name -c $PWD
+tmux switch-client -t name
+tmux switch-client -t 1
+tmux switch-client -t name:
+tmux attach-session -t name
+skdh -r
+vIM skhdrc
+kitty +kitten new-window
+kitty +kitten @ new-window
+kitty --single-instance
+vi skhdrc
+open -a kitty.app -n
+skhd -4
+tmux attach-session -t cuhk
+tmux a -t 0
+tmux-sessionizer
+t
+vzs
+vim ans.c
+vim -d
+vim -d simple-shell.c ../../../assignment-one-sokinpui/src/simple-shell.c
+vim -d simple-execute.c ../../../assignment-one-sokinpui/src/simple-execute.c
+....
+cd Assign1
+cd test_dir
+../src
+../src/SimpleShell
+cd src/t
+g push --force
+ml
+python -m movelook
+python -m mlsys
+python -m .
+tree | pbcopy
+python src
+pip install --upgrade pip
+python -m venv sklearn-env
+source sklearn-env/bin/activate
+pip install -U scikit-learn
+pip install sklearn
+pip install -U scikit-learn scipy matplotlib
+brew install python-sklearn
+brew install sklearn
+eval "$(/usr/libexec/path_helper)"
+vim hw1.ipynb
+jupyter nbconvert --to pdf hw1.ipynb | pbcopy
+brew install --cask basictex
+sudo tlmgr update --self
+sudo tlmgr update --all
+sudo tlmgr install tcolorbox
+sudo tlmgr install parskip
+jupyter nbconvert --to pdf hw1.ipynb
+pip install -U notebook-as-pdf
+pyppeteer-install
+/Users/mac/Library/Application Support/pyppeteer/local-chromium/1181205
+sudo /Users/mac/Library/Application \Support/pyppeteer/local-chromium/1181205
+/Users/mac/Library/Application \Support/pyppeteer/local-chromium/1181205
+"/Users/mac/Library/Application \Support/pyppeteer/local-chromium/1181205"
+brew install chromium
+brew uninstall chromium
+/Applications/Chromium.app
+brew install --cask chromium
+brew reinstall --cask chromium
+jupyter-nbconvert --to pdf hw1.ipynb
+jupyter-nbconvert --to markdown hw1.ipynb
+mv /Users/mac/Downloads/hw1 (1).zip 
+mv hw1\ \(1\) hw1md
+mv hw1 hw1tex
+brew install pandoc
+cd hw1md
+rg theta\_0
+rg theta\\_0
+pandoc hw1.md -o output.pdf --pdf-engine=xelatex
+pandoc hw1.md -o output.pdf --pdf-engine=context
+pandoc hw1.md -o output.pdf --pdf-engine=lualatex
+pandoc hw1.md -o output.pdf --pdf-engine=pdflatex
+vim hw1.md
+brew uninstall basictex
+eval "$(/usr/libexec/path_helper)"\
+
+brew install --cask mactex
+vva
+nvim lua/plugins/nvim-cmp.lua
+vim init.lua
+nvim lua/plugins/auto-pairs.lua
+nvim lua/plugins/config/lsp.lua
+g
+gd 1f49951
+gd 15aa0df f0c3fd8
+mkdc sync
+z sync
+cd cuhk
+cd year1
+tmux switch-client -l
+"[`tmux display-message -p \"#S"` == 'config']; tmux switch-client -l || ~/.config/zsh/bin/tmux-sessionizer ~/repo/dotfiles/Mac config"
+[`tmux display-message -p \"#S"` == 'config']; tmux switch-client -l || ~/.config/zsh/bin/tmux-sessionizer ~/repo/dotfiles/Mac config
+[`tmux display-message -p "#S"` == 'config']; tmux switch-client -l || ~/.config/zsh/bin/tmux-sessionizer ~/repo/dotfiles/Mac config
+[`tmux display-message -p "#S"` == "config"]; tmux switch-client -l || ~/.config/zsh/bin/tmux-sessionizer ~/repo/dotfiles/Mac config
+`tmux display-message -p "#S"`
+tmux display-message -p "#S"`
+tmux display-message -p "#S"
+tmux display-message -p "#S" == config
+[tmux display-message -p "#S" == config]
+[tmux display-message -p "#S" -eq config]
+[ tmux display-message -p "#S" -eq config ]
+[ tmux display-message -p "#S" == config ]
+[ tmux display-message -p "#S" == config ] && echo qwer
+[[ tmux display-message -p "#S" == config ]] && echo qwer
+[[ `tmux display-message -p "#S"` == config ]] && echo qwer
+[[`tmux display-message -p \"#S"` == "config"]]; tmux switch-client -l || ~/.config/zsh/bin/tmux-sessionizer ~/repo/dotfiles/Mac config"
+[[`tmux display-message -p \"#S"` == "config"]]; tmux switch-client -l || ~/.config/zsh/bin/tmux-sessionizer ~/repo/dotfiles/Mac config
+[[`tmux display-message -p "#S"` == "config"]]; tmux switch-client -l || ~/.config/zsh/bin/tmux-sessionizer ~/repo/dotfiles/Mac config
+python -m src collect
+python -m src process
+python -m src process asdf
+python -m src process asdf asdfasfdasd asdfas
+python -m src process -h
+python -m src -c asdf
+python -m src -c asdf collect
+python -m src --collect
+python -m src --collect -c sasdfasd
+python -m src -c sasdfasd
+python -m src -c sasdfasd --collect
+python -m src -c sasdfasd collect
+python -m src -c moveLook.md collect
+python -m src -c moveLook.md --collect
+python -m src -c moveLook.md --collect --proecss asdfas
+python -m src -c moveLook.md --collect 
+python -m src -c moveLook.md --process  sdafasdf 
+python -m src -c moveLook.md --process  sdafasdf  --collect
+python -m src -c moveLook.md 
+cd log
+pwd | pbcopy
+lw
+mkdc test
+cat src/collector.py
+cd src/mlsys
+rm t.py
+ls -l
+rg todo
+rg mlsys
+mv movelook ml
+gd cli main
+vim __main__.py
+tree
+tree -d
+vim pyproject.toml
+python -e .
+pip install  -e .
+python -m src
+g merge 88751fb
+gd 88751fb cli
+gd ab93fa1 88751fb
+git worktree add help
+cd help
+rm help
+g log
+vi config.yml
+gech 
+git checkout simple-version
+git checkout
+git worktree remove /Users/mac/work/itsc/ml/simple-version 
+python test.py | wc -l
+git worktree add ../simple-version
+gsw cli
+git rebase simple-version
+git worktree add ../simple-version f049839
+cd ../simple-version
+ga src/collector.py
+git checkout 243a8c5
+src src
+g log origin/cli
+vim src/collector.py
+ga src/
+gm -m 'fix'
+git checkout 5d18dcb
+python ./test.py
+gsw simple-version
+git branch production bca378f
+.
+python
+vim log/test.log
+mv test.py test-t.py
+python test-t.py
+rg baidu.com:80
+rg cuhk
+..c
+cd simple-version
+pytho
+ls log
+find log
+vim shortcut.conf
+gsd
+g worktree list
+git worktree remove /Users/mac/work/itsc/ml/src/help 
+ublE
+rg process
+rm simple-version
+cd ml
+git checkout production
+git worktree remove /Users/mac/work/itsc/simple-version 
+gsw production
+gm -m scanner
+gssssssssssss
+g checkout main
+g merge fe3d889
+git push --set-upstream origin main
+vim src/scanner.py
+vim insightEngine.py
+vim log
+python test.py 
+python test.py | pb-copy
+python test.py
+ga . ; gm
+git push 
+git push --set-upstream origin insight-dev
+ga .  ; gm 
+gd FETCH_HEAD ORIG_HEAD
+vim test.py
+vim src/insightEngine.py
+vim SimpleShell
+ga . ; gm -m yes
+z mlsys
+vi simple-execute.c
+asdklf
+asdkljfklas
+git clone https://github.com/XGZepto/CSCI3150.git ans
+git clone https://github.com/CSCI3150-CUHK/assignment-one-sokinpui.git
+cd assignment-one-sokinpui
+rm simple-execute.c
+rs
+mkd t/t
+ls -4
+ls -R
+vim simple-execute.c
+v simple-execute.c
+./SimpleShell
+gm -m "first time"
+git clone https://github.com/CSCI3150-CUHK/assignment-two-sokinpui.git
+cd assignment-two-sokinpui
+cd ans
+cd Assignment
+vim Assign2
+vim Assignment
+cd ../Question1
+git worktree t
+git worktree add t
+vim Question1/src/rwlock.c
+cd t
+cd Question1
+vIM logs/writer_preference.log
+make clearn
+\ls
+z vim
+rg buftype
+nvim after/plugin/format.vim
+rg indent
+vvl
+nvim lua/plugins/appearance.lua
+gm -m fix
+g pus
+gsw main
+vim init.vim
+gsw lua
+v
+rg autochdir
+nvim lua/plugins/buffer.lua
+brew install displaylink
+showkeys -a
+exit\
+n3 /Users/mac/tmp/some.py
+sc
+cs
+z
+lsl
+yabai -m space --layout split
+rm 1
+yabai -m window --insert stack
+htophtop
+tmux send-keys -t + "htop"
+tmux send-keys -t + "htop" c-m
+vim some.py
+cd lua
+v .
+cd nvim
+rm \]
+v l/s
+vim lua/scripts
+vim lua/scripts/runCode.lua
+fish
+ld
+tldr ld
+z zsh\
+\
+\
+\
+
+vi shortcuts
+python3 /Users/mac/tmp/some.py
+gm -am normal
+ga lua/scripts/runCode.lua
+gm -m normal
+z dot
+git push
+git rebase
+vim Mac/tmux/tmux.conf
+gl --graph
+z nivm
+./zoxide-jump
+vim zoxide-jump
+rg source
+vvs
+1
+nvim lua/plugins/fzf.lua
+nvim lua/plugins/copilot.lua
+nvim lua/plugins/config/nvim-cmp.lua
+i
+lws
+z ml
+screen
+skhd --start-services
+man skhd
+tldr skhd
+pkill skhd
+pkill yabnai
+yabai --start-service ; skhd --start-service
+ps aux | grep yabai
+killall yabai
+vim tmux-sessionizer
+tmux a -t ml
+exec zsh
+ps -p\ 
+ps -p
+cd /tmp
+rm skhd.lock
+which tmux
+cp tmux-sessionizer fzf-sessionizer
+vim fzf-sessionizer
+./fzf-sessionizer
+yabai --reload
+skhd --reload
+vim remap.conf
+z zsh
+vim shortcuts
+tmux detach
+vim bin/tmux-sessionizer
+rg -c
+rg '-c'
+rg "\-c"
+rg " \-c "
+tmux detach-client
+gm -m tmux fzf-session switcher
+gm -m "tmux fzf-session switcher:\
+"
+vvz
+yabai --stop
+yabai -m window --ratio abs:0.33
+yabai -m window --ratio abs:0.5
+i -m config auto_balance                on
+yabai -m config auto_balance                off
+yabai -m config auto_balance                on\
+
+yabai --m window --minmize
+pkill yabai
+yabai 
+which yabi
+ga . ; gm -m 'fzf key bind; copilot key bind'
+z skdh
+showkey -a
+man yabai
+vza
+sz
+ls personal
+ls work
+cd work
+./cht.sh
+cht.sh
+cht
+curl cht
+curl cht.sh
+brew install cht.sh
+yabai -m config layout bsp
+yabai -m config auto_balance 0.3
+# Floating point value between 0 and 1 (default: 0.5)\
+yabai -m config split_ratio 0.5
+yabai --restart--service
+yabai -m space auto_balance on
+yabai -m config auto_balance on
+yabai -m space --equalize
+yabai -m space --balance 
+yabai -m space --layout bsp 
+yabai -m space --layout float 
+i -m space --equalize x-axis
+i -m space --equalize "x-axis"
+yabaii -m space --equalize x-axis
+yabai -m space --equalize "x-axis"
+yabai -m space --equalize x-axis
+yabai -m space --equalize y-axis
+yabai -m window --toggle split
+yabai -m space --balance
+pkill yabai skhd
+yabai --start-service
+skhd --start-service
+vim toggle-auto-balance.sh
+yabai -m window --minimize
+yabai -m window --ratio
+yabai -m window --ratio 1
+yabai -m window --ratio rel:1
+yabai -m window --ratio rel:0.5
+yabai -m window --ratio rel:0.1
+yabai -m query --windows --window
+yabai -m query --windows 
+ls src
+rm src/modules
+gm -m
+git worktree add insight-dev
+vim config.yml
+git pull
+vim insight-dev/src/insightEngine.py
+mv scripts bins
+mv bins bin
+touch asdf
+mv bin/ scripts
+touch scripts/asdf
+lls
+cd
+cd .local
+pwd
+ln -sfv ~/repo/dotfiles/local/bin ./bin
+cd bin
+rnm bin/bin
+rm bin/bin
+ln -sfv ~/repo/dotfiles/local/scripts ./scripts
+cd scripts
+rm asdf
+echo $PATH
+vzp
+zoxide query --list
+z tmux
+z bin
+z dotfiles
+la
+mkdc local/scripts
+yabai -m window --toggle float
+open -n -a Kitty --args --single-instance -d ~
+eixt
+ga . 
+gm -m fixx
+z /tmp
+yabai -m query --windows --space
+yabai -m query --spaces --space
+skhd 0r
+cim skhdrc
+yabai -m window --grid:1:3:1:1:1:1
+yabai -m window --grid 1:3:1:1:1:1
+vim resize.sh
+sl
+./cache_simulator | pbcopy
+\:w
+make clean ; make 
+make clean ;make 
+jupyter 
+jupyter  run
+python43
+python3
+brew install jupyter notebook
+pip install notebook
+pip install jupyter
+jupyter notebook\
+
+z csci 3230
+mkd hw2
+z 32
+vim acc.png
+mkd 1
+mv *.png 1
+open loss.png
+open acc.png loss.png
+skhd -r
+s;s;ladflk
+open acc.png
+z 323
+vim hw2
+cd hw2
+chmod +x q3_code.py
+./q3_code.py
+pip install torch
+pip install matplotlib
+pip install torchvision
+cp q3_data dataset
+vim q3_code.py
+python q3_code.py
+vim tmux.conf
+z nvim
+nvim lua/plugins/terminal.lua
+nvim lua/plugins/file_explorer.lua
+vvm
+juypter notebook
+cd csci3230
+cd csci3150
+gcc tmp.c
+./a.out
+vim tmp.c
+[[ $(tmux display-message -p "#S") == "config" ]] && tmux switch-client -l || ~/.config/zsh/bin/tmux-sessionizer ~/repo/dotfiles/Mac config
+gd main insight-dev
+gsg
+git worktree list
+vim insight-dev
+gm -m add git worktree: insight-dev
+gm -m add git worktree,  insight-dev
+sgs
+git worktree repair
+vim .git/worktrees/insight-dev/gitdir
+la insight-dev
+vim .git
+cd insight-dev
+gm 
+gd HEAD bb7c702 \\
+
+gd HEAD bb7c702\
+
+gd bb7c702 origin/insight-dev
+gd insight-dev bb7c702
+git restore
+git restore --staged src/
+gd
+gm -am 'fix'
+gb
+pip uninstall jupyterlab
+pip uprade
+pip upgrade
+pip install pip
+brew update pip
+brew upgrade pip
+brew upgrade pip3
+brew upgrade python-pip
+pip list | grep jupyterlab
+pip show notebook
+pip install jupyterlab
+pip --version
+touch some.py
+jupyter --data-dir
+jupyter lab build
+black
+make clean ; make
+./cache_simulator
+tmux ls
+tmux list-buffers
+tmux list-clients
+tmux list-windows
+tmux list-sessions
+fl
+vim logs/writer_preference.log
+lgs
+gm -m v1
+make 
+vim src/
+make ; make test
+gd src/rwlock.c
+cd src
+vim rwlock.c
+gd 
+gd rwlock.c
+gm v2
+gm -m v2
+g reset --hard 7fb9517
+gl
+make
+./Readwritelock
+make clean ; make test
+vim logs/
+vim logs/reader_preference.log
+vim src/rwlock.c
+vim src
+vim logs
+vim 
+zzzzzzzzzzzz
+vim answer.md
+vim bonus/
+las
+make etst
+make tst
+git rm --cached Question1/t
+vim ai_delcaration.txt
+open declaration_en.doc
+cd Question2
+cd bonus
+vim ;.
+make tes
+make test
+vim output.log
+vim ../README.md
+vim queue.cfg
+vim expected-result.log
+vim scheduler-impl.c
+los
+git clone https://github.com/CSCI3150-CUHK/assignment-three-sokinpui.git
+cd assignment-three-sokinpui
+cd Question2\ and\ bonus
+make clean
+vim cache.c cache.h
+mkdc csci3230
+cd hw1tex
+pdflatex hw1.tex
+brew install texlive-latex-extra
+texlive-latex-extra
+brew install texlive
+vi 
+z z bin
+z down
+z obsidna
+mv hw1\ \(3\) hw1md
+vim hw1md/hw1.md
+z docu
+z doc
+which yabai
+yabai --restart-service
+vi t.py
+python t.py
+vim t.py
+ps
+htop
+kitty
+find /
+z kitty
+vim kitty.conf
+rm /tmp/yabai_mac.lock
+yabai
+;lkjkjqj;kljdsklfa
+rm /tmp/skhd.lock
+z hw
+jupyter notebok
+jupyter notebook
+z obs mac
+z obs
+lf
+rm 1155193506.docx
+pandoc 3001A-report.md -o 1155193506.docx
+open 1155193506.docx
+ex
+z yabi
+z yabai
+vim yabairc
+vim search.py
+cp search.py 1155193506_search.py
+vim 1155193506_search.py
+\:wqa
+zip search
+open .
+z search
+vim README.md
+vIM commands.txt
+vim VERSION
+python -m tkinter
+pip install tkinter
+brew reinstall python
+pip install python-tk
+python3.12 -m pip install --upgrade pip
+brew install python-tk
+python pacman.py -l tinyMaze -p SearchAgent -a fn=tinyMazeSearch
+\
+\
+Copy\
+python pacman.py -l tinyMaze -p SearchAgent -a fn=depthFirstSearch
+\
+python pacman.py -l tinyMaze -p SearchAgent -a fn=depthFirstSearch
+python pacman.py -l tinyMaze -p SearchAgent
+python pacman.py -l mediumMaze -p SearchAgent
+python pacman.py -l bigMaze -z .5 -p SearchAgent
+python pacman.py -l mediumMaze -p SearchAgent -a fn=bfs
+python pacman.py -l bigMaze -p SearchAgent -a fn=bfs -z .5
+python eightpuzzle.py
+python pacman.py -l mediumMaze -p SearchAgent -a fn=ucs
+python pacman.py -l mediumDottedMaze -p StayEastSearchAgent
+python pacman.py -l mediumScaryMaze -p StayWestSearchAgent
+python pacman.py -l bigMaze -z .5 -p SearchAgent -a fn=astar,heuristic=manhattanHeuristic
+python pacman.py
+python pacman.py --layout testMaze --pacman GoWestAgent\
+
+python pacman.py -z .5 -p SearchAgent -a fn=astar,heuristic=manhattanHeuristic
+python pacman.py -l mediumMaze -p SearchAgent -a fn=uniformCostSearch
+python pacman.py -l mediumScaryMaze -p SearchAgent -a fn=uniformCostSearch
+python pacman.py -l mediumScaryMaze -p SearchAgent -a fn=breadthFirstSearch
+python pacman.py -l mediumScaryMaze -p SearchAgent -a fn=aStarSearch,heuristic=manhattanHeuristic
+python pacman.py -l mediumScaryMaze -p SearchAgent -a fn=aStarSearch,heuristic=manhattanHeuristic --frameTime 0
+z 3230
+mkdc hw4
+mv /Users/mac/Downloads/search.zip ./
+unzip search.zip
+cd search
+vim
+git clnoe https://github.com/CSCI3150-CUHK/assignment-four-sokinpui.git
+git clone https://github.com/CSCI3150-CUHK/assignment-four-sokinpui.git
+cd mandatory
+...
+cd assignment-four-sokinpui
+gs
+ga .
+gm
+g push
+tmux a
+brew install adb
+\
+root SONY DPT-CP1 ‰∏¶‰∏É¥ÂÆÉ©Ë£ÉΩKOReader App | by Daniel Kao\
+\
+Medium ¬∑ Daniel Kao\
+5 months ago
+pip install httpsig pyserial urllib3 requests
+z mpt
+git clone https://github.com/HappyZ/dpt-tools.git
+mv ../dpt-tools ./
+python dpt-tools.py -ip 192.168.128.147
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+brew install android-platform-tools
+adb install ~/Downloads/app-epd-release.apk
+fd mod
+fd mod.tar
+ad push ./launcher_mod.tar.gz /sdcard/launcher_mod.tar.gz
+adb push ./launcher_mod.tar.gz /sdcard/launcher_mod.tar.gz
+adb shell mount -o rw,remount /system
+adb shell rm -rf /etc/dp_extensions\
+
+adb shell busybox tar -xvzf /sdcard/launcher_mod.tar.gz -C /
+adb shell chown -R root:root /etc/dp_extensions
+adb shell chown system:system /data/system/ExtMgr.db
+adb shell chmod 0660 /data/system/ExtMgr.db
+adb shell chown system:system /data/system/ExtMgr.db-journal
+adb shell chmod 0600 /data/system/ExtMgr.db-journal
+adb install /Users/mac/Downloads/koreader-android-arm64-v2024.11.apk
+adb install https://github.com/koreader/koreader/releases/download/v2024.11/koreader-android-arm-v2024.11.apk
+adb install /Users/mac/Downloads/koreader-android-arm-v2024.11.apk
+adb pull /etc/dp_extensions/NoteCreator
+mv NoteCreator ../
+cd dpt-tools
+cd NoteCreator
+ls NoteCreator
+vim KOReader/KOReader_extension.xml
+l
+rg png
+mv '/Users/mac/Downloads/3957564 (2).png' ic_homemenu_koreader.png
+open ic_homemenu_koreader.png
+cd .. 
+tmp
+./tmp.sh
+z tmp
+vim .
+adb shell mkdir /data/dp_extensions
+cd ..
+cd KOReader
+vim KOReader_extension.xml
+rg creaete
+rg cre
+vim KOReader_strings-en.xml
+vim KOReader_strings-zh_CN.xml
+vim KOReader_strings-ja.xml
+..
+adb push KOReader/ /data/dp_extensions/
+adb devicwe
+adb device
+adb devices
+/Volumes/US100\ 1TB/comic/ÂÉ®ÉΩÊÉ®ÄË±É∫ÈºÉÄ/ÂæÉ¨Ë®É∏ ; exit;
+/Volumes/US100\ 1TB/comic/ÂÉ®ÉΩÊÉ®ÄË±É∫ÈºÉÄ/ÊÉº¥Ê´ªÁÉØÉÄ ; exit;
+/Volumes/US100\ 1TB/comic/ÂÉ®ÉΩÊÉ®ÄË±É∫ÈºÉÄ/ÊÉΩÉÆÂ§É∫Ê£É© ; exit;
+/Volumes/US100\ 1TB/comic/ÂÉ®ÉΩÊÉ®ÄË±É∫ÈºÉÄ/ËÉ¥ÉÅÁ¥É≠ËÉ∏≠ ; exit;
+adb shell
+adb reboot
+ps aux | rg skhd
+ps aux | rg yabai
+fd
+tmux
+defaults read com.kitten.kitty NSApplicationSupportsSecureCoding
+z skhd
+vim skhdrc
+ls
+s
+skhd
+vzz
+exit
