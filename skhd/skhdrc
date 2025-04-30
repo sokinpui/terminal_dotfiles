@@ -37,7 +37,7 @@ cmd - f3 : skhd -k "cmd - c" ; skhd -k "cmd - t" ; skhd -k "cmd - v" ; skhd -k "
 
 # alt + shift - t : open -n -a Kitty --args --single-instance -d ~
 # alt + shift - r : yabai -m window --focus `yabai -m query --windows --window first | jq ".id"` ; open -na "Google Chrome"
-cmd - escape : open -n -a Kitty --args --single-instance -d ~
+cmd - escape : open -n -a Kitty
 # cmd - space : ray google-chrome new-window
 
 cmd - m :
