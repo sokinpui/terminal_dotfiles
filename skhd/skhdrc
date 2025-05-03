@@ -33,7 +33,7 @@ cmd - f5 : $HOME/.config/skhd/resize.sh 0.33
 # cycle swap window
 cmd - f6 : source $HOME/.config/skhd/cycle_clockwise.sh &> /dev/null
 # copy, paste, seearch in new tab
-cmd - f3 : skhd -k "cmd - c" ; skhd -k "cmd - t" ; skhd -k "cmd - v" ; skhd -k "return"
+# cmd - f3 : skhd -k "cmd - c" ; skhd -k "cmd - t" ; skhd -k "cmd - v" ; skhd -k "return"
 
 # alt + shift - t : open -n -a Kitty --args --single-instance -d ~
 # alt + shift - r : yabai -m window --focus `yabai -m query --windows --window first | jq ".id"` ; open -na "Google Chrome"
