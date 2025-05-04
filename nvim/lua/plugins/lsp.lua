@@ -1,3 +1,4 @@
+-- nvim/lua/plugins/lsp.lua
 return {
   {
     "neovim/nvim-lspconfig",
@@ -5,114 +6,71 @@ return {
     dependencies = {
       {
         "williamboman/mason-lspconfig.nvim",
-        config = function()
-          require("mason-lspconfig").setup({
-            -- A list of servers to automatically install if they're not already installed. Example: { "rust_analyzer@nightly", "lua_ls" }
-            -- This setting has no relation with the `automatic_installation` setting.
-            ---@type string[]
-            ensure_installed = {
-              "lua_ls",
-              "ruff",
-              "jdtls",
-              "eslint",
-            },
+        opts = { -- Use opts table for mason-lspconfig directly
+          -- Ensure these servers are installed automatically by Mason.
+          -- Add any other LSP servers you frequently use here.
+          ensure_installed = {
+            "lua_ls",
+            "ruff", -- Note: Ruff can be both LSP and linter/formatter
+            "jdtls",
+            "clangd",
+            "pyright",
+            "bashls",
+            -- Linters/Formatters (to be used by conform/nvim-lint, see point 4):
+            "prettier", -- Example formatter for web dev
+            "eslint",   -- Keep eslint here if you plan to use nvim-lint
+          },
+          -- Removed automatic_installation = false, let it default or set to true if desired
+          -- *** This is the key change: Use handlers ***
 
-            -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed.
-            -- This setting has no relation with the `ensure_installed` setting.
-            -- Can either be:
-            --   - false: Servers are not automatically installed.
-            --   - true: All servers set up via lspconfig are automatically installed.
-            --   - { exclude: string[] }: All servers set up via lspconfig, except the ones provided in the list, are automatically installed.
-            --       Example: automatic_installation = { exclude = { "rust_analyzer", "solargraph" } }
-            ---@type boolean
-            automatic_installation = false,
+          ---@type boolean
+          automatic_installation = true,
 
-            -- See `:h mason-lspconfig.setup_handlers()`
-            ---@type table<string, fun(server_name: string)>?
-            handlers = nil,
-          })
-        end
+          handlers = {
+            -- Default handler: Sets up servers with lspconfig and capabilities.
+            function(server_name)
+              require("lspconfig")[server_name].setup({
+                capabilities = require("cmp_nvim_lsp").default_capabilities(),
+                -- Use a single, shared on_attach function (see point 2)
+                on_attach = require("plugins.config.lsp").on_attach,
+              })
+            end,
+
+            -- Add custom handlers for specific servers if needed
+            -- ["lua_ls"] = function()
+            --   require("lspconfig").lua_ls.setup({
+            --     capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            --     on_attach = require("plugins.config.lsp").on_attach,
+            --     settings = {
+            --       Lua = {
+            --         completion = { callSnippet = "Replace" },
+            --         workspace = { checkThirdParty = false }, -- Example custom setting
+            --         telemetry = { enable = false },
+            --       },
+            --     },
+            --   })
+            -- end,
+            -- Remove jdtls from here if using nvim-jdtls plugin setup
+            -- ["jdtls"] = function() ... end,
+          }
+        },
       },
-    },
-    config = function()
-      require("plugins.config.lsp")
-    end
-  },
-  {
-    'lukas-reineke/lsp-format.nvim',
-    dependencies = {
+      -- Keep mason.nvim itself
       {
-        'neovim/nvim-lspconfig',
-        event = { "BufReadPre", "BufNewFile" },
+        "williamboman/mason.nvim",
+        cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonLog", "MasonUpdate" },
+        opts = { -- Configure mason directly if needed, e.g., UI settings
+          ui = { border = "rounded" }
+        },
+      },
+      -- Keep lsp-format if you still want LSP-based formatting
+      {
+        'lukas-reineke/lsp-format.nvim',
+        -- No need for config function if just using defaults + on_attach hook
       },
     },
-    config = function()
-      require("lsp-format").setup {}
-      require("lspconfig").gopls.setup { on_attach = require("lsp-format").on_attach }
-    end
+    -- No need for a config function here anymore if handlers do the setup
+    -- config = function() require("plugins.config.lsp") end -- Remove this line
   },
-  {
-    "williamboman/mason.nvim",
-    cmd = {
-      "Mason",
-      "MasonInstall",
-      "MasonUninstall",
-      "MasonUninstallAll",
-      "MasonLog",
-      "MasonUpdate",    -- AstroNvim extension here as well
-      "MasonUpdateAll", -- AstroNvim specific
-    },
-    config = function()
-      require("mason").setup()
-    end,
-  },
-  {
-    'mfussenegger/nvim-jdtls',
-    ft = "java",
-    config = function()
-      local config = {
-        cmd = { '/home/so/.local/share/nvim/mason/bin/jdtls' },
-        root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
-      }
-      require('jdtls').start_or_attach(config)
-    end
-  },
-
-  -- {
-  --   "saecki/live-rename.nvim",
-  --   config = function()
-  --     -- default config
-  --     require("live-rename").setup({
-  --       -- Send a `textDocument/prepareRename` request to the server to
-  --       -- determine the word to be renamed, can be slow on some servers.
-  --       -- Otherwise fallback to using `<cword>`.
-  --       prepare_rename = true,
-  --       --- The timeout for the `textDocument/prepareRename` request and final
-  --       --- `textDocument/rename` request when submitting.
-  --       request_timeout = 1500,
-  --       -- Make an initial `textDocument/rename` request to gather other
-  --       -- occurences which are edited and use these ranges to preview.
-  --       -- If disabled only the word under the cursor will have a preview.
-  --       show_other_ocurrences = true,
-  --       -- Try to infer patterns from the initial `textDocument/rename` request
-  --       -- and use these to show hopefully better edit previews.
-  --       use_patterns = true,
-  --       keys = {
-  --         submit = {
-  --           { "n", "<cr>" },
-  --           { "v", "<cr>" },
-  --           { "i", "<cr>" },
-  --         },
-  --         cancel = {
-  --           { "n", "<esc>" },
-  --           { "n", "q" },
-  --         },
-  --       },
-  --       hl = {
-  --         current = "CurSearch",
-  --         others = "Search",
-  --       },
-  --     })
-  --   end
-  -- },
+  -- Consider adding conform.nvim and nvim-lint here (see point 4)
 }

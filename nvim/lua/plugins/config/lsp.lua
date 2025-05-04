@@ -1,47 +1,35 @@
--- Add additional capabilities supported by nvim-cmp
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+-- nvim/lua/plugins/config/lsp.lua
+local M = {} -- Create a module to export the on_attach function
 
-local lspconfig = require('lspconfig')
-local lspformat = require('lsp-format')
-lspformat.setup {}
+-- Define the shared on_attach function
+function M.on_attach(client, bufnr)
+  -- Standard LSP keymaps
+  local opts = { buffer = bufnr, noremap = true, silent = true }
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+  vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+  -- vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, opts) -- If NOT using conform.nvim
 
--- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = {
-  "lua_ls",
-  "jdtls",
-  "ruff",
-  "clangd",
-  "jqls",
-  "asm_lsp",
-  "pyright",
-  -- "eslint",
-  --"bashls",
-}
+  -- Enable completion triggered by <c-x><c-o>
+  vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup({
-    -- on_attach = my_custom_on_attach,
-    capabilities = capabilities,
-    on_attach = lspformat.on_attach,
-  })
+  -- Attach lsp-format if you are using it
+  -- Note: If using conform.nvim, you might not need lsp-format anymore.
+  if pcall(require, 'lsp-format') then
+     require('lsp-format').on_attach(client, bufnr)
+  end
+
+  -- Add any other logic needed on attach, e.g., conditional settings
+  if client.name == "pyright" then
+    -- Pyright specific settings or keymaps on attach
+  end
 end
 
+-- Remove the old servers list, the loop, and the LspAttach autocmd.
+-- The capabilities are now handled directly in the mason-lspconfig handlers.
 
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-  callback = function(ev)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
-
-    -- Buffer local mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local opts = { buffer = ev.buf }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-  end,
-})
+return M -- Return the module containing the on_attach function
