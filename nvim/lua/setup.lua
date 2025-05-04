@@ -1,4 +1,5 @@
---lazy.nvim
+-- nvim/lua/setup.lua
+
 ---install plugin if missed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -41,14 +42,16 @@ require("lazy").setup({
   -- fzf
   require("plugins.fzf"),
   -- require("plugins.scroll"),
+
   -- filetype
   require("plugins.markdown"),
-
   -- require("plugins.orgmode"),
   -- { "kmonad/kmonad-vim", ft = "kbd"},
 
-  -- completion
-  require("plugins.lsp"),
+  -- === Centralized Code Tools Setup ===
+  require("plugins.code_tools"),
+
+  -- === Completion (depends on LSP capabilities from code_tools) ===
   require("plugins.nvim-cmp"),
   require("plugins.copilot"),
 
@@ -58,21 +61,4 @@ require("lazy").setup({
   --tmux
   require("plugins.tmux"),
 
-  --create directory if not exist
-  -- 'jghauser/mkdir.nvim'
-
-  -- useless
-  -- require("plugins.fun"),
-
-  -- 'nanotee/zoxide.vim',
-
-  --require("plugins.fern"),
-  --require("plugins.flit"),
-  --require("plugins.neorg"),
-  --require("plugins.which-key"),
-  --require("plugins.telescope"),
-  --'wellle/targets.vim',
-
 }, {})
-
--- vim.keymap.set("n", "<leader>L", "<Cmd>Lazy<Cr>", { noremap = true })
