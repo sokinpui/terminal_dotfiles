@@ -17,3 +17,5 @@ zsh-config/.zsh_sessions/
 
 tmp*
 /.obsidian/
+
+*.zip
