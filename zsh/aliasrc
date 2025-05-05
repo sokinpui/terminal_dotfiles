@@ -12,7 +12,7 @@
 #  cd $(find $1 | fzf)
 #}
 
-mkdc () { mkdir -p "$@" && eval cd "\"\$$#\""; }
+mkdc() { mkdir -p "$@" && eval cd "\"\$$#\""; }
 
 # $1 numbers of files going to be moved, $2 target directory
 #move_recent_download_to_dir() {
@@ -81,7 +81,6 @@ alias \
   9="cd +9" \
   mkd='mkdir -p'
 
-
 #vpmkd(){
 #  [ -z $1 ] && echo "Usage: vpmkd <name of plugin directory>, create a simple vim plugin structure" && return
 #  mkdir -p ~/.vim/pack/myplugins/start/$1/autoload ~/.vim/pack/myplugins/start/$1/plugin
@@ -92,12 +91,6 @@ d() {
   [[ $1 == "-" ]] && cd - && return
   [ -z "$1" ] && dirs -v && return || cd +"$1"
 }
-
-# Tmux
-alias \
-  tls="tmux ls" \
-  tn="tmux new -t" \
-  ta="tmux a -t"
 
 # cmd too short, verbose output
 # if user name is mac, then don't alias for this
@@ -134,7 +127,7 @@ alias \
   gbb="git checkout -b" \
   gsw="git branch | grep -v \"^\*\" | fzf --height=20% --reverse --info=inline | xargs git checkout"
 
-gi(){
+gi() {
   git init
   git add --all $PWD
   git commit -m "First commit"
@@ -149,7 +142,7 @@ alias \
 # customized function
 alias \
   qn="quick_note" \
-  fnrs="file-name-remove-space" \
+  fnrs="file-name-remove-space"
 
 # Readalbe & color
 alias \
@@ -198,27 +191,26 @@ alias \
   KK="systemctl --user restart kanata@carbon.service " \
   KKK="systemctl --user status kanata@carbon.service " \
   KKKK="systemctl --user stop kanata@carbon.service "
-  # kk="systemctl --user restart kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
-  # kkk="systemctl --user status kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
-  # kkkk="systemctl --user stop kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
-  # KK="systemctl --user restart kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
-  # KKK="systemctl --user status kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
-  # KKKK="systemctl --user stop kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
-  # \
-  # kkcarbon="systemctl --user restart kanata@carbon.service" \
-  # kkkcarbon="systemctl --user status kanata@carbon.service" \
-  # kkkkcarbon="systemctl --user stop kanata@carbon.service" \
-  # KKcarbon="systemctl --user restart kanata@carbon.service" \
-  # KKKcarbon="systemctl --user status kanata@carbon.service" \
-  # KKKKcarbon="systemctl --user stop kanata@carbon.service" \
-  # \
-  # kkus="systemctl --user restart  kanata@us100-port.service kanata@us-right.service" \
-  # kkkus="systemctl --user status  kanata@us100-port.service kanata@us-right.service" \
-  # kkkkus="systemctl --user stop  kanata@us100-port.service kanata@us-right.service" \
-  # KKus="systemctl --user restart  kanata@us100-port.service kanata@us-right.service" \
-  # KKKus="systemctl --user status  kanata@us100-port.service kanata@us-right.service" \
-  # KKKKus="systemctl --user stop  kanata@us100-port.service kanata@us-right.service" \
-
+# kk="systemctl --user restart kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
+# kkk="systemctl --user status kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
+# kkkk="systemctl --user stop kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
+# KK="systemctl --user restart kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
+# KKK="systemctl --user status kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
+# KKKK="systemctl --user stop kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
+# \
+# kkcarbon="systemctl --user restart kanata@carbon.service" \
+# kkkcarbon="systemctl --user status kanata@carbon.service" \
+# kkkkcarbon="systemctl --user stop kanata@carbon.service" \
+# KKcarbon="systemctl --user restart kanata@carbon.service" \
+# KKKcarbon="systemctl --user status kanata@carbon.service" \
+# KKKKcarbon="systemctl --user stop kanata@carbon.service" \
+# \
+# kkus="systemctl --user restart  kanata@us100-port.service kanata@us-right.service" \
+# kkkus="systemctl --user status  kanata@us100-port.service kanata@us-right.service" \
+# kkkkus="systemctl --user stop  kanata@us100-port.service kanata@us-right.service" \
+# KKus="systemctl --user restart  kanata@us100-port.service kanata@us-right.service" \
+# KKKus="systemctl --user status  kanata@us100-port.service kanata@us-right.service" \
+# KKKKus="systemctl --user stop  kanata@us100-port.service kanata@us-right.service" \
 
 # open obsidian
 #obsidian() {
@@ -232,29 +224,29 @@ alias steam="steam -forcedesktopscaling 1.5"
 alias \
   python="python3" \
   pip="pip3"
-  # python="$(brew --prefix python)/bin/python3.12" \
-  # pip="pip3" \
-  # python="$(brew --prefix python)/bin/python3.12" \
-  # pip="~/.local/bin/pip3.12" \
-  # pip3="~/.local/bin/pip3.12"
+# python="$(brew --prefix python)/bin/python3.12" \
+# pip="pip3" \
+# python="$(brew --prefix python)/bin/python3.12" \
+# pip="~/.local/bin/pip3.12" \
+# pip3="~/.local/bin/pip3.12"
 
 #brew
 alias \
-    b="brew" \
-    bi="brew install"
+  b="brew" \
+  bi="brew install"
 alias \
   e="emacs -nw" \
   doom="~/.config/emacs/bin/doom"
 
 # alias \
-  # yabai="yabai --restart-service" \
+# yabai="yabai --restart-service" \
 
 alias conda-init="source $HOME/.config/zsh/bin/conda-init"
 
 alias vpn="export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;export ALL_PROXY=socks5://127.0.0.1:1080;export NO_PROXY=localhost,127.0.0.1"
 
 # alias only if the command z is found
-if command -v zoxide &> /dev/null; then
+if command -v zoxide &>/dev/null; then
   alias z="z"
 fi
 
