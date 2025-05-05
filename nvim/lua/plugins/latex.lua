@@ -13,7 +13,7 @@ return {
 			-- === Viewer ===
 			-- Use Zathura as the PDF viewer. Alternatives: 'skim', 'sumatrapdf', 'evince', 'okular'
 			-- Make sure the chosen viewer is installed on your system!
-			vim.g.vimtex_view_method = "zathura"
+			vim.g.vimtex_view_method = "skim"
 			-- vim.g.vimtex_view_general_viewer = "open"
 			-- Optional: Set specific viewer options if needed (often auto-detected)
 			-- vim.g.vimtex_view_general_options = '--synctex-forward 1:0:%f:%t' -- Example for some viewers
@@ -37,7 +37,7 @@ return {
 
 			-- === Interface ===
 			-- Use location list for errors/warnings (0=disable, 1=qf, 2=loclist per compile, 3=loclist continuously)
-			vim.g.vimtex_quickfix_mode = 3
+			vim.g.vimtex_quickfix_mode = 1
 			-- Enable folding based on sections/environments
 			vim.g.vimtex_fold_enabled = 1
 			-- Enable concealment (e.g., show α instead of \alpha)
