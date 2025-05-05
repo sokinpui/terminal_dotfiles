@@ -4,23 +4,23 @@
 
 return {
 	-- Tool Installer (Core Mason)
-	{
-		"williamboman/mason.nvim",
-		cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonLog", "MasonUpdate" },
-		opts = {
-			ui = { border = "rounded" },
-			-- Note: ensure_installed is NOT configured here directly.
-			-- It's handled by mason-tool-installer.nvim
-		},
-		-- config = function(_, opts)
-		--   require("mason").setup(opts)
-		-- end,
-	},
 
 	-- Automatic Tool Installation Manager
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		dependencies = { "williamboman/mason.nvim" },
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			"williamboman/mason.nvim",
+			cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonLog", "MasonUpdate" },
+			opts = {
+				ui = { border = "rounded" },
+				-- Note: ensure_installed is NOT configured here directly.
+				-- It's handled by mason-tool-installer.nvim
+			},
+			-- config = function(_, opts)
+			--   require("mason").setup(opts)
+			-- end,
+		},
 		opts = {
 			-- Central list of ALL tools to ensure are installed by Mason
 			ensure_installed = {
