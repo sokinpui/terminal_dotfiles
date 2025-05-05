@@ -15,10 +15,9 @@
 #[ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
 
 #fzf
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# [ -f /usr/share/fzf/shell/key-bindings.zsh ] && source /usr/share/fzf/shell/key-bindings.zsh
+# source <(fzf --zsh)
 [ -f ~/.config/zsh/fzf ] && source ~/.config/zsh/fzf
-export FZF_CTRL_T_COMMAND=""
+[ -f ~/.config/zsh/fzf-key-binds.zsh ] && source ~/.config/zsh/fzf-key-binds.zsh
 
 # lf
 [ -f ~/.config/zsh/lf ] && source ~/.config/zsh/lf
