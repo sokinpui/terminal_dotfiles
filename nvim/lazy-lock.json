@@ -8,6 +8,7 @@
   "cmp-nvim-lsp-signature-help": { "branch": "main", "commit": "031e6ba70b0ad5eee49fd2120ff7a2e325b17fa7" },
   "cmp-path": { "branch": "main", "commit": "c6635aae33a50d6010bf1aa756ac2398a2d54c32" },
   "cmp-under-comparator": { "branch": "master", "commit": "6857f10272c3cfe930cece2afa2406e1385bfef8" },
+  "cmp-vimtex": { "branch": "master", "commit": "5283bf9108ef33d41e704027b9ef22437ce7a15b" },
   "cmp_luasnip": { "branch": "master", "commit": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90" },
   "conform.nvim": { "branch": "master", "commit": "372fc521f8421b7830ea6db4d6ea3bae1c77548c" },
   "copilot-cmp": { "branch": "master", "commit": "15fc12af3d0109fa76b60b5cffa1373697e261d1" },
@@ -44,5 +45,5 @@
   "vim-matchup": { "branch": "master", "commit": "ea2ff43e09e68b63fc6d9268fc5d82d82d433cb3" },
   "vim-startuptime": { "branch": "master", "commit": "b6f0d93f6b8cf6eee0b4c94450198ba2d6a05ff6" },
   "vim-visual-multi": { "branch": "master", "commit": "a6975e7c1ee157615bbc80fc25e4392f71c344d4" },
-  "visual-whitespace.nvim": { "branch": "main", "commit": "d55348fab9254bf208766efac9a35100ac474ec0" }
+  "vimtex": { "branch": "master", "commit": "85cb04f5a9d2289b9d2b62d5d84342fe9675ec08" }
 }

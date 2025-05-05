@@ -30,6 +30,8 @@ export PATH="$PATH:/opt/homebrew/opt/ccache/libexec"
 export PATH="$PATH:/Users/mac/projects/logLLM/model/llama.cpp/build/bin"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin:$PATH"
+export PATH=/Library/TeX/texbin:$PATH
 
 export CARGOPATH="$HOME/.cargo"
 # export PATH="$PATH:$CARGOPATH/bin"

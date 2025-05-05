@@ -30,6 +30,7 @@ return {
 				-- "pyright",         -- Alternative Python LSP (commented out, choose one)
 				"bashls",
 				"eslint", -- JavaScript/TypeScript LSP/Linter
+				"texlab",
 
 				-- Formatters (used by conform.nvim)
 				"stylua", -- Lua
