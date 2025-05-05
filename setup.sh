@@ -111,10 +111,10 @@ brew install direnv
 brew install cmake
 brew install cloc
 brew install texlive
-brew install zathura
 
 brew install font-lxgw-wenkai
 
+brew install --cask skim
 brew install --cask discord
 brew install --cask zoom
 brew install --cask obsidian

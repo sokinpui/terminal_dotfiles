@@ -33,6 +33,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin:$PATH"
 export PATH=/Library/TeX/texbin:$PATH
 
+export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
+
 export CARGOPATH="$HOME/.cargo"
 # export PATH="$PATH:$CARGOPATH/bin"
 # . "$HOME/.cargo/env"
