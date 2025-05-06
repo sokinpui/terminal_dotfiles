@@ -6,23 +6,23 @@ selected_name="$2"
 
 # If no directory provided, use fzf to select one
 if [[ -z "$selected" ]]; then
-    selected=$(find \
-      ~/projects \
-      ~/Obsidian \
-      ~/Obsidian/obsidian-mobile/cuhk/year1 \
-      ~/Obsidian/obsidian-mobile/cuhk/year2 \
-      ~/Obsidian/obsidian-mobile/cuhk/year3 \
-      ~/Obsidian/obsidian-mobile/cuhk/year4 \
-      -mindepth 1 -maxdepth 1 -type d \
-      -not -path '*/.*' \
-      | fzf --height 40% --reverse --header "Select a directory to open in tmux")
-    # Exit if no selection made
-    [[ -z "$selected" ]] && exit 1
+  selected=$(find \
+    ~/projects \
+    ~/Obsidian \
+    ~/Obsidian/cuhk/year1 \
+    ~/Obsidian/cuhk/year2 \
+    ~/Obsidian/cuhk/year3 \
+    ~/Obsidian/cuhk/year4 \
+    -mindepth 1 -maxdepth 1 -type d \
+    -not -path '*/.*' |
+    fzf --height 40% --reverse --header "Select a directory to open in tmux")
+  # Exit if no selection made
+  [[ -z "$selected" ]] && exit 1
 fi
 
 # If no name provided, generate one from directory basename
 if [[ -z "$selected_name" ]]; then
-    selected_name=$(basename "$selected" | tr . _)
+  selected_name=$(basename "$selected" | tr . _)
 fi
 
 # Check if tmux is running at all
@@ -30,34 +30,34 @@ tmux_running=$(pgrep tmux)
 
 # Function to check if session exists
 session_exists() {
-    tmux has-session -t "$1" 2>/dev/null
-    return $?
+  tmux has-session -t "$1" 2>/dev/null
+  return $?
 }
 
 # Running outside tmux
 if [[ -z "$TMUX" ]]; then
-    if [[ -z "$tmux_running" ]]; then
-        # No tmux running at all, create new session
-        tmux new-session -c "$selected" -s "$selected_name"
+  if [[ -z "$tmux_running" ]]; then
+    # No tmux running at all, create new session
+    tmux new-session -c "$selected" -s "$selected_name"
+  else
+    # Tmux running but not in it
+    if session_exists "$selected_name"; then
+      # Session exists, attach to it
+      tmux attach-session -t "$selected_name"
     else
-        # Tmux running but not in it
-        if session_exists "$selected_name"; then
-            # Session exists, attach to it
-            tmux attach-session -t "$selected_name"
-        else
-            # Session doesn't exist, create and attach
-            tmux new-session -c "$selected" -s "$selected_name"
-        fi
+      # Session doesn't exist, create and attach
+      tmux new-session -c "$selected" -s "$selected_name"
     fi
+  fi
 # Running inside tmux
 else
-    if ! session_exists "$selected_name"; then
-        # Create new detached session
-        tmux new-session -c "$selected" -ds "$selected_name"
-    fi
-    # Switch to the session
-    temp_session="${selected_name}_${RANDOM}"
-    tmux new-session -d -t "$selected_name" -s "$temp_session"
-    tmux switch-client -t "$temp_session"
+  if ! session_exists "$selected_name"; then
+    # Create new detached session
+    tmux new-session -c "$selected" -ds "$selected_name"
+  fi
+  # Switch to the session
+  temp_session="${selected_name}_${RANDOM}"
+  tmux new-session -d -t "$selected_name" -s "$temp_session"
+  tmux switch-client -t "$temp_session"
 
 fi
