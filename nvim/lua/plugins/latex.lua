@@ -120,7 +120,16 @@ return {
 	},
 	{
 		"HakonHarnes/img-clip.nvim",
-		event = "VeryLazy",
+		keys = {
+			-- suggested keymap
+			{ "<leader>i", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
+			{ "<c-v>", mode = { "i" }, "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
+		},
+		ft = {
+			"tex",
+			"md",
+			"markdown",
+		}, -- Load vimtex for .tex and .bib files
 		opts = {
 			default = {
 				-- file and directory options
@@ -223,11 +232,6 @@ return {
 			files = {}, ---@type table | fun(): table
 			dirs = {}, ---@type table | fun(): table
 			custom = {}, ---@type table | fun(): table
-		},
-		keys = {
-			-- suggested keymap
-			{ "<leader>i", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
-			{ "<c-v>", mode = { "i" }, "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
 		},
 	},
 }
