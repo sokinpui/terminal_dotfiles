@@ -170,7 +170,7 @@ return {
 				lua = { "luacheck" },
 				sh = { "shellcheck" },
 				bash = { "shellcheck" },
-				markdown = { "markdownlint" }, -- Uses markdownlint-cli
+				-- markdown = { "markdownlint" }, -- Uses markdownlint-cli
 				javascript = { "eslint" },
 				typescript = { "eslint" },
 			},
