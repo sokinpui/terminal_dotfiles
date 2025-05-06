@@ -110,7 +110,7 @@ brew install yqrashawn/goku/goku
 brew install direnv
 brew install cmake
 brew install cloc
-brew install texlive
+brew install mactex
 
 brew install font-lxgw-wenkai
 

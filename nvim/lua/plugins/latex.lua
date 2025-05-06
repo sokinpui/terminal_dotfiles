@@ -24,6 +24,17 @@ return {
 			-- === Compiler ===
 			-- Use latexmk for compilation (highly recommended)
 			vim.g.vimtex_compiler_method = "latexmk"
+			vim.g.vimtex_compiler_latexmk = {
+				options = {
+					"-pdf",
+					"-shell-escape",
+					"-verbose",
+					"-file-line-error",
+					"-synctex=1",
+					"-interaction=nonstopmode",
+				},
+			}
+
 			vim.g.vimtex_compiler_progname = "nvr"
 			-- Ensure latexmk produces PDF output
 			vim.g.vimtex_compiler_latexmk = {
