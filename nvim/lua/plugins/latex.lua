@@ -50,8 +50,7 @@ return {
 			-- Enable syntax highlighting
 			vim.g.vimtex_syntax_enabled = 1
 
-			-- Optional: Disable default keybindings if you want to set them all manually
-			-- vim.g.vimtex_mappings_enabled = 0
+			vim.g.vimtex_view_automatic = 1
 		end,
 
 		config = function()
