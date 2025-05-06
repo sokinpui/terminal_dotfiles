@@ -1,9 +1,13 @@
 # Linux install
+
 ## Install Linux config
+
 ```sh
 curl https://raw.githubusercontent.com/sokinpui/dotfiles/main/Linux/install.sh | sh
 ```
+
 ## After installation, you should...
+
 1. isntall tweaks
 2. install extension
 3. enable the h.245 video plugins in firefox
@@ -21,25 +25,45 @@ curl https://raw.githubusercontent.com/sokinpui/dotfiles/main/Linux/install.sh |
 # Mac install
 
 runn the scipt
+
 ```sh
 curl https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/main/setup.sh | sh
 ```
 
 ## macOS system preferences after script
+
 1. keyboard shortcut for switching desktop
 2. keyboard shortcut for screenshot
 3. betterdisplay scaling resolution
 4. logioptions+ setting
-  - set mouse scroll direction
-  - keys mapping
-  - keys mappping per app
-    - chrome: disable the horizontal scroll of switching tabs
+
+- set mouse scroll direction
+- keys mapping
+- keys mappping per app
+  - chrome: disable the horizontal scroll of switching tabs
+
 5. disable vimimum in overleaf.com to use vim mode in overleaf
 
 ## raycast
-  - install google-chrome extension, and use skhd to trigger hotkey
+
+- install google-chrome extension, and use skhd to trigger hotkey
 
 - Last step: restart the computer
 
 # logi mouse config
+
 ![](images/Pasted%20image%2020250422184527.png)![](images/Pasted%20image%2020250422184651.png)
+
+## vimtex setup with skim
+
+### skim config for inverse/backward search
+
+```
+PDF-Tex Sync Support:
+
+Preset: Custom
+Command: nvim
+Arguments: --headless -c "VimtexInverseSearch %line '%file'"
+```
+
+![](assets/2025-05-06-19-16-45.png)
