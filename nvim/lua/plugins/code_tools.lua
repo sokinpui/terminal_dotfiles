@@ -100,19 +100,19 @@ return {
 						})
 					end,
 					-- Custom handlers (same as before, if needed)
-					["lua_ls"] = function()
-						require("lspconfig").lua_ls.setup({
-							capabilities = capabilities,
-							on_attach = on_attach,
-							settings = {
-								Lua = {
-									diagnostics = { globals = { "vim" } },
-									workspace = { checkThirdParty = false },
-									telemetry = { enable = false },
-								},
-							},
-						})
-					end,
+					-- ["lua_ls"] = function()
+					-- 	require("lspconfig").lua_ls.setup({
+					-- 		capabilities = capabilities,
+					-- 		on_attach = on_attach,
+					-- 		settings = {
+					-- 			Lua = {
+					-- 				diagnostics = { globals = { "vim" } },
+					-- 				workspace = { checkThirdParty = false },
+					-- 				telemetry = { enable = false },
+					-- 			},
+					-- 		},
+					-- 	})
+					-- end,
 
 					-- Add other custom handlers if needed
 
