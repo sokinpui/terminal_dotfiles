@@ -279,3 +279,5 @@ git clone https://github.com/tmux-plugins/tmux-continuum ~/.config/tmux/plugins/
 git clone https://github.com/tmux-plugins/tmux-resurrect ~/.config/tmux/plugins/tmux-resurrect
 
 sudo rm -rf /Library/Application\ Support/Microsoft/MAU2.0/Microsoft\ AutoUpdate.app
+
+pip install neovim-remote
