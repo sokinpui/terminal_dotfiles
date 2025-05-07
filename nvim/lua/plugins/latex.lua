@@ -48,7 +48,7 @@ return {
 
 			-- === Interface ===
 			-- Use location list for errors/warnings (0=disable, 1=qf, 2=loclist per compile, 3=loclist continuously)
-			vim.g.vimtex_quickfix_mode = 1
+			vim.g.vimtex_quickfix_mode = 0
 			-- Enable folding based on sections/environments
 			vim.g.vimtex_fold_enabled = 1
 			-- Enable concealment (e.g., show α instead of \alpha)
@@ -123,6 +123,18 @@ return {
 				"n",
 				"<leader>lg",
 				"<Plug>(vimtex-status)",
+				{ noremap = false, silent = true, desc = "VimTeX Status" }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>lo",
+				"<plug>(vimtex-compile-output)",
+				{ noremap = false, silent = true, desc = "VimTeX Status" }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>le",
+				"<plug>(vimtex-errors)",
 				{ noremap = false, silent = true, desc = "VimTeX Status" }
 			)
 

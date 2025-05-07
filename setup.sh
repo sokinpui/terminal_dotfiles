@@ -117,7 +117,14 @@ brew install cmake
 brew install cloc
 brew install mactex
 
+brew install deno
+brew tap FelixKratz/formulae
+brew install borders
+
+brew install --cask font-jetbrains-mono-nerd-font
+
 brew install font-lxgw-wenkai
+brew install syncthing
 
 brew install --cask skim
 brew install --cask discord
@@ -129,7 +136,6 @@ brew install --cask visual-studio-code
 brew install --cask v2rayu
 brew install --cask wechat
 brew install --cask whatsapp
-brew install syncthing
 brew install --cask raycast
 brew install --cask mos
 brew install --cask betterdisplay
@@ -141,6 +147,9 @@ brew install --cask microsoft-outlook
 brew install --cask microsoft-word
 brew install --cask karabiner-elements
 brew install pomdtr/tap/ray
+
+brew tap FelixKratz/formulae
+brew install borders
 
 sudo ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
 
