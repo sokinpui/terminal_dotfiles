@@ -19,3 +19,5 @@ tmp*
 /.obsidian/
 
 *.zip
+
+nvim/lazy-lock.json
