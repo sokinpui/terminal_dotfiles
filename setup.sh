@@ -280,8 +280,12 @@ git clone https://github.com/tmux-plugins/tmux-resurrect ~/.config/tmux/plugins/
 
 sudo rm -rf /Library/Application\ Support/Microsoft/MAU2.0/Microsoft\ AutoUpdate.app
 
-pip install neovim-remote
+pipx install neovim-remote
+pip3 install --break-system-packages pynvim
 
 cd $HOME
 rm -rf dotfiles
 git clone https://github.com/sokinpui/terminal_dotfiles.git dotfiles
+
+defaults write -g InitialKeyRepeat -int 15
+defaults write -g KeyRepeat -int 1
