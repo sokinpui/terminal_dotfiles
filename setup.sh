@@ -18,6 +18,10 @@ if ! command -v brew &>/dev/null; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+echo >>/Users/dou/.zprofile
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >>/Users/dou/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Update Homebrew
 echo "Updating Homebrew..."
 brew update
@@ -135,6 +139,7 @@ brew install onedrive
 brew install --cask marta
 brew install --cask microsoft-outlook
 brew install --cask microsoft-word
+brew install --cask karabiner-elements
 brew install pomdtr/tap/ray
 
 sudo ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
@@ -191,7 +196,8 @@ rm -f $HOME/.gitconfig
 ln -sfv $REPO_DIR/gitconfig $HOME/.gitconfig
 echo ""
 
-cd /tmp
+mkdir -p $HOME/tmp
+cd $HOME/tmp
 git clone https://github.com/sbmpost/AutoRaise.git
 cd AutoRaise
 make CXXFLAGS="-DOLD_ACTIVATION_METHOD -DEXPERIMENTAL_FOCUS_FIRST" && make install
@@ -262,3 +268,5 @@ ray completion zsh >$HOME/.config/zsh/autoload/_zay
 
 git clone https://github.com/tmux-plugins/tmux-continuum ~/.config/tmux/plugins/tmux-continuum
 git clone https://github.com/tmux-plugins/tmux-resurrect ~/.config/tmux/plugins/tmux-resurrect
+
+sudo rm -rf /Library/Application\ Support/Microsoft/MAU2.0/Microsoft\ AutoUpdate.app

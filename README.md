@@ -37,12 +37,20 @@ curl https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/main/setup.sh 
 3. betterdisplay scaling resolution
 4. logioptions+ setting
 
+## logioptions setting
+
 - set mouse scroll direction
 - keys mapping
 - keys mappping per app
   - chrome: disable the horizontal scroll of switching tabs
 
 5. disable vimimum in overleaf.com to use vim mode in overleaf
+
+6. disable spotlight
+
+```
+sudo mdutil -a -i off
+```
 
 ## raycast
 
