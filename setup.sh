@@ -3,10 +3,6 @@
 # Script to create symbolic links for config files to ~/.config/ and ~/
 
 # Variables
-REPO_DIR="$(pwd)" # Assumes the script is run from the root of the repository
-CONFIG_DIR="$HOME/.config"
-echo "Repository directory: $REPO_DIR"
-echo "Configuration directory: $CONFIG_DIR"
 
 # ask user for confirmation
 read -p "This script will install Homebrew and various command-line tools. Do you want to continue? (y/n) " -n 1 -r
@@ -32,7 +28,12 @@ cd $HOME
 git clone https://github.com/sokinpui/terminal_dotfiles.git dotfiles
 cd dotfiles
 
+REPO_DIR="$(pwd)" # Assumes the script is run from the root of the repository
+CONFIG_DIR="$HOME/.config"
+echo "Repository directory: $REPO_DIR"
+echo "Configuration directory: $CONFIG_DIR"
 echo "Installing command-line tools..."
+
 brew install automake       # Tool for generating GNU Standards-compliant Makefiles
 brew install bat            # Clone of cat(1) with syntax highlighting
 brew install berkeley-db    # High performance key/value database
