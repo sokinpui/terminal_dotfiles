@@ -40,11 +40,13 @@ return {
 				"clang-format", -- C/C++
 				"google-java-format", -- Java
 				"shfmt", -- Shell scripts
+				"latexindent", -- LaTeX
 
 				-- Linters (used by nvim-lint)
 				"ruff", -- Python (can be used alongside ruff_lsp or standalone)
 				"shellcheck", -- Shell scripts
 				"luacheck", -- Lua
+				"vale", -- latex, markdown
 				-- eslint is already listed (covers JS/TS linting)
 				-- markdownlint-cli is already listed
 			},
@@ -145,6 +147,7 @@ return {
 				markdown = { "prettier" }, -- Can also use "markdownlint-cli" if preferred/configured
 				bash = { "shfmt" },
 				sh = { "shfmt" },
+				tex = { "latexindent" },
 				["*"] = { "trim_whitespace" },
 			},
 			format_on_save = {
