@@ -21,3 +21,5 @@ tmp*
 *.zip
 
 nvim/lazy-lock.json
+
+zmk-config/.git
