@@ -100,7 +100,7 @@ if [[ "$USER" == "so" ]]; then
     rm="$HOME/.local/bin/trash-put" \
     rs="$HOME/.local/bin/trash-restore" \
     cp="cp -r -v"
-elif [[ "$USER" == "mac" ]]; then
+elif [[ "$USER" == "dou" ]]; then
   alias \
     mv="mv -v" \
     rm="trash-put" \
