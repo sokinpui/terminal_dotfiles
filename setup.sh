@@ -126,6 +126,7 @@ brew install --cask font-jetbrains-mono-nerd-font
 brew install font-lxgw-wenkai
 brew install syncthing
 
+brew install --cask syncthing # File synchronization application
 brew install --cask skim
 brew install --cask discord
 brew install --cask zoom
@@ -287,5 +288,5 @@ cd $HOME
 rm -rf dotfiles
 git clone https://github.com/sokinpui/terminal_dotfiles.git dotfiles
 
-defaults write -g InitialKeyRepeat -int 15
+defaults write -g InitialKeyRepeat -int 10
 defaults write -g KeyRepeat -int 1

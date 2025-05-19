@@ -125,7 +125,8 @@ alias \
   gs="git status" \
   gsu="git status --untracked-files" \
   gbb="git checkout -b" \
-  gsw="git branch | grep -v \"^\*\" | fzf --height=20% --reverse --info=inline | xargs git checkout"
+  gsw="git switch"
+# gsw="git branch | grep -v \"^\*\" | fzf --height=20% --reverse --info=inline | xargs git checkout"
 
 gi() {
   git init
