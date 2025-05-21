@@ -126,6 +126,26 @@ return {
 					-- 	require("lspconfig").eslint.setup({ capabilities = capabilities, on_attach = on_attach })
 					-- end,
 				},
+				vim.diagnostic.config({
+					virtual_text = {
+						spacing = 4, -- Add some spacing
+						prefix = "●", -- Or '▎', '‣', etc.
+						source = "if_many", -- Show source only if multiple sources exist for the same diagnostic
+						update_in_insert = true, -- THIS IS KEY for seeing messages in insert mode
+					},
+					signs = true, -- You already see these, but good to be explicit
+					underline = true,
+					update_in_insert = true, -- General update flag, also important
+					severity_sort = true, -- Show errors before warnings, etc.
+					float = { -- Configuration for vim.diagnostic.open_float()
+						focusable = false,
+						style = "minimal",
+						border = "rounded",
+						source = "if_many",
+						prefix = "", -- No prefix for floats
+						header = "", -- No header for floats
+					},
+				}),
 			})
 		end,
 	},
@@ -165,7 +185,11 @@ return {
 	-- Linter Configuration (nvim-lint)
 	{
 		"mfussenegger/nvim-lint",
-		event = { "BufWritePost", "BufReadPost", "InsertLeave" },
+		event = {
+			"BufWritePost",
+			"BufReadPost",
+			-- "InsertLeave",
+		},
 		dependencies = { "williamboman/mason.nvim" }, -- Depends on Mason providing the tools
 		opts = {
 			linters_by_ft = {
@@ -177,7 +201,11 @@ return {
 				javascript = { "eslint" },
 				typescript = { "eslint" },
 			},
-			lint_on_events = { "BufWritePost", "BufReadPost", "InsertLeave" },
+			lint_on_events = {
+				"BufWritePost",
+				"BufReadPost",
+				-- "InsertLeave",
+			},
 		},
 		config = function(_, opts)
 			local lint = require("lint")
@@ -197,6 +225,30 @@ return {
 				lint.try_lint()
 			end, {})
 			-- vim.keymap.set("n", "<leader>li", "<cmd>Lint<cr>", { desc = "Run Linters" })
+		end,
+	},
+	{
+		"nvim-flutter/flutter-tools.nvim",
+		lazy = false,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"stevearc/dressing.nvim", -- optional for vim.ui.select
+		},
+		config = function()
+			require("flutter-tools").setup({
+				ui = {
+					border = "rounded",
+					notification_style = "native",
+				},
+				decorations = {
+					statusline = {
+						app_version = false,
+						device = true,
+					},
+				},
+				widget_guides = { enabled = true },
+				closing_tags = { highlight = "Error" },
+			})
 		end,
 	},
 }
