@@ -89,5 +89,3 @@ eval "$(direnv hook zsh)"
 autoload -U compinit && compinit
 
 set -o ignoreeof
-
-

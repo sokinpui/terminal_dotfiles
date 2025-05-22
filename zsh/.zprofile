@@ -65,3 +65,7 @@ export PATH="/Library/TeX/texbin:$PATH"
 export PIPX_HOME="$HOME/.local/pipx"
 
 export JAVA_HOME=/opt/homebrew/opt/openjdk
+
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+
+export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
