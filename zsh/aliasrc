@@ -12,7 +12,15 @@
 #  cd $(find $1 | fzf)
 #}
 
-mkdc() { mkdir -p "$@" && eval cd "\"\$$#\""; }
+mkdc() {
+  mkdir -p "$@" && echo "create $(realpath "$@")" &&
+    echo "cd to $(realpath "$@")" &&
+    eval cd "\"\$$#\""
+}
+
+mkd() {
+  mkdir -p "$@" && echo "create $(realpath "$@")"
+}
 
 # $1 numbers of files going to be moved, $2 target directory
 #move_recent_download_to_dir() {
@@ -78,8 +86,8 @@ alias \
   6="cd +6" \
   7="cd +7" \
   8="cd +8" \
-  9="cd +9" \
-  mkd='mkdir -p'
+  9="cd +9"
+# mkd='mkdir -p'
 
 #vpmkd(){
 #  [ -z $1 ] && echo "Usage: vpmkd <name of plugin directory>, create a simple vim plugin structure" && return
