@@ -1,8 +1,7 @@
 return {
-  {
-    'akinsho/toggleterm.nvim',
-    version = "*",
-    config = function ()
-    end
-  }
+	{
+		"akinsho/toggleterm.nvim",
+		version = "*",
+		config = function() end,
+	},
 }
