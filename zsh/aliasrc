@@ -14,7 +14,7 @@
 
 mkdc() {
   mkdir -p "$@" && echo "create $(realpath "$@")" &&
-    echo "cd to $(realpath "$@")" &&
+    echo "cd to  $(realpath "$@")" &&
     eval cd "\"\$$#\""
 }
 

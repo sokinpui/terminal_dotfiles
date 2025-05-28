@@ -8,6 +8,7 @@ selected_name="$2"
 if [[ -z "$selected" ]]; then
   selected=$(find \
     ~/projects \
+    ~/projects/lscm \
     ~/Obsidian \
     ~/Obsidian/cuhk/year1 \
     ~/Obsidian/cuhk/year2 \

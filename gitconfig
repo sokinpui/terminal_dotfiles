@@ -5,3 +5,5 @@
 [core]
     pager = bat
 
+[http "https://gitlab.rnt.lscm/"]
+	sslVerify = false
