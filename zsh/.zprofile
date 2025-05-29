@@ -69,3 +69,5 @@ export JAVA_HOME=/opt/homebrew/opt/openjdk
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
+
+export FLUTTER_ROOT="$(asdf where flutter)"

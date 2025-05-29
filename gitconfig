@@ -7,3 +7,6 @@
 
 [http "https://gitlab.rnt.lscm/"]
 	sslVerify = false
+[init]
+	defaultBrancha = main
+	defaultBranch = main
