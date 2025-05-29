@@ -101,30 +101,6 @@ return {
 							on_attach = on_attach,
 						})
 					end,
-					-- Custom handlers (same as before, if needed)
-					-- ["lua_ls"] = function()
-					-- 	require("lspconfig").lua_ls.setup({
-					-- 		capabilities = capabilities,
-					-- 		on_attach = on_attach,
-					-- 		settings = {
-					-- 			Lua = {
-					-- 				diagnostics = { globals = { "vim" } },
-					-- 				workspace = { checkThirdParty = false },
-					-- 				telemetry = { enable = false },
-					-- 			},
-					-- 		},
-					-- 	})
-					-- end,
-
-					-- Add other custom handlers if needed
-
-					-- ["ruff_lsp"] = function()
-					-- 	require("lspconfig").ruff_lsp.setup({ capabilities = capabilities, on_attach = on_attach })
-					-- end,
-
-					-- ["eslint"] = function()
-					-- 	require("lspconfig").eslint.setup({ capabilities = capabilities, on_attach = on_attach })
-					-- end,
 				},
 				vim.diagnostic.config({
 					virtual_text = {
@@ -148,6 +124,11 @@ return {
 				}),
 			})
 		end,
+		opts = {
+			servers = {
+				dartls = {},
+			},
+		},
 	},
 
 	-- Formatter Configuration (conform.nvim)
@@ -168,6 +149,7 @@ return {
 				bash = { "shfmt" },
 				sh = { "shfmt" },
 				tex = { "latexindent" },
+				-- dart = { "dcm_format" },
 				["*"] = { "trim_whitespace" },
 			},
 			format_on_save = {
@@ -236,6 +218,21 @@ return {
 		},
 		config = function()
 			require("flutter-tools").setup({
+				flutter_path = nil,
+				flutter_lookup_cmd = "asdf where flutter",
+				fvm = false,
+				lsp = {
+					settings = {
+						showtodos = true,
+						completefunctioncalls = true,
+						analysisexcludedfolders = {
+							vim.fn.expand("$Home/.pub-cache"),
+						},
+						renamefileswithclasses = "prompt",
+						updateimportsonrename = true,
+						enablesnippets = false,
+					},
+				},
 				ui = {
 					border = "rounded",
 					notification_style = "native",
