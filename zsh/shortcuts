@@ -42,6 +42,7 @@ open-recent-edit-file() {
       -E "*.flac" \
       -E "*.aif" \
       -E "*.m4a" \
+      -E "__pycache__" \
       -E "*.ogg" |
       xargs ls -1t |
       fzf --height 40% --reverse \
