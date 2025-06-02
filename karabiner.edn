@@ -3,32 +3,93 @@
                  ;; vendor_id and product_id can be found in Karabiner EventViewer gui
                  :black [{:vendor_id 21972 :product_id 1121 }]
                  }
+ :simlayers {:x-mode {:key :x}}
  :main [
 
-    {
-     :des "ctrl+backspace -> option+backspace"
-     :rules [
+        {
+         :des "ctrl+backspace -> option+backspace"
+         :rules [
 
-            [:!Tdelete_or_backspace :!Odelete_or_backspace]
-            [:##caps_lock :left_control nil {:alone :escape}]
-             ]
-     }
-    {
-     :des "ctrl+, -> option+,"
-     :rules [
+                 [:!Tdelete_or_backspace :!Odelete_or_backspace]
+                 [:##caps_lock :left_control nil {:alone :escape}]
+                 ]
+         }
+        {
+         :des "ctrl+, -> option+,"
+         :rules [
 
-            [:!Tcomma :!Ocomma]
-            [:!Tperiod :!Operiod]
-             ]
-     }
-    {
-     :des "black corne mapping"
-     :rules
-            [
-            [:condi :black]
-            [:##spacebar :left_shift nil {:alone :spacebar}]
-            [:##left_control :left_control nil {:alone :escape}]
-            [:##return_or_enter :left_control nil {:alone :return_or_enter}]
-             ]
-     }
-]}
+                 [:!Tcomma :!Ocomma]
+                 [:!Tperiod :!Operiod]
+                 ]
+         }
+
+        {:des "symbolic layer"
+         :rules [
+                 ;; active key is held down spacebar
+                 [:##return_or_enter   ["layer-1-hold" 1] nil {
+                                                             :alone [:return_or_enter]
+                                                             :afterup ["layer-1-hold" 0]
+                                                             }]
+                 :black
+                 :layer-1-hold
+                 ;; a b c d e f g h i j k l m n o p q r s t u v w x y z
+                 [:##a                           :1   ]
+
+                 [:##q                           :1]
+                 [:##w                           :2   ]
+                 [:##e                           :3]
+                 [:##r                           :4]
+                 [:##t                           :5   ]
+
+                 [:##y                           :6]
+                 [:##u                           :7]
+                 [:##i                           :8   ]
+                 [:##o                           :9]
+                 [:##p                           :0]
+
+                 [:##l                           :9]
+                 [:##semicolon                   :0]
+
+                 [:##s                           :grave_accent_and_tilde]
+                 [:##d                           :!Squote   ]
+                 [:##f                           :quote]
+                 [:##g                           :equal_sign]
+
+                 [:##h                           :hyphen   ]
+                 [:##j                           :open_bracket   ]
+                 [:##k                           :close_bracket]
+
+                 [:##n                           :backslash]
+
+                 [:##spacebar                    :tab]
+                 [:##left_control                           :!Stab]
+                 ]}
+
+        {
+         :des "black corne mapping"
+         :rules
+         [
+          [:condi :black]
+          [:##spacebar :left_shift nil {:alone :spacebar}]
+          [:##left_control :left_control nil {:alone :escape}]
+          [:##z :left_option nil {:alone :z}]
+          ]
+         }
+
+        {:des "symbolic layer"
+         :rules [
+                 ;; active key is held down spacebar
+                 ; [:x   ["layer-2-hold" 1] nil {
+                 ;                                             :alone [:x]
+                 ;                                             :afterup ["layer-2-hold" 0]
+                 ;                                             }]
+
+                 :black
+                 ; :layer-2-hold
+
+                 [:##h                           :left_arrow  :x-mode]
+                 [:##j                           :down_arrow  :x-mode]
+                 [:##k                           :up_arrow    :x-mode]
+                 [:##l                           :right_arrow :x-mode]
+                 ]}
+        ]}
