@@ -1,7 +1,7 @@
 {
  :devices       {;; define devices
                  ;; vendor_id and product_id can be found in Karabiner EventViewer gui
-                 :keychron [{:vendor_id 45929 :product_id 1133 }]
+                 :black [{:vendor_id 21972 :product_id 1121 }]
                  }
  :main [
 
@@ -22,21 +22,13 @@
              ]
      }
     {
-     :des "mod tap spacebar, capslock"
+     :des "black corne mapping"
      :rules
             [
-            [:condi :keychron]
-            [:!Sdelete_or_backspace :!Odelete_or_backspace]
-            [:!Cspacebar :!Creturn_or_enter]
+            [:condi :black]
             [:##spacebar :left_shift nil {:alone :spacebar}]
-            [:##caps_lock :left_control nil {:alone :escape}]
             [:##left_control :left_control nil {:alone :escape}]
             [:##return_or_enter :left_control nil {:alone :return_or_enter}]
-            [:##left_shift :left_alt]
-            [:##right_shift :right_alt]
-            [:##page_up :!C1]
-            [:##page_down :!C2]
-            [:##home :!C3]
              ]
      }
 ]}
