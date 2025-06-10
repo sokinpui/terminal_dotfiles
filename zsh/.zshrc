@@ -91,3 +91,4 @@ autoload -U compinit && compinit
 set -o ignoreeof
 
 export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH=$HOME/development/flutter/bin:$PATH
