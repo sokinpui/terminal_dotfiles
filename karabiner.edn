@@ -3,7 +3,10 @@
                  ;; vendor_id and product_id can be found in Karabiner EventViewer gui
                  :black [{:vendor_id 21972 :product_id 1121 }]
                  }
- :simlayers {:x-mode {:key :x}}
+ :simlayers {
+              :x-mode {:key :x}
+              ; :enter-mode {:key :return_or_enter}
+              }
  :main [
 
         {
@@ -25,14 +28,16 @@
 
         {:des "symbolic layer"
          :rules [
-                 ;; active key is held down spacebar
+                 ; active key is held down spacebar
                  [:##return_or_enter   ["layer-1-hold" 1] nil {
                                                              :alone [:return_or_enter]
                                                              :afterup ["layer-1-hold" 0]
                                                              }]
+
                  :black
                  :layer-1-hold
-                 ;; a b c d e f g h i j k l m n o p q r s t u v w x y z
+                 ; :enter-mode
+
                  [:##a                           :1   ]
 
                  [:##q                           :1]

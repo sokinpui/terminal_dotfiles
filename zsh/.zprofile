@@ -32,6 +32,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin:$PATH"
 export PATH=/Library/TeX/texbin:$PATH
+export PATH=$HOME/.gem/bin:$PATH
 
 export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
 
@@ -71,3 +72,6 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
 
 export FLUTTER_ROOT="$(asdf where flutter)"
+
+# Added by `rbenv init` on Fri Jun  6 09:22:27 HKT 2025
+eval "$(rbenv init - --no-rehash zsh)"
