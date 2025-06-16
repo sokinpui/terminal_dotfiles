@@ -105,13 +105,13 @@ d() {
 if [[ "$USER" == "so" ]]; then
   alias \
     mv="mv -v" \
-    rm="$HOME/.local/bin/trash-put" \
+    rm="$HOME/.local/bin/trash-put -v" \
     rs="$HOME/.local/bin/trash-restore" \
     cp="cp -r -v"
 elif [[ "$USER" == "dou" ]]; then
   alias \
     mv="mv -v" \
-    rm="trash-put" \
+    rm="trash-put -v" \
     rs="trash-restore" \
     cp="cp -r -v"
 fi
