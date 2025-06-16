@@ -303,3 +303,5 @@ git clone https://github.com/sokinpui/terminal_dotfiles.git dotfiles
 
 defaults write -g InitialKeyRepeat -int 10
 defaults write -g KeyRepeat -int 1
+
+ya pkg install

@@ -7,7 +7,7 @@ return {
 		dependencies = {
 			-- check the installation instructions at
 			-- https://github.com/folke/snacks.nvim
-			"folke/snacks.nvim",
+			-- "folke/snacks.nvim",
 		},
 		keys = {
 			-- 👇 in this section, choose your own keymappings!
@@ -43,7 +43,11 @@ return {
 			-- vim.g.loaded_netrw = 1
 			vim.g.loaded_netrwPlugin = 1
 		end,
-		config = true,
+		config = function()
+			require("yazi").setup({
+				open_for_directories = true,
+			})
+		end,
 	},
 
 	-- {
