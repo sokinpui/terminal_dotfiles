@@ -28,13 +28,13 @@ echo "[STATE] Initial remote content length: ${#LAST_REMOTE_CONTENT}"
 # --- Main Sync Loop ---
 while true; do
   # 1. Check local
-  CURRENT_LOCAL_CONTENT=$(pbpaste)
-  if [[ "$CURRENT_LOCAL_CONTENT" != "$LAST_LOCAL_CONTENT" && "$CURRENT_LOCAL_CONTENT" != "$LAST_REMOTE_CONTENT" ]]; then
-    echo "[SYNC] Change detected on local. Syncing Local -> Remote."
-    printf "%s" "$CURRENT_LOCAL_CONTENT" | ssh "$REMOTE_HOST" 'pbcopy'
-    LAST_LOCAL_CONTENT="$CURRENT_LOCAL_CONTENT"
-    LAST_REMOTE_CONTENT="$CURRENT_LOCAL_CONTENT"
-  fi
+  # CURRENT_LOCAL_CONTENT=$(pbpaste)
+  # if [[ "$CURRENT_LOCAL_CONTENT" != "$LAST_LOCAL_CONTENT" && "$CURRENT_LOCAL_CONTENT" != "$LAST_REMOTE_CONTENT" ]]; then
+  #   echo "[SYNC] Change detected on local. Syncing Local -> Remote."
+  #   printf "%s" "$CURRENT_LOCAL_CONTENT" | ssh "$REMOTE_HOST" 'pbcopy'
+  #   LAST_LOCAL_CONTENT="$CURRENT_LOCAL_CONTENT"
+  #   LAST_REMOTE_CONTENT="$CURRENT_LOCAL_CONTENT"
+  # fi
 
   # 2. Check remote
   CURRENT_REMOTE_CONTENT=$(ssh -o ConnectTimeout=5 "$REMOTE_HOST" 'pbpaste' 2>/dev/null)
