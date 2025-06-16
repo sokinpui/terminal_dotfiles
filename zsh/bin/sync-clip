@@ -9,30 +9,48 @@ REMOTE_HOST="mac"
 POLL_INTERVAL=1
 # ---------------------
 
-echo "Starting remote-to-local clipboard sync from $REMOTE_HOST"
+echo "Starting bidirectional clipboard sync with $REMOTE_HOST"
 echo "Press Ctrl+C to stop."
 
-# We need to track the last content we copied to avoid running pbcopy repeatedly
-# with the same content. Initialize it with the current remote content.
-# The '2>/dev/null' suppresses errors if the remote is not reachable on startup.
-LAST_COPIED_CONTENT=$(ssh "$REMOTE_HOST" 'pbpaste' 2>/dev/null)
+# Get the initial state of both clipboards to start from a known baseline.
+# This prevents an immediate sync right when the script starts.
+LAST_LOCAL_CONTENT=$(pbpaste)
+LAST_REMOTE_CONTENT=$(ssh "$REMOTE_HOST" 'pbpaste' 2>/dev/null)
 
 # Main sync loop
 while true; do
-  # 1. Get the current content of the REMOTE clipboard
-  # Suppress errors in case the connection drops temporarily.
+  # 1. Check for changes on the LOCAL clipboard
+  CURRENT_LOCAL_CONTENT=$(pbpaste)
+
+  # If the local clipboard has changed and is different from the remote one...
+  if [[ "$CURRENT_LOCAL_CONTENT" != "$LAST_LOCAL_CONTENT" && "$CURRENT_LOCAL_CONTENT" != "$LAST_REMOTE_CONTENT" ]]; then
+    echo "Local -> Remote"
+    # Send the new local content to the remote clipboard.
+    printf "%s" "$CURRENT_LOCAL_CONTENT" | ssh "$REMOTE_HOST" 'pbcopy'
+
+    # Update our state variables to prevent an echo.
+    LAST_LOCAL_CONTENT="$CURRENT_LOCAL_CONTENT"
+    LAST_REMOTE_CONTENT="$CURRENT_LOCAL_CONTENT"
+    # Continue to the next loop iteration immediately.
+    sleep $POLL_INTERVAL
+    continue
+  fi
+
+  # 2. Check for changes on the REMOTE clipboard
   CURRENT_REMOTE_CONTENT=$(ssh "$REMOTE_HOST" 'pbpaste' 2>/dev/null)
 
-  # 2. Check if the remote content is new and not empty
-  if [[ "$CURRENT_REMOTE_CONTENT" != "$LAST_COPIED_CONTENT" ]]; then
-    echo "Syncing: Remote -> Local"
-
-    # 3. Copy the new remote content to the LOCAL clipboard.
-    # Using 'printf' is safer than 'echo' for arbitrary content.
+  # If the remote clipboard has changed and is different from the local one...
+  if [[ "$CURRENT_REMOTE_CONTENT" != "$LAST_REMOTE_CONTENT" && "$CURRENT_REMOTE_CONTENT" != "$LAST_LOCAL_CONTENT" ]]; then
+    echo "Remote -> Local"
+    # Copy the new remote content to the local clipboard.
     printf "%s" "$CURRENT_REMOTE_CONTENT" | pbcopy
 
-    # 4. Update the state to remember what we just copied.
-    LAST_COPIED_CONTENT="$CURRENT_REMOTE_CONTENT"
+    # Update our state variables to prevent an echo.
+    LAST_REMOTE_CONTENT="$CURRENT_REMOTE_CONTENT"
+    LAST_LOCAL_CONTENT="$CURRENT_REMOTE_CONTENT"
+    # Continue to the next loop iteration immediately.
+    sleep $POLL_INTERVAL
+    continue
   fi
 
   # Wait before the next poll
