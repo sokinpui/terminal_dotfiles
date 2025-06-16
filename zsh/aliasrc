@@ -266,3 +266,25 @@ alias pyvenv="python -m venv .env ; source .env/bin/activate"
 alias ggt="bat ~/.git.tokens"
 
 alias tt="tmux-sessionizer"
+
+# Smart tmux session management
+# Intercepts the `tmux` command to provide "attach or create" functionality
+# for a default session named "0".
+tmux() {
+  # If arguments are provided (e.g., "tmux ls", "tmux attach -t work"),
+  # just run the command as is. The `command` prefix prevents infinite loops.
+  if [ "$#" -gt 0 ]; then
+    command tmux "$@"
+    return
+  fi
+
+  # If no arguments are given, run our custom logic.
+  # Check if a session named "0" already exists.
+  if command tmux has-session -t "None" 2>/dev/null; then
+    # If it exists, attach to it.
+    command tmux attach-session -t "None"
+  else
+    # If it doesn't exist, create a new session named "0".
+    command tmux new-session -s "None"
+  fi
+}
