@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# --- Configuration ---
+# Set the user and hostname for your remote Mac.
+REMOTE_HOST="mac"
+
+# Polling interval in seconds.
+# A lower number is more responsive but uses more CPU/network.
+POLL_INTERVAL=1
+# ---------------------
+
+echo "Starting bidirectional clipboard sync with $REMOTE_HOST"
+echo "Press Ctrl+C to stop."
+
+# Get the initial state of both clipboards to start from a known baseline.
+# This prevents an immediate sync right when the script starts.
+LAST_LOCAL_CONTENT=$(pbpaste)
+LAST_REMOTE_CONTENT=$(ssh "$REMOTE_HOST" 'pbpaste' 2>/dev/null)
+
+# Main sync loop
+while true; do
+  # 1. Check for changes on the LOCAL clipboard
+  CURRENT_LOCAL_CONTENT=$(pbpaste)
+
+  # If the local clipboard has changed and is different from the remote one...
+  if [[ "$CURRENT_LOCAL_CONTENT" != "$LAST_LOCAL_CONTENT" && "$CURRENT_LOCAL_CONTENT" != "$LAST_REMOTE_CONTENT" ]]; then
+    echo "Local -> Remote"
+    # Send the new local content to the remote clipboard.
+    printf "%s" "$CURRENT_LOCAL_CONTENT" | ssh "$REMOTE_HOST" 'pbcopy'
+
+    # Update our state variables to prevent an echo.
+    LAST_LOCAL_CONTENT="$CURRENT_LOCAL_CONTENT"
+    LAST_REMOTE_CONTENT="$CURRENT_LOCAL_CONTENT"
+    # Continue to the next loop iteration immediately.
+    sleep $POLL_INTERVAL
+    continue
+  fi
+
+  # 2. Check for changes on the REMOTE clipboard
+  CURRENT_REMOTE_CONTENT=$(ssh "$REMOTE_HOST" 'pbpaste' 2>/dev/null)
+
+  # If the remote clipboard has changed and is different from the local one...
+  if [[ "$CURRENT_REMOTE_CONTENT" != "$LAST_REMOTE_CONTENT" && "$CURRENT_REMOTE_CONTENT" != "$LAST_LOCAL_CONTENT" ]]; then
+    echo "Remote -> Local"
+    # Copy the new remote content to the local clipboard.
+    printf "%s" "$CURRENT_REMOTE_CONTENT" | pbcopy
+
+    # Update our state variables to prevent an echo.
+    LAST_REMOTE_CONTENT="$CURRENT_REMOTE_CONTENT"
+    LAST_LOCAL_CONTENT="$CURRENT_REMOTE_CONTENT"
+    # Continue to the next loop iteration immediately.
+    sleep $POLL_INTERVAL
+    continue
+  fi
+
+  # Wait before the next poll
+  sleep $POLL_INTERVAL
+done
