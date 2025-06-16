@@ -10,3 +10,5 @@ function yazicd() {
 
 alias y='yazicd'
 alias yazi='yazicd'
+alias lf='yazicd'
+alias f='yazicd'
