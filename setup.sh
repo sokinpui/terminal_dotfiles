@@ -116,6 +116,7 @@ brew install direnv
 brew install cmake
 brew install cloc
 brew install mactex
+brew install yazi
 
 brew install deno
 brew tap FelixKratz/formulae
@@ -171,8 +172,19 @@ fi
 # Step 2: Create symbolic links for config files
 echo "Creating symbolic links for configuration files..."
 
+DOTFILES=(
+  nvim
+  AutoRaise
+  tmux
+  kitty
+  bat
+  lf
+  skhd
+  yabai
+)
+
 # Files/Directories that go in ~/.config/
-for tool in nvim AutoRaise tmux kitty bat lf skhd yabai; do
+for tool in "${DOTFILES[@]}"; do
   if [ -d "$REPO_DIR/$tool" ] || [ -f "$REPO_DIR/$tool" ]; then
     ln -sfv "$REPO_DIR/$tool" "$CONFIG_DIR/$tool"
   else

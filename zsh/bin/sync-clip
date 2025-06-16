@@ -2,7 +2,7 @@
 
 # --- Configuration ---
 # Set the user and hostname for your remote Mac.
-REMOTE_HOST="user@remote-host"
+REMOTE_HOST="mac"
 
 # Polling interval in seconds.
 # A lower number is more responsive but uses more CPU/network.
