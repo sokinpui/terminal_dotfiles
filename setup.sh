@@ -276,6 +276,7 @@ echo "downloaded open tablet driver!"
 
 ray completion zsh >$HOME/.config/zsh/autoload/_zay
 
+mkdir -p ~/.config/tmux/plugins
 git clone https://github.com/tmux-plugins/tmux-continuum ~/.config/tmux/plugins/tmux-continuum
 git clone https://github.com/tmux-plugins/tmux-resurrect ~/.config/tmux/plugins/tmux-resurrect
 
