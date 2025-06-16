@@ -22,6 +22,8 @@
 # lf
 [ -f ~/.config/zsh/lf ] && source ~/.config/zsh/lf
 
+# yazi
+[ -f ~/.config/zsh/yazi ] && source ~/.config/zsh/yazi
 
 export ZSHZ_CASE=smart
 

@@ -1,144 +1,78 @@
 return {
-	-- {
-	--   'stevearc/oil.nvim',
-	--   ---@module 'oil'
-	--   ---@type oil.SetupOpts
-	--   opts = {},
-	--   -- Optional dependencies
-	--   dependencies = { { "echasnovski/mini.icons", opts = {} } },
-	--   -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
-	--   config = function()
-	--     require("oil").setup()
-	--   end
-	-- },
-	-- Sample configuration is supplied
+
+	---@type LazySpec
 	{
-		"lmburns/lf.nvim",
+		"mikavilpas/yazi.nvim",
+		event = "VeryLazy",
 		dependencies = {
-			"akinsho/toggleterm.nvim",
+			-- check the installation instructions at
+			-- https://github.com/folke/snacks.nvim
+			"folke/snacks.nvim",
 		},
-		config = function()
-			local fn = vim.fn
-			-- This feature will not work if the plugin is lazy-loaded
-			vim.g.lf_netrw = 1
-
-			require("lf").setup({
-				escape_quit = true,
-				border = "rounded",
-				height = fn.float2nr(fn.round(1 * vim.o.lines)), -- height of the *floating* window
-				width = fn.float2nr(fn.round(1 * vim.o.columns)), -- width of the *floating* window
-				default_file_manager = true,
-				disable_netrw_warning = true,
-			})
-
-			vim.keymap.set("n", "L", "<Cmd>Lf<CR>")
-
-			vim.api.nvim_create_autocmd("User", {
-				pattern = "LfTermEnter",
-				callback = function()
-					vim.api.nvim_buf_set_keymap(a.buf, "t", "q", "q", { nowait = true })
-				end,
-			})
+		keys = {
+			-- 👇 in this section, choose your own keymappings!
+			{
+				"L",
+				mode = { "n", "v" },
+				"<cmd>Yazi<cr>",
+				desc = "Open yazi at the current file",
+			},
+			{
+				-- Open in the current working directory
+				"<leader>cw",
+				"<cmd>Yazi cwd<cr>",
+				desc = "Open the file manager in nvim's working directory",
+			},
+			{
+				"<c-up>",
+				"<cmd>Yazi toggle<cr>",
+				desc = "Resume the last yazi session",
+			},
+		},
+		---@type YaziConfig | {}
+		opts = {
+			-- if you want to open yazi instead of netrw, see below for more info
+			open_for_directories = false,
+			keymaps = {
+				show_help = "<f1>",
+			},
+		},
+		-- 👇 if you use `open_for_directories=true`, this is recommended
+		init = function()
+			-- More details: https://github.com/mikavilpas/yazi.nvim/issues/802
+			-- vim.g.loaded_netrw = 1
+			vim.g.loaded_netrwPlugin = 1
 		end,
+		config = true,
 	},
+
 	-- {
-	--   'stevearc/oil.nvim',
-	--   opts = {},
-	--   dependencies = { "nvim-tree/nvim-web-devicons" },
-	--   config = function()
-	--     vim.keymap.set('n', '<leader>e', '<Cmd>Oil<cr>', { noremap = true, silent = true })
-	--     vim.keymap.set('n', '<C-e>', '<Cmd>Oil<cr>', { noremap = true, silent = true })
-	--     require("oil").setup({
-	--       default_file_explorer = true,
-	--       columns = {
-	--         "",
-	--       },
-	--       buf_options = {
-	--         buflisted = false,
-	--         bufhidden = "hide",
-	--       },
-	--       win_options = {
-	--         wrap = false,
-	--         signcolumn = "no",
-	--         cursorcolumn = false,
-	--         foldcolumn = "0",
-	--         spell = false,
-	--         list = false,
-	--         conceallevel = 3,
-	--         concealcursor = "nvic",
-	--       },
-	--       delete_to_trash = true,
-	--       skip_confirm_for_simple_edits = true,
-	--       trash_command = "trash-put",
-	--       prompt_save_on_select_new_entry = false,
-	--       keymaps = {
-	--         ["L"] = "actions.select",
-	--         ["H"] = "actions.parent",
-	--         ["_"] = "actions.open_cwd",
-	--         ["`"] = "actions.cd",
-	--         ["~"] = "actions.tcd",
-	--         ["gs"] = "actions.change_sort",
-	--         ["g."] = "actions.toggle_hidden",
-	--         ["g?"] = "actions.show_help",
-	--         ["<C-s>"] = "actions.select_vsplit",
-	--         ["<C-h>"] = "actions.select_split",
-	--         ["<C-t>"] = "actions.select_tab",
-	--         ["<C-p>"] = "actions.preview",
-	--         ["<C-c>"] = "actions.close",
-	--         ["<C-l>"] = "actions.refresh",
-	--       },
-	--       use_default_keymaps = true,
-	--       view_options = {
-	--         show_hidden = false,
-	--         is_hidden_file = function(name, bufnr)
-	--           return vim.startswith(name, ".")
-	--         end,
-	--         is_always_hidden = function(name, bufnr)
-	--           return false
-	--         end,
-	--         sort = {
-	--           { "type", "asc" },
-	--           { "name", "asc" },
-	--         },
-	--       },
-	--       float = {
-	--         padding = 2,
-	--         max_width = 0,
-	--         max_height = 0,
-	--         border = "rounded",
-	--         win_options = {
-	--           winblend = 0,
-	--         },
-	--         override = function(conf)
-	--           return conf
-	--         end,
-	--       },
-	--       preview = {
-	--         max_width = 0.9,
-	--         min_width = { 40, 0.4 },
-	--         width = nil,
-	--         max_height = 0.9,
-	--         min_height = { 5, 0.1 },
-	--         height = nil,
-	--         border = "rounded",
-	--         win_options = {
-	--           winblend = 0,
-	--         },
-	--       },
-	--       progress = {
-	--         max_width = 0.9,
-	--         min_width = { 40, 0.4 },
-	--         width = nil,
-	--         max_height = { 10, 0.9 },
-	--         min_height = { 5, 0.1 },
-	--         height = nil,
-	--         border = "rounded",
-	--         minimized_border = "none",
-	--         win_options = {
-	--           winblend = 0,
-	--         },
-	--       },
-	--     })
-	--   end
-	-- }
+	-- 	"lmburns/lf.nvim",
+	-- 	dependencies = {
+	-- 		"akinsho/toggleterm.nvim",
+	-- 	},
+	-- 	config = function()
+	-- 		local fn = vim.fn
+	-- 		-- This feature will not work if the plugin is lazy-loaded
+	-- 		vim.g.lf_netrw = 1
+	--
+	-- 		require("lf").setup({
+	-- 			escape_quit = true,
+	-- 			border = "rounded",
+	-- 			height = fn.float2nr(fn.round(1 * vim.o.lines)), -- height of the *floating* window
+	-- 			width = fn.float2nr(fn.round(1 * vim.o.columns)), -- width of the *floating* window
+	-- 			default_file_manager = true,
+	-- 			disable_netrw_warning = true,
+	-- 		})
+	--
+	-- 		vim.keymap.set("n", "L", "<Cmd>Lf<CR>")
+	--
+	-- 		vim.api.nvim_create_autocmd("User", {
+	-- 			pattern = "LfTermEnter",
+	-- 			callback = function()
+	-- 				vim.api.nvim_buf_set_keymap(a.buf, "t", "q", "q", { nowait = true })
+	-- 			end,
+	-- 		})
+	-- 	end,
+	-- },
 }
