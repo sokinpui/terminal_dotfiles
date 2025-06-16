@@ -6,13 +6,16 @@ selected_name="$2"
 
 # If no directory provided, use fzf to select one
 if [[ -z "$selected" ]]; then
-  selected=$(find \
-    ~/projects \
-    ~/projects/lscm/CEDD/SSDMS \
-    ~/projects/lscm/CEDD \
-    -mindepth 1 -maxdepth 1 -type d \
-    -not -path '*/.*' |
-    fzf --height 40% --reverse --header "Select a directory to open in tmux")
+  selected=$(
+    find \
+      ~/projects \
+      ~/projects/lscm/CEDD/SSDMS \
+      ~/projects/lscm/CEDD \
+      ~/dotfiles \
+      -mindepth 1 -maxdepth 1 -type d \
+      -not -path '*/.*' |
+      fzf --height 40% --reverse --header "Select a directory to open in tmux"
+  )
   # Exit if no selection made
   [[ -z "$selected" ]] && exit 1
 fi
