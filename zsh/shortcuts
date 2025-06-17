@@ -74,7 +74,7 @@ open-recent-cd() {
 }
 
 zle -N open-recent-cd
-bindkey '^y' open-recent-cd
+bindkey '^g' open-recent-cd
 
 fzf-file-widget() {
   LBUFFER="${LBUFFER}$(fd --type f | fzf --height 40% --reverse)"
