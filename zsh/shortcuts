@@ -74,7 +74,22 @@ open-recent-cd() {
 }
 
 zle -N open-recent-cd
-bindkey '^g' open-recent-cd
+bindkey '^y' open-recent-cd
+
+jump-to-dir-in-git-repo() {
+  cd $(git rev-parse --show-toplevel)
+  selected_dir=$(fd --type=d | fzf --height 40% --reverse)
+  if [ -z $selected_dir ]; then
+    zle reset-prompt
+    return
+  fi
+  cd $selected_dir
+
+  zle accept-line
+}
+
+zle -N jump-to-dir-in-git-repo
+bindkey '^g' jump-to-dir-in-git-repo
 
 fzf-file-widget() {
   LBUFFER="${LBUFFER}$(fd --type f | fzf --height 40% --reverse)"
