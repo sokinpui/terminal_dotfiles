@@ -10,3 +10,5 @@
 [init]
 	defaultBrancha = main
 	defaultBranch = main
+[credential]
+	helper = store
