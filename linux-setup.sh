@@ -6,10 +6,17 @@
 # --- Step 1: User Confirmation ---
 read -p "This script will install various command-line tools using apt and other installers. Do you want to continue? (y/n) " -n 1 -r
 echo ""
-if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+# Use a POSIX-compliant `case` statement instead of bash-specific [[ ... ]]
+case "$REPLY" in
+[Yy])
+  # If 'y' or 'Y', do nothing and continue with the script.
+  ;;
+*)
+  # For any other input, exit.
   echo "Exiting script..."
   exit 1
-fi
+  ;;
+esac
 
 # --- Step 2: System Update and Prerequisite Installation ---
 echo "Updating package lists and installing prerequisites..."
