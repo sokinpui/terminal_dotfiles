@@ -149,6 +149,7 @@ brew install --cask microsoft-outlook
 brew install --cask microsoft-word
 brew install --cask karabiner-elements
 brew install pomdtr/tap/ray
+brew install --cask google-drive
 
 brew tap FelixKratz/formulae
 brew install borders
