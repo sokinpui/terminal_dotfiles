@@ -14,7 +14,7 @@
 #[ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
 [ -f ~/.config/zsh/fzf ] && source ~/.config/zsh/fzf
 [ -f ~/.config/zsh/fzf-key-binds.zsh ] && source ~/.config/zsh/fzf-key-binds.zsh
-[ -f ~/.config/zsh/lf ] && source ~/.config/zsh/lf
+# [ -f ~/.config/zsh/lf ] && source ~/.config/zsh/lf
 [ -f ~/.config/zsh/yazi ] && source ~/.config/zsh/yazi
 [ -f ~/.localconfig ] && source ~/.localconfig
 
