@@ -45,8 +45,7 @@ open-recent-edit-file() {
       -E "__pycache__" \
       -E "*.ogg" |
       xargs -0 ls -1t |
-      fzf --height 40% --reverse \
-        --header="cwd=$cwd  | cmd='$EDITOR <file>'  "
+      fzf --height 40% --reverse -m --header="cwd=$cwd  | cmd='$EDITOR <file>'  "
   )
   if [ -z $select_file ]; then
     zle reset-prompt
