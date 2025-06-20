@@ -3,7 +3,7 @@
 ## Install Linux config
 
 ```sh
-curl https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/main/linux-setup.sh | sh
+curl https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/main/linux-setup | sh
 ```
 
 ## After installation, you should...
@@ -27,7 +27,7 @@ curl https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/main/linux-set
 runn the scipt
 
 ```sh
-curl https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/main/setup.sh | sh
+curl https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/main/setup | sh
 ```
 
 ## macOS system preferences after script
