@@ -1,3 +1,5 @@
+# applicaiton specific settings
+# ==============================================================
 [ -f $HOME/.config/zsh/brew ] && source $HOME/.config/zsh/brew
 [ -f $HOME/.config/zsh/aliasrc ] && source $HOME/.config/zsh/aliasrc
 [ -f $HOME/.config/zsh/keymaps ] && source $HOME/.config/zsh/keymaps
@@ -8,22 +10,16 @@
 [ -f $HOME/.config/zsh/completion ] && source $HOME/.config/zsh/completion
 # [ -f $HOME/.config/zsh/ruby ] && source $HOME/.config/zsh/ruby
 [ -f $HOME/.api_key ] && source $HOME/.api_key
-
 # [ -f $HOME/.config/zsh/conda ] && source $HOME/.config/zsh/conda
-
-# lua version switcher
 #[ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
-
-#fzf
-# source <(fzf --zsh)
 [ -f ~/.config/zsh/fzf ] && source ~/.config/zsh/fzf
 [ -f ~/.config/zsh/fzf-key-binds.zsh ] && source ~/.config/zsh/fzf-key-binds.zsh
-
-# lf
 [ -f ~/.config/zsh/lf ] && source ~/.config/zsh/lf
-
-# yazi
 [ -f ~/.config/zsh/yazi ] && source ~/.config/zsh/yazi
+[ -f ~/.localconfig ] && source ~/.localconfig
+
+# ===============================================================
+
 
 export ZSHZ_CASE=smart
 
@@ -50,38 +46,6 @@ export ES_JAVA_HOME=/opt/homebrew/Cellar/openjdk/21.0.2/libexec/openjdk.jdk/Cont
 if ! pgrep -u $USER skhd >/dev/null 2>&1; then
   skhd --start-service
 fi
-
-
-# function remove_skhd_lock_file_on_end() {
-#   local process_name="$(ps -p $SKHD_PID | tail -n 1 | awk '{print $4}')"
-#
-#   while [[ $process_name == "skhd" ]]; do
-#     local process_name="$(ps -p $SKHD_PID | tail -n 1 | awk '{print $4}')"
-#     sleep 1
-#   done
-#
-#   rm /tmp/skhd.lock
-#   rm /tmp/skhd_$(whoami).pid
-# }
-#
-# if [ -z "$SSH_CONNECTION" ]; then
-#   if [ ! -f /tmp/skhd.lock ]; then
-#     echo "skhd is not running. Starting skhd..."
-#     echo "skhd is running" > /tmp/skhd.lock
-#     skhd &!
-#     SKHD_PID=$!
-#
-#     remove_skhd_lock_file_on_end &
-#   fi
-# else
-#   echo "skhd will not run in an SSH session."
-# fi
-
-# # The next line updates PATH for the Google Cloud SDK.
-# if [ -f '/Users/mac/tmp/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mac/tmp/google-cloud-sdk/path.zsh.inc'; fi
-#
-# # The next line enables shell command completion for gcloud.
-# if [ -f '/Users/mac/tmp/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mac/tmp/google-cloud-sdk/completion.zsh.inc'; fi
 
 defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
 defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
