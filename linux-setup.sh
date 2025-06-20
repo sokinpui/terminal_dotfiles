@@ -104,14 +104,7 @@ echo "Creating symbolic links for configuration files..."
 
 # List of dotfiles/directories to link into ~/.config/
 # Cleaned up for Linux compatibility
-DOTFILES=(
-  nvim
-  tmux
-  kitty
-  bat
-  lf
-  yazi
-)
+DOTFILES=(nvim tmux kitty bat lf yazi)
 
 for tool in "${DOTFILES[@]}"; do
   # Check if the source file/directory exists in the cloned repo
