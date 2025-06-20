@@ -5,13 +5,6 @@
 # Variables
 
 # ask user for confirmation
-read -p "This script will install Homebrew and various command-line tools. Do you want to continue? (y/n) " -n 1 -r
-echo ""
-if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-  echo "Exiting script..."
-  exit 1
-fi
-
 # Step 1: Ensure Homebrew is installed
 if ! command -v brew &>/dev/null; then
   echo "Homebrew not found. Installing Homebrew..."
