@@ -4,17 +4,12 @@ return {
 	{
 		"mikavilpas/yazi.nvim",
 		event = "VeryLazy",
-		dependencies = {
-			-- check the installation instructions at
-			-- https://github.com/folke/snacks.nvim
-			-- "folke/snacks.nvim",
-		},
 		keys = {
 			-- 👇 in this section, choose your own keymappings!
 			{
 				"L",
 				mode = { "n", "v" },
-				"<cmd>Yazi<cr>",
+				"<cmd>Yazi cw<cr>",
 				desc = "Open yazi at the current file",
 			},
 			{
@@ -22,11 +17,6 @@ return {
 				"<leader>cw",
 				"<cmd>Yazi cwd<cr>",
 				desc = "Open the file manager in nvim's working directory",
-			},
-			{
-				"<c-up>",
-				"<cmd>Yazi toggle<cr>",
-				desc = "Resume the last yazi session",
 			},
 		},
 		---@type YaziConfig | {}
@@ -49,34 +39,4 @@ return {
 			})
 		end,
 	},
-
-	-- {
-	-- 	"lmburns/lf.nvim",
-	-- 	dependencies = {
-	-- 		"akinsho/toggleterm.nvim",
-	-- 	},
-	-- 	config = function()
-	-- 		local fn = vim.fn
-	-- 		-- This feature will not work if the plugin is lazy-loaded
-	-- 		vim.g.lf_netrw = 1
-	--
-	-- 		require("lf").setup({
-	-- 			escape_quit = true,
-	-- 			border = "rounded",
-	-- 			height = fn.float2nr(fn.round(1 * vim.o.lines)), -- height of the *floating* window
-	-- 			width = fn.float2nr(fn.round(1 * vim.o.columns)), -- width of the *floating* window
-	-- 			default_file_manager = true,
-	-- 			disable_netrw_warning = true,
-	-- 		})
-	--
-	-- 		vim.keymap.set("n", "L", "<Cmd>Lf<CR>")
-	--
-	-- 		vim.api.nvim_create_autocmd("User", {
-	-- 			pattern = "LfTermEnter",
-	-- 			callback = function()
-	-- 				vim.api.nvim_buf_set_keymap(a.buf, "t", "q", "q", { nowait = true })
-	-- 			end,
-	-- 		})
-	-- 	end,
-	-- },
 }
