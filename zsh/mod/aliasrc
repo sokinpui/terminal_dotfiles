@@ -1,17 +1,5 @@
 #!/usr/bin/env bash
 
-#restart_shell() {
-#  clear && echo "restart shell"
-#  exec $SHELL
-#}
-
-# change directory with fzf, $1 is parent dir of the target.
-#cdf() {
-#  [ -z "$1" ] && echo "Usage: change directory with fancy find. cdf <dir>"
-#  # TODO support options
-#  cd $(find $1 | fzf)
-#}
-
 mkdc() {
   mkdir -p "$@" && echo "create $(realpath "$@")" &&
     echo "cd to  $(realpath "$@")" &&
@@ -56,10 +44,10 @@ alias \
   nvI="$EDITOR" \
   sz="source $HOME/.zshrc" \
   vzz="$EDITOR $HOME/.zshrc" \
-  vza="$EDITOR $HOME/.config/zsh/aliasrc" \
+  vza="$EDITOR $HOME/.config/zsh/mod/aliasrc" \
   vzp="$EDITOR $HOME/.zprofile" \
   vze="$EDITOR $HOME/.zshenv" \
-  vzs="$EDITOR $HOME/.config/zsh/keymaps" \
+  vzs="$EDITOR $HOME/.config/zsh/mod/shortcuts" \
   vt="$EDITOR $HOME/.config/zsh/script/ts" \
   vvv="$EDITOR $HOME/.config/nvim/init.lua" \
   vvm="$EDITOR $HOME/.config/nvim/after/plugin/mapping.vim" \
@@ -88,12 +76,6 @@ alias \
   8="cd +8" \
   9="cd +9"
 # mkd='mkdir -p'
-
-#vpmkd(){
-#  [ -z $1 ] && echo "Usage: vpmkd <name of plugin directory>, create a simple vim plugin structure" && return
-#  mkdir -p ~/.vim/pack/myplugins/start/$1/autoload ~/.vim/pack/myplugins/start/$1/plugin
-#  cd ~/.vim/pack/myplugins/start/$1
-#}
 
 d() {
   [[ $1 == "-" ]] && cd - && return
@@ -154,16 +136,24 @@ alias \
   fnrs="file-name-remove-space"
 
 # Readalbe & color
+# mac only
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  alias \
+    ls="gls --group-directories-first --color=always -h" \
+    ll="gls --group-directories-first --color=always -hl" \
+    la="gls --group-directories-first -lah --color=always"
+else
+  alias \
+    ls="ls --group-directories-first --color=always -h" \
+    ll="ls --group-directories-first --color=always -hl" \
+    la="ls --group-directories-first -lah --color=always"
+fi
+
 alias \
   fd="fd --color auto -i" \
   grep="grep -i --color=auto" \
   rg="rg -i" \
   htop="TERM=xterm-256color htop" \
-  news="TERM=xterm-256color newsboat" \
-  ll="gls --group-directories-first --color=always -hl" \
-  ls="gls --group-directories-first --color=always -h" \
-  la="gls --group-directories-first -lah --color=always" \
-  lb="list-book" \
   mc="mc -b" \
   df="df -h"
 
@@ -177,55 +167,6 @@ l() {
 # list all create new hugo post and edit it
 alias h="hugo"
 
-#hnew() {
-#  cd ~/git_repo/mine/myblog/
-#  [ -z $* ] && tree -dt -L 1 ~/git_repo/mine/myblog/content/post \
-#    && echo "Please provide name of 1:directory, 2:post" \
-#    && return
-#  [ -z $2 ] && tree -dt ~/git_repo/mine/myblog/content/$1 && return
-#
-#  if [[ $# -ge 2 ]]; then
-#    mkdir -p ~/git_repo/mine/myblog/content/$1/$2
-#    hugo new $1/$2/index.md
-#    cd -
-#    $EDITOR ~/git_repo/mine/myblog/content/$1/$2/index.md
-#  fi
-#}
-
-# kmoand
-alias \
-  kk="systemctl --user restart kanata@carbon.service " \
-  kkk="systemctl --user status kanata@carbon.service " \
-  kkkk="systemctl --user stop kanata@carbon.service " \
-  KK="systemctl --user restart kanata@carbon.service " \
-  KKK="systemctl --user status kanata@carbon.service " \
-  KKKK="systemctl --user stop kanata@carbon.service "
-# kk="systemctl --user restart kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
-# kkk="systemctl --user status kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
-# kkkk="systemctl --user stop kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
-# KK="systemctl --user restart kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
-# KKK="systemctl --user status kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
-# KKKK="systemctl --user stop kanata@carbon.service  kanata@us100-port.service kanata@us-right.service" \
-# \
-# kkcarbon="systemctl --user restart kanata@carbon.service" \
-# kkkcarbon="systemctl --user status kanata@carbon.service" \
-# kkkkcarbon="systemctl --user stop kanata@carbon.service" \
-# KKcarbon="systemctl --user restart kanata@carbon.service" \
-# KKKcarbon="systemctl --user status kanata@carbon.service" \
-# KKKKcarbon="systemctl --user stop kanata@carbon.service" \
-# \
-# kkus="systemctl --user restart  kanata@us100-port.service kanata@us-right.service" \
-# kkkus="systemctl --user status  kanata@us100-port.service kanata@us-right.service" \
-# kkkkus="systemctl --user stop  kanata@us100-port.service kanata@us-right.service" \
-# KKus="systemctl --user restart  kanata@us100-port.service kanata@us-right.service" \
-# KKKus="systemctl --user status  kanata@us100-port.service kanata@us-right.service" \
-# KKKKus="systemctl --user stop  kanata@us100-port.service kanata@us-right.service" \
-
-# open obsidian
-#obsidian() {
-#  xdg-open "obsidian://open" &> /tmp/obsidian.log
-#}
-
 # steam
 alias steam="steam -forcedesktopscaling 1.5"
 
@@ -238,17 +179,6 @@ alias \
 # python="$(brew --prefix python)/bin/python3.12" \
 # pip="~/.local/bin/pip3.12" \
 # pip3="~/.local/bin/pip3.12"
-
-#brew
-alias \
-  b="brew" \
-  bi="brew install"
-alias \
-  e="emacs -nw" \
-  doom="~/.config/emacs/bin/doom"
-
-# alias \
-# yabai="yabai --restart-service" \
 
 alias conda-init="source $HOME/.config/zsh/bin/conda-init"
 
@@ -287,4 +217,26 @@ tmux() {
     # If it doesn't exist, create a new session named "0".
     command tmux new-session -s "None"
   fi
+}
+
+yabai() {
+  # If arguments are provided (e.g., "tmux ls", "tmux attach -t work"),
+  # just run the command as is. The `command` prefix prevents infinite loops.
+  if [ "$#" -gt 0 ]; then
+    command yabai "$@"
+    return
+  fi
+
+  command yabai --restart-service
+}
+
+skhd() {
+  # If arguments are provided (e.g., "tmux ls", "tmux attach -t work"),
+  # just run the command as is. The `command` prefix prevents infinite loops.
+  if [ "$#" -gt 0 ]; then
+    command skhd "$@"
+    return
+  fi
+
+  command skhd --restart-service
 }

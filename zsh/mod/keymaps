@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# paste using ctrl-v
+_paste-copy-using-pbpaste() {
+  LBUFFER+="$(pbpaste)"
+}
+
+zle -N _paste-copy-using-pbpaste
+bindkey '^v' _paste-copy-using-pbpaste          # Paste from clipboard
+bindkey -M vicmd '^v' _paste-copy-using-pbpaste # Paste from clipboard
+
+vi-yank-pbcopy() {
+  zle vi-yank
+  echo "$CUTBUFFER" | pbcopy
+}
+
+zle -N vi-yank-pbcopy
+bindkey -M vicmd 'y' vi-yank-pbcopy
+
+bindkey -s '^k' '^[k'
+
+# delte whole word using ctrl + backspace
+bindkey -s '^H' '^w'
+
+# edit line in vim with ctrl-e:
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^e' edit-command-line

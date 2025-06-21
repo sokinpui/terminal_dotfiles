@@ -1,21 +1,21 @@
 # applicaiton specific settings
 # ==============================================================
-[ -f $HOME/.config/zsh/brew ] && source $HOME/.config/zsh/brew
-[ -f $HOME/.config/zsh/aliasrc ] && source $HOME/.config/zsh/aliasrc
-[ -f $HOME/.config/zsh/keymaps ] && source $HOME/.config/zsh/keymaps
-[ -f $HOME/.config/zsh/shortcuts ] && source $HOME/.config/zsh/shortcuts
-[ -f $HOME/.config/zsh/git-prompt.sh ] && source /$HOME/.config/zsh/git-prompt.sh
-[ -f $HOME/.config/zsh/vim_mode ] && source $HOME/.config/zsh/vim_mode
-[ -f $HOME/.config/zsh/appearance ] && source $HOME/.config/zsh/appearance
-[ -f $HOME/.config/zsh/completion ] && source $HOME/.config/zsh/completion
-# [ -f $HOME/.config/zsh/ruby ] && source $HOME/.config/zsh/ruby
+[ -f $HOME/.config/zsh/mod/brew ] && source $HOME/.config/zsh/mod/brew
+[ -f $HOME/.config/zsh/mod/aliasrc ] && source $HOME/.config/zsh/mod/aliasrc
+[ -f $HOME/.config/zsh/mod/keymaps ] && source $HOME/.config/zsh/mod/keymaps
+[ -f $HOME/.config/zsh/mod/shortcuts ] && source $HOME/.config/zsh/mod/shortcuts
+[ -f $HOME/.config/zsh/mod/git-prompt.sh ] && source /$HOME/.config/zsh/mod/git-prompt.sh
+[ -f $HOME/.config/zsh/mod/vim_mode ] && source $HOME/.config/zsh/mod/vim_mode
+[ -f $HOME/.config/zsh/mod/appearance ] && source $HOME/.config/zsh/mod/appearance
+[ -f $HOME/.config/zsh/mod/completion ] && source $HOME/.config/zsh/mod/completion
+# [ -f $HOME/.config/zsh/mod/ruby ] && source $HOME/.config/zsh/mod/ruby
 [ -f $HOME/.api_key ] && source $HOME/.api_key
-# [ -f $HOME/.config/zsh/conda ] && source $HOME/.config/zsh/conda
+# [ -f $HOME/.config/zsh/mod/conda ] && source $HOME/.config/zsh/mod/conda
 #[ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
-[ -f ~/.config/zsh/fzf ] && source ~/.config/zsh/fzf
-[ -f ~/.config/zsh/fzf-key-binds.zsh ] && source ~/.config/zsh/fzf-key-binds.zsh
-# [ -f ~/.config/zsh/lf ] && source ~/.config/zsh/lf
-[ -f ~/.config/zsh/yazi ] && source ~/.config/zsh/yazi
+[ -f ~/.config/zsh/mod/fzf ] && source ~/.config/zsh/mod/fzf
+[ -f ~/.config/zsh/mod/fzf-key-binds.zsh ] && source ~/.config/zsh/mod/fzf-key-binds.zsh
+# [ -f ~/.config/zsh/mod/lf ] && source ~/.config/zsh/mod/lf
+[ -f ~/.config/zsh/mod/yazi ] && source ~/.config/zsh/mod/yazi
 [ -f ~/.localconfig ] && source ~/.localconfig
 
 # ===============================================================
