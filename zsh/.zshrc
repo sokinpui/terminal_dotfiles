@@ -29,8 +29,8 @@ fpath=(
 autoload -Uz ~/.config/zsh/autoload/*(.:t)
 
 # History
-HISTSIZE=1000000
-SAVEHIST=1000000
+HISTSIZE=10000
+SAVEHIST=10000
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
