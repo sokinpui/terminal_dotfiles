@@ -1,2 +1,8 @@
 vim.loader.enable()
-require("setup")
+
+local user = vim.fn.expand("$USER")
+local hostname = vim.fn.hostname()
+
+if user == "so" and hostname == "Mac-Studio" then
+	require("setup")
+end

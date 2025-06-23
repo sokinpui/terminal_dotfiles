@@ -43,12 +43,15 @@ eval "$(zoxide init zsh)"
 
 export ES_JAVA_HOME=/opt/homebrew/Cellar/openjdk/21.0.2/libexec/openjdk.jdk/Contents/Home
 
-if ! pgrep -u $USER skhd >/dev/null 2>&1; then
-  skhd --start-service
-fi
 
-defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
-defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+# only for macOs
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  if ! pgrep -u $USER skhd >/dev/null 2>&1; then
+    skhd --start-service
+  fi
+  defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
+  defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+fi
 
 eval "$(direnv hook zsh)"
 
