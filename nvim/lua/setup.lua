@@ -25,6 +25,7 @@ require("lazy").setup({
 	require("plugins.quickfix"),
 	require("plugins.comments"),
 	require("plugins.outline"),
+	require("plugins.live-command"),
 	-- require("plugins.terminal"),
 
 	-- buffer jump
@@ -35,7 +36,7 @@ require("lazy").setup({
 	-- motion
 	-- require("plugins.cleverf"),
 	require("plugins.jump"),
-	require("plugins.multi-cursor"),
+	-- require("plugins.multi-cursor"),
 	-- require("plugins.visual-effect"),
 	require("plugins.surround"),
 	require("plugins.auto-pairs"),
