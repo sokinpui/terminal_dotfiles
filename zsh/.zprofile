@@ -48,7 +48,10 @@ export PAGER='less -R'
 export MANPAGER='nvim +Man!'
 #export MANWIDTH=99
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# only for macOS
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"``
