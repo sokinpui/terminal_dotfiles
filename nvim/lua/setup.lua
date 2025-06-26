@@ -31,7 +31,7 @@ require("lazy").setup({
 	-- buffer jump
 	require("plugins.buffer"),
 
-	require("plugins.file_explorer"),
+	-- require("plugins.file_explorer"),
 
 	-- motion
 	-- require("plugins.cleverf"),
