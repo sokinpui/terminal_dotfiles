@@ -6,3 +6,7 @@ local hostname = vim.fn.hostname()
 if user == "so" and hostname == "Mac-Studio" then
 	require("setup")
 end
+
+if user == "dou" and hostname == "dous-MacBook-Air" then
+	require("setup")
+end
