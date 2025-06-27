@@ -7,6 +7,6 @@ if user == "so" and hostname == "Mac-Studio" then
 	require("setup")
 end
 
-if user == "dou" and hostname == "dous-MacBook-Air" then
+if user == "dou" and hostname == "dous-MacBook-Air.local" then
 	require("setup")
 end
