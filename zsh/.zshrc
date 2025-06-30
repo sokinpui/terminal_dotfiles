@@ -16,7 +16,6 @@
 [ -f ~/.config/zsh/mod/fzf-key-binds.zsh ] && source ~/.config/zsh/mod/fzf-key-binds.zsh
 [ -f ~/.config/zsh/mod/lf ] && source ~/.config/zsh/mod/lf
 # [ -f ~/.config/zsh/mod/yazi ] && source ~/.config/zsh/mod/yazi
-[ -f ~/.localconfig ] && source ~/.localconfig
 
 # ===============================================================
 
@@ -61,3 +60,5 @@ set -o ignoreeof
 
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH=$HOME/development/flutter/bin:$PATH
+
+[ -f ~/.localconfig ] && source ~/.localconfig
