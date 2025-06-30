@@ -179,3 +179,6 @@ echo "4. To use yazi plugins, run 'yazi' and then type ':pkg install' to install
 echo "-----------------------------------------------------"
 
 chsh -s "$(which zsh)" || echo "Failed to change default shell to Zsh. Please run 'chsh -s $(which zsh)' manually."
+
+sudo locale-gen en_US.UTF-8
+sudo update-locale
