@@ -1,0 +1,83 @@
+#!/bin/bash
+
+# A simple script to recursively output the code in specified directories,
+# filtering by file extensions, using 'fd'.
+
+# --- Pre-flight Checks ---
+
+# 1. Check if 'fd' is installed
+if ! command -v fd &>/dev/null; then
+  echo "Error: 'fd' command not found." >&2
+  echo "Please install fd (https://github.com/sharkdp/fd) and try again." >&2
+  exit 1
+fi
+
+# 2. Check for arguments
+if [ "$#" -eq 0 ]; then
+  echo "Usage: $0 <dir1> [<dir2>...] <ext1> [<ext2>...]" >&2
+  echo "Example: $0 ./frontend/src ./backend/api ts tsx js" >&2
+  echo "Note: All directory paths must be provided before any file extensions." >&2
+  exit 1
+fi
+
+# --- Argument Parsing ---
+
+declare -a DIRS=()
+declare -a EXTS=()
+
+# Separate arguments into DIRS and EXTS.
+# This loop assumes all directory paths are provided first.
+# It stops when it finds the first argument that is not a directory.
+while [[ $# -gt 0 ]] && [ -d "$1" ]; do
+  DIRS+=("$1")
+  shift # Consume the argument and move to the next one
+done
+
+# Whatever arguments are left are considered extensions.
+EXTS=("$@")
+
+# --- Validation of Parsed Arguments ---
+
+if [ ${#DIRS[@]} -eq 0 ]; then
+  echo "Error: No valid directories were provided." >&2
+  exit 1
+fi
+
+if [ ${#EXTS[@]} -eq 0 ]; then
+  echo "Error: No file extensions were provided." >&2
+  exit 1
+fi
+
+# --- Build `fd` extension arguments ---
+
+# We create an array to safely handle all extension arguments for fd.
+declare -a FD_EXT_ARGS=()
+for ext in "${EXTS[@]}"; do
+  FD_EXT_ARGS+=("--extension" "$ext") # Using --extension is more explicit than -e
+done
+
+# --- Main Processing Loop ---
+
+# Loop through each directory provided by the user.
+for dir in "${DIRS[@]}"; do
+  # Print the header for the directory as requested.
+  echo "$dir"
+  echo "---"
+
+  # Use 'fd' to find all files matching the extensions within the directory.
+  # The 'while read' loop processes each file path that 'fd' finds.
+  # Using -print0 and `read -d ''` is a robust way to handle filenames
+  # that might contain spaces or other special characters.
+  fd --type f "${FD_EXT_ARGS[@]}" . "$dir" --print0 | while IFS= read -r -d '' file; do
+
+    # Output the file content inside a Markdown code block.
+    # The user's format example shows ```file1``` which we interpret
+    # as the *content* of the file, not the filename itself.
+    # If you also want to print the filename, you can add `echo "$file"` here.
+
+    echo '```'
+    cat "$file"
+    echo '```'
+    echo "" # Add a blank line for better readability between files
+  done
+done
