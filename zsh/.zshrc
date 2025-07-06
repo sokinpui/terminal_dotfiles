@@ -61,4 +61,8 @@ set -o ignoreeof
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH=$HOME/development/flutter/bin:$PATH
 
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+
 [ -f ~/.localconfig ] && source ~/.localconfig
