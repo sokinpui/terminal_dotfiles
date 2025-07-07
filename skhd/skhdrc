@@ -43,6 +43,6 @@ cmd - f6 : source $HOME/.config/skhd/cycle_clockwise.sh &> /dev/null
 
 
 
-cmd - escape : open -n -a Kitty
+cmd + shift - escape : open -n -a Kitty
 cmd - m :
 cmd - h :
