@@ -1,0 +1,100 @@
+# vi: set ft=gitignore :
+
+# ift helpers
+.itf_state.json
+
+.vscode/
+.idea/
+
+# Node.js
+node_modules/
+
+# Python
+__pycache__/
+
+*.egg-info
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# macOS system files
+Icon?
+._*
+
+# Thumbnails
+Thumbs.db
+ehthumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.egg
+*.egg-info/
+.eggs/
+
+# Pipenv/Poetry
+Pipfile.lock
+poetry.lock
+
+# Virtualenv
+.env/
+.venv/
+env/
+venv/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# JetBrains (PyCharm, IntelliJ, etc.)
+.idea/
+*.iml
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+*.log
+
+# Coverage
+.coverage
+coverage.xml
+htmlcov/
+
+# Test outputs
+*.out
+*.spec
+
+# MyPy
+.mypy_cache/
+
+# Pyre
+.pyre/
+
+# Pytest
+.cache/
+
+# Editor backups
+*~
+*.swp
+*.swo
+
+# Git
+*.orig
+
+# dotenv
+.env
+.env.*.local
+
+# Local config
+*.local
+

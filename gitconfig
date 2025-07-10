@@ -4,6 +4,7 @@
 
 [core]
     pager = bat
+	excludesfile = /Users/so/.gitignore_global
 
 [http "https://gitlab.rnt.lscm/"]
 	sslVerify = false
