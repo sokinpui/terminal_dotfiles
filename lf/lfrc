@@ -20,15 +20,15 @@ set ifs "\n"
 set filesep "\n"  # default already
 
 # Dynamically set number of columns
-cmd on-redraw %{{
-    if [ "$lf_width" -le 80 ]; then
-        lf -remote "send $id set ratios 1:2"
-    elif [ "$lf_width" -le 160 ]; then
-        lf -remote "send $id set ratios 1:2:3"
-    else
-        lf -remote "send $id set ratios 1:2:3:5"
-    fi
-}}
+#cmd on-redraw %{{
+#    if [ "$lf_width" -le 80 ]; then
+#        lf -remote "send $id set ratios 1:2"
+#    elif [ "$lf_width" -le 160 ]; then
+#        lf -remote "send $id set ratios 1:2:3"
+#    else
+#        lf -remote "send $id set ratios 1:2:3:5"
+#    fi
+#}}
 
 # set internal field separator (IFS) to "\n" for shell commands
 # This is useful to automatically split file names in $fs and $fx properly
