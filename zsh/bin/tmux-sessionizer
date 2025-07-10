@@ -9,6 +9,7 @@ if [[ -z "$selected" ]]; then
   selected=$(
     find \
       ~/projects \
+      ~/projects/learn \
       ~/projects/lscm/CEDD/SSDMS \
       ~/projects/lscm/CEDD \
       ~/dotfiles \
