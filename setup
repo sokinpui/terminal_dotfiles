@@ -210,6 +210,7 @@ echo ""
 echo "Creating symbolic links for git configuration files..."
 rm -f $HOME/.gitconfig
 ln -sfv $REPO_DIR/gitconfig $HOME/.gitconfig
+ln -sfv $REPO_DIR/gitignore_global $HOME/.gitignore_global
 echo ""
 
 mkdir -p $HOME/tmp
@@ -299,3 +300,5 @@ defaults write -g InitialKeyRepeat -int 10
 defaults write -g KeyRepeat -int 1
 
 ya pkg install
+
+git config --global core.excludesfile ~/.gitignore_global
