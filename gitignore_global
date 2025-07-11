@@ -2,6 +2,7 @@
 
 # ift helpers
 .itf_state.json
+itf.txt
 
 .vscode/
 .idea/
@@ -97,4 +98,7 @@ htmlcov/
 
 # Local config
 *.local
+
+.direnv
+.envrc
 
