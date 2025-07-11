@@ -38,8 +38,10 @@ cmd - f5 : $HOME/.config/skhd/resize.sh 0.33
 
 # cmd - f4 : $HOME/.config/skhd/left_cycle_resize.sh
 # cmd - f5 : $HOME/.config/skhd/right_cycle_resize.sh
-# cycle swap window
-cmd - f6 : source $HOME/.config/skhd/cycle_clockwise.sh &> /dev/null
+
+cmd - f6 : source $HOME/.config/skhd/rotate.sh &> /dev/null
+cmd + shift - f6 : source $HOME/.config/skhd/anti-rotate.sh &> /dev/null
+
 
 
 
