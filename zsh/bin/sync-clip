@@ -5,32 +5,39 @@ REMOTE_HOST="mac"
 POLL_INTERVAL=1
 # ---------------------
 
-echo "[INFO] Starting bidirectional clipboard sync with '$REMOTE_HOST'"
-echo "[INFO] Press Ctrl+C to stop."
+# --- Color Codes ---
+NC='\033[0m' # No Color
+RED='\033[0;31m'
+YELLOW='\033[0;33m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+GRAY='\033[1;30m'
+
+echo -e "${YELLOW}[INFO] Starting bidirectional clipboard sync with '$REMOTE_HOST'${NC}"
+echo -e "${YELLOW}[INFO] Press Ctrl+C to stop.${NC}"
 
 # --- Initial Connection Test ---
-echo "[DEBUG] Testing SSH connection and remote pbpaste..."
-# The -o ConnectTimeout=5 will prevent the script from hanging indefinitely
+echo -e "${GRAY}[DEBUG] Testing SSH connection and remote pbpaste...${NC}"
 INITIAL_REMOTE_PASTE=$(ssh -o ConnectTimeout=5 "$REMOTE_HOST" 'pbpaste' 2>/dev/null)
 if [ $? -ne 0 ]; then
-  echo "[ERROR] Could not connect to '$REMOTE_HOST' or run pbpaste. Is passwordless SSH configured and is the host reachable?"
+  echo -e "${RED}[ERROR] Could not connect to '$REMOTE_HOST' or run pbpaste. Is passwordless SSH configured and is the host reachable?${NC}"
   exit 1
 fi
-echo "[DEBUG] Initial connection successful."
+echo -e "${GRAY}[DEBUG] Initial connection successful.${NC}"
 
 # --- Get Initial State ---
 LAST_LOCAL_CONTENT=$(pbpaste)
 LAST_REMOTE_CONTENT="$INITIAL_REMOTE_PASTE"
 
-echo "[STATE] Initial local content length: ${#LAST_LOCAL_CONTENT}"
-echo "[STATE] Initial remote content length: ${#LAST_REMOTE_CONTENT}"
+echo -e "${YELLOW}[STATE] Initial local content length: ${#LAST_LOCAL_CONTENT}${NC}"
+echo -e "${YELLOW}[STATE] Initial remote content length: ${#LAST_REMOTE_CONTENT}${NC}"
 
 # --- Main Sync Loop ---
 while true; do
   # 1. Check local
   CURRENT_LOCAL_CONTENT=$(pbpaste)
   if [[ "$CURRENT_LOCAL_CONTENT" != "$LAST_LOCAL_CONTENT" && "$CURRENT_LOCAL_CONTENT" != "$LAST_REMOTE_CONTENT" ]]; then
-    echo "[SYNC] $(date) Syncing Local -> Remote."
+    echo -e "${GREEN}[SYNC] $(date) Syncing Local -> Remote.${NC}"
     printf "%s" "$CURRENT_LOCAL_CONTENT" | ssh "$REMOTE_HOST" 'pbcopy'
     LAST_LOCAL_CONTENT="$CURRENT_LOCAL_CONTENT"
     LAST_REMOTE_CONTENT="$CURRENT_LOCAL_CONTENT"
@@ -39,7 +46,7 @@ while true; do
   # 2. Check remote
   CURRENT_REMOTE_CONTENT=$(ssh -o ConnectTimeout=5 "$REMOTE_HOST" 'pbpaste' 2>/dev/null)
   if [[ "$CURRENT_REMOTE_CONTENT" != "$LAST_REMOTE_CONTENT" && "$CURRENT_REMOTE_CONTENT" != "$LAST_LOCAL_CONTENT" ]]; then
-    echo "[SYNC] $(date) Syncing Remote -> Local."
+    echo -e "${BLUE}[SYNC] $(date) Syncing Remote -> Local.${NC}"
     printf "%s" "$CURRENT_REMOTE_CONTENT" | pbcopy
     LAST_REMOTE_CONTENT="$CURRENT_REMOTE_CONTENT"
     LAST_LOCAL_CONTENT="$CURRENT_REMOTE_CONTENT"
