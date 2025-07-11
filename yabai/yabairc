@@ -3,7 +3,7 @@
 borders active_color=0xff4eed32 inactive_color=0xff494d64 width=5.0 &
 
 yabai -m config layout                      bsp
-yabai -m config auto_balance                on
+yabai -m config auto_balance                off
 yabai -m config top_padding                 5
 yabai -m config bottom_padding              5
 yabai -m config left_padding                5
