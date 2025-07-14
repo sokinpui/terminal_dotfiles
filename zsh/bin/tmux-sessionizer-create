@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+# --- Configuration ---
+# Add the base directories where you want to create new projects.
+# Use full paths. New directories will be created inside the selected one.
+# Use printf to handle spaces in paths and ensure one entry per line.
+get_parent_dirs() {
+  printf "%s\n" \
+    "$HOME/projects" \
+    "$HOME/projects/learn" \
+    "$HOME/projects/lscm" \
+    "$HOME/dotfiles"
+}
+
+# --- Main Script ---
+
+# 1. Use fzf to select a parent directory for the new project
+selected_parent=$(
+  get_parent_dirs | fzf --height 40% --reverse \
+    --header "Select a PARENT directory for the new project"
+)
+
+# Exit if no parent directory was selected (e.g., user pressed Esc)
+if [[ -z "$selected_parent" ]]; then
+  echo "No parent directory selected. Aborting."
+  exit 1
+fi
+
+# 2. Prompt the user for the new project's name
+read -p "Enter the name for the new project in '$selected_parent': " new_project_name
+
+# Exit if no name was entered
+if [[ -z "$new_project_name" ]]; then
+  echo "No project name entered. Aborting."
+  exit 1
+fi
+
+# 3. Construct the full path for the new project directory
+new_project_path="$selected_parent/$new_project_name"
+
+# 4. Check if the directory already exists, otherwise create it
+if [[ -d "$new_project_path" ]]; then
+  echo "Directory '$new_project_path' already exists. Switching to it."
+else
+  # Create the new directory
+  mkdir -p "$new_project_path"
+  if [[ $? -eq 0 ]]; then
+    echo "Successfully created directory '$new_project_path'."
+  else
+    echo "Error: Failed to create directory '$new_project_path'."
+    exit 1
+  fi
+fi
+
+# 5. Call the tmux-sessionizer script with the new (or existing) directory path
+# This requires `tmux-sessionizer` to be in your $PATH
+tmux-sessionizer "$new_project_path"

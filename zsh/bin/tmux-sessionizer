@@ -10,6 +10,7 @@ if [[ -z "$selected" ]]; then
     find \
       ~/projects \
       ~/projects/learn \
+      ~/projects/lscm \
       ~/projects/lscm/CEDD/SSDMS \
       ~/projects/lscm/CEDD \
       ~/dotfiles \
