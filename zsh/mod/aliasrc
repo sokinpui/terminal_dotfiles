@@ -240,3 +240,14 @@ skhd() {
 
   command skhd --restart-service
 }
+
+ssh() {
+  # If arguments are provided (e.g., "tmux ls", "tmux attach -t work"),
+  # just run the command as is. The `command` prefix prevents infinite loops.
+  if [ "$#" -gt 0 ]; then
+    command ssh "$@"
+    return
+  fi
+
+  command ssh mac -t "tmux-sessionizer"
+}
