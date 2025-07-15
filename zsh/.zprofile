@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 #export ZDOTDIR="${HOME}/.config/zsh"
 
 # Set TERM for Kitty
@@ -8,11 +7,6 @@ export TERM=xterm-256color
 if [ -n "$TMUX" ]; then
     export TERM=screen-256color
 fi
-
-if [[ "$USER" == "mac" ]]; then
-  export HOME="/Users/mac"
-fi
-
 
 export MANPAGER='nvim +Man!'
 export MANWIDTH=99
