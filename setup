@@ -199,9 +199,10 @@ echo ""
 
 ln -sfv $REPO_DIR/zsh/.zshrc $REPO_DIR/zshrc
 ln -sfv $REPO_DIR/zsh/.zprofile $REPO_DIR/zprofile
+ln -sfv $REPO_DIR/zsh/.zshenv $REPO_DIR/zshenv
 
 ln -sfv $REPO_DIR/zsh/zshrc $HOME/.zshrc
-ln -sfv $REPO_DIR/zsh/zprofile $HOME/.zprofile
+ln -sfv $REPO_DIR/zsh/zshenv $HOME/.zshenv
 
 echo "Creating symbolic links for karabiner configuration files..."
 ln -sfv $REPO_DIR/karabiner.edn $HOME/.config/karabiner.edn

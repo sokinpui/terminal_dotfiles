@@ -1,32 +1,10 @@
 #export ZDOTDIR="${HOME}/.config/zsh"
 
-# Set TERM for Kitty
-export TERM=xterm-256color
-
-# If you're inside tmux, set TERM for it
-if [ -n "$TMUX" ]; then
-    export TERM=screen-256color
-fi
-
 export MANPAGER='nvim +Man!'
 export MANWIDTH=99
-#!/usr/bin/env bash
 
 export EDITOR="nvim"
 export SUDO_EDITOR="nvim"
-
-# customized path
-export PATH="$PATH:$HOME/.config/zsh/bin"
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-export PATH="$PATH:/opt/homebrew/opt/ccache/libexec"
-export PATH="$PATH:/Users/mac/projects/logLLM/model/llama.cpp/build/bin"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin:$PATH"
-export PATH=/Library/TeX/texbin:$PATH
-export PATH=$HOME/.gem/bin:$PATH
 
 export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
 
@@ -37,9 +15,6 @@ export CARGOPATH="$HOME/.cargo"
 export zsh_bin="$ZDOTDIR/bin"
 # export INPUTRC=$ZDOTDIR/inputrc
 
-export LESS='--mouse --wheel-lines=5'
-export PAGER='less -R'
-export MANPAGER='nvim +Man!'
 #export MANWIDTH=99
 
 # only for macOS
@@ -63,8 +38,6 @@ export PATH="/Library/TeX/texbin:$PATH"
 export PIPX_HOME="$HOME/.local/pipx"
 
 export JAVA_HOME=/opt/homebrew/opt/openjdk
-
-export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
 
