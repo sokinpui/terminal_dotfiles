@@ -3,6 +3,15 @@
 # fzf edit recent file
 open-recent-edit-file() {
   cwd=$(pwd)
+
+  # exit if at $HOME
+  if [[ $cwd == $HOME ]]; then
+    echo "You are at home directory, exiting..."
+    echo
+    zle reset-prompt
+    return
+  fi
+
   # select_file=$(find . -type f -not -path '*/.*' -exec ls -lt1 -- {} + \
   #   | sed 's|^\./||' \
   #   | fzf --height 40% --reverse \
@@ -100,3 +109,10 @@ fzf-file-widget() {
 zle -N fzf-file-widget
 bindkey -M vicmd '^T' fzf-file-widget
 bindkey -M viins '^T' fzf-file-widget
+
+# tmux-sessionizer-wrapper() {
+#   command tmux-sessionizer
+#   zle reset-prompt
+# }
+# zle -N tmux-sessionizer-wrapper
+bindkey -s '^a' "tmux-sessionizer\n"
