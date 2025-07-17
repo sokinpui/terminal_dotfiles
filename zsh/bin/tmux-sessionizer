@@ -11,8 +11,6 @@ if [[ -z "$selected" ]]; then
       ~/projects \
       ~/projects/learn \
       ~/projects/lscm \
-      ~/projects/lscm/CEDD/SSDMS \
-      ~/projects/lscm/CEDD \
       ~/dotfiles \
       -mindepth 1 -maxdepth 1 -type d \
       -not -path '*/.*' |
