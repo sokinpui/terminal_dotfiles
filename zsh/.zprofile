@@ -33,7 +33,6 @@ export VIRTUAL_ENV_DISABLE_PROMPT=
 # YABAI
 export YABAI_SWAP_NEXT=1
 export YABAI_AUTO_BALANCE="on"
-export PATH="/Library/TeX/texbin:$PATH"
 
 export PIPX_HOME="$HOME/.local/pipx"
 

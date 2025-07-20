@@ -1,0 +1,117 @@
+#!/usr/bin/env bash
+#
+# A script to intelligently create or switch to a tmux session based on a
+# specified or selected directory. It uses a temporary session with a random
+# suffix to ensure smooth client switching.
+
+# Exit immediately if a command exits with a non-zero status.
+# Treat unset variables as an error.
+# Prevent errors in a pipeline from being masked.
+set -euo pipefail
+
+# --- Configuration ---
+
+# An array of directories to search for projects.
+# Add or remove paths as needed for your system.
+SEARCH_DIRECTORIES=(
+  ~/projects
+  ~/projects/learn
+  ~/projects/lscm
+  ~/dotfiles
+)
+
+# --- Functions ---
+
+# Prompts the user to select a directory using fzf.
+#
+# Outputs:
+#   The full path to the selected directory.
+select_directory() {
+  # The `find` command parameters explained:
+  # - find ${SEARCH_DIRECTORIES[*]}: Searches the configured list of directories.
+  # - -mindepth 1 -maxdepth 1: Looks only at immediate children of search dirs.
+  # - -type d: Filters for directories only.
+  # - -not -path '*/.*': Excludes hidden directories (like .git).
+  find "${SEARCH_DIRECTORIES[@]}" \
+    -mindepth 1 -maxdepth 1 -type d \
+    -not -path '*/.*' |
+    fzf --height 40% --reverse --header "Select a project directory"
+}
+
+# Handles the creation and connection logic for a tmux session.
+#
+# This function implements the "temporary session" pattern:
+# 1. Ensures the base session exists.
+# 2. Creates a new, temporary session linked to the base session's windows.
+# 3. Connects the client to that temporary session.
+#
+# Args:
+#   $1: session_name - The desired name of the base tmux session.
+#   $2: target_dir   - The directory for the new session's working path.
+create_or_connect_session() {
+  local session_name="$1"
+  local target_dir="$2"
+
+  # Case 1: The tmux server isn't running.
+  # The simplest action is to start it by creating the new session and attaching.
+  if ! pgrep tmux &>/dev/null; then
+    tmux new-session -s "$session_name" -c "$target_dir"
+    return
+  fi
+
+  # At this point, we know the tmux server is running.
+
+  # Case 2: The base session does not exist.
+  # Create it in the background (-d) so we can proceed to the connection logic.
+  if ! tmux has-session -t "$session_name" 2>/dev/null; then
+    tmux new-session -ds "$session_name" -c "$target_dir"
+  fi
+
+  # Create a new temporary session linked to the base session (-t).
+  # This provides a unique session "view" for our client to attach to,
+  # avoiding potential conflicts with other attached clients.
+  local temp_session_name="${session_name}_${RANDOM}"
+  tmux new-session -d -t "$session_name" -s "$temp_session_name"
+
+  # Connect the client to the newly created temporary session.
+  if [[ -n "${TMUX-}" ]]; then
+    # We are inside tmux, so we switch the current client.
+    tmux switch-client -t "$temp_session_name"
+  else
+    # We are outside tmux, so we attach a new client.
+    tmux attach-session -t "$temp_session_name"
+  fi
+}
+
+# --- Main Logic ---
+
+# Main function to orchestrate the script's execution.
+main() {
+  local selected_dir="${1-}"
+  local session_name="${2-}"
+
+  # 1. Determine the target directory.
+  # If no directory is passed as an argument, prompt the user to select one.
+  if [[ -z "$selected_dir" ]]; then
+    selected_dir=$(select_directory)
+    # Exit if fzf was cancelled (no selection was made).
+    if [[ -z "$selected_dir" ]]; then
+      echo "No directory selected. Exiting." >&2
+      exit 1
+    fi
+  fi
+
+  # 2. Determine the session name.
+  # If no name is provided, derive it from the directory's basename.
+  if [[ -z "$session_name" ]]; then
+    # Sanitize the basename for use as a tmux session name.
+    # This replaces dots with underscores.
+    session_name=$(basename "$selected_dir" | tr . _)
+  fi
+
+  # 3. Create or connect to the session.
+  create_or_connect_session "$session_name" "$selected_dir"
+}
+
+# Execute the main function, passing all script arguments to it.
+main "$@"

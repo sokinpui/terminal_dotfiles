@@ -6,7 +6,6 @@ if [ -n "$TMUX" ]; then
 fi
 
 export PATH="$PATH:$HOME/.config/zsh/bin"
-export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export PATH="$PATH:/opt/homebrew/opt/ccache/libexec"
@@ -17,6 +16,10 @@ export PATH="/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin:$PA
 export PATH=/Library/TeX/texbin:$PATH
 export PATH=$HOME/.gem/bin:$PATH
 export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH="/Library/TeX/texbin:$PATH"
+export PATH=$HOME/development/flutter/bin:$PATH
+
+export GOPATH=$HOME/go
 
 export LESS='--mouse --wheel-lines=5'
 export PAGER='less -R'
