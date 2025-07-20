@@ -125,11 +125,11 @@ return {
 				}),
 			})
 		end,
-		opts = {
-			servers = {
-				dartls = {},
-			},
-		},
+		opts = function()
+			require("lspconfig").dartls.setup({
+				cmd = { "dart", "language-server", "--protocol=lsp" },
+			})
+		end,
 	},
 
 	-- Formatter Configuration (conform.nvim)
