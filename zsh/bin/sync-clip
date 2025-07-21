@@ -2,7 +2,9 @@
 
 # --- Configuration ---
 REMOTE_HOST="mac"
-POLL_INTERVAL=0.25
+POLL_INTERVAL=0.5
+# A unique path for the SSH control socket
+CONTROL_PATH="/tmp/ssh_mux_$(whoami)_${REMOTE_HOST}"
 # ---------------------
 
 # --- Color Codes ---
@@ -13,16 +15,67 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 GRAY='\033[1;30m'
 
+# --- PID of the autossh process ---
+AUTOSSH_PID=""
+
 echo -e "${YELLOW}[INFO] Starting bidirectional clipboard sync with '$REMOTE_HOST'${NC}"
-echo -e "${YELLOW}[INFO] Press Ctrl+C to stop.${NC}"
+
+# --- Cleanup function to run on exit ---
+cleanup() {
+  # Disable further signals to prevent re-entry
+  trap '' SIGINT EXIT
+
+  echo -e "\n${YELLOW}[INFO] Stopping SSH connection and cleaning up...${NC}"
+
+  # Kill the autossh process if it's running
+  if [ -n "$AUTOSSH_PID" ]; then
+    kill "$AUTOSSH_PID" 2>/dev/null
+  fi
+
+  # Close the master SSH connection if the socket exists
+  if [ -S "$CONTROL_PATH" ]; then
+    ssh -S "$CONTROL_PATH" -O exit "$REMOTE_HOST" 2>/dev/null
+  fi
+
+  echo -e "${YELLOW}[INFO] Stopped.${NC}"
+  # ** THE FIX: Explicitly exit the script **
+  exit 0
+}
+
+# Trap Ctrl+C (SIGINT) and script termination (EXIT) to run the cleanup function
+trap cleanup SIGINT EXIT
+
+# --- Start a persistent SSH connection in the background ---
+echo -e "${GRAY}[DEBUG] Starting persistent SSH connection with autossh...${NC}"
+# Use AUTOSSH_GATETIME=0 to prevent autossh from creating an initial connection test window,
+# which can interfere with scripting. Let our own test handle it.
+AUTOSSH_GATETIME=0 autossh -M 0 -f -N \
+  -o "ServerAliveInterval 60" \
+  -o "ServerAliveCountMax 3" \
+  -o "ControlMaster auto" \
+  -o "ControlPath=$CONTROL_PATH" \
+  -o "ExitOnForwardFailure=yes" \
+  "$REMOTE_HOST"
+
+# Store the PID of the last background process (autossh)
+AUTOSSH_PID=$!
+
+# Give it a moment to establish the connection
+sleep 2
+
+# --- SSH options for subsequent commands to use the master connection ---
+SSH_OPTS="-o ControlPath=$CONTROL_PATH"
 
 # --- Initial Connection Test ---
-echo -e "${GRAY}[DEBUG] Testing SSH connection and remote pbpaste...${NC}"
-INITIAL_REMOTE_PASTE=$(ssh -o ConnectTimeout=5 "$REMOTE_HOST" 'pbpaste' 2>/dev/null)
-if [ $? -ne 0 ]; then
-  echo -e "${RED}[ERROR] Could not connect to '$REMOTE_HOST' or run pbpaste. Is passwordless SSH configured and is the host reachable?${NC}"
+echo -e "${GRAY}[DEBUG] Testing SSH connection via master...${NC}"
+# Use a timeout for the check
+if ! ssh $SSH_OPTS -o ConnectTimeout=5 "$REMOTE_HOST" 'true' 2>/dev/null; then
+  echo -e "${RED}[ERROR] Could not establish a persistent connection to '$REMOTE_HOST'. Aborting.${NC}"
+  # The EXIT trap will handle cleanup
   exit 1
 fi
+
+INITIAL_REMOTE_PASTE=$(ssh $SSH_OPTS "$REMOTE_HOST" 'pbpaste')
 echo -e "${GRAY}[DEBUG] Initial connection successful.${NC}"
 
 # --- Get Initial State ---
@@ -31,6 +84,7 @@ LAST_REMOTE_CONTENT="$INITIAL_REMOTE_PASTE"
 
 echo -e "${YELLOW}[STATE] Initial local content length: ${#LAST_LOCAL_CONTENT}${NC}"
 echo -e "${YELLOW}[STATE] Initial remote content length: ${#LAST_REMOTE_CONTENT}${NC}"
+echo -e "${YELLOW}[INFO] Press Ctrl+C to stop.${NC}"
 
 # --- Main Sync Loop ---
 while true; do
@@ -38,13 +92,21 @@ while true; do
   CURRENT_LOCAL_CONTENT=$(pbpaste)
   if [[ "$CURRENT_LOCAL_CONTENT" != "$LAST_LOCAL_CONTENT" && "$CURRENT_LOCAL_CONTENT" != "$LAST_REMOTE_CONTENT" ]]; then
     echo -e "${GREEN}[SYNC] $(date) Syncing Local -> Remote.${NC}"
-    printf "%s" "$CURRENT_LOCAL_CONTENT" | ssh "$REMOTE_HOST" 'pbcopy'
+    printf "%s" "$CURRENT_LOCAL_CONTENT" | ssh $SSH_OPTS "$REMOTE_HOST" 'pbcopy'
     LAST_LOCAL_CONTENT="$CURRENT_LOCAL_CONTENT"
     LAST_REMOTE_CONTENT="$CURRENT_LOCAL_CONTENT"
   fi
 
   # 2. Check remote
-  CURRENT_REMOTE_CONTENT=$(ssh -o ConnectTimeout=5 "$REMOTE_HOST" 'pbpaste' 2>/dev/null)
+  CURRENT_REMOTE_CONTENT=$(ssh $SSH_OPTS "$REMOTE_HOST" 'pbpaste' 2>/dev/null)
+  # Check if the ssh command failed (e.g., if autossh is restarting the connection)
+  if [ $? -ne 0 ]; then
+    echo -e "${YELLOW}[WARN] Remote connection lost. Autossh should be attempting to reconnect.${NC}"
+    # Wait a moment before retrying to give autossh time to work
+    sleep 5
+    continue
+  fi
+
   if [[ "$CURRENT_REMOTE_CONTENT" != "$LAST_REMOTE_CONTENT" && "$CURRENT_REMOTE_CONTENT" != "$LAST_LOCAL_CONTENT" ]]; then
     echo -e "${BLUE}[SYNC] $(date) Syncing Remote -> Local.${NC}"
     printf "%s" "$CURRENT_REMOTE_CONTENT" | pbcopy
