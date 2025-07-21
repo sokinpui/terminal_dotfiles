@@ -85,7 +85,11 @@ zle -N open-recent-cd
 bindkey '^y' open-recent-cd
 
 jump-to-dir-in-git-repo() {
-  cd $(git rev-parse --show-toplevel)
+  #
+  if git rev-parse --is-inside-work-tree &>/dev/null; then
+    cd $(git rev-parse --show-toplevel)
+  fi
+
   selected_dir=$(fd --type=d | fzf --height 40% --reverse)
   if [ -z $selected_dir ]; then
     zle reset-prompt
