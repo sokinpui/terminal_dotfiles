@@ -68,6 +68,7 @@ augroup AutoHighlighting
 augroup END
 
 highlight Visual ctermbg=242 guibg=#3e6452
+" highlight Visual gui=reverse
 " highlight MatchParen ctermbg=6 gui=bold guifg=yellowgreen guibg=#282c34
 highlight MatchParen ctermbg=6 gui=bold guifg=tomato guibg=#282c34
 highlight MatchWord ctermbg=6 gui=italic guifg=yellowgreen guibg=#282c34

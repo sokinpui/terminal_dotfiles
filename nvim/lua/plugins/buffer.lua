@@ -63,56 +63,56 @@ return {
 			},
 			{
 				mode = "n",
-				"<C-h>",
+				"<C-j>",
 				function()
 					require("harpoon"):list():select(1)
 				end,
 			},
 			{
 				mode = "n",
-				"<C-j>",
+				"<C-k>",
 				function()
 					require("harpoon"):list():select(2)
 				end,
 			},
 			{
 				mode = "n",
-				"<C-k>",
+				"<C-l>",
 				function()
 					require("harpoon"):list():select(3)
 				end,
 			},
 			{
 				mode = "n",
-				"<C-l>",
+				"<C-;>",
 				function()
 					require("harpoon"):list():select(4)
 				end,
 			},
 			{
 				mode = "n",
-				"<leader><C-h>",
+				"<leader><C-j>",
 				function()
 					require("harpoon"):list():replace_at(1)
 				end,
 			},
 			{
 				mode = "n",
-				"<leader><C-j>",
+				"<leader><C-k>",
 				function()
 					require("harpoon"):list():replace_at(2)
 				end,
 			},
 			{
 				mode = "n",
-				"<leader><C-k>",
+				"<leader><C-l>",
 				function()
 					require("harpoon"):list():replace_at(3)
 				end,
 			},
 			{
 				mode = "n",
-				"<leader><C-l>",
+				"<leader><C-;>",
 				function()
 					require("harpoon"):list():replace_at(4)
 				end,

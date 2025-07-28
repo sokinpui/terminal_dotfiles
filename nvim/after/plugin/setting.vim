@@ -7,6 +7,13 @@ let $PAGER = ''
 let &t_TI = "\<Esc>[>4;2m"
 let &t_TE = "\<Esc>[>4;m"
 
+if &term =~ '^tmux'
+  let &t_BE = "\<Esc>[?2004h"
+  let &t_BD = "\<Esc>[?2004l"
+  let &t_PS = "\<Esc>[200~"
+  let &t_PE = "\<Esc>[201~"
+endif
+
 
 filetype plugin on
 filetype plugin indent on

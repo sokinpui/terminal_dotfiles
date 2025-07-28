@@ -37,6 +37,7 @@ elseif has("macunix")
     " inoremap <C-v> <C-r><C-o>*
     " cnoremap <C-v> <C-r><C-o>*
     nnoremap gy <Cmd>%y*<cr>
+    nnoremap gG <Cmd>%y*<cr>
 endif
 
 xnoremap <leader>p "_dP
