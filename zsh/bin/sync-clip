@@ -38,7 +38,7 @@ cleanup() {
   fi
 
   echo -e "${YELLOW}[INFO] Stopped.${NC}"
-  # ** THE FIX: Explicitly exit the script **
+  # Explicitly exit the script to ensure termination
   exit 0
 }
 
@@ -75,30 +75,39 @@ if ! ssh $SSH_OPTS -o ConnectTimeout=5 "$REMOTE_HOST" 'true' 2>/dev/null; then
   exit 1
 fi
 
-INITIAL_REMOTE_PASTE=$(ssh $SSH_OPTS "$REMOTE_HOST" 'pbpaste')
 echo -e "${GRAY}[DEBUG] Initial connection successful.${NC}"
 
-# --- Get Initial State ---
-LAST_LOCAL_CONTENT=$(pbpaste)
-LAST_REMOTE_CONTENT="$INITIAL_REMOTE_PASTE"
+# --- Get Initial State (using Base64 for safe transport) ---
+# Note: On some systems, the base64 decode flag is -D. On modern macOS/Linux, it's -d.
+# openssl base64 -d is another portable option if this fails.
+BASE64_DECODE="base64 -d"
 
-echo -e "${YELLOW}[STATE] Initial local content length: ${#LAST_LOCAL_CONTENT}${NC}"
-echo -e "${YELLOW}[STATE] Initial remote content length: ${#LAST_REMOTE_CONTENT}${NC}"
+LAST_LOCAL_CONTENT_B64=$(pbpaste | base64)
+LAST_REMOTE_CONTENT_B64=$(ssh $SSH_OPTS "$REMOTE_HOST" 'pbpaste | base64' 2>/dev/null)
+
+echo -e "${YELLOW}[STATE] Initial local content (encoded) length: ${#LAST_LOCAL_CONTENT_B64}${NC}"
+echo -e "${YELLOW}[STATE] Initial remote content (encoded) length: ${#LAST_REMOTE_CONTENT_B64}${NC}"
 echo -e "${YELLOW}[INFO] Press Ctrl+C to stop.${NC}"
 
 # --- Main Sync Loop ---
 while true; do
-  # 1. Check local
-  CURRENT_LOCAL_CONTENT=$(pbpaste)
-  if [[ "$CURRENT_LOCAL_CONTENT" != "$LAST_LOCAL_CONTENT" && "$CURRENT_LOCAL_CONTENT" != "$LAST_REMOTE_CONTENT" ]]; then
+  # 1. Check for local changes first (local clipboard has priority)
+  CURRENT_LOCAL_CONTENT_B64=$(pbpaste | base64)
+  if [[ "$CURRENT_LOCAL_CONTENT_B64" != "$LAST_LOCAL_CONTENT_B64" ]]; then
     echo -e "${GREEN}[SYNC] $(date) Syncing Local -> Remote.${NC}"
-    printf "%s" "$CURRENT_LOCAL_CONTENT" | ssh $SSH_OPTS "$REMOTE_HOST" 'pbcopy'
-    LAST_LOCAL_CONTENT="$CURRENT_LOCAL_CONTENT"
-    LAST_REMOTE_CONTENT="$CURRENT_LOCAL_CONTENT"
+    printf "%s" "$CURRENT_LOCAL_CONTENT_B64" | ssh $SSH_OPTS "$REMOTE_HOST" "${BASE64_DECODE} | pbcopy"
+
+    # Update state for both to this new content
+    LAST_LOCAL_CONTENT_B64="$CURRENT_LOCAL_CONTENT_B64"
+    LAST_REMOTE_CONTENT_B64="$CURRENT_LOCAL_CONTENT_B64"
+
+    # Wait and restart loop to give remote time and avoid bounce-back
+    sleep $POLL_INTERVAL
+    continue
   fi
 
-  # 2. Check remote
-  CURRENT_REMOTE_CONTENT=$(ssh $SSH_OPTS "$REMOTE_HOST" 'pbpaste' 2>/dev/null)
+  # 2. If no local changes, check for remote changes
+  CURRENT_REMOTE_CONTENT_B64=$(ssh $SSH_OPTS "$REMOTE_HOST" 'pbpaste | base64' 2>/dev/null)
   # Check if the ssh command failed (e.g., if autossh is restarting the connection)
   if [ $? -ne 0 ]; then
     echo -e "${YELLOW}[WARN] Remote connection lost. Autossh should be attempting to reconnect.${NC}"
@@ -107,11 +116,13 @@ while true; do
     continue
   fi
 
-  if [[ "$CURRENT_REMOTE_CONTENT" != "$LAST_REMOTE_CONTENT" && "$CURRENT_REMOTE_CONTENT" != "$LAST_LOCAL_CONTENT" ]]; then
+  if [[ "$CURRENT_REMOTE_CONTENT_B64" != "$LAST_REMOTE_CONTENT_B64" ]]; then
     echo -e "${BLUE}[SYNC] $(date) Syncing Remote -> Local.${NC}"
-    printf "%s" "$CURRENT_REMOTE_CONTENT" | pbcopy
-    LAST_REMOTE_CONTENT="$CURRENT_REMOTE_CONTENT"
-    LAST_LOCAL_CONTENT="$CURRENT_REMOTE_CONTENT"
+    printf "%s" "$CURRENT_REMOTE_CONTENT_B64" | ${BASE64_DECODE} | pbcopy
+
+    # Update state for both to this new content
+    LAST_REMOTE_CONTENT_B64="$CURRENT_REMOTE_CONTENT_B64"
+    LAST_LOCAL_CONTENT_B64="$CURRENT_REMOTE_CONTENT_B64"
   fi
 
   sleep $POLL_INTERVAL
