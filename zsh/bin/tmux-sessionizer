@@ -12,7 +12,8 @@ SEARCH_DIRECTORIES=(
 select_directory() {
   find "${SEARCH_DIRECTORIES[@]}" \
     -mindepth 1 -maxdepth 1 -type d \
-    -not -path '*/.*' |
+    -not -path '*/.*' \
+    -exec ls -1dt {} + |
     fzf --height 40% --reverse --header "Select a project directory"
 }
 
