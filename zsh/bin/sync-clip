@@ -77,13 +77,16 @@ fi
 
 echo -e "${GRAY}[DEBUG] Initial connection successful.${NC}"
 
-# --- Get Initial State (using Base64 for safe transport) ---
-# Note: On some systems, the base64 decode flag is -D. On modern macOS/Linux, it's -d.
-# openssl base64 -d is another portable option if this fails.
+# --- Command Definitions ---
+# The key fix: Export a UTF-8 locale on the remote end for every command.
+# This ensures that multi-byte characters are handled correctly by the remote shell and tools.
 BASE64_DECODE="base64 -d"
+REMOTE_PASTE_CMD="export LANG=en_US.UTF-8; pbpaste | base64"
+REMOTE_COPY_CMD="export LANG=en_US.UTF-8; ${BASE64_DECODE} | pbcopy"
 
+# --- Get Initial State (using Base64 for safe transport) ---
 LAST_LOCAL_CONTENT_B64=$(pbpaste | base64)
-LAST_REMOTE_CONTENT_B64=$(ssh $SSH_OPTS "$REMOTE_HOST" 'pbpaste | base64' 2>/dev/null)
+LAST_REMOTE_CONTENT_B64=$(ssh $SSH_OPTS "$REMOTE_HOST" "$REMOTE_PASTE_CMD" 2>/dev/null)
 
 echo -e "${YELLOW}[STATE] Initial local content (encoded) length: ${#LAST_LOCAL_CONTENT_B64}${NC}"
 echo -e "${YELLOW}[STATE] Initial remote content (encoded) length: ${#LAST_REMOTE_CONTENT_B64}${NC}"
@@ -95,7 +98,7 @@ while true; do
   CURRENT_LOCAL_CONTENT_B64=$(pbpaste | base64)
   if [[ "$CURRENT_LOCAL_CONTENT_B64" != "$LAST_LOCAL_CONTENT_B64" ]]; then
     echo -e "${GREEN}[SYNC] $(date) Syncing Local -> Remote.${NC}"
-    printf "%s" "$CURRENT_LOCAL_CONTENT_B64" | ssh $SSH_OPTS "$REMOTE_HOST" "${BASE64_DECODE} | pbcopy"
+    printf "%s" "$CURRENT_LOCAL_CONTENT_B64" | ssh $SSH_OPTS "$REMOTE_HOST" "$REMOTE_COPY_CMD"
 
     # Update state for both to this new content
     LAST_LOCAL_CONTENT_B64="$CURRENT_LOCAL_CONTENT_B64"
@@ -107,7 +110,7 @@ while true; do
   fi
 
   # 2. If no local changes, check for remote changes
-  CURRENT_REMOTE_CONTENT_B64=$(ssh $SSH_OPTS "$REMOTE_HOST" 'pbpaste | base64' 2>/dev/null)
+  CURRENT_REMOTE_CONTENT_B64=$(ssh $SSH_OPTS "$REMOTE_HOST" "$REMOTE_PASTE_CMD" 2>/dev/null)
   # Check if the ssh command failed (e.g., if autossh is restarting the connection)
   if [ $? -ne 0 ]; then
     echo -e "${YELLOW}[WARN] Remote connection lost. Autossh should be attempting to reconnect.${NC}"
