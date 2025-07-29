@@ -3,7 +3,7 @@
 eval "$(fzf --zsh)"
 
 export FZF_DEFAULT_COMMAND="fd --relative-path"
-export FZF_DEFAULT_OPTS="--layout=reverse --bind \"ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up\""
+export FZF_DEFAULT_OPTS="--layout=reverse"
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --history=$HOME/.fzf_history"
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind=ctrl-H:backward-kill-word"
 export FZF_CTRL_H=1
