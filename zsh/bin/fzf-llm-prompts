@@ -1,0 +1,14 @@
+#!/bin/bash
+
+PROMPTS_DIR="$HOME/projects/LLM-prompts-gallery"
+
+SELECTED_FILE=$(fd . "$PROMPTS_DIR" --type f -e ".md" -E "README.md" -X ls -t | fzf \
+  --preview "bat --color=always --style=plain {}" \
+  --preview-window=top:50%)
+
+if [[ -n "$SELECTED_FILE" ]]; then
+  touch "$SELECTED_FILE"
+  cat "$SELECTED_FILE" | pbcopy
+fi
+
+exit 0
