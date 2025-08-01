@@ -252,10 +252,8 @@ d() {
 }
 
 # File system operations
-# NOTE: `rm` is aliased to `trash-put`. Install `trash-cli` for this functionality.
-# `sudo apt install trash-cli` or `sudo dnf install trash-cli`
-alias rm="$HOME/.local/bin/trash-put"
-alias rs="$HOME/.local/bin/trash-restore"
+alias rm="trash-put"
+alias rs="trash-restore"
 alias mv="mv -v"
 alias cp="cp -r -v"
 alias ls="ls --group-directories-first --color=always -h"
