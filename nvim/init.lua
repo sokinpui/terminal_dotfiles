@@ -3,10 +3,16 @@ vim.loader.enable()
 local user = vim.fn.expand("$USER")
 local hostname = vim.fn.hostname()
 
-if user == "so" and hostname == "Mac-Studio" then
-	require("setup")
+
+-- table of user and hostname
+local allow_plugins = {
+  ["dou"] = "dous-MacBook-Air.local",
+  ["so"] = "Mac-Studio",
+}
+
+for u, h in pairs(allow_plugins) do
+  if user == u and hostname == h then
+    require("setup")
+  end
 end
 
-if user == "dou" and hostname == "dous-MacBook-Air.local" then
-	require("setup")
-end
