@@ -195,6 +195,8 @@ bindkey -M vicmd gs add-surround
 bindkey -M visual gs add-surround
 
 # Cursor style for vi mode
+echo -ne '\e[2 q'
+
 zle-keymap-select() {
   if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
     echo -ne '\e[2 q' # block cursor
