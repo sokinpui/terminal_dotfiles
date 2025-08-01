@@ -7,11 +7,8 @@
 # sudo apt install zsh git fzf fd-find trash-cli xclip neovim bat ripgrep htop tmux build-essential python3-pip python3-venv
 
 # In General, you would like to do this:
-# For fd-find -> fd
-# sudo ln -s $(which fdfind) /usr/local/bin/fd
-
-# For bat -> batcat
-# sudo ln -s $(which batcat) /usr/local/bin/bat
+# sudo ln -sfv $(which fdfind) /usr/local/bin/fd
+# sudo ln -sfv $(which batcat) /usr/local/bin/bat
 
 # Install zoxide (a smarter cd tool):
 # curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
@@ -213,6 +210,22 @@ zle-line-init() {
 zle -N zle-line-init
 precmd_functions+=(zle-keymap-select)
 preexec_functions+=(zle-keymap-select)
+
+_reset_cursor_color() printf '\e]112\a'
+
+zle-keymap-select() {
+    if [[ $KEYMAP = vicmd ]]; then
+        printf '\e]12;Cyan\a'
+    else
+        _reset_cursor_color
+    fi
+}
+zle -N zle-keymap-select
+
+zle-line-init() zle -K viins
+zle -N zle-line-init
+
+precmd_functions+=(_reset_cursor_color)
 
 # 4.3. Aliases
 # ------------
