@@ -4,7 +4,10 @@
 # Ubuntu/Debian:
 # ----------------------------------------------------
 # sudo apt update
-# sudo apt install zsh git fzf fd-find trash-cli xclip neovim bat ripgrep htop tmux build-essential python3-pip python3-venv
+# sudo apt install zsh git fd-find trash-cli xclip neovim bat ripgrep htop tmux build-essential python3-pip python3-venv
+
+# git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+# ~/.fzf/install
 
 # In General, you would like to do this:
 # sudo ln -sfv $(which fdfind) /usr/local/bin/fd
@@ -357,8 +360,8 @@ bindkey '^g' jump-to-dir-in-git-repo
 # This uses fzf's own keybinding script logic, which is more robust.
 
 # source <(fzf --zsh)
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+# source /usr/share/doc/fzf/examples/key-bindings.zsh
+# source /usr/share/doc/fzf/examples/completion.zsh
 
 # Customize fzf options
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
