@@ -23,7 +23,11 @@ return {
 			{
 				"<C-p>",
 				function()
-					require("fzf-lua").grep({ search = "" })
+					require("fzf-lua").live_grep_native({
+						fzf_opts = {
+							["--tiebreak"] = "index",
+						},
+					})
 				end,
 			},
 			{
@@ -50,6 +54,7 @@ return {
 		},
 		cmd = "FzfLua",
 		config = function()
+			require("fzf-lua").setup({ "fzf-native" })
 			local actions = require("fzf-lua.actions")
 			-- calling `setup` is optional for customization
 			require("fzf-lua").setup({
