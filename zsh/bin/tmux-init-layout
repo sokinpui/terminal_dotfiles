@@ -1,0 +1,38 @@
+#!/usr/bin/env zsh
+
+SESSION_NAME="$1"
+TARGET_DIR="$2"
+
+case "$TARGET_DIR" in
+
+
+  $HOME/projects/lscm/CEDD/)
+    # Rename the initial window to "dev"
+    tmux rename-window -t "$SESSION_NAME:0" "dev"
+
+    # Split the window vertically
+    tmux split-window -v -t "$SESSION_NAME:dev"
+
+    # Split the right pane horizontally
+    tmux split-window -h -t "$SESSION_NAME:dev.1"
+
+    # Select the top pane for the editor
+    tmux select-pane -t "$SESSION_NAME:dev.0"
+
+    # Select the bottom-right pane
+    tmux select-pane -t "$SESSION_NAME:dev.2"
+
+    # Create a new window for logs
+    tmux new-window -n "logs" -c "$TARGET_DIR"
+
+    # Select the "dev" window to be the active one
+    tmux select-window -t "$SESSION_NAME:dev"
+    ;;
+
+
+
+
+  *)
+    ;;
+
+esac

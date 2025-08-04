@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
-eval "$(fzf --zsh)"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
-export FZF_DEFAULT_COMMAND="fd --relative-path"
+export FZF_DEFAULT_COMMAND="fd --relative-path --type f --hidden --follow --exclude .git --exclude node_modules --exclude .cache --exclude .idea --exclude .vscode --exclude .DS_Store"
 export FZF_DEFAULT_OPTS="--layout=reverse"
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --history=$HOME/.fzf_history"
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind=ctrl-H:backward-kill-word"
+# export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --history=$HOME/.fzf_history"
+# export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind=ctrl-H:backward-kill-word"
 export FZF_CTRL_H=1
 
 # Using highlight (http://www.andre-simon.de/doku/highlight/en/highlight.html)

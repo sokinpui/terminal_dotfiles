@@ -99,7 +99,6 @@ jump-to-dir-in-git-repo() {
 
   zle accept-line
 }
-
 zle -N jump-to-dir-in-git-repo
 bindkey '^g' jump-to-dir-in-git-repo
 
