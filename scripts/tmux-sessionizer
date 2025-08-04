@@ -6,13 +6,15 @@ SEARCH_DIRECTORIES=(
   ~/projects
   ~/projects/learn
   ~/projects/lscm
+  ~/Obsidian/wiki
+  ~/Obsidian/project/
 )
 
 select_directory() {
   find "${SEARCH_DIRECTORIES[@]}" \
-    -mindepth 1 -maxdepth 1 -type d \
+    -mindepth 0 -maxdepth 1 -type d \
     -not -path '*/.*' \
-    -exec ls -1dt {} + |
+    -exec ls -1dt {} + | uniq |
     fzf --height 40% --reverse --header "Select a project directory"
 }
 

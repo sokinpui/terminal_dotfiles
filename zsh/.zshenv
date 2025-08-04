@@ -18,6 +18,7 @@ export PATH=$HOME/.gem/bin:$PATH
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH="/Library/TeX/texbin:$PATH"
 export PATH=$HOME/development/flutter/bin:$PATH
+export PATH=$HOME/.local/scripts:$PATH
 
 export GOPATH=$HOME/go
 
