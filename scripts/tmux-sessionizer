@@ -7,7 +7,7 @@ SEARCH_DIRECTORIES=(
   ~/projects/learn
   ~/projects/lscm
   ~/Obsidian/wiki
-  ~/Obsidian/project/
+  ~/Obsidian/project
 )
 
 select_directory() {
