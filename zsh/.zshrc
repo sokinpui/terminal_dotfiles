@@ -37,6 +37,8 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 
+setopt SHARE_HISTORY
+
 # smarter cd like z
 eval "$(zoxide init zsh)"
 
@@ -64,5 +66,4 @@ export LC_ALL=en_US.UTF-8
 
 
 [ -f ~/.localconfig ] && source ~/.localconfig
-
 
