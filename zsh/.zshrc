@@ -66,4 +66,3 @@ export LC_ALL=en_US.UTF-8
 
 
 [ -f ~/.localconfig ] && source ~/.localconfig
-
