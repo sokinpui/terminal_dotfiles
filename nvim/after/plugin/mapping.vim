@@ -20,7 +20,7 @@ if has("linux")
     vnoremap <leader>P "+p']
     inoremap <C-v> <C-r><C-o>+
     cnoremap <C-v> <C-r><C-o>+
-    nnoremap gy <Cmd>%y+<cr>
+    nnoremap gy ma<Cmd>%y+<cr>`a
 elseif has("macunix")
     " Allow copy paste in neovim
     let g:neovide_input_use_logo = 1
@@ -36,8 +36,7 @@ elseif has("macunix")
     vnoremap <leader>P "*p']
     " inoremap <C-v> <C-r><C-o>*
     " cnoremap <C-v> <C-r><C-o>*
-    nnoremap gy <Cmd>%y*<cr>
-    nnoremap gG <Cmd>%y*<cr>
+    nnoremap gy ma<Cmd>%y*<cr>`a
 endif
 
 xnoremap <leader>p "_dP

@@ -30,15 +30,16 @@ return {
 			vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
 		end,
 	},
+
 	-- {
 	--   "preservim/vim-markdown",
 	--   config = function()
 	--     vim.opt.conceallevel                       = 0
-	--     vim.g.vim_markdown_folding_disabled        = 1
+	--     vim.g.vim_markdown_folding_disabled        = 0
 	--     vim.g.vim_markdown_no_default_key_mappings = 1
-	--     vim.g.vim_markdown_conceal_code_blocks     = 1
+	--     vim.g.vim_markdown_conceal_code_blocks     = 0
 	--     vim.g.vim_markdown_math                    = 1
-	--     vim.g.tex_conceal                          = "abmgs"
+	--     vim.g.tex_conceal                          = ""
 	--     vim.g.vim_markdown_conceal                 = 1
 	--     vim.g.vim_markdown_toc_autofit             = 1
 	--     vim.g.vim_markdown_follow_anchor           = 0
@@ -48,6 +49,7 @@ return {
 	--     vim.g.vim_markdown_strikethrough           = 0
 	--   end,
 	-- },
+
 	-- {
 	--   "postfen/clipboard-image.nvim",
 	--   ft = "markdown",
@@ -84,6 +86,7 @@ return {
 	--     }
 	--   end
 	-- },
+
 	--{
 	--  "lervag/lists.vim",
 	--  ft = "markdown",
@@ -91,6 +94,7 @@ return {
 	--    vim.cmd("ListsEnable")
 	--  end,
 	--},
+
 	-- {
 	--   "coachshea/vim-textobj-markdown",
 	--   dependencies = {

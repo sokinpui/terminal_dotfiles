@@ -51,8 +51,8 @@ return {
 					-- [options]
 				},
 			})
-			vim.wo.foldmethod = "manual"
-			vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+			vim.wo.foldmethod = "expr"
+			vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 			---- 默认不要折叠
 			---- https://stackoverflow.com/questions/8316139/how-to-set-the-default-to-unfolded-when-you-open-a-file
 			vim.wo.foldlevel = 99
