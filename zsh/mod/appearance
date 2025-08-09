@@ -9,7 +9,7 @@ function virtualenv_info {
 }
 
 precmd () {
-  __git_ps1 "$(virtualenv_info)%B%F{red}[%f%n@%m${shellEmulator} %F{cyan}%~%f%F{red}]%f%b" "
+  __git_ps1 "$(virtualenv_info)%B%F{red}[%f%n@%m${shellEmulator} %F{cyan}%~%f%F{red}]%f %(?.%F{green}✔.%F{red}✘%?)%f %b" "
 %B»%b " "|%s"
 }
 PS2='%F{green}%_>%f '
