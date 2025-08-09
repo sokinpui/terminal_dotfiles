@@ -15,7 +15,7 @@
 [ -f ~/.config/zsh/mod/fzf ] && source ~/.config/zsh/mod/fzf
 [ -f ~/.config/zsh/mod/fzf-key-binds.zsh ] && source ~/.config/zsh/mod/fzf-key-binds.zsh
 [ -f ~/.config/zsh/mod/lf ] && source ~/.config/zsh/mod/lf
-# [ -f ~/.config/zsh/mod/yazi ] && source ~/.config/zsh/mod/yazi
+[ -f ~/.config/zsh/mod/delta ] && source ~/.config/zsh/mod/delta
 
 # ===============================================================
 
