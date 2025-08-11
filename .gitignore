@@ -23,3 +23,5 @@ tmp*
 nvim/lazy-lock.json
 
 zmk-config/.git
+# Git worktrees managed by 'wt' script
+.worktrees/
