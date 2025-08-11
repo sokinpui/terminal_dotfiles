@@ -210,6 +210,7 @@ return {
 			-- vim.keymap.set("n", "<leader>li", "<cmd>Lint<cr>", { desc = "Run Linters" })
 		end,
 	},
+
 	{
 		"nvim-flutter/flutter-tools.nvim",
 		lazy = false,
