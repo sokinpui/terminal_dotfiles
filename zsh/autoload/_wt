@@ -1,0 +1,58 @@
+#compdef wt
+#
+# Zsh completion for the 'wt' git worktree utility (Corrected)
+
+# This is the main completion function.
+_wt() {
+  if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then return 1; fi
+
+  # _arguments will call the correct function based on the argument index.
+  # The : after the index '1' indicates that the first argument is required.
+  _arguments -C \
+    '1: :_wt_first_arg_completer' \
+    '2: :_wt_second_arg_completer'
+}
+
+# Completes the first argument.
+_wt_first_arg_completer() {
+  # For the first argument, we offer EITHER a subcommand OR a shortcut.
+  local -a subcommands
+  subcommands=(
+    'add:Create or switch to a worktree for a branch'
+    'list:List all worktrees'
+    'switch:Interactively switch worktrees'
+  )
+  _describe 'subcommand' subcommands
+
+  # Also offer shortcuts.
+  _wt_shortcut_completer
+}
+
+# Completes arguments for the 'add' subcommand.
+_wt_second_arg_completer() {
+  # Only complete if the subcommand is 'add'.
+  case "${words[2]}" in
+    add)
+      _wt_get_local_branches
+      ;;
+  esac
+}
+
+# Generates a list of shortcut completions (branches and '-').
+_wt_shortcut_completer() {
+  local -a branches
+  branches=("${(@f)$(git for-each-ref --format='%(refname:short)' refs/heads 2>/dev/null)}")
+
+  local -a shortcuts
+  shortcuts=('-:Switch to the last worktree')
+  shortcuts+=("${branches[@]/%/:Shortcut to create or switch to this branch}")
+
+  _describe 'shortcut' shortcuts
+}
+
+# Helper to provide a clean list of local branches.
+_wt_get_local_branches() {
+  local -a branches
+  branches=("${(@f)$(git for-each-ref --format='%(refname:short)' refs/heads 2>/dev/null)}")
+  _describe 'branch' branches
+}

@@ -1,0 +1,21 @@
+# vi: set filetype=zsh
+if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    printf "Error: Not a git repository.\n" >&2
+    return 1
+fi
+
+local target_dir
+local last_wt_file="${HOME}/.wt_last"
+
+target_dir=$(git-worktreeizer "$@") || return
+
+if [ $? -eq 0 ] && [ -n "$target_dir" ]; then
+    cd "$target_dir"
+fi
+
+if [ -n "$target_dir" ]; then
+# Save the current worktree's path for 'wt -' to use next time.
+    printf "%s" "$PWD" > "$last_wt_file"
+    cd "$target_dir" || return
+fi
+
