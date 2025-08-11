@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-worktree_prefix=".worktree"
-
-cd "$(git worktree list | fzf | awk '{print $1}')"
