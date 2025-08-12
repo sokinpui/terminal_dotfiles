@@ -233,11 +233,3 @@ ssh() {
 
   command ssh mac -t "tmux-sessionizer"
 }
-
-git() {
-  if [[ $* == "pull" ]]; then
-    command echo "Cannot pull!"
-  else
-    command git "$@"
-  fi
-}

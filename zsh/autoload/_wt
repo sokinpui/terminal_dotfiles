@@ -10,32 +10,50 @@ _wt() {
   # The : after the index '1' indicates that the first argument is required.
   _arguments -C \
     '1: :_wt_first_arg_completer' \
-    '2: :_wt_second_arg_completer'
+    '2: :_wt_second_arg_completer' \
+    '3: :_wt_third_arg_completer'
 }
 
-# Completes the first argument.
+# Completes the first argument (subcommands and shortcuts).
 _wt_first_arg_completer() {
-  # For the first argument, we offer EITHER a subcommand OR a shortcut.
   local -a subcommands
   subcommands=(
     'add:Create or switch to a worktree for a branch'
     'list:List all worktrees'
+    'remove:Remove an existing worktree'
     'switch:Interactively switch worktrees'
   )
   _describe 'subcommand' subcommands
-
-  # Also offer shortcuts.
   _wt_shortcut_completer
 }
 
-# Completes arguments for the 'add' subcommand.
+# Completes the second argument, based on the subcommand.
 _wt_second_arg_completer() {
-  # Only complete if the subcommand is 'add'.
   case "${words[2]}" in
     add)
       _wt_get_local_branches
       ;;
+    remove)
+      # Offer force flag or worktree branches.
+      _arguments '(-f --force)' && return 0
+      _wt_get_worktree_branches
+      ;;
+    list|switch)
+      return 0 # No arguments to complete.
+      ;;
   esac
+}
+
+# Completes the third argument, for commands like 'remove -f <branch>'.
+_wt_third_arg_completer() {
+    case "${words[2]}" in
+    remove)
+        # If the second arg was a flag, complete with worktree branches.
+        if [[ "${words[3]}" == -* ]]; then
+            _wt_get_worktree_branches
+        fi
+        ;;
+    esac
 }
 
 # Generates a list of shortcut completions (branches and '-').
@@ -50,9 +68,19 @@ _wt_shortcut_completer() {
   _describe 'shortcut' shortcuts
 }
 
-# Helper to provide a clean list of local branches.
+# Helper to get a clean list of all local branches.
 _wt_get_local_branches() {
   local -a branches
   branches=("${(@f)$(git for-each-ref --format='%(refname:short)' refs/heads 2>/dev/null)}")
   _describe 'branch' branches
+}
+
+# Helper to get a list of removable worktree branches.
+_wt_get_worktree_branches() {
+    local -a wt_branches
+    # Use --porcelain for stable parsing, get branch names, exclude main.
+    wt_branches=(
+      "${(@f)$(git worktree list --porcelain | grep "^branch refs/heads/" | sed 's#^branch refs/heads/##')}"
+    )
+    _describe 'worktree branch' wt_branches
 }
