@@ -63,21 +63,4 @@ require("lazy").setup({
 
 	--tmux
 	require("plugins.tmux"),
-
-	-- obsidian kanban
-	{
-		"arakkkkk/kanban.nvim",
-		ft = { "markdown", "text" },
-		config = function()
-			require("kanban").setup({
-				markdown = {
-					description_folder = "tasks/", -- Path to save the file corresponding to the task.
-					list_head = "## ",
-				},
-				-- setup keybindings
-				vim.keymap.set("n", "<leader>kc", "<cmd>KanbanCreate kanban.md<cr>", { noremap = true, silent = true }),
-				vim.keymap.set("n", "<leader>ko", "<cmd>KanbanOpen kanban.md<cr>", { noremap = true, silent = true }),
-			})
-		end,
-	},
 }, {})
