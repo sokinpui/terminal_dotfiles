@@ -69,6 +69,7 @@ open-recent-edit-file() {
 zle -N open-recent-edit-file
 bindkey '^f' open-recent-edit-file
 bindkey -M vicmd '^f' open-recent-edit-file
+bindkey -M viins '^f' open-recent-edit-file
 
 open-recent-cd() {
   selected_dir=$(fd --type=d --exclude node_modules |
@@ -84,6 +85,8 @@ open-recent-cd() {
 
 zle -N open-recent-cd
 bindkey '^y' open-recent-cd
+bindkey -M vicmd '^y' open-recent-cd
+bindkey -M viins '^y' open-recent-cd
 
 jump-to-dir-in-git-repo() {
   #
@@ -103,6 +106,7 @@ jump-to-dir-in-git-repo() {
 zle -N jump-to-dir-in-git-repo
 bindkey '^g' jump-to-dir-in-git-repo
 bindkey -M vicmd '^g' jump-to-dir-in-git-repo
+bindkey -M viins '^g' jump-to-dir-in-git-repo
 
 fzf-file-widget() {
   LBUFFER="${LBUFFER}$(fd --type f | fzf --height 40% --reverse)"
