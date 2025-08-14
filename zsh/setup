@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+
+echo "Cloning the repository..."
+cd $HOME
+git clone https://github.com/sokinpui/terminal_dotfiles.git dotfiles
+cd dotfiles
+
+REPO_DIR="$(pwd)"
+CONFIG_DIR="$HOME/.config"
+
+echo "Repository directory: $REPO_DIR"
+echo "Configuration directory: $CONFIG_DIR"
+
+if [ ! -d "$CONFIG_DIR" ]; then
+  echo "Creating $CONFIG_DIR..."
+  mkdir -p "$CONFIG_DIR"
+fi
+
+echo "Creating symbolic links for configuration files..."
+
+DOTFILES=(
+  nvim
+  AutoRaise
+  tmux
+  kitty
+  bat
+  lf
+  skhd
+  yabai
+)
+
+for tool in "${DOTFILES[@]}"; do
+  if [ -d "$REPO_DIR/$tool" ] || [ -f "$REPO_DIR/$tool" ]; then
+    ln -sfv "$REPO_DIR/$tool" "$CONFIG_DIR/$tool"
+  else
+    echo "Warning: $tool not found in repository"
+  fi
+done
+
+echo "Symbolic linking complete! Please check the links and start your terminal tools."
+
+ln -sfv $REPO_DIR/zsh $CONFIG_DIR/zsh
+
+echo "Creating symbolic links for zsh configuration files..."
+echo "Removing existing zsh configuration files..."
+mv $HOME/.zprofile $HOME/.zprofile.bak
+mv $HOME/.zshrc $HOME/.zshrc.bak
+mv $HOME/.zshenv $HOME/.zshenv.bak
+echo ""
+
+ln -sfv $REPO_DIR/zsh/.zshrc $REPO_DIR/zshrc
+ln -sfv $REPO_DIR/zsh/.zprofile $REPO_DIR/zprofile
+ln -sfv $REPO_DIR/zsh/.zshenv $REPO_DIR/zshenv
+
+ln -sfv $REPO_DIR/zsh/zshrc $HOME/.zshrc
+ln -sfv $REPO_DIR/zsh/zshenv $HOME/.zshenv
+
+mkdir -p ~/.config/tmux/plugins
+git clone https://github.com/tmux-plugins/tmux-continuum ~/.config/tmux/plugins/tmux-continuum
+git clone https://github.com/tmux-plugins/tmux-resurrect ~/.config/tmux/plugins/tmux-resurrect
+
+pipx install neovim-remote
+pip3 install --break-system-packages pynvim
+
+cd $HOME
+rm -rf dotfiles
+git clone https://github.com/sokinpui/terminal_dotfiles.git dotfiles
+
+ln -sfv $REPO_DIR/gitignore_global $HOME/.gitignore_global
+git config --global core.excludesfile $HOME/.gitignore_global
+
+git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+$HOME/.fzf/install
+
+mkdir -p $HOME/.local
+ln -sfv $REPO_DIR/scripts $HOME/.local/scripts
