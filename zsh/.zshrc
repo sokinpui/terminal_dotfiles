@@ -7,13 +7,13 @@ load-mod(){
   fi
 }
 
+
+# module config
+# ==============================================================
+
 if [[ "$OSTYPE" == "darwin"* ]]; then
   load-mod $HOME/.config/zsh/mod/brew
 fi
-
-# applicaiton specific settings
-# ==============================================================
-
 load-mod $HOME/.config/zsh/mod/aliasrc
 load-mod $HOME/.config/zsh/mod/keymaps
 load-mod $HOME/.config/zsh/mod/shortcuts
