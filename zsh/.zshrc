@@ -1,21 +1,34 @@
+load-mod(){
+  # load with path given
+  if [[ -f $1 ]]; then
+    source $1
+  else
+    echo "File $1 not found"
+  fi
+}
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  load-mod $HOME/.config/zsh/mod/brew
+fi
+
 # applicaiton specific settings
 # ==============================================================
-[ -f $HOME/.config/zsh/mod/brew ] && source $HOME/.config/zsh/mod/brew
-[ -f $HOME/.config/zsh/mod/aliasrc ] && source $HOME/.config/zsh/mod/aliasrc
-[ -f $HOME/.config/zsh/mod/keymaps ] && source $HOME/.config/zsh/mod/keymaps
-[ -f $HOME/.config/zsh/mod/shortcuts ] && source $HOME/.config/zsh/mod/shortcuts
-[ -f $HOME/.config/zsh/mod/git-prompt.sh ] && source /$HOME/.config/zsh/mod/git-prompt.sh
-[ -f $HOME/.config/zsh/mod/vim_mode ] && source $HOME/.config/zsh/mod/vim_mode
-[ -f $HOME/.config/zsh/mod/appearance ] && source $HOME/.config/zsh/mod/appearance
-[ -f $HOME/.config/zsh/mod/completion ] && source $HOME/.config/zsh/mod/completion
-# [ -f $HOME/.config/zsh/mod/ruby ] && source $HOME/.config/zsh/mod/ruby
-[ -f $HOME/.api_key ] && source $HOME/.api_key
-# [ -f $HOME/.config/zsh/mod/conda ] && source $HOME/.config/zsh/mod/conda
-#[ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
-[ -f ~/.config/zsh/mod/fzf ] && source ~/.config/zsh/mod/fzf
-[ -f ~/.config/zsh/mod/fzf-key-binds.zsh ] && source ~/.config/zsh/mod/fzf-key-binds.zsh
-[ -f ~/.config/zsh/mod/lf ] && source ~/.config/zsh/mod/lf
-[ -f ~/.config/zsh/mod/delta ] && source ~/.config/zsh/mod/delta
+
+load-mod $HOME/.config/zsh/mod/aliasrc
+load-mod $HOME/.config/zsh/mod/keymaps
+load-mod $HOME/.config/zsh/mod/shortcuts
+load-mod $HOME/.config/zsh/mod/git-prompt.sh
+load-mod $HOME/.config/zsh/mod/vim_mode
+load-mod $HOME/.config/zsh/mod/appearance
+load-mod $HOME/.config/zsh/mod/completion
+# load-mod $HOME/.config/zsh/mod/ruby
+load-mod $HOME/.api_key
+# load-mod $HOME/.config/zsh/mod/conda
+# load-mod $HOME/.luaver/luaver
+load-mod $HOME/.config/zsh/mod/fzf
+load-mod $HOME/.config/zsh/mod/fzf-key-binds.zsh
+load-mod $HOME/.config/zsh/mod/lf
+load-mod $HOME/.config/zsh/mod/delta
 
 # ===============================================================
 
@@ -57,4 +70,4 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 
-[ -f ~/.localconfig ] && source ~/.localconfig
+load-mod $HOME/.localconfig
