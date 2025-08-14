@@ -22,10 +22,6 @@
 
 export ZSHZ_CASE=smart
 
-fpath=(
-    ~/.config/zsh/autoload
-    ~/.zsh $fpath)
-autoload -Uz ~/.config/zsh/autoload/*(.:t)
 
 # History
 HISTSIZE=10000
@@ -53,8 +49,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 eval "$(direnv hook zsh)"
-
-autoload -U compinit && compinit
 
 set -o ignoreeof
 

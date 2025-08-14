@@ -1,5 +1,10 @@
 #!/usr/bin/env zsh
 
+fpath=(
+    ~/.config/zsh/autoload
+    ~/.zsh $fpath)
+autoload -Uz ~/.config/zsh/autoload/*(.:t)
+
 autoload -Uz compinit
 
 # Define the path for your completion cache file
@@ -75,3 +80,4 @@ setopt AUTO_LIST            # Automatically list choices on ambiguous completion
 setopt COMPLETE_IN_WORD     # Complete from both ends of a word.
 unsetopt AUTO_MENU
 
+autoload -Uz compinit && compinit
