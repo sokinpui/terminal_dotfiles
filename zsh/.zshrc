@@ -2,8 +2,6 @@ load-mod(){
   # load with path given
   if [[ -f $1 ]]; then
     source $1
-  else
-    echo "File $1 not found"
   fi
 }
 
