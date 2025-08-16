@@ -103,11 +103,4 @@ cnoreabbrev <expr> wQa getcmdtype() == ':' && getcmdline() =~# '^wqa' ? 'wa \| q
 " nnoremap <space>Kk <cmd>TmuxNavigateUp<cr>
 " nnoremap <space>Ll <cmd>TmuxNavigateRight<cr>
 
-" if in tmux then split pane, else use toggleterm
-" if exists('$TMUX')
-"     nnoremap <c-t> <Cmd>silent !tmux splitw -v -l 20<cr>
-" else
-"     nnoremap <c-t> <Cmd>ToggleTerm<cr>
-" endif
-
 nnoremap <space>L <CMD>cwindow<CR>

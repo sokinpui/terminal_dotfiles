@@ -47,7 +47,7 @@ require("lazy").setup({
 
 	-- filetype
 	require("plugins.latex"),
-	require("plugins.markdown"),
+	-- require("plugins.markdown"),
 	-- require("plugins.orgmode"),
 	-- { "kmonad/kmonad-vim", ft = "kbd"},
 
@@ -62,5 +62,5 @@ require("lazy").setup({
 	-- require("plugins.git"),
 
 	--tmux
-	require("plugins.tmux"),
+	-- require("plugins.tmux"),
 }, {})

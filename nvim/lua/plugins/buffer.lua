@@ -1,4 +1,5 @@
 return {
+
 	-- {
 	--   "j-morano/buffer_manager.nvim",
 	--   keys = {
@@ -23,6 +24,7 @@ return {
 	--     vim.keymap.set("n", "<Cr>", require("buffer_manager.ui").toggle_quick_menu, opts)
 	--   end
 	-- },
+
 	{
 		"ThePrimeagen/harpoon",
 		keys = {
@@ -133,6 +135,7 @@ return {
 			})
 		end,
 	},
+
 	-- {
 	--   "cbochs/grapple.nvim",
 	--   keys = {
