@@ -6,6 +6,92 @@ if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     return 1
 fi
 
+# Handle 'remove' command directly in the wrapper
+if [[ "$1" == "rm" ]]; then
+    shift # Consume 'rm'
+    local force=0
+    local branch_to_remove=""
+
+    while (( $# > 0 )); do
+        case "$1" in
+            -f|--force)
+                force=1
+                shift
+                ;;
+            -*)
+                printf "Error: Unknown option '%s' for rm command.\n" "$1" >&2
+                return 1
+                ;;
+            *)
+                if [[ -n "$branch_to_remove" ]]; then
+                    printf "Error: Only one branch can be removed at a time.\n" >&2
+                    return 1
+                fi
+                branch_to_remove="$1"
+                shift
+                ;;
+        esac
+    done
+
+    if [[ -z "$branch_to_remove" ]]; then
+        printf "Error: Branch name not specified.\n" >&2
+        printf "Usage: wt rm [-f|--force] <branch>\n" >&2
+        return 1
+    fi
+
+    # Prevent removing main/master/develop for safety
+    if [[ "$branch_to_remove" == "main" || "$branch_to_remove" == "master" || "$branch_to_remove" == "develop" ]]; then
+        printf "Error: Refusing to remove protected branch '%s' for safety.\n" "$branch_to_remove" >&2
+        return 1
+    fi
+
+    # Prevent removing current branch
+    local current_branch
+    current_branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+    if [[ "$current_branch" == "$branch_to_remove" ]]; then
+        printf "Error: Cannot remove the current branch '%s'. Switch to another branch first.\n" "$branch_to_remove" >&2
+        return 1
+    fi
+
+    # Find worktree path for the branch
+    local worktree_path
+    worktree_path=$(git worktree list --porcelain | awk -v b="refs/heads/${branch_to_remove}" '
+        /^worktree / {path=$2}
+        /^branch / && $2==b {print path; exit}')
+
+    if [[ -n "$worktree_path" ]]; then
+        printf "Removing worktree at %s...\n" "$worktree_path"
+        local remove_args=()
+        (( force )) && remove_args+=(--force)
+
+        if ! git worktree remove "${remove_args[@]}" "$worktree_path"; then
+            printf "Error: Failed to remove worktree for branch '%s'.\n" "$branch_to_remove" >&2
+            printf "It might have uncommitted changes. Use -f to force removal.\n" >&2
+            return 1
+        fi
+    else
+        if ! git rev-parse --verify "$branch_to_remove" >/dev/null 2>&1; then
+            printf "Error: Branch '%s' does not exist.\n" "$branch_to_remove" >&2
+            return 1
+        fi
+        printf "No worktree found for branch '%s'. Will only attempt to delete the branch.\n" "$branch_to_remove"
+    fi
+
+    # Delete branch
+    printf "Deleting branch '%s'...\n" "$branch_to_remove"
+    local delete_args=(-d)
+    (( force )) && delete_args=(-D)
+
+    if ! git branch "${delete_args[@]}" "$branch_to_remove"; then
+        printf "Error: Failed to delete branch '%s'.\n" "$branch_to_remove" >&2
+        printf "It might not be fully merged. Use -f to force deletion.\n" >&2
+        return 1
+    fi
+
+    printf "Successfully removed worktree and/or branch '%s'.\n" "$branch_to_remove"
+    return 0
+fi
+
 local script_output
 local exit_code
 local last_wt_file="${HOME}/.wt_last"

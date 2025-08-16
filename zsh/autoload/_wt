@@ -10,8 +10,7 @@ _wt() {
   # The : after the index '1' indicates that the first argument is required.
   _arguments -C \
     '1: :_wt_first_arg_completer' \
-    '2: :_wt_second_arg_completer' \
-    '3: :_wt_third_arg_completer'
+    '2: :_wt_second_arg_completer'
 }
 
 # Completes the first argument (subcommands and shortcuts).
@@ -20,7 +19,7 @@ _wt_first_arg_completer() {
   subcommands=(
     'add:Create or switch to a worktree for a branch'
     'list:List all worktrees'
-    'remove:Remove an existing worktree'
+    'rm:Remove an existing worktree'
     'switch:Interactively switch worktrees'
   )
   _describe 'subcommand' subcommands
@@ -33,9 +32,10 @@ _wt_second_arg_completer() {
     add)
       _wt_get_local_branches
       ;;
-    remove)
-      # Offer force flag or worktree branches.
-      _arguments '(-f --force)' && return 0
+    rm)
+      local -a flags
+      flags=('-f:Force removal' '--force:Force removal')
+      _describe 'flag' flags
       _wt_get_worktree_branches
       ;;
     list|switch)
@@ -47,7 +47,7 @@ _wt_second_arg_completer() {
 # Completes the third argument, for commands like 'remove -f <branch>'.
 _wt_third_arg_completer() {
     case "${words[2]}" in
-    remove)
+    rm)
         # If the second arg was a flag, complete with worktree branches.
         if [[ "${words[3]}" == -* ]]; then
             _wt_get_worktree_branches
