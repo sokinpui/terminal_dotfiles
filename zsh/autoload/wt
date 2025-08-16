@@ -6,8 +6,33 @@ if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     return 1
 fi
 
-# Handle 'remove' command directly in the wrapper
-if [[ "$1" == "rm" ]]; then
+if [[ "$1" == "-" ]]; then
+    local main_worktree_root
+    main_worktree_root=$(git worktree list | head -n 1 | awk '{print $1}')
+    if [[ -z "$main_worktree_root" ]]; then
+        printf "Error: Not a git repository.\n" >&2
+        return 1
+    fi
+
+    local last_wt_file="${main_worktree_root}/.wt_last"
+    if [[ ! -f "$last_wt_file" ]]; then
+        printf "Error: No last worktree recorded for this repository.\n" >&2
+        return 1
+    fi
+
+    local target_dir
+    target_dir=$(<"$last_wt_file")
+    local current_dir="$PWD"
+
+    if [[ -d "$target_dir" ]]; then
+        printf "%s" "$current_dir" > "$last_wt_file"
+        cd "$target_dir" || return 1
+    else
+        printf "Error: Last worktree path '%s' is no longer valid.\n" "$target_dir" >&2
+        return 1
+    fi
+    return 0
+elif [[ "$1" == "rm" ]]; then
     shift # Consume 'rm'
     local force=0
     local branch_to_remove=""
@@ -94,7 +119,7 @@ fi
 
 local script_output
 local exit_code
-local last_wt_file="${HOME}/.wt_last"
+local pre_cmd_pwd="$PWD" # Record where we started
 
 # Run the dispatcher script, capturing its stdout and exit code.
 # Stderr is passed through, so error messages from the script appear immediately.
@@ -106,8 +131,6 @@ case $exit_code in
   0)
     # Exit code 0: Success, and a path was returned to cd into.
     if [ -n "$script_output" ] && [ -d "$script_output" ]; then
-      # Save the current directory path before changing to the new one.
-      printf "%s" "$PWD" > "$last_wt_file"
       cd "$script_output" || return 1
     elif [ -n "$script_output" ]; then
       # This case handles when a path was returned but it's not a directory.
@@ -122,9 +145,17 @@ case $exit_code in
     printf "%s\n" "$script_output"
     ;;
   1 | *)
-    # Exit code 1 or any other: An error occurred.
-    # The script already printed an error message to stderr.
-    # We just pass the error code along.
+    # An error occurred. The script already printed a message to stderr.
     return $exit_code
     ;;
 esac
+
+# Unified State Saving: If the directory changed for any reason, a switch occurred.
+if [[ "$PWD" != "$pre_cmd_pwd" ]]; then
+    # Find the main worktree root, which is the canonical location for the state file.
+    local main_worktree_root
+    main_worktree_root=$(git worktree list | head -n 1 | awk '{print $1}')
+    if [[ -n "$main_worktree_root" ]]; then
+        printf "%s" "$pre_cmd_pwd" > "${main_worktree_root}/.wt_last"
+    fi
+fi

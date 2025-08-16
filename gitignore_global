@@ -104,3 +104,4 @@ htmlcov/
 
 
 .worktree/
+.wt_last
