@@ -32,6 +32,7 @@ return {
 				"eslint", -- JavaScript/TypeScript LSP/Linter
 				"vtsls", -- JavaScript/TypeScript LSP/Linter
 				"texlab",
+				"gopls",
 
 				-- Formatters (used by conform.nvim)
 				"stylua", -- Lua
