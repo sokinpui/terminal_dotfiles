@@ -1,0 +1,51 @@
+#!/bin/bash
+
+sudo dnf update -y
+
+# --- Packages from Fedora's Official Repositories ---
+echo "Installing packages from official Fedora repositories..."
+sudo dnf install -y \
+  cmake \
+  cloc \
+  direnv \
+  luarocks \
+  syncthing \
+  trash-cli \
+  tree \
+  vim \
+  neovim \
+  zsh \
+  tmux \
+  neofetch \
+  curl \
+  wget \
+  git \
+  gh \
+  htop \
+  tldr \
+  tree \
+  fd-find \
+  rigrep \
+  trash-cli \
+  openssh \
+  openssl \
+  tree \
+  zoxide \
+  direnv \
+  cloc \
+  wget \
+  pipx \
+  zoxide
+
+sudo dnf copr enable pennbauman/ports
+sudo dnf install lf
+
+sudo dnf copr enable elxreno/jetbrains-mono-fonts -y
+sudo dnf install jetbrains-mono-fonts -y
+
+sudo dnf copr enable xuthus5/lxgw-wenkai-fonts -y
+sudo dnf install lxgw-wenkai-fonts
+
+sudo npm install -g deno
+
+sudo dnf install google-chrome-stable
