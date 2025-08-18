@@ -25,7 +25,7 @@ sudo dnf install -y \
   tldr \
   tree \
   fd-find \
-  rigrep \
+  ripgrep \
   trash-cli \
   openssh \
   openssl \
