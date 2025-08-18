@@ -37,15 +37,15 @@ sudo dnf install -y \
   pipx \
   zoxide
 
-sudo dnf copr enable pennbauman/ports
-sudo dnf install lf
+sudo dnf copr enable pennbauman/ports -y
+sudo dnf install lf -y
 
 sudo dnf copr enable elxreno/jetbrains-mono-fonts -y
 sudo dnf install jetbrains-mono-fonts -y
 
 sudo dnf copr enable xuthus5/lxgw-wenkai-fonts -y
-sudo dnf install lxgw-wenkai-fonts
+sudo dnf install lxgw-wenkai-fonts -y
 
 sudo npm install -g deno
 
-sudo dnf install google-chrome-stable
+sudo dnf install google-chrome-stable -y
