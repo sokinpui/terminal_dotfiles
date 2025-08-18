@@ -48,4 +48,6 @@ sudo dnf install lxgw-wenkai-fonts -y
 
 sudo npm install -g deno
 
+sudo dnf install fedora-workstation-repositories -y
+sudo dnf config-manager setopt google-chrome.enabled=1
 sudo dnf install google-chrome-stable -y
