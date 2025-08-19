@@ -7,6 +7,7 @@ SEARCH_DIRECTORIES=(
   ~/projects/learn
   ~/projects/lscm
   ~/Obsidian/Project_Management
+  ~/Obsidian/Project_Management/_lscm
 )
 
 select_directory() {
@@ -15,7 +16,7 @@ select_directory() {
     -not -path '*/.*' \
     -not -path '*/*.wt' \
     -exec ls -1dt {} + | uniq |
-    fzf --height 40% --reverse --header "Select a project directory"
+    fzf --height 40% -i --reverse --header "Select a project directory"
 }
 
 create_or_connect_session() {
@@ -24,15 +25,18 @@ create_or_connect_session() {
 
   if ! pgrep tmux &>/dev/null; then
     tmux new-session -s "$session_name" -c "$target_dir"
+    tmux set-environment -g BASE_DIR "$target_dir"
     return
   fi
 
   if ! tmux has-session -t "$session_name" 2>/dev/null; then
     tmux new-session -ds "$session_name" -c "$target_dir"
+    tmux set-environment -g BASE_DIR "$target_dir"
   fi
 
   local temp_session_name="${session_name}_${RANDOM:2}"
   tmux new-session -d -t "$session_name" -s "$temp_session_name"
+  tmux set-environment -g BASE_DIR "$target_dir"
 
   if [[ -n "${TMUX-}" ]]; then
     tmux switch-client -t "$temp_session_name"

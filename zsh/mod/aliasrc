@@ -198,7 +198,8 @@ tmux() {
     return
   fi
 
-  tmux-sessionizer ~ None
+  # create and attach to sessoin named "None"
+  tmux new-session -s "None"
 }
 
 yabai() {
