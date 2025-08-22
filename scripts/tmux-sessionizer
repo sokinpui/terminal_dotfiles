@@ -24,19 +24,16 @@ create_or_connect_session() {
   local target_dir="$2"
 
   if ! pgrep tmux &>/dev/null; then
-    tmux new-session -s "$session_name" -c "$target_dir"
-    tmux set-environment -g BASE_DIR "$target_dir"
+    tmux new-session -s "$session_name" -c "$target_dir" -e "BASE_DIR=$target_dir"
     return
   fi
 
   if ! tmux has-session -t "$session_name" 2>/dev/null; then
-    tmux new-session -ds "$session_name" -c "$target_dir"
-    tmux set-environment -g BASE_DIR "$target_dir"
+    tmux new-session -ds "$session_name" -c "$target_dir" -e "BASE_DIR=$target_dir"
   fi
 
   local temp_session_name="${session_name}_${RANDOM:2}"
-  tmux new-session -d -t "$session_name" -s "$temp_session_name"
-  tmux set-environment -g BASE_DIR "$target_dir"
+  tmux new-session -d -t "$session_name" -s "$temp_session_name" -e "BASE_DIR=$target_dir"
 
   if [[ -n "${TMUX-}" ]]; then
     tmux switch-client -t "$temp_session_name"
