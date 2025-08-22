@@ -199,7 +199,7 @@ tmux() {
   fi
 
   # create and attach to sessoin named "None"
-  tmux new-session -s "None"
+  tmux new-session -s "None" || tmux attach-session -t "None"
 }
 
 yabai() {

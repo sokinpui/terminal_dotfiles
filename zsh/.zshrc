@@ -12,13 +12,14 @@ load-mod(){
 if [[ "$OSTYPE" == "darwin"* ]]; then
   load-mod $HOME/.config/zsh/mod/brew
 fi
+
+load-mod $HOME/.config/zsh/mod/completion
 load-mod $HOME/.config/zsh/mod/aliasrc
 load-mod $HOME/.config/zsh/mod/keymaps
 load-mod $HOME/.config/zsh/mod/shortcuts
 load-mod $HOME/.config/zsh/mod/git-prompt.sh
 load-mod $HOME/.config/zsh/mod/vim_mode
 load-mod $HOME/.config/zsh/mod/appearance
-load-mod $HOME/.config/zsh/mod/completion
 # load-mod $HOME/.config/zsh/mod/ruby
 load-mod $HOME/.api_key
 # load-mod $HOME/.config/zsh/mod/conda
@@ -27,6 +28,7 @@ load-mod $HOME/.config/zsh/mod/fzf
 load-mod $HOME/.config/zsh/mod/fzf-key-binds.zsh
 load-mod $HOME/.config/zsh/mod/lf
 load-mod $HOME/.config/zsh/mod/delta
+# load-mod $HOME/.config/zsh/mod/fzf-tab/fzf-tab.plugin.zsh
 
 # ===============================================================
 
