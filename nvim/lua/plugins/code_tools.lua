@@ -30,7 +30,7 @@ return {
 				-- "pyright",         -- Alternative Python LSP (commented out, choose one)
 				"bashls",
 				"eslint", -- JavaScript/TypeScript LSP/Linter
-				"vtsls", -- JavaScript/TypeScript LSP/Linter
+				-- "vtsls", -- JavaScript/TypeScript LSP/Linter
 				"texlab",
 				"gopls",
 
@@ -143,8 +143,8 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = { "isort", "black" },
-				javascript = { "prettier" },
-				typescript = { "prettier" },
+				-- javascript = { "prettier" },
+				-- typescript = { "prettier" },
 				c = { "clang-format" },
 				java = { "google-java-format" },
 				markdown = { "prettier" }, -- Can also use "markdownlint-cli" if preferred/configured
