@@ -12,7 +12,7 @@ cmd + shift - j : yabai -m window --swap south &> /dev/null
 cmd + shift - k : yabai -m window --swap north &> /dev/null
 cmd + shift - l : yabai -m window --swap east &> /dev/null
 
-cmd - g : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2 &> /dev/null; yabai -m window --focus `yabai -m query --windows --window | jq '.id'`
+cmd - g : yabai -m window --toggle float; yabai -m window --grid 3:5:1:1:2:4 &> /dev/null; yabai -m window --focus `yabai -m query --windows --window | jq '.id'`
 
 cmd - e : yabai -m space --layout bsp
 
