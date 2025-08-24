@@ -134,6 +134,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     ls="gls --group-directories-first --color=always -h" \
     ll="gls --group-directories-first --color=always -hl" \
     la="gls --group-directories-first -lah --color=always"
+  alias head="ghead"
+  alias sed="gsed"
+  alias tail="gtail"
+  alias date="gdate"
 else
   alias \
     ls="ls --group-directories-first --color=always -h" \
