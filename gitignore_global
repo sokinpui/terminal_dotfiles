@@ -105,3 +105,6 @@ htmlcov/
 
 .worktree/
 .wt_last
+
+.kanban/
+kanban.md
