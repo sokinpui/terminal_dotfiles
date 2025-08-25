@@ -221,34 +221,10 @@ return {
 		},
 		config = function()
 			require("flutter-tools").setup({
-				flutter_path = nil,
-				flutter_lookup_cmd = "asdf where flutter",
-				fvm = false,
-				lsp = {
-					settings = {
-						showtodos = true,
-						completefunctioncalls = true,
-						analysisexcludedfolders = {
-							vim.fn.expand("$Home/.pub-cache"),
-						},
-						renamefileswithclasses = "prompt",
-						updateimportsonrename = true,
-						enablesnippets = false,
-					},
+				widget = {
+					enabled = true,
 				},
-				ui = {
-					border = "rounded",
-					notification_style = "native",
-				},
-				decorations = {
-					statusline = {
-						app_version = false,
-						device = true,
-					},
-				},
-				widget_guides = { enabled = true },
-				closing_tags = { highlight = "Error" },
-			})
+			}) -- use defaults
 		end,
 	},
 }
