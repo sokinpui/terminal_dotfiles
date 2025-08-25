@@ -109,7 +109,7 @@ bindkey -M vicmd '^g' jump-to-dir-in-git-repo
 bindkey -M viins '^g' jump-to-dir-in-git-repo
 
 fzf-file-widget() {
-  LBUFFER="${LBUFFER}$(fd --type f | fzf --height 40% --reverse)"
+  LBUFFER="${LBUFFER}$(fd | fzf --height 40% --reverse)"
   local ret=$?
   zle reset-prompt
   return $ret
