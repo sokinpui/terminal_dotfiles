@@ -14,15 +14,15 @@ return {
 			})
 		end,
 	},
-	{
-		"folke/trouble.nvim",
-		cmd = "Trouble",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			require("trouble").setup({
-				padding = false, -- add an extra new line on top of the list
-				cycle_results = false,
-			})
-		end,
-	},
+	-- {
+	-- 	"folke/trouble.nvim",
+	-- 	cmd = "Trouble",
+	-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	-- 	config = function()
+	-- 		require("trouble").setup({
+	-- 			padding = false, -- add an extra new line on top of the list
+	-- 			cycle_results = false,
+	-- 		})
+	-- 	end,
+	-- },
 }

@@ -26,41 +26,15 @@ require("lazy").setup({
 	require("plugins.comments"),
 	require("plugins.outline"),
 	require("plugins.live-command"),
-	-- require("plugins.terminal"),
-
-	-- buffer jump
 	require("plugins.buffer"),
-
-	-- require("plugins.file_explorer"),
-
-	-- motion
-	-- require("plugins.cleverf"),
 	require("plugins.jump"),
 	-- require("plugins.multi-cursor"),
 	-- require("plugins.visual-effect"),
 	require("plugins.surround"),
 	require("plugins.auto-pairs"),
-
-	-- fzf
 	require("plugins.fzf"),
-	-- require("plugins.scroll"),
-
-	-- filetype
-	require("plugins.latex"),
-	-- require("plugins.markdown"),
-	-- require("plugins.orgmode"),
-	-- { "kmonad/kmonad-vim", ft = "kbd"},
-
-	-- === Centralized Code Tools Setup ===
+	-- require("plugins.latex"),
 	require("plugins.code_tools"),
-
-	-- === Completion (depends on LSP capabilities from code_tools) ===
 	require("plugins.nvim-cmp"),
 	require("plugins.copilot"),
-
-	-- git
-	-- require("plugins.git"),
-
-	--tmux
-	-- require("plugins.tmux"),
 }, {})

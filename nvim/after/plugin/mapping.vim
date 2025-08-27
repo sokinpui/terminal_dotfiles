@@ -1,5 +1,4 @@
 inoremap <C-k> <Esc>k
-" nnoremap <C-q> <Cmd>q<cr>
 
 " nnoremap <Esc> <Cmd>nohlsearch<CR><Esc>
 
@@ -44,13 +43,6 @@ xnoremap <leader>p "_dP
 " select the last pasted text
 nnoremap gp '[v']
 
-" increment and decrement of characters
-"set nrformats+=alpha
-
-"   Motion
-" Vertical
-" noremap ( )
-" noremap ) (
 
 "make {count}j/k become jumps
 nnoremap <expr> j (v:count > 2 ? "m'" . v:count . "j" : "j")
@@ -71,10 +63,6 @@ nnoremap g# <Cmd>set hlsearch<Cr>g#
 " exact search
 nnoremap <leader>/ /\<\><Left><Left>
 
-" indention formation
-" nnoremap =<leader> gg=G`'
-
-" should be leverge the built in . repeat
 vnoremap < <gv
 vnoremap > >gv
 
@@ -90,17 +78,6 @@ cnoreabbrev <expr> Wqa getcmdtype() == ':' && getcmdline() =~# '^wqa' ? 'wa \| q
 cnoreabbrev <expr> WQa getcmdtype() == ':' && getcmdline() =~# '^wqa' ? 'wa \| q' : 'wqa'
 cnoreabbrev <expr> wQa getcmdtype() == ':' && getcmdline() =~# '^wqa' ? 'wa \| q' : 'wqa'
 
-"nnoremap <leader><leader> <Cmd>source<Cr>
-
-" " change tmux pane focus
-" nnoremap <A-h> <Cmd>silent !tmux select-pane -L<cr>
-" nnoremap <A-j> <Cmd>silent !tmux select-pane -D<cr>
-" nnoremap <A-k> <Cmd>silent !tmux select-pane -U<cr>
-" nnoremap <A-l> <Cmd>silent !tmux select-pane -R<cr>
-
-" nnoremap <space>Hj <cmd>TmuxNavigateLeft<cr>
-" nnoremap <space>Jj <cmd>TmuxNavigateDown<cr>
-" nnoremap <space>Kk <cmd>TmuxNavigateUp<cr>
-" nnoremap <space>Ll <cmd>TmuxNavigateRight<cr>
+nnoremap J mzJ`z
 
 nnoremap <space>L <CMD>cwindow<CR>
