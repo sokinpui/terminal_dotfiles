@@ -22,7 +22,6 @@ augroup ftTextwidthWrap
     "au filetype text,markdown setlocal formatoptions=tcaw2n textwidth=80 linebreak
 augroup END
 
-
 " augroup ttt
 "     au!
 "     " kill empty buffer after TermClose
