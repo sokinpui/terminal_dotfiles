@@ -71,22 +71,22 @@ bindkey '^f' open-recent-edit-file
 bindkey -M vicmd '^f' open-recent-edit-file
 bindkey -M viins '^f' open-recent-edit-file
 
-open-recent-cd() {
-  selected_dir=$(fd --type=d --exclude node_modules |
-    fzf --height 40% --reverse)
-  if [ -z $selected_dir ]; then
-    zle reset-prompt
-    return
-  fi
-  cd $selected_dir
-
-  zle accept-line
-}
-
-zle -N open-recent-cd
-bindkey '^y' open-recent-cd
-bindkey -M vicmd '^y' open-recent-cd
-bindkey -M viins '^y' open-recent-cd
+# open-recent-cd() {
+#   selected_dir=$(fd --type=d --exclude node_modules |
+#     fzf --height 40% --reverse)
+#   if [ -z $selected_dir ]; then
+#     zle reset-prompt
+#     return
+#   fi
+#   cd $selected_dir
+#
+#   zle accept-line
+# }
+#
+# zle -N open-recent-cd
+# bindkey '^y' open-recent-cd
+# bindkey -M vicmd '^y' open-recent-cd
+# bindkey -M viins '^y' open-recent-cd
 
 jump-to-dir-in-git-repo() {
   #
@@ -94,7 +94,7 @@ jump-to-dir-in-git-repo() {
     cd $(git rev-parse --show-toplevel)
   fi
 
-  selected_dir=$(fd --type=d | fzf --height 40% --reverse)
+  selected_dir=$(fd --type=d --strip-cwd-prefix -X stat -f "%m %N" | sort -nr | cut -d' ' -f2- | fzf --height 40% --reverse)
   if [ -z $selected_dir ]; then
     zle reset-prompt
     return
@@ -109,7 +109,7 @@ bindkey -M vicmd '^g' jump-to-dir-in-git-repo
 bindkey -M viins '^g' jump-to-dir-in-git-repo
 
 fzf-file-widget() {
-  LBUFFER="${LBUFFER}$(fd | fzf --height 40% --reverse)"
+  LBUFFER="${LBUFFER}$(fd --strip-cwd-prefix -X stat -f "%m %N" | sort -nr | cut -d' ' -f2- | fzf --height 40% --reverse)"
   local ret=$?
   zle reset-prompt
   return $ret
