@@ -79,5 +79,3 @@ cnoreabbrev <expr> WQa getcmdtype() == ':' && getcmdline() =~# '^wqa' ? 'wa \| q
 cnoreabbrev <expr> wQa getcmdtype() == ':' && getcmdline() =~# '^wqa' ? 'wa \| q' : 'wqa'
 
 nnoremap J mzJ`z
-
-nnoremap <space>L <CMD>cwindow<CR>
