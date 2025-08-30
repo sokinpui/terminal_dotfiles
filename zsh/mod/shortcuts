@@ -17,7 +17,7 @@ open-recent-edit-file() {
   #   | fzf --height 40% --reverse \
   #   --header="cwd=$cwd  | cmd='$EDITOR <file>'  ")
   select_file=$(
-    fd . --strip-cwd-prefix --type=file -0 \
+    fd --type=file \
       -E "*.png" \
       -E "*.jpg" \
       -E "*.jpeg" \
@@ -52,8 +52,9 @@ open-recent-edit-file() {
       -E "*.aif" \
       -E "*.m4a" \
       -E "__pycache__" \
-      -E "*.ogg" |
-      xargs -0 ls -1t |
+      -E "*.ogg" \
+      --strip-cwd-prefix -X stat -f "%m %N" |
+      sort -nr | cut -d' ' -f2- |
       fzf --height 40% --reverse -m --header="cwd=$cwd  | cmd='$EDITOR <file>'  "
   )
   if [ -z $select_file ]; then
