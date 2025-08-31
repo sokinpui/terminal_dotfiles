@@ -40,18 +40,19 @@ return {
 			})
 		end,
 	},
-	{
-		"anuvyklack/help-vsplit.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("help-vsplit").setup({
-				always = true, -- Always open help in a vertical split.
-				side = "right", -- 'left' or 'right'
-				buftype = { "help" },
-				filetype = { "man" },
-			})
-		end,
-	},
+
+	-- {
+	-- 	"anuvyklack/help-vsplit.nvim",
+	-- 	event = "VeryLazy",
+	-- 	config = function()
+	-- 		require("help-vsplit").setup({
+	-- 			always = true, -- Always open help in a vertical split.
+	-- 			side = "right", -- 'left' or 'right'
+	-- 			buftype = { "help" },
+	-- 			filetype = { "man" },
+	-- 		})
+	-- 	end,
+	-- },
 
 	{
 		"lukas-reineke/indent-blankline.nvim",

@@ -62,3 +62,5 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 set noswapfile
 set runtimepath+=/opt/homebrew/Cellar/neovim/*/share/nvim/runtime
+
+set helpheight=9999
