@@ -25,6 +25,7 @@ return {
 				"black", -- Python
 				"isort", -- Python
 				"prettier", -- JS/TS, Markdown
+				"eslint_d", -- JS/TS, Markdown
 				-- "clang-format", -- C/C++
 				-- "google-java-format", -- Java
 				"shfmt", -- Shell scripts
@@ -128,8 +129,6 @@ return {
 				format_after_save = {
 					lsp_format = "fallback",
 				},
-
-				-- configure individual formatters
 				formatter = {
 					dart_format = {
 						append_args = { "--line-length=120" },
@@ -153,8 +152,8 @@ return {
 				lua = { "luacheck" },
 				sh = { "shellcheck" },
 				bash = { "shellcheck" },
-				javascript = { "eslint" },
-				typescript = { "eslint" },
+				javascript = { "eslint_d" },
+				typescript = { "eslint_d" },
 			},
 			lint_on_events = {
 				"BufWritePost",
