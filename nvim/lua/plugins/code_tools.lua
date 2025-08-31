@@ -105,33 +105,37 @@ return {
 		event = { "BufWritePre" },
 		cmd = { "ConformInfo" },
 		dependencies = { "williamboman/mason.nvim" },
-		opts = {
-			formatters_by_ft = {
-				lua = { "stylua" },
-				python = { "isort", "black" },
-				javascript = { "eslint_d" },
-				typescript = { "eslint_d" },
-				c = { "clang-format" },
-				java = { "google-java-format" },
-				markdown = { "prettier" },
-				bash = { "shfmt" },
-				sh = { "shfmt" },
-				tex = { "latexindent" },
-				-- dart = { "dart_format" },
-				["*"] = { "trim_whitespace" },
-			},
-			format_on_save = {
-				timeout_ms = 5000,
-				lsp_format = "fallback",
-			},
-			format_after_save = {
-				lsp_format = "fallback",
-			},
-		},
-		init = function()
-			vim.api.nvim_create_user_command("Format", function(args)
-				require("conform").format({ async = true, lsp_fallback = true, bufnr = args.bufnr })
-			end, { range = true, bang = true })
+		config = function()
+			require("conform").setup({
+				formatters_by_ft = {
+					lua = { "stylua" },
+					python = { "isort", "black" },
+					javascript = { "eslint_d" },
+					typescript = { "eslint_d" },
+					c = { "clang-format" },
+					java = { "google-java-format" },
+					markdown = { "prettier" },
+					bash = { "shfmt" },
+					sh = { "shfmt" },
+					tex = { "latexindent" },
+					dart = { "dart_format" },
+					["*"] = { "trim_whitespace" },
+				},
+				format_on_save = {
+					timeout_ms = 500,
+					lsp_format = "fallback",
+				},
+				format_after_save = {
+					lsp_format = "fallback",
+				},
+
+				-- configure individual formatters
+				formatter = {
+					dart_format = {
+						append_args = { "--line-length=120" },
+					},
+				},
+			})
 		end,
 	},
 
