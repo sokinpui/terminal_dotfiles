@@ -120,6 +120,7 @@ return {
 					sh = { "shfmt" },
 					tex = { "latexindent" },
 					dart = { "dart_format" },
+					go = { "gofmt" },
 					["*"] = { "trim_whitespace" },
 				},
 				format_on_save = {
@@ -128,11 +129,6 @@ return {
 				},
 				format_after_save = {
 					lsp_format = "fallback",
-				},
-				formatter = {
-					dart_format = {
-						append_args = { "--line-length=120" },
-					},
 				},
 			})
 		end,
