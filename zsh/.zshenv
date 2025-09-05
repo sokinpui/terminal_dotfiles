@@ -21,6 +21,7 @@ export PATH=$HOME/development/flutter/bin:$PATH
 export PATH=$HOME/.local/scripts:$PATH
 
 export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
 
 export LESS='--mouse --wheel-lines=5'
 export PAGER='less -R'
