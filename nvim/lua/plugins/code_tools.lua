@@ -13,29 +13,28 @@ return {
 			ensure_installed = {
 				-- LSPs
 				"lua_ls",
-				"ruff", -- Combined LSP/Linter/Formatter for Python
+				"ruff",
 				"pyright",
 				"bashls",
-				"eslint", -- JavaScript/TypeScript LSP/Linter
+				"eslint",
+				"ts_ls",
 				"texlab",
 				"gopls",
 
 				-- Formatters
-				"stylua", -- Lua
-				"black", -- Python
-				"isort", -- Python
-				"prettier", -- JS/TS, Markdown
-				"eslint_d", -- JS/TS, Markdown
-				-- "clang-format", -- C/C++
-				-- "google-java-format", -- Java
-				"shfmt", -- Shell scripts
-				"latexindent", -- LaTeX
+				"stylua",
+				"black",
+				"isort",
+				"prettier",
+				"eslint_d",
+				"shfmt",
+				"latexindent",
 
 				-- Linters
-				"ruff", -- Python
-				"shellcheck", -- Shell scripts
-				"luacheck", -- Lua
-				"vale", -- latex, markdown
+				"ruff",
+				"shellcheck",
+				"luacheck",
+				"vale",
 			},
 		},
 	},
@@ -154,7 +153,6 @@ return {
 			lint_on_events = {
 				"BufWritePost",
 				"BufReadPost",
-				-- "InsertLeave",
 			},
 		},
 		config = function(_, opts)
@@ -174,7 +172,6 @@ return {
 			vim.api.nvim_create_user_command("Lint", function()
 				lint.try_lint()
 			end, {})
-			-- vim.keymap.set("n", "<leader>li", "<cmd>Lint<cr>", { desc = "Run Linters" })
 		end,
 	},
 
