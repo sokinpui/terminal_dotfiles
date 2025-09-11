@@ -2,6 +2,7 @@
 
 # ift helpers
 .itf_state.json
+.state.itf
 itf.txt
 
 .vscode/
@@ -109,3 +110,5 @@ htmlcov/
 
 .kanban/
 kanban.md
+
+bin/
