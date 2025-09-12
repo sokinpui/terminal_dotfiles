@@ -12,50 +12,21 @@ open-recent-edit-file() {
     return
   fi
 
-  # select_file=$(find . -type f -not -path '*/.*' -exec ls -lt1 -- {} + \
-  #   | sed 's|^\./||' \
-  #   | fzf --height 40% --reverse \
-  #   --header="cwd=$cwd  | cmd='$EDITOR <file>'  ")
   select_file=$(
-    fd --type=file \
-      -E "*.png" \
-      -E "*.jpg" \
-      -E "*.jpeg" \
-      -E "*.mp3" \
-      -E "*.mp4" \
-      -E "*.docx" \
-      -E "*.doc" \
-      -E "*.xlsx" \
-      -E "*.wav" \
-      -E "*.gif" \
-      -E "*.psd" \
-      -E "*.pdf" \
-      -E "*.tiff" \
-      -E "*.avif" \
-      -E "*.jfif" \
-      -E "*.pjeg" \
-      -E "*.pjp" \
-      -E "*.svg" \
-      -E "*.wbep" \
-      -E "*.bmp" \
-      -E "*.ico" \
-      -E "*.cur" \
-      -E "*.tif" \
-      -E "*.mov" \
-      -E "*.avi" \
-      -E "*.wmv" \
-      -E "*.flv" \
-      -E "*.mkv" \
-      -E "*.webm" \
-      -E "*.aac" \
-      -E "*.flac" \
-      -E "*.aif" \
-      -E "*.m4a" \
-      -E "__pycache__" \
-      -E "*.ogg" \
-      --strip-cwd-prefix -X stat -f "%m %N" |
-      sort -nr | cut -d' ' -f2- |
-      fzf --height 40% --reverse -m --header="cwd=$cwd  | cmd='$EDITOR <file>'  "
+    if [[ "$(uname)" == "Linux" ]]; then
+      fd --type=file \
+        --strip-cwd-prefix -X stat -c "%Y %n" |
+        sort -nr | cut -d' ' -f2- |
+        fzf --height 40% --reverse -m --header="cwd=$cwd  | cmd='$EDITOR <file>'  "
+      return
+    fi
+    if [[ "$(uname)" == "Darwin" ]]; then
+      fd --type=file \
+        --strip-cwd-prefix -X stat -f "%m %N" |
+        sort -nr | cut -d' ' -f2- |
+        fzf --height 40% --reverse -m --header="cwd=$cwd  | cmd='$EDITOR <file>'  "
+      return
+    fi
   )
   if [ -z $select_file ]; then
     zle reset-prompt
@@ -95,7 +66,12 @@ jump-to-dir-in-git-repo() {
     cd $(git rev-parse --show-toplevel)
   fi
 
-  selected_dir=$(fd --type=d --strip-cwd-prefix -X stat -f "%m %N" | sort -nr | cut -d' ' -f2- | fzf --height 40% --reverse)
+  if [[ "$(uname)" == "Linux" ]]; then
+    selected_dir=$(fd --type=d --strip-cwd-prefix -X stat -c "%Y %n" | sort -nr | cut -d' ' -f2- | fzf --height 40% --reverse)
+  fi
+  if [[ "$(uname)" == "Darwin" ]]; then
+    selected_dir=$(fd --type=d --strip-cwd-prefix -X stat -f "%m %N" | sort -nr | cut -d' ' -f2- | fzf --height 40% --reverse)
+  fi
   if [ -z $selected_dir ]; then
     zle reset-prompt
     return
@@ -110,10 +86,18 @@ bindkey -M vicmd '^g' jump-to-dir-in-git-repo
 bindkey -M viins '^g' jump-to-dir-in-git-repo
 
 fzf-file-widget() {
-  LBUFFER="${LBUFFER}$(fd --strip-cwd-prefix -X stat -f "%m %N" | sort -nr | cut -d' ' -f2- | fzf --height 40% --reverse)"
-  local ret=$?
-  zle reset-prompt
-  return $ret
+  if [[ "$(uname)" == "Linux" ]]; then
+    LBUFFER="${LBUFFER}$(fd --strip-cwd-prefix -X stat -c "%Y %n" | sort -nr | cut -d' ' -f2- | fzf --height 40% --reverse)"
+    local ret=$?
+    zle reset-prompt
+    return $ret
+  fi
+  if [[ "$(uname)" == "Darwin" ]]; then
+    LBUFFER="${LBUFFER}$(fd --strip-cwd-prefix -X stat -f "%m %N" | sort -nr | cut -d' ' -f2- | fzf --height 40% --reverse)"
+    local ret=$?
+    zle reset-prompt
+    return $ret
+  fi
 }
 
 zle -N fzf-file-widget
