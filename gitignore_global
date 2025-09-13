@@ -1,13 +1,5 @@
 # vi: set ft=gitignore :
 
-# ift helpers
-.itf_state.json
-.state.itf
-itf.txt
-
-.vscode/
-.idea/
-
 # Node.js
 node_modules/
 
@@ -51,9 +43,6 @@ venv/
 
 # Jupyter Notebook
 .ipynb_checkpoints/
-
-# VS Code
-.vscode/
 
 # JetBrains (PyCharm, IntelliJ, etc.)
 .idea/
@@ -104,6 +93,7 @@ htmlcov/
 .direnv
 .envrc
 
+bin/
 
 .worktree/
 .wt_last
@@ -111,4 +101,10 @@ htmlcov/
 .kanban/
 kanban.md
 
-bin/
+.coder
+.itf_state.json
+.state.itf
+itf.txt
+.vscode/
+.idea/
+
