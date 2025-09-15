@@ -54,6 +54,7 @@ ln -sfv $REPO_DIR/zsh/.zshenv $REPO_DIR/zshenv
 
 ln -sfv $REPO_DIR/zsh/zshrc $HOME/.zshrc
 ln -sfv $REPO_DIR/zsh/zshenv $HOME/.zshenv
+ln -sfv $REPO_DIR/zsh/zprofile $HOME/.zprofile
 
 mkdir -p ~/.config/tmux/plugins
 git clone https://github.com/tmux-plugins/tmux-continuum ~/.config/tmux/plugins/tmux-continuum
