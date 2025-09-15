@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 echo "Cloning the repository..."
-cd $HOME
 git clone https://github.com/sokinpui/terminal_dotfiles.git dotfiles
 cd dotfiles
 
@@ -63,9 +62,8 @@ git clone https://github.com/tmux-plugins/tmux-resurrect ~/.config/tmux/plugins/
 pipx install neovim-remote
 pip3 install --break-system-packages pynvim
 
-cd $HOME
-rm -rf dotfiles
-git clone https://github.com/sokinpui/terminal_dotfiles.git dotfiles
+# rm -rf dotfiles
+# git clone https://github.com/sokinpui/terminal_dotfiles.git dotfiles
 
 ln -sfv $REPO_DIR/gitignore_global $HOME/.gitignore_global
 git config --global core.excludesfile $HOME/.gitignore_global
