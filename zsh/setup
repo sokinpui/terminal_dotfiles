@@ -68,8 +68,5 @@ pip3 install --break-system-packages pynvim
 ln -sfv $REPO_DIR/gitignore_global $HOME/.gitignore_global
 git config --global core.excludesfile $HOME/.gitignore_global
 
-git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
-$HOME/.fzf/install
-
 mkdir -p $HOME/.local
 ln -sfv $REPO_DIR/scripts $HOME/.local/scripts
