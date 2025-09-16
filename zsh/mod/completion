@@ -1,8 +1,6 @@
 #!/usr/bin/env zsh
 
-fpath=(
-    ~/.config/zsh/autoload
-    ~/.zsh $fpath)
+fpath=(~/.config/zsh/autoload $fpath)
 autoload -Uz ~/.config/zsh/autoload/*(.:t)
 
 autoload -Uz compinit
@@ -80,4 +78,4 @@ setopt AUTO_LIST            # Automatically list choices on ambiguous completion
 setopt COMPLETE_IN_WORD     # Complete from both ends of a word.
 unsetopt AUTO_MENU
 
-autoload -Uz compinit && compinit
+# autoload -Uz compinit && compinit

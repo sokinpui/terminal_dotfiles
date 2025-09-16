@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 function yazicd() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd

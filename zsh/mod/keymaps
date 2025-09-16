@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # paste using ctrl-v
 _paste-copy-using-pbpaste() {
