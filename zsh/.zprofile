@@ -38,9 +38,8 @@ export PIPX_HOME="$HOME/.local/pipx"
 
 export JAVA_HOME=/opt/homebrew/opt/openjdk
 
-export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
+# mac only
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
+fi
 
-export FLUTTER_ROOT="$(asdf where flutter)"
-
-# Added by `rbenv init` on Fri Jun  6 09:22:27 HKT 2025
-eval "$(rbenv init - --no-rehash zsh)"
