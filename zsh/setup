@@ -70,3 +70,5 @@ git config --global core.excludesfile $HOME/.gitignore_global
 
 mkdir -p $HOME/.local
 ln -sfv $REPO_DIR/scripts $HOME/.local/scripts
+
+git config --global worktree.useRelativePaths true
