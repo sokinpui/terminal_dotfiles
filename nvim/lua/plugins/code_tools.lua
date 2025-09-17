@@ -112,6 +112,8 @@ return {
 					python = { "isort", "black" },
 					javascript = { "eslint_d" },
 					typescript = { "eslint_d" },
+					javascriptreact = { "prettier" },
+					typescriptreact = { "prettier" },
 					c = { "clang-format" },
 					java = { "google-java-format" },
 					markdown = { "prettier" },
