@@ -131,6 +131,44 @@ case $exit_code in
   0)
     # Exit code 0: Success, and a path was returned to cd into.
     if [ -n "$script_output" ] && [ -d "$script_output" ]; then
+      # Convert the worktree path in .git/worktrees to be relative to make the repository portable.
+      local relpath() {
+          local target=$1 base=$2
+          local -a t_arr b_arr
+          t_arr=(${(s:/:)target}); [[ -z $t_arr[1] ]] && t_arr=(${t_arr[@]:1})
+          b_arr=(${(s:/:)base}); [[ -z $b_arr[1] ]] && b_arr=(${b_arr[@]:1})
+
+          local common_len=0
+          while (( common_len < ${#t_arr} && common_len < ${#b_arr} && t_arr[common_len+1] == b_arr[common_len+1] )); do
+              (( common_len++ ))
+          done
+
+          local -a up_parts
+          for ((i=0; i < ${#b_arr} - common_len; i++)); do up_parts+=(".."); done
+          local down_parts=(${t_arr[@]:$common_len})
+
+          local result
+          if (( ${#up_parts} > 0 )); then
+              result=${(j:/:)up_parts}
+              if (( ${#down_parts} > 0 )); then result="$result/${(j:/:)down_parts}"; fi
+          elif (( ${#down_parts} > 0 )); then
+              result=${(j:/:)down_parts}
+          else
+              result="."
+          fi
+          printf "%s" "$result"
+      }
+
+      local new_worktree_path=$(cd "$script_output" >/dev/null && pwd)
+      local gitdir_path=$(git worktree list --porcelain | awk -v path="$new_worktree_path" '
+          BEGIN { found=0 }
+          /^worktree / { if ($2 == path) found=1; else found=0; }
+          found && /^gitdir / { print $2; exit }')
+
+      if [[ -n "$gitdir_path" && -f "${gitdir_path}/gitdir" ]]; then
+          printf "%s" "$(relpath "$new_worktree_path" "$gitdir_path")" > "${gitdir_path}/gitdir"
+      fi
+
       cd "$script_output" || return 1
     elif [ -n "$script_output" ]; then
       # This case handles when a path was returned but it's not a directory.
