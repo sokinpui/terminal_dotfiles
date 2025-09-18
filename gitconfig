@@ -13,5 +13,3 @@
 	defaultBranch = main
 [credential]
 	helper = store
-[worktree]
-	useRelativePaths = true

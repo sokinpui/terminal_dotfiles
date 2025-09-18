@@ -6,21 +6,21 @@ nnoremap <buffer> <expr> <leader><C-l> &conceallevel == 0 ? "<Cmd>set conceallev
 
 noremap <buffer> j gj
 noremap <buffer> k gk
-noremap <buffer> $ g$
-noremap <buffer> ^ g^
-noremap <buffer> 0 g0
+" noremap <buffer> $ g$
+" noremap <buffer> ^ g^
+" noremap <buffer> 0 g0
 
 "nnoremap <buffer> dd g0vg$D
 "nnoremap <buffer> D g0vg$D
 
 nnoremap <buffer> G Gg_
 
-nnoremap <buffer> I g^i
+" nnoremap <buffer> I g^i
 
-nnoremap <buffer> A g$a
+" nnoremap <buffer> A g$a
 "nnoremap <buffer> A <Cmd>call markdown#IsBlank()<cr>
 
-nnoremap <buffer> gV g0vg$
+" nnoremap <buffer> gV g0vg$
 "call markdown_latex#MDSettings()
 
 " number list

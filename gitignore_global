@@ -99,6 +99,7 @@ bin/
 .wt_last
 
 .kanban/
+.kanban
 kanban.md
 
 .coder
