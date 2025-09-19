@@ -1,86 +1,36 @@
 #compdef wt
-#
-# Zsh completion for the 'wt' git worktree utility (Corrected)
 
-# This is the main completion function.
 _wt() {
-  if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then return 1; fi
+  local -a branches
+  local -a wt_flags
 
-  # _arguments will call the correct function based on the argument index.
-  # The : after the index '1' indicates that the first argument is required.
-  _arguments -C \
-    '1: :_wt_first_arg_completer' \
-    '2: :_wt_second_arg_completer'
-}
+  # Get a clean list of local git branches
+  branches=(${(f)"$(git branch --format='%(refname:short)')"})
 
-# Completes the first argument (subcommands and shortcuts).
-_wt_first_arg_completer() {
-  local -a subcommands
-  subcommands=(
-    'add:Create or switch to a worktree for a branch'
-    'list:List all worktrees'
-    'rm:Remove an existing worktree'
-    'switch:Interactively switch worktrees'
+  # Explicitly define the flags that 'wt' accepts
+  wt_flags=(
+    '--rm:Remove a Git worktree and delete its branch'
   )
-  _describe 'subcommand' subcommands
-  _wt_shortcut_completer
-}
 
-# Completes the second argument, based on the subcommand.
-_wt_second_arg_completer() {
-  case "${words[2]}" in
-    add)
-      _wt_get_local_branches
+  _arguments \
+    '1: :->first_arg' \
+    '2: :->second_arg'
+
+  case $state in
+    first_arg)
+      # For the first argument, offer branch names OR our defined flags
+      _alternative \
+        "branches:local branches: _values 'branch' $branches" \
+        "flags:options: _describe 'flags' wt_flags"
       ;;
-    rm)
-      local -a flags
-      flags=('-f:Force removal' '--force:Force removal')
-      _describe 'flag' flags
-      _wt_get_worktree_branches
-      ;;
-    list|switch)
-      return 0 # No arguments to complete.
+    second_arg)
+      # If the first word was --rm, offer branch names for the second
+      if [[ "${words[1]}" == "--rm" ]]; then
+        _values "branch" $branches
+      fi
       ;;
   esac
 }
 
-# Completes the third argument, for commands like 'remove -f <branch>'.
-_wt_third_arg_completer() {
-    case "${words[2]}" in
-    rm)
-        # If the second arg was a flag, complete with worktree branches.
-        if [[ "${words[3]}" == -* ]]; then
-            _wt_get_worktree_branches
-        fi
-        ;;
-    esac
-}
-
-# Generates a list of shortcut completions (branches and '-').
-_wt_shortcut_completer() {
-  local -a branches
-  branches=("${(@f)$(git for-each-ref --format='%(refname:short)' refs/heads 2>/dev/null)}")
-
-  local -a shortcuts
-  shortcuts=('-:Switch to the last worktree')
-  shortcuts+=("${branches[@]/%/:Shortcut to create or switch to this branch}")
-
-  _describe 'shortcut' shortcuts
-}
-
-# Helper to get a clean list of all local branches.
-_wt_get_local_branches() {
-  local -a branches
-  branches=("${(@f)$(git for-each-ref --format='%(refname:short)' refs/heads 2>/dev/null)}")
-  _describe 'branch' branches
-}
-
-# Helper to get a list of removable worktree branches.
-_wt_get_worktree_branches() {
-    local -a wt_branches
-    # Use --porcelain for stable parsing, get branch names, exclude main.
-    wt_branches=(
-      "${(@f)$(git worktree list --porcelain | grep "^branch refs/heads/" | sed 's#^branch refs/heads/##')}"
-    )
-    _describe 'worktree branch' wt_branches
-}
+# Call the function to register it
+_wt "$@"
