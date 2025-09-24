@@ -4,10 +4,7 @@ set -euo pipefail
 
 SEARCH_DIRECTORIES=(
   ~/projects
-  ~/projects/learn
   ~/projects/lscm
-  ~/Obsidian/Project_Management
-  ~/Obsidian/Project_Management/_lscm
 )
 
 select_directory() {
