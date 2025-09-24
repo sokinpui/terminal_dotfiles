@@ -72,3 +72,5 @@ mkdir -p $HOME/.local
 ln -sfv $REPO_DIR/scripts $HOME/.local/scripts
 
 go install github.com/sokinpui/wt-go/cmd/wtgo@latest
+
+mkdit -p $HOME/projects/lscm
