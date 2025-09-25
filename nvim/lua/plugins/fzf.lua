@@ -66,7 +66,7 @@ return {
 				},
 				buffers = {
 					color_icons = true,
-					sort_lastused = false,
+					sort_lastused = true,
 					show_unloaded = true,
 					cwd_only = false,
 					cwd = nil,
