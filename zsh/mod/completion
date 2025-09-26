@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
-fpath=(~/.config/zsh/autoload $fpath)
-autoload -Uz ~/.config/zsh/autoload/*(.:t)
+fpath=(~/.config/zsh/completion $fpath)
+autoload -Uz ~/.config/zsh/completion/*(.:t)
 
 autoload -Uz compinit
 
