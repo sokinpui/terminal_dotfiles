@@ -81,9 +81,9 @@ jump-to-dir-in-git-repo() {
   zle accept-line
 }
 zle -N jump-to-dir-in-git-repo
-bindkey '^g' jump-to-dir-in-git-repo
-bindkey -M vicmd '^g' jump-to-dir-in-git-repo
-bindkey -M viins '^g' jump-to-dir-in-git-repo
+bindkey '^d' jump-to-dir-in-git-repo
+bindkey -M vicmd '^d' jump-to-dir-in-git-repo
+bindkey -M viins '^d' jump-to-dir-in-git-repo
 
 fzf-file-widget() {
   if [[ "$(uname)" == "Linux" ]]; then
