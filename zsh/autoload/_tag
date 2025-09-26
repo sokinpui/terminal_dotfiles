@@ -1,0 +1,13 @@
+#compdef tag
+
+_tag() {
+  local -a tags
+  tags=(${(f)"$(git tag --list)"})
+
+  (( ${#tags[@]} == 0 )) && return 1
+
+  _arguments \
+    '1: :_values ''git tags'' $tags'
+}
+
+_tag "$@"

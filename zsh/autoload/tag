@@ -1,0 +1,9 @@
+# vi: filetype=zsh
+
+if [ "$#" -gt 0 ]; then
+    verTag=$1 ; git tag $verTag ; git push origin tag $verTag ; git push
+    return
+fi
+
+git tag
+

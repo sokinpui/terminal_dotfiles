@@ -228,16 +228,7 @@ skhd() {
   command skhd --restart-service
 }
 
-tag() {
-  if [ "$#" -gt 0 ]; then
-    verTag=$1 ; git tag $verTag ; git push origin tag $verTag ; git push
-    return
-  fi
-
-  git tag
-}
-
-# ssh() {
+# ssh({ name: 'verTag'}) {
 #   # If arguments are provided (e.g., "tmux ls", "tmux attach -t work"),
 #   # just run the command as is. The `command` prefix prevents infinite loops.
 #   if [ "$#" -gt 0 ]; then
