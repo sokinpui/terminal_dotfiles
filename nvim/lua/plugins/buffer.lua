@@ -3,13 +3,13 @@ return {
 	{
 		"ThePrimeagen/harpoon",
 		keys = {
-			{
-				mode = "n",
-				"<leader>m",
-				function()
-					require("harpoon"):list():add()
-				end,
-			},
+			-- {
+			-- 	mode = "n",
+			-- 	"<leader>m",
+			-- 	function()
+			-- 		require("harpoon"):list():add()
+			-- 	end,
+			-- },
 			{
 				mode = "n",
 				"<leader>h",
@@ -17,20 +17,20 @@ return {
 					require("harpoon"):list():add()
 				end,
 			},
-			{
-				mode = "n",
-				"<C-h>",
-				function()
-					require("harpoon"):list():add()
-				end,
-			},
-			{
-				mode = "n",
-				"<C-CR>",
-				function()
-					require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
-				end,
-			},
+			-- {
+			-- 	mode = "n",
+			-- 	"<C-h>",
+			-- 	function()
+			-- 		require("harpoon"):list():add()
+			-- 	end,
+			-- },
+			-- {
+			-- 	mode = "n",
+			-- 	"<C-CR>",
+			-- 	function()
+			-- 		require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
+			-- 	end,
+			-- },
 			{
 				mode = "n",
 				"H",
@@ -40,60 +40,67 @@ return {
 			},
 			{
 				mode = "n",
-				"<C-j>",
+				"<space>1",
 				function()
 					require("harpoon"):list():select(1)
 				end,
 			},
 			{
 				mode = "n",
-				"<C-k>",
+				"<space>2",
 				function()
 					require("harpoon"):list():select(2)
 				end,
 			},
 			{
 				mode = "n",
-				"<C-l>",
+				"<space>3",
 				function()
 					require("harpoon"):list():select(3)
 				end,
 			},
 			{
 				mode = "n",
-				"<C-;>",
+				"<space>4",
 				function()
 					require("harpoon"):list():select(4)
 				end,
 			},
 			{
 				mode = "n",
-				"<leader><C-j>",
+				"<space>5",
 				function()
-					require("harpoon"):list():replace_at(1)
+					require("harpoon"):list():select(5)
 				end,
 			},
-			{
-				mode = "n",
-				"<leader><C-k>",
-				function()
-					require("harpoon"):list():replace_at(2)
-				end,
-			},
-			{
-				mode = "n",
-				"<leader><C-l>",
-				function()
-					require("harpoon"):list():replace_at(3)
-				end,
-			},
-			{
-				mode = "n",
-				"<leader><C-;>",
-				function()
-					require("harpoon"):list():replace_at(4)
-				end,
-			},
+			-- {
+			-- 	mode = "n",
+			-- 	"<leader><C-j>",
+			-- 	function()
+			-- 		require("harpoon"):list():replace_at(1)
+			-- 	end,
+			-- },
+			-- {
+			-- 	mode = "n",
+			-- 	"<leader><C-k>",
+			-- 	function()
+			-- 		require("harpoon"):list():replace_at(2)
+			-- 	end,
+			-- },
+			-- {
+			-- 	mode = "n",
+			-- 	"<leader><C-l>",
+			-- 	function()
+			-- 		require("harpoon"):list():replace_at(3)
+			-- 	end,
+			-- },
+			-- {
+			-- 	mode = "n",
+			-- 	"<leader><C-;>",
+			-- 	function()
+			-- 		require("harpoon"):list():replace_at(4)
+			-- 	end,
+			-- },
 		},
 		branch = "harpoon2",
 		dependencies = { "nvim-lua/plenary.nvim" },
