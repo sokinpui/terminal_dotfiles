@@ -44,7 +44,7 @@ return {
 			-- require("fzf-lua").setup({ "fzf-native" })
 			-- calling `setup` is optional for customization
 			require("fzf-lua").setup({
-				"fzf-native",
+				"default",
 				global_resume = true,
 				global_resume_query = true,
 				file_icons = false,
