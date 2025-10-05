@@ -44,16 +44,15 @@ return {
 			-- require("fzf-lua").setup({ "fzf-native" })
 			-- calling `setup` is optional for customization
 			require("fzf-lua").setup({
-				"default",
+				"telescope",
 				global_resume = true,
 				global_resume_query = true,
-				file_icons = false,
 				winopts = {
-					height = 1,
+					-- height = 1,
 					width = 0.95,
-					preview = {
-						horizontal = "down:55%",
-					},
+					-- preview = {
+					-- 	horizontal = "down:55%",
+					-- },
 				},
 				hls = {
 					cursorline = "Search",
