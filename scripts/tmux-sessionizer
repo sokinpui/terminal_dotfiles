@@ -5,6 +5,7 @@ set -euo pipefail
 SEARCH_DIRECTORIES=(
   ~/projects
   ~/projects/lscm
+  ~/projects/lscm/CEDD
 )
 
 select_directory() {
