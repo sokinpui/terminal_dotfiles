@@ -13,6 +13,7 @@ return {
 					"lua",
 					"javascript",
 					"typescript",
+					"go",
 					"python",
 					"c",
 					"java",

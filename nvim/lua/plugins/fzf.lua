@@ -50,9 +50,9 @@ return {
 				winopts = {
 					-- height = 1,
 					width = 0.95,
-					-- preview = {
-					-- 	horizontal = "down:55%",
-					-- },
+					preview = {
+						horizontal = "up:55%",
+					},
 				},
 				hls = {
 					cursorline = "Search",
