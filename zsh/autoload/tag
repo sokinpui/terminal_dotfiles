@@ -1,9 +1,58 @@
 # vi: filetype=zsh
 
-if [ "$#" -gt 0 ]; then
-    verTag=$1 ; git tag $verTag ; git push origin tag $verTag ; git push
-    return
+if [ "$#" -eq 0 ]; then
+  git tag
+  return
 fi
 
-git tag
+local new_tag
 
+if [[ "$1" =~ ^[123]$ ]]; then
+  local latest_tag
+  latest_tag=$(git describe --tags --abbrev=0 2>/dev/null)
+
+  if [[ -z "$latest_tag" ]]; then
+    echo "No tags found. Cannot increment version."
+    return 1
+  fi
+
+  local current_version=${latest_tag#v}
+
+  local -a parts
+  parts=(${(s/./)current_version})
+
+  local major=${parts[1]:-0}
+  local minor=${parts[2]:-0}
+  local patch=${parts[3]:-0}
+
+  case $1 in
+    1)
+      major=$((major + 1))
+      minor=0
+      patch=0
+      ;;
+    2)
+      minor=$((minor + 1))
+      patch=0
+      ;;
+    3)
+      patch=$((patch + 1))
+      ;;
+  esac
+
+  new_tag="v${major}.${minor}.${patch}"
+  echo "Current tag: $latest_tag"
+  echo "New tag:     $new_tag"
+else
+  new_tag=$1
+  echo "New tag: $new_tag"
+fi
+
+read -q "REPLY?Apply this tag? (y/n) "
+echo
+if [[ ! "$REPLY" =~ ^[Yy]$ ]]; then
+  echo "Aborted."
+  return 1
+fi
+
+git tag "$new_tag" && git push origin tag "$new_tag" && git push
