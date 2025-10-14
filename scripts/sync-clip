@@ -114,7 +114,7 @@ while true; do
 
   # A. Check for image content
   if _is_image_in_clipboard; then
-    local_temp_file=$(mktemp "/tmp/sync-clip-local-XXXXXX.png")
+    local_temp_file=$(mktemp "/tmp/sync-clip-local.XXXXXX")
     if pngpaste "$local_temp_file" &>/dev/null; then
       current_local_hash=$(shasum -a 256 "$local_temp_file" | awk '{print $1}')
       if [[ "$current_local_hash" != "$LAST_LOCAL_HASH" ]]; then
@@ -153,12 +153,12 @@ while true; do
   # A. Check for remote image content
   REMOTE_CHECK_IMAGE_CMD="osascript -e 'clipboard info' 2>/dev/null | grep -qE '«class PNGf»|«class TIFF»|«class JPEG»'"
   if ssh $SSH_OPTS "$REMOTE_HOST" "$REMOTE_CHECK_IMAGE_CMD"; then
-    remote_temp_file=$(ssh $SSH_OPTS "$REMOTE_HOST" "mktemp '/tmp/sync-clip-remote-XXXXXX.png'")
+    remote_temp_file=$(ssh $SSH_OPTS "$REMOTE_HOST" "mktemp '/tmp/sync-clip-remote.XXXXXX'")
     if ssh $SSH_OPTS "$REMOTE_HOST" "pngpaste '$remote_temp_file' &>/dev/null"; then
       current_remote_hash=$(ssh $SSH_OPTS "$REMOTE_HOST" "shasum -a 256 '$remote_temp_file' | awk '{print \$1}'")
       if [[ "$current_remote_hash" != "$LAST_REMOTE_HASH" ]]; then
         echo -e "${BLUE}[SYNC] $(date) Syncing Remote Image -> Local.${NC}"
-        local_temp_file=$(mktemp "/tmp/sync-clip-local-XXXXXX.png")
+        local_temp_file=$(mktemp "/tmp/sync-clip-local.XXXXXX")
         scp -q $SSH_OPTS "$REMOTE_HOST:$remote_temp_file" "$local_temp_file"
         osascript -e "set the clipboard to (read (POSIX file \"$local_temp_file\") as TIFF picture)" &>/dev/null
         rm "$local_temp_file"
