@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# A script for bidirectional clipboard synchronization (text and images) between two machines.
 # --- Configuration ---
 REMOTE_HOST="mac"
 POLL_INTERVAL=0.5
@@ -14,6 +15,9 @@ YELLOW='\033[0;33m'
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 GRAY='\033[1;30m'
+
+# --- Feature Flags ---
+IMAGE_SYNC_ENABLED=true
 
 # --- PID of the autossh process ---
 AUTOSSH_PID=""
@@ -77,16 +81,41 @@ fi
 
 echo -e "${GRAY}[DEBUG] Initial connection successful.${NC}"
 
+# --- Pre-flight Checks for Image Sync ---
+if [ "$IMAGE_SYNC_ENABLED" = true ]; then
+  # Check for local dependencies
+  if ! command -v pngcopy &>/dev/null; then
+    echo -e "${RED}[ERROR] 'pngcopy' is not installed locally.${NC}" >&2
+    echo -e "${YELLOW}[INFO] Please install it (e.g., 'brew install pngpaste') to enable image sync.${NC}" >&2
+    IMAGE_SYNC_ENABLED=false
+  fi
+  # Check for remote dependencies
+  if [ "$IMAGE_SYNC_ENABLED" = true ] && ! ssh $SSH_OPTS "$REMOTE_HOST" 'command -v pngcopy &>/dev/null'; then
+    echo -e "${RED}[ERROR] 'pngcopy' is not found on remote host '$REMOTE_HOST'.${NC}" >&2
+    IMAGE_SYNC_ENABLED=false
+  fi
+
+  if [ "$IMAGE_SYNC_ENABLED" = false ]; then
+    echo -e "${YELLOW}[WARN] Image sync has been disabled due to missing dependencies.${NC}"
+  else
+    echo -e "${GREEN}[INFO] Image sync is enabled.${NC}"
+  fi
+fi
+
 # --- Command Definitions ---
 # The key fix: Export a UTF-8 locale on the remote end for every command.
 # This ensures that multi-byte characters are handled correctly by the remote shell and tools.
 BASE64_DECODE="base64 -d"
 REMOTE_PASTE_CMD="export LANG=en_US.UTF-8; pbpaste | base64"
 REMOTE_COPY_CMD="export LANG=en_US.UTF-8; ${BASE64_DECODE} | pbcopy"
+REMOTE_PNGPASTE_CMD="export LANG=en_US.UTF-8; pbpaste -Prefer public.png"
+REMOTE_PNGCOPY_CMD="export LANG=en_US.UTF-8; pngcopy"
 
 # --- Get Initial State (using Base64 for safe transport) ---
 LAST_LOCAL_CONTENT_B64=$(pbpaste | base64)
 LAST_REMOTE_CONTENT_B64=$(ssh $SSH_OPTS "$REMOTE_HOST" "$REMOTE_PASTE_CMD" 2>/dev/null)
+LAST_LOCAL_IMG_HASH=$(pbpaste -Prefer public.png | shasum | awk '{print $1}')
+LAST_REMOTE_IMG_HASH=$(ssh $SSH_OPTS "$REMOTE_HOST" "$REMOTE_PNGPASTE_CMD | shasum | awk '{print \$1}'" 2>/dev/null)
 
 echo -e "${YELLOW}[STATE] Initial local content (encoded) length: ${#LAST_LOCAL_CONTENT_B64}${NC}"
 echo -e "${YELLOW}[STATE] Initial remote content (encoded) length: ${#LAST_REMOTE_CONTENT_B64}${NC}"
@@ -94,38 +123,85 @@ echo -e "${YELLOW}[INFO] Press Ctrl+C to stop.${NC}"
 
 # --- Main Sync Loop ---
 while true; do
-  # 1. Check for local changes first (local clipboard has priority)
+  # --- 1. Check for Local Changes (Local has priority) ---
+  # Image content is checked before text content.
+
+  if [ "$IMAGE_SYNC_ENABLED" = true ]; then
+    CURRENT_LOCAL_IMG_HASH=$(pbpaste -Prefer public.png | shasum | awk '{print $1}')
+    if [[ "$CURRENT_LOCAL_IMG_HASH" != "$LAST_LOCAL_IMG_HASH" ]]; then
+      echo -e "${GREEN}[SYNC] $(date) Syncing Local Image -> Remote.${NC}"
+      pbpaste -Prefer public.png | ssh $SSH_OPTS "$REMOTE_HOST" "$REMOTE_PNGCOPY_CMD"
+
+      # Update all states to prevent bounce-back
+      LAST_LOCAL_IMG_HASH="$CURRENT_LOCAL_IMG_HASH"
+      LAST_REMOTE_IMG_HASH="$CURRENT_LOCAL_IMG_HASH"
+      # Also update text state, as copying an image changes the text representation
+      CURRENT_LOCAL_CONTENT_B64=$(pbpaste | base64)
+      LAST_LOCAL_CONTENT_B64="$CURRENT_LOCAL_CONTENT_B64"
+      LAST_REMOTE_CONTENT_B64="$CURRENT_LOCAL_CONTENT_B64"
+
+      sleep $POLL_INTERVAL
+      continue
+    fi
+  fi
+
   CURRENT_LOCAL_CONTENT_B64=$(pbpaste | base64)
   if [[ "$CURRENT_LOCAL_CONTENT_B64" != "$LAST_LOCAL_CONTENT_B64" ]]; then
-    echo -e "${GREEN}[SYNC] $(date) Syncing Local -> Remote.${NC}"
+    echo -e "${GREEN}[SYNC] $(date) Syncing Local Text -> Remote.${NC}"
     printf "%s" "$CURRENT_LOCAL_CONTENT_B64" | ssh $SSH_OPTS "$REMOTE_HOST" "$REMOTE_COPY_CMD"
 
-    # Update state for both to this new content
+    # Update all states
     LAST_LOCAL_CONTENT_B64="$CURRENT_LOCAL_CONTENT_B64"
     LAST_REMOTE_CONTENT_B64="$CURRENT_LOCAL_CONTENT_B64"
+    if [ "$IMAGE_SYNC_ENABLED" = true ]; then
+      # Copying text clears the image on the clipboard
+      LAST_LOCAL_IMG_HASH=$(pbpaste -Prefer public.png | shasum | awk '{print $1}')
+      LAST_REMOTE_IMG_HASH="$LAST_LOCAL_IMG_HASH"
+    fi
 
-    # Wait and restart loop to give remote time and avoid bounce-back
     sleep $POLL_INTERVAL
     continue
   fi
 
-  # 2. If no local changes, check for remote changes
-  CURRENT_REMOTE_CONTENT_B64=$(ssh $SSH_OPTS "$REMOTE_HOST" "$REMOTE_PASTE_CMD" 2>/dev/null)
-  # Check if the ssh command failed (e.g., if autossh is restarting the connection)
-  if [ $? -ne 0 ]; then
-    echo -e "${YELLOW}[WARN] Remote connection lost. Autossh should be attempting to reconnect.${NC}"
-    # Wait a moment before retrying to give autossh time to work
-    sleep 5
-    continue
+  # --- 2. Check for Remote Changes ---
+  if [ "$IMAGE_SYNC_ENABLED" = true ]; then
+    CURRENT_REMOTE_IMG_HASH=$(ssh $SSH_OPTS "$REMOTE_HOST" "$REMOTE_PNGPASTE_CMD | shasum | awk '{print \$1}'" 2>/dev/null)
+    if [ $? -ne 0 ]; then
+      echo -e "${YELLOW}[WARN] Remote connection lost. Autossh should be attempting to reconnect.${NC}"
+      sleep 5; continue
+    fi
+    if [[ "$CURRENT_REMOTE_IMG_HASH" != "$LAST_REMOTE_IMG_HASH" ]]; then
+      echo -e "${BLUE}[SYNC] $(date) Syncing Remote Image -> Local.${NC}"
+      ssh $SSH_OPTS "$REMOTE_HOST" "$REMOTE_PNGPASTE_CMD" | pngcopy
+
+      # Update all states
+      LAST_REMOTE_IMG_HASH="$CURRENT_REMOTE_IMG_HASH"
+      LAST_LOCAL_IMG_HASH="$CURRENT_REMOTE_IMG_HASH"
+      CURRENT_LOCAL_CONTENT_B64=$(pbpaste | base64)
+      LAST_LOCAL_CONTENT_B64="$CURRENT_LOCAL_CONTENT_B64"
+      LAST_REMOTE_CONTENT_B64="$CURRENT_LOCAL_CONTENT_B64"
+
+      sleep $POLL_INTERVAL
+      continue
+    fi
   fi
 
+  CURRENT_REMOTE_CONTENT_B64=$(ssh $SSH_OPTS "$REMOTE_HOST" "$REMOTE_PASTE_CMD" 2>/dev/null)
+  if [ $? -ne 0 ]; then
+    echo -e "${YELLOW}[WARN] Remote connection lost. Autossh should be attempting to reconnect.${NC}"
+    sleep 5; continue
+  fi
   if [[ "$CURRENT_REMOTE_CONTENT_B64" != "$LAST_REMOTE_CONTENT_B64" ]]; then
-    echo -e "${BLUE}[SYNC] $(date) Syncing Remote -> Local.${NC}"
+    echo -e "${BLUE}[SYNC] $(date) Syncing Remote Text -> Local.${NC}"
     printf "%s" "$CURRENT_REMOTE_CONTENT_B64" | ${BASE64_DECODE} | pbcopy
 
-    # Update state for both to this new content
+    # Update all states
     LAST_REMOTE_CONTENT_B64="$CURRENT_REMOTE_CONTENT_B64"
     LAST_LOCAL_CONTENT_B64="$CURRENT_REMOTE_CONTENT_B64"
+    if [ "$IMAGE_SYNC_ENABLED" = true ]; then
+      LAST_REMOTE_IMG_HASH=$(ssh $SSH_OPTS "$REMOTE_HOST" "$REMOTE_PNGPASTE_CMD | shasum | awk '{print \$1}'" 2>/dev/null)
+      LAST_LOCAL_IMG_HASH="$LAST_REMOTE_IMG_HASH"
+    fi
   fi
 
   sleep $POLL_INTERVAL
