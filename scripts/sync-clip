@@ -128,11 +128,11 @@ while true; do
         LAST_REMOTE_HASH="$current_local_hash"
         LAST_LOCAL_CONTENT_B64=""
         LAST_REMOTE_CONTENT_B64=""
+        sleep $POLL_INTERVAL
+        continue
       fi
       rm "$local_temp_file"
     fi
-    sleep $POLL_INTERVAL
-    continue
   fi
 
   # B. Check for text content
@@ -166,11 +166,11 @@ while true; do
         LAST_LOCAL_HASH="$current_remote_hash"
         LAST_LOCAL_CONTENT_B64=""
         LAST_REMOTE_CONTENT_B64=""
+        sleep $POLL_INTERVAL
+        continue
       fi
       ssh $SSH_OPTS "$REMOTE_HOST" "rm '$remote_temp_file'"
     fi
-    sleep $POLL_INTERVAL
-    continue
   fi
 
   # B. Check for remote text content
