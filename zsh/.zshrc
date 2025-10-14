@@ -30,6 +30,7 @@ load-mod $HOME/.config/zsh/mod/shortcuts
 load-mod $HOME/.config/zsh/mod/git-prompt.sh
 load-mod $HOME/.config/zsh/mod/vim_mode
 load-mod $HOME/.config/zsh/mod/appearance
+load-mod $HOME/.config/zsh/mod/flutter
 
 # ===============================================================
 

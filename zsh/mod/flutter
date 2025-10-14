@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /Users/so/.dart-cli-completion/zsh-config.zsh ]] && . /Users/so/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
