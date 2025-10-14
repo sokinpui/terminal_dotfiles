@@ -105,6 +105,7 @@ kanban.md
 .coder
 .itf_state.json
 .state.itf
+.itf/
 itf.txt
 .vscode/
 .idea/
