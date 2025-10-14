@@ -15,6 +15,14 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 GRAY='\033[1;30m'
 
+# --- Pre-flight Checks ---
+for cmd in pngpaste osascript scp shasum; do
+  if ! command -v "$cmd" &>/dev/null; then
+    echo -e "${RED}[ERROR] Required command '$cmd' not found. Aborting.${NC}"
+    exit 1
+  fi
+done
+
 # --- PID of the autossh process ---
 AUTOSSH_PID=""
 
@@ -84,9 +92,17 @@ BASE64_DECODE="base64 -d"
 REMOTE_PASTE_CMD="export LANG=en_US.UTF-8; pbpaste | base64"
 REMOTE_COPY_CMD="export LANG=en_US.UTF-8; ${BASE64_DECODE} | pbcopy"
 
+# --- Image Sync Helper ---
+_is_image_in_clipboard() {
+  # Use clipboard info to check for common image types.
+  osascript -e 'clipboard info' 2>/dev/null | grep -qE '«class PNGf»|«class TIFF»|«class JPEG»'
+}
+
 # --- Get Initial State (using Base64 for safe transport) ---
 LAST_LOCAL_CONTENT_B64=$(pbpaste | base64)
 LAST_REMOTE_CONTENT_B64=$(ssh $SSH_OPTS "$REMOTE_HOST" "$REMOTE_PASTE_CMD" 2>/dev/null)
+LAST_LOCAL_HASH=""
+LAST_REMOTE_HASH=""
 
 echo -e "${YELLOW}[STATE] Initial local content (encoded) length: ${#LAST_LOCAL_CONTENT_B64}${NC}"
 echo -e "${YELLOW}[STATE] Initial remote content (encoded) length: ${#LAST_REMOTE_CONTENT_B64}${NC}"
@@ -94,38 +110,84 @@ echo -e "${YELLOW}[INFO] Press Ctrl+C to stop.${NC}"
 
 # --- Main Sync Loop ---
 while true; do
-  # 1. Check for local changes first (local clipboard has priority)
-  CURRENT_LOCAL_CONTENT_B64=$(pbpaste | base64)
-  if [[ "$CURRENT_LOCAL_CONTENT_B64" != "$LAST_LOCAL_CONTENT_B64" ]]; then
-    echo -e "${GREEN}[SYNC] $(date) Syncing Local -> Remote.${NC}"
-    printf "%s" "$CURRENT_LOCAL_CONTENT_B64" | ssh $SSH_OPTS "$REMOTE_HOST" "$REMOTE_COPY_CMD"
+  # 1. Check for local changes (priority to local)
 
-    # Update state for both to this new content
-    LAST_LOCAL_CONTENT_B64="$CURRENT_LOCAL_CONTENT_B64"
-    LAST_REMOTE_CONTENT_B64="$CURRENT_LOCAL_CONTENT_B64"
+  # A. Check for image content
+  if _is_image_in_clipboard; then
+    local_temp_file=$(mktemp "/tmp/sync-clip-local-XXXXXX.png")
+    if pngpaste "$local_temp_file" &>/dev/null; then
+      current_local_hash=$(shasum -a 256 "$local_temp_file" | awk '{print $1}')
+      if [[ "$current_local_hash" != "$LAST_LOCAL_HASH" ]]; then
+        echo -e "${GREEN}[SYNC] $(date) Syncing Local Image -> Remote.${NC}"
+        remote_temp_file="/tmp/$(basename "$local_temp_file")"
+        scp -q $SSH_OPTS "$local_temp_file" "$REMOTE_HOST:$remote_temp_file"
+        remote_cmd="osascript -e 'set the clipboard to (read (POSIX file \"$remote_temp_file\") as TIFF picture)' &>/dev/null && rm '$remote_temp_file'"
+        ssh $SSH_OPTS "$REMOTE_HOST" "$remote_cmd"
 
-    # Wait and restart loop to give remote time and avoid bounce-back
+        LAST_LOCAL_HASH="$current_local_hash"
+        LAST_REMOTE_HASH="$current_local_hash"
+        LAST_LOCAL_CONTENT_B64=""
+        LAST_REMOTE_CONTENT_B64=""
+      fi
+      rm "$local_temp_file"
+    fi
     sleep $POLL_INTERVAL
     continue
   fi
 
-  # 2. If no local changes, check for remote changes
+  # B. Check for text content
+  CURRENT_LOCAL_CONTENT_B64=$(pbpaste | base64)
+  if [[ "$CURRENT_LOCAL_CONTENT_B64" != "$LAST_LOCAL_CONTENT_B64" ]]; then
+    echo -e "${GREEN}[SYNC] $(date) Syncing Local Text -> Remote.${NC}"
+    printf "%s" "$CURRENT_LOCAL_CONTENT_B64" | ssh $SSH_OPTS "$REMOTE_HOST" "$REMOTE_COPY_CMD"
+    LAST_LOCAL_CONTENT_B64="$CURRENT_LOCAL_CONTENT_B64"
+    LAST_REMOTE_CONTENT_B64="$CURRENT_LOCAL_CONTENT_B64"
+    LAST_LOCAL_HASH=""
+    LAST_REMOTE_HASH=""
+    sleep $POLL_INTERVAL
+    continue
+  fi
+
+  # 2. Check for remote changes
+
+  # A. Check for remote image content
+  REMOTE_CHECK_IMAGE_CMD="osascript -e 'clipboard info' 2>/dev/null | grep -qE '«class PNGf»|«class TIFF»|«class JPEG»'"
+  if ssh $SSH_OPTS "$REMOTE_HOST" "$REMOTE_CHECK_IMAGE_CMD"; then
+    remote_temp_file=$(ssh $SSH_OPTS "$REMOTE_HOST" "mktemp '/tmp/sync-clip-remote-XXXXXX.png'")
+    if ssh $SSH_OPTS "$REMOTE_HOST" "pngpaste '$remote_temp_file' &>/dev/null"; then
+      current_remote_hash=$(ssh $SSH_OPTS "$REMOTE_HOST" "shasum -a 256 '$remote_temp_file' | awk '{print \$1}'")
+      if [[ "$current_remote_hash" != "$LAST_REMOTE_HASH" ]]; then
+        echo -e "${BLUE}[SYNC] $(date) Syncing Remote Image -> Local.${NC}"
+        local_temp_file=$(mktemp "/tmp/sync-clip-local-XXXXXX.png")
+        scp -q $SSH_OPTS "$REMOTE_HOST:$remote_temp_file" "$local_temp_file"
+        osascript -e "set the clipboard to (read (POSIX file \"$local_temp_file\") as TIFF picture)" &>/dev/null
+        rm "$local_temp_file"
+        LAST_REMOTE_HASH="$current_remote_hash"
+        LAST_LOCAL_HASH="$current_remote_hash"
+        LAST_LOCAL_CONTENT_B64=""
+        LAST_REMOTE_CONTENT_B64=""
+      fi
+      ssh $SSH_OPTS "$REMOTE_HOST" "rm '$remote_temp_file'"
+    fi
+    sleep $POLL_INTERVAL
+    continue
+  fi
+
+  # B. Check for remote text content
   CURRENT_REMOTE_CONTENT_B64=$(ssh $SSH_OPTS "$REMOTE_HOST" "$REMOTE_PASTE_CMD" 2>/dev/null)
-  # Check if the ssh command failed (e.g., if autossh is restarting the connection)
   if [ $? -ne 0 ]; then
     echo -e "${YELLOW}[WARN] Remote connection lost. Autossh should be attempting to reconnect.${NC}"
-    # Wait a moment before retrying to give autossh time to work
     sleep 5
     continue
   fi
 
   if [[ "$CURRENT_REMOTE_CONTENT_B64" != "$LAST_REMOTE_CONTENT_B64" ]]; then
-    echo -e "${BLUE}[SYNC] $(date) Syncing Remote -> Local.${NC}"
+    echo -e "${BLUE}[SYNC] $(date) Syncing Remote Text -> Local.${NC}"
     printf "%s" "$CURRENT_REMOTE_CONTENT_B64" | ${BASE64_DECODE} | pbcopy
-
-    # Update state for both to this new content
     LAST_REMOTE_CONTENT_B64="$CURRENT_REMOTE_CONTENT_B64"
     LAST_LOCAL_CONTENT_B64="$CURRENT_REMOTE_CONTENT_B64"
+    LAST_LOCAL_HASH=""
+    LAST_REMOTE_HASH=""
   fi
 
   sleep $POLL_INTERVAL
