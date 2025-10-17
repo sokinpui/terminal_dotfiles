@@ -28,6 +28,7 @@ require("lazy").setup({
 	require("plugins.live-command"),
 	require("plugins.buffer"),
 	require("plugins.jump"),
+	require("plugins.git"),
 	-- require("plugins.multi-cursor"),
 	-- require("plugins.visual-effect"),
 	require("plugins.surround"),
