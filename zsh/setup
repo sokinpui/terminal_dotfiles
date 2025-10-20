@@ -109,7 +109,7 @@ install_packages() {
 
     ;;
   apt)
-    sudo apt-get install -y lf neovim neofetch golang ripgrep tldr tree zoxide direnv pipx fd-find python3-pip
+    sudo apt-get install -y lf neovim neofetch golang ripgrep tldr tree zoxide direnv pipx fd-find python3-pip zsh
     ln -sfv $(which fdfind) ~/.local/bin/fd
     ;;
   dnf)
