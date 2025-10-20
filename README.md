@@ -3,7 +3,7 @@
 ## Install Linux config
 
 ```sh
-wget -0- https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/refs/heads/main/zsh/setup | sh
+wget -O- https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/refs/heads/main/zsh/setup | sh
 ```
 
 ## After installation, you should...
