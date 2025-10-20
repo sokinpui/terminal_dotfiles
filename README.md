@@ -3,7 +3,7 @@
 ## Install Linux config
 
 ```sh
-wget -O- https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/refs/heads/main/zsh/setup | sh
+wget -O- https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/refs/heads/main/zsh/setup | bash
 ```
 
 ## After installation, you should...
@@ -21,14 +21,6 @@ wget -O- https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/refs/heads
 11. Display configuration
 12. keyboard shortcut configuration.
 13. Onedrive setup
-
-# Mac install
-
-runn the scipt
-
-```sh
-curl https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/main/setup | sh
-```
 
 ## macOS system preferences after script
 
