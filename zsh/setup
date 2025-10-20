@@ -57,33 +57,72 @@ install_packages() {
     exit 1
   fi
 
-  local packages=("$@")
-  echo "Installing packages: ${packages[*]}..."
-
   case "$PACKAGE_MANAGER" in
   brew)
-    brew install "${packages[@]}"
+    if ! command -v brew &>/dev/null; then
+      echo "Homebrew not found. Installing Homebrew..."
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+
+    echo >>$HOME/.zprofile
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >>$HOME/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+
+    # Update Homebrew
+    echo "Updating Homebrew..."
+    brew update
+    brew install go pipx neovim tmux bat zsh fd colima neofetch ripgrep
+    brew install koekeishiya/formulae/skhd
+    brew install koekeishiya/formulae/yabai
+    brew install yqrashawn/goku/goku
+    brew tap FelixKratz/formulae
+    brew install borders
+    brew install --cask font-jetbrains-mono-nerd-font
+    brew install font-lxgw-wenkai
+    brew install --cask syncthing
+    brew install --cask skim
+    brew install --cask discord
+    brew install --cask zoom
+    brew install --cask obsidian
+    brew install --cask google-chrome
+    brew install --cask logi-options+
+    brew install --cask visual-studio-code
+    brew install --cask v2rayu
+    brew install --cask wechat
+    brew install --cask whatsapp
+    brew install --cask raycast
+    brew install --cask mos
+    brew install --cask betterdisplay
+    brew install --cask maccy
+    brew install --cask dropbox
+    brew install onedrive
+    brew install --cask microsoft-outlook
+    brew install --cask microsoft-word
+    brew install --cask karabiner-elements
+    brew install pomdtr/tap/ray
+    brew install --cask google-drive
+    defaults write -g InitialKeyRepeat -int 10
+    defaults write -g KeyRepeat -int 1
+    curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin installer=version-0.40.0
+    sudo ln -sf /Applications/kitty.app/Contents/MacOS/kitty /usr/local/bin/kitty
+
     ;;
   apt)
-    sudo apt-get update && sudo apt-get install -y "${packages[@]}"
-    ;;
-  pacman)
-    sudo pacman -Syu --noconfirm "${packages[@]}"
+    sudo apt-get update
+    sudo apt-get install -y lf neovim neofetch golang htop ripgrep tldr tree zoxide direnv cloc pipx fd-find
+    sudo mkdir -p -m 755 /etc/apt/keyrings && wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg
+    curl -fsSL https://deno.land/x/install/install.sh | sh
+    ln -sfv $(which fdfind) ~/.local/bin/fd
     ;;
   dnf)
-    sudo dnf install -y "${packages[@]}"
+    sudo dnf update -y
+    sudo dnf install -y 'dnf-command(copr)'
+    sudo dnf install -y golang pipx neovim tmux bat zsh fd-find ripgrep neofetch htop tldr zoxide cloc
+    sudo dnf copr enable lsevcik/lf && sudo dnf install -y lf
+    gh sudo dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo && sudo dnf install gh
+    curl -fsSL https://deno.land/x/install/install.sh | sh
     ;;
   esac
-}
-
-install_cask_packages() {
-  if [ "$PACKAGE_MANAGER" != "brew" ]; then
-    echo "Cask packages can only be installed on macOS with Homebrew."
-    return
-  fi
-  local packages=("$@")
-  echo "Installing cask packages: ${packages[*]}..."
-  brew install --cask "${packages[@]}"
 }
 
 echo "Cloning the repository..."
@@ -95,16 +134,7 @@ cd dotfiles
 detect_os_and_package_manager
 echo "Detected OS: $OS with package manager: $PACKAGE_MANAGER"
 
-COMMON_PACKAGES=(go pipx neovim tmux bat zsh)
-MACOS_PACKAGES=(skhd yabai)
-MACOS_CASK_PACKAGES=(autoraise)
-
-install_packages "${COMMON_PACKAGES[@]}"
-
-if [ "$OS" = "macos" ]; then
-  install_packages "${MACOS_PACKAGES[@]}"
-  install_cask_packages "${MACOS_CASK_PACKAGES[@]}"
-fi
+install_packages
 
 echo "Installation of dependencies complete!"
 
