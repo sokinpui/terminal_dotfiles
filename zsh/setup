@@ -72,7 +72,6 @@ install_packages() {
 
     # Update Homebrew
     echo "Updating Homebrew..."
-    brew update
     brew install go pipx neovim tmux bat zsh fd colima neofetch ripgrep
     brew install koekeishiya/formulae/skhd
     brew install koekeishiya/formulae/yabai
@@ -110,14 +109,12 @@ install_packages() {
 
     ;;
   apt)
-    sudo apt-get update
     sudo apt-get install -y lf neovim neofetch golang htop ripgrep tldr tree zoxide direnv cloc pipx fd-find
     sudo mkdir -p -m 755 /etc/apt/keyrings && wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg
     curl -fsSL https://deno.land/x/install/install.sh | sh
     ln -sfv $(which fdfind) ~/.local/bin/fd
     ;;
   dnf)
-    sudo dnf update -y
     sudo dnf install -y 'dnf-command(copr)'
     sudo dnf install -y golang pipx neovim tmux bat zsh fd-find ripgrep neofetch htop tldr zoxide cloc
     sudo dnf copr enable lsevcik/lf && sudo dnf install -y lf
