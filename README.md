@@ -3,7 +3,7 @@
 ## Install Linux config
 
 ```sh
-curl https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/main/linux-setup | sh
+curl https://github.com/sokinpui/terminal_dotfiles/blob/main/zsh/setup | sh
 ```
 
 ## After installation, you should...
