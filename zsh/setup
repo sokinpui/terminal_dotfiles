@@ -1,8 +1,112 @@
 #!/usr/bin/env bash
 
+set -e
+
+command_exists() {
+  command -v "$1" >/dev/null 2>&1
+}
+
+detect_os_and_package_manager() {
+  local os
+  os=$(uname -s)
+
+  if [ "$os" = "Darwin" ]; then
+    OS="macos"
+    if ! command_exists brew; then
+      echo "Homebrew not found. Please install it first."
+      exit 1
+    fi
+    PACKAGE_MANAGER="brew"
+    return
+  fi
+
+  if [ "$os" = "Linux" ]; then
+    OS="linux"
+    if [ -f /etc/os-release ]; then
+      # shellcheck source=/dev/null
+      . /etc/os-release
+      case "$ID" in
+      ubuntu | debian)
+        PACKAGE_MANAGER="apt"
+        ;;
+      arch)
+        PACKAGE_MANAGER="pacman"
+        ;;
+      fedora)
+        PACKAGE_MANAGER="dnf"
+        ;;
+      *)
+        echo "Unsupported Linux distribution: $ID"
+        exit 1
+        ;;
+      esac
+    else
+      echo "Unsupported Linux distribution."
+      exit 1
+    fi
+    return
+  fi
+
+  echo "Unsupported OS: $os"
+  exit 1
+}
+
+install_packages() {
+  if [ -z "$PACKAGE_MANAGER" ]; then
+    echo "Package manager not set."
+    exit 1
+  fi
+
+  local packages=("$@")
+  echo "Installing packages: ${packages[*]}..."
+
+  case "$PACKAGE_MANAGER" in
+  brew)
+    brew install "${packages[@]}"
+    ;;
+  apt)
+    sudo apt-get update && sudo apt-get install -y "${packages[@]}"
+    ;;
+  pacman)
+    sudo pacman -Syu --noconfirm "${packages[@]}"
+    ;;
+  dnf)
+    sudo dnf install -y "${packages[@]}"
+    ;;
+  esac
+}
+
+install_cask_packages() {
+  if [ "$PACKAGE_MANAGER" != "brew" ]; then
+    echo "Cask packages can only be installed on macOS with Homebrew."
+    return
+  fi
+  local packages=("$@")
+  echo "Installing cask packages: ${packages[*]}..."
+  brew install --cask "${packages[@]}"
+}
+
 echo "Cloning the repository..."
-git clone https://github.com/sokinpui/terminal_dotfiles.git dotfiles
+if [ ! -d "dotfiles" ]; then
+  git clone https://github.com/sokinpui/terminal_dotfiles.git dotfiles
+fi
 cd dotfiles
+
+detect_os_and_package_manager
+echo "Detected OS: $OS with package manager: $PACKAGE_MANAGER"
+
+COMMON_PACKAGES=(go pipx neovim tmux bat zsh)
+MACOS_PACKAGES=(skhd yabai)
+MACOS_CASK_PACKAGES=(autoraise)
+
+install_packages "${COMMON_PACKAGES[@]}"
+
+if [ "$OS" = "macos" ]; then
+  install_packages "${MACOS_PACKAGES[@]}"
+  install_cask_packages "${MACOS_CASK_PACKAGES[@]}"
+fi
+
+echo "Installation of dependencies complete!"
 
 REPO_DIR="$(pwd)"
 CONFIG_DIR="$HOME/.config"
@@ -10,67 +114,56 @@ CONFIG_DIR="$HOME/.config"
 echo "Repository directory: $REPO_DIR"
 echo "Configuration directory: $CONFIG_DIR"
 
-if [ ! -d "$CONFIG_DIR" ]; then
-  echo "Creating $CONFIG_DIR..."
-  mkdir -p "$CONFIG_DIR"
-fi
+mkdir -p "$CONFIG_DIR"
 
 echo "Creating symbolic links for configuration files..."
 
-DOTFILES=(
-  nvim
-  AutoRaise
-  tmux
-  kitty
-  bat
-  lf
-  skhd
-  yabai
-)
+DOTFILES=(nvim AutoRaise tmux kitty bat lf skhd yabai)
 
 for tool in "${DOTFILES[@]}"; do
   if [ -d "$REPO_DIR/$tool" ] || [ -f "$REPO_DIR/$tool" ]; then
     ln -sfv "$REPO_DIR/$tool" "$CONFIG_DIR/$tool"
   else
-    echo "Warning: $tool not found in repository"
+    echo "Warning: $tool not found in repository, skipping symlink."
   fi
 done
 
 echo "Symbolic linking complete! Please check the links and start your terminal tools."
 
-ln -sfv $REPO_DIR/zsh $CONFIG_DIR/zsh
+ln -sfv "$REPO_DIR/zsh" "$CONFIG_DIR/zsh"
 
 echo "Creating symbolic links for zsh configuration files..."
 echo "Removing existing zsh configuration files..."
-mv $HOME/.zprofile $HOME/.zprofile.bak
-mv $HOME/.zshrc $HOME/.zshrc.bak
-mv $HOME/.zshenv $HOME/.zshenv.bak
-echo ""
+mv -f "$HOME/.zprofile" "$HOME/.zprofile.bak" 2>/dev/null || true
+mv -f "$HOME/.zshrc" "$HOME/.zshrc.bak" 2>/dev/null || true
+mv -f "$HOME/.zshenv" "$HOME/.zshenv.bak" 2>/dev/null || true
 
-ln -sfv $REPO_DIR/zsh/.zshrc $REPO_DIR/zshrc
-ln -sfv $REPO_DIR/zsh/.zprofile $REPO_DIR/zprofile
-ln -sfv $REPO_DIR/zsh/.zshenv $REPO_DIR/zshenv
-
-ln -sfv $REPO_DIR/zsh/zshrc $HOME/.zshrc
-ln -sfv $REPO_DIR/zsh/zshenv $HOME/.zshenv
-ln -sfv $REPO_DIR/zsh/zprofile $HOME/.zprofile
+ln -sfv "$REPO_DIR/zsh/.zshrc" "$HOME/.zshrc"
+ln -sfv "$REPO_DIR/zsh/.zshenv" "$HOME/.zshenv"
+ln -sfv "$REPO_DIR/zsh/.zprofile" "$HOME/.zprofile"
 
 mkdir -p ~/.config/tmux/plugins
-git clone https://github.com/tmux-plugins/tmux-continuum ~/.config/tmux/plugins/tmux-continuum
-git clone https://github.com/tmux-plugins/tmux-resurrect ~/.config/tmux/plugins/tmux-resurrect
+if [ ! -d ~/.config/tmux/plugins/tmux-continuum ]; then
+  git clone https://github.com/tmux-plugins/tmux-continuum ~/.config/tmux/plugins/tmux-continuum
+fi
+if [ ! -d ~/.config/tmux/plugins/tmux-resurrect ]; then
+  git clone https://github.com/tmux-plugins/tmux-resurrect ~/.config/tmux/plugins/tmux-resurrect
+fi
 
 pipx install neovim-remote
 pip3 install --break-system-packages pynvim
 
-# rm -rf dotfiles
-# git clone https://github.com/sokinpui/terminal_dotfiles.git dotfiles
+ln -sfv "$REPO_DIR/gitignore_global" "$HOME/.gitignore_global"
+git config --global core.excludesfile "$HOME/.gitignore_global"
 
-ln -sfv $REPO_DIR/gitignore_global $HOME/.gitignore_global
-git config --global core.excludesfile $HOME/.gitignore_global
-
-mkdir -p $HOME/.local
-ln -sfv $REPO_DIR/scripts $HOME/.local/scripts
+mkdir -p "$HOME/.local"
+ln -sfv "$REPO_DIR/scripts" "$HOME/.local/scripts"
 
 go install github.com/sokinpui/wt-go/cmd/wtgo@latest
 
-mkdir -p $HOME/projects/lscm
+mkdir -p "$HOME/projects/lscm"
+
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
+echo "Setup complete!"
