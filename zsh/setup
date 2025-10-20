@@ -109,9 +109,7 @@ install_packages() {
 
     ;;
   apt)
-    sudo apt-get install -y lf neovim neofetch golang htop ripgrep tldr tree zoxide direnv cloc pipx fd-find
-    sudo mkdir -p -m 755 /etc/apt/keyrings && wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg
-    curl -fsSL https://deno.land/x/install/install.sh | sh
+    sudo apt-get install -y lf neovim neofetch golang ripgrep tldr tree zoxide direnv pipx fd-find
     ln -sfv $(which fdfind) ~/.local/bin/fd
     ;;
   dnf)
