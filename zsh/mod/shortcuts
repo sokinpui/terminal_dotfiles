@@ -14,14 +14,14 @@ open-recent-edit-file() {
 
   select_file=$(
     if [[ "$(uname)" == "Linux" ]]; then
-      fd --type=file \
+      fd --type=file --type=symlink \
         --strip-cwd-prefix -X stat -c "%Y %n" |
         sort -nr | cut -d' ' -f2- |
         fzf --height 40% --reverse -m --header="cwd=$cwd  | cmd='$EDITOR <file>'  "
       return
     fi
     if [[ "$(uname)" == "Darwin" ]]; then
-      fd --type=file \
+      fd --type=file --type=symlink \
         --strip-cwd-prefix -X stat -f "%m %N" |
         sort -nr | cut -d' ' -f2- |
         fzf --height 40% --reverse -m --header="cwd=$cwd  | cmd='$EDITOR <file>'  "
