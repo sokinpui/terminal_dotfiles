@@ -178,7 +178,7 @@ fi
 
 pipx install neovim-remote
 pipx install trash-cli
-pip3 install --break-system-packages pynvim
+pip3 install pynvim
 
 ln -sfv "$REPO_DIR/gitignore_global" "$HOME/.gitignore_global"
 git config --global core.excludesfile "$HOME/.gitignore_global"
