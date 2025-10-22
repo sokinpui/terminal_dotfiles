@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 mkdir -p "$HOME/.local/bin"
+mkdir -p "$HOME/projects/lscm/CEDD"
+export PATH=$PATH:$HOME/.local/bin
 
 command_exists() {
   command -v "$1" >/dev/null 2>&1
@@ -70,7 +72,7 @@ install_packages() {
 
     # Update Homebrew
     echo "Updating Homebrew..."
-    brew install go pipx neovim tmux bat zsh fd colima neofetch ripgrep python3-pip
+    brew install pipx neovim tmux bat zsh fd colima neofetch ripgrep python3-pip
     brew install koekeishiya/formulae/skhd
     brew install koekeishiya/formulae/yabai
     brew install yqrashawn/goku/goku
@@ -104,17 +106,18 @@ install_packages() {
     defaults write -g KeyRepeat -int 1
     curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin installer=version-0.40.0
     sudo ln -sf /Applications/kitty.app/Contents/MacOS/kitty /usr/local/bin/kitty
+    curl -fsSL https://deno.land/install.sh | sh
 
     ;;
   apt)
-    sudo apt-get install -y neovim neofetch golang ripgrep tldr tree zoxide direnv pipx fd-find python3-pip zsh
+    sudo apt-get install -y neovim neofetch ripgrep tldr tree zoxide direnv pipx fd-find python3-pip zsh
     ln -sfv $(which fdfind) ~/.local/bin/fd
+    curl -fsSL https://deno.land/install.sh | sh
     ;;
   dnf)
     sudo dnf install -y 'dnf-command(copr)'
-    sudo dnf install -y golang pipx neovim tmux bat zsh fd-find ripgrep neofetch htop tldr zoxide cloc python3-pip
-    gh sudo dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo && sudo dnf install gh
-    curl -fsSL https://deno.land/x/install/install.sh | sh
+    sudo dnf install -y pipx neovim tmux bat zsh fd-find ripgrep neofetch htop tldr zoxide cloc python3-pip
+    curl -fsSL https://deno.land/install.sh | sh
     ;;
   esac
 }
@@ -184,12 +187,24 @@ git config --global core.excludesfile "$HOME/.gitignore_global"
 mkdir -p "$HOME/.local"
 ln -sfv "$REPO_DIR/scripts" "$HOME/.local/scripts"
 
+wget https://go.dev/dl/go1.22.5.linux-amd64.tar.gz
+sudo tar -C $HOME/.local/bin -xzf go1.22.5.linux-amd64.tar.gz
+rm go1.22.5.linux-amd64.tar.gz
+
 go install github.com/sokinpui/wt-go/cmd/wtgo@latest
-env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest
+cd $HOME/projects
+git clone https://github.com/sokinpui/wt-go.git
+cd wt-go
+go install ./cmd/wtgo
+cd $HOME
 
-mkdir -p "$HOME/projects/lscm/CEDD"
+cd $HOME/projects/
+git clone https://github.com/gokcehan/lf.git
+cd lf
+env CGO_ENABLED=0 go install -ldflags="-s -w" ./...
+cd $HOME
 
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+bash git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+bash ~/.fzf/install
 
 echo "Setup complete!"
