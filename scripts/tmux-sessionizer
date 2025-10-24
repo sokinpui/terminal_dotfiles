@@ -6,6 +6,7 @@ SEARCH_DIRECTORIES=(
   ~/projects
   ~/projects/LSCM
   ~/projects/LSCM/CEDD
+  ~/dotfiles
 )
 
 select_directory() {
@@ -14,7 +15,7 @@ select_directory() {
     -not -path '*/.*' \
     -not -path '*/*.wt' \
     -exec ls -1dt {} + | uniq |
-    fzf --height 40% -i --reverse --header "Select a project directory"
+    fzf --height 100% -i --layout=default --header "Select a project directory"
 }
 
 create_or_connect_session() {
