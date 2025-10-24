@@ -2,9 +2,13 @@
 
 PROMPTS_DIR="$HOME/projects/LLM-prompts-gallery"
 
-SELECTED_FILE=$(fd . "$PROMPTS_DIR" --type f -e ".md" -E "README.md" -X ls -t | fzf \
-  --preview "bat --color=always --style=plain {}" \
-  --preview-window=top:50%)
+SELECTED_FILE=$(
+  fd . "$PROMPTS_DIR" --type f -e ".md" -E "README.md" -X ls -t | fzf \
+    --preview "bat --color=always --style=plain {}" \
+    --layout=default \
+    --height 100% \
+    --preview-window=top:50%
+)
 
 if [[ -n "$SELECTED_FILE" ]]; then
   touch "$SELECTED_FILE"
