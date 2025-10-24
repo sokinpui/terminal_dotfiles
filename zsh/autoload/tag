@@ -1,7 +1,14 @@
 # vi: filetype=zsh
 
 if [ "$#" -eq 0 ]; then
-  git tag
+  local latest_tag
+  latest_tag=$(git describe --tags --abbrev=0 2>/dev/null)
+
+  if [[ -z "$latest_tag" ]]; then
+    echo "No tags found."
+    return 1
+  fi
+  echo "$latest_tag"
   return
 fi
 
