@@ -2,7 +2,7 @@
 
 if [ "$#" -eq 0 ]; then
   local latest_tag
-  latest_tag=$(git describe --tags --abbrev=0 2>/dev/null)
+  latest_tag=$(git tag --sort=version:refname | tail -n 5)
 
   if [[ -z "$latest_tag" ]]; then
     echo "No tags found."
