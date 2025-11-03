@@ -72,7 +72,7 @@ install_packages() {
 
     # Update Homebrew
     echo "Updating Homebrew..."
-    brew install pipx neovim tmux bat zsh fd colima neofetch ripgrep python3-pip
+    brew install pipx neovim tmux bat zsh fd colima neofetch ripgrep python3-pip git
     brew install koekeishiya/formulae/skhd
     brew install koekeishiya/formulae/yabai
     brew install yqrashawn/goku/goku
@@ -110,13 +110,13 @@ install_packages() {
 
     ;;
   apt)
-    sudo apt-get install -y neovim neofetch ripgrep tldr tree zoxide direnv pipx fd-find python3-pip zsh
+    sudo apt-get install -y neovim neofetch ripgrep tldr tree zoxide direnv pipx fd-find python3-pip zsh git
     ln -sfv $(which fdfind) ~/.local/bin/fd
     curl -fsSL https://deno.land/install.sh | sh
     ;;
   dnf)
     sudo dnf install -y 'dnf-command(copr)'
-    sudo dnf install -y pipx neovim tmux bat zsh fd-find ripgrep neofetch htop tldr zoxide cloc python3-pip
+    sudo dnf install -y pipx neovim tmux bat zsh fd-find ripgrep neofetch htop tldr zoxide cloc python3-pip git
     curl -fsSL https://deno.land/install.sh | sh
     ;;
   esac
