@@ -20,6 +20,7 @@ return {
 				"ts_ls",
 				"texlab",
 				"gopls",
+				"clangd",
 
 				-- Formatters
 				"stylua",
