@@ -2,7 +2,6 @@
 
 mkdir -p "$HOME/.local/bin"
 mkdir -p "$HOME/projects/lscm/CEDD"
-export PATH=$PATH:$HOME/.local/bin
 
 command_exists() {
   command -v "$1" >/dev/null 2>&1
@@ -110,17 +109,23 @@ install_packages() {
 
     ;;
   apt)
-    sudo apt-get install -y neovim neofetch ripgrep tldr tree zoxide direnv pipx fd-find python3-pip zsh git
+    sudo apt-get install -y golang-go neovim neofetch ripgrep tldr tree zoxide direnv pipx fd-find python3-pip zsh git
     ln -sfv $(which fdfind) ~/.local/bin/fd
     curl -fsSL https://deno.land/install.sh | sh
     ;;
   dnf)
     sudo dnf install -y 'dnf-command(copr)'
-    sudo dnf install -y pipx neovim tmux bat zsh fd-find ripgrep neofetch htop tldr zoxide cloc python3-pip git
+    sudo dnf install -y golang pipx neovim tmux bat zsh fd-find ripgrep neofetch htop tldr zoxide cloc python3-pip git
     curl -fsSL https://deno.land/install.sh | sh
     ;;
   esac
 }
+
+#### Main Script Execution Starts ####
+
+echo "Download essential dependencies..."
+detect_os_and_package_manager
+install_packages
 
 echo "Cloning the repository..."
 if [ ! -d "dotfiles" ]; then
@@ -128,10 +133,7 @@ if [ ! -d "dotfiles" ]; then
 fi
 cd dotfiles
 
-detect_os_and_package_manager
 echo "Detected OS: $OS with package manager: $PACKAGE_MANAGER"
-
-install_packages
 
 echo "Installation of dependencies complete!"
 
@@ -186,10 +188,6 @@ git config --global core.excludesfile "$HOME/.gitignore_global"
 
 mkdir -p "$HOME/.local"
 ln -sfv "$REPO_DIR/scripts" "$HOME/.local/scripts"
-
-wget https://go.dev/dl/go1.22.5.linux-amd64.tar.gz
-sudo tar -C $HOME/.local/bin -xzf go1.22.5.linux-amd64.tar.gz
-rm go1.22.5.linux-amd64.tar.gz
 
 go install github.com/sokinpui/wt-go/cmd/wtgo@latest
 cd $HOME/projects
