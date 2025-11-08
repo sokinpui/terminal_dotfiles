@@ -109,13 +109,13 @@ install_packages() {
 
     ;;
   apt)
-    sudo apt-get install -y golang-go neovim neofetch ripgrep tldr tree zoxide direnv pipx fd-find python3-pip zsh git
+    sudo apt-get install -y golang-go neovim neofetch ripgrep tldr tree zoxide direnv pipx fd-find python3-pip zsh git --ignore-missing
     ln -sfv $(which fdfind) ~/.local/bin/fd
     curl -fsSL https://deno.land/install.sh | sh
     ;;
   dnf)
     sudo dnf install -y 'dnf-command(copr)'
-    sudo dnf install -y golang pipx neovim tmux bat zsh fd-find ripgrep htop tldr zoxide cloc python3-pip git
+    sudo dnf install -y golang pipx neovim tmux bat zsh fd-find ripgrep htop tldr zoxide cloc python3-pip git --skip-unavailable
     curl -fsSL https://deno.land/install.sh | sh
     ;;
   esac
