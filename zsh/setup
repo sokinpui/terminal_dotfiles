@@ -115,7 +115,8 @@ install_packages() {
     ;;
   dnf)
     sudo dnf install -y 'dnf-command(copr)'
-    sudo dnf install -y golang pipx neovim tmux bat zsh fd-find ripgrep htop tldr zoxide cloc python3-pip git --skip-unavailable
+    dnf copr enable pennbauman/ports
+    sudo dnf install -y golang pipx neovim tmux bat zsh fd-find ripgrep htop tldr zoxide cloc python3-pip git lf --skip-unavailable
     curl -fsSL https://deno.land/install.sh | sh
     ;;
   esac
