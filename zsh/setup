@@ -182,7 +182,7 @@ fi
 
 pipx install neovim-remote
 pipx install trash-cli
-pip3 install pynvim
+pip3 install pynvim --break-system-packages
 
 ln -sfv "$REPO_DIR/gitignore_global" "$HOME/.gitignore_global"
 git config --global core.excludesfile "$HOME/.gitignore_global"
@@ -191,17 +191,7 @@ mkdir -p "$HOME/.local"
 ln -sfv "$REPO_DIR/scripts" "$HOME/.local/scripts"
 
 go install github.com/sokinpui/wt-go/cmd/wtgo@latest
-cd $HOME/projects
-git clone https://github.com/sokinpui/wt-go.git
-cd wt-go
-go install ./cmd/wtgo
-cd $HOME
-
-cd $HOME/projects/
-git clone https://github.com/gokcehan/lf.git
-cd lf
-env CGO_ENABLED=0 go install -ldflags="-s -w" ./...
-cd $HOME
+env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest
 
 bash git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 bash ~/.fzf/install
