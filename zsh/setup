@@ -193,7 +193,7 @@ ln -sfv "$REPO_DIR/scripts" "$HOME/.local/scripts"
 go install github.com/sokinpui/wt-go/cmd/wtgo@latest
 env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest
 
-bash git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-bash ~/.fzf/install
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
 
 echo "Setup complete!"
