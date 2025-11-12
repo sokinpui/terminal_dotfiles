@@ -106,17 +106,16 @@ install_packages() {
     curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin installer=version-0.40.0
     sudo ln -sf /Applications/kitty.app/Contents/MacOS/kitty /usr/local/bin/kitty
     curl -fsSL https://deno.land/install.sh | sh
-
     ;;
   apt)
-    sudo apt-get install -y golang neovim neofetch ripgrep tldr tree zoxide direnv pipx fd-find python3-pip zsh git --ignore-missing
+    sudo apt-get install -y tmux neovim neofetch ripgrep tldr tree zoxide direnv pipx fd-find python3-pip zsh git --ignore-missing
     ln -sfv $(which fdfind) ~/.local/bin/fd
     curl -fsSL https://deno.land/install.sh | sh
     ;;
   dnf)
     sudo dnf install -y 'dnf-command(copr)'
     dnf copr enable pennbauman/ports
-    sudo dnf install -y golang pipx neovim tmux bat zsh fd-find ripgrep htop tldr zoxide cloc python3-pip git lf --skip-unavailable
+    sudo dnf install -y pipx neovim tmux bat zsh fd-find ripgrep htop tldr zoxide cloc python3-pip git lf --skip-unavailable
     curl -fsSL https://deno.land/install.sh | sh
     ;;
   esac
@@ -172,14 +171,6 @@ ln -sfv "$REPO_DIR/zsh/.zshrc" "$HOME/.zshrc"
 ln -sfv "$REPO_DIR/zsh/.zshenv" "$HOME/.zshenv"
 ln -sfv "$REPO_DIR/zsh/.zprofile" "$HOME/.zprofile"
 
-mkdir -p ~/.config/tmux/plugins
-if [ ! -d ~/.config/tmux/plugins/tmux-continuum ]; then
-  git clone https://github.com/tmux-plugins/tmux-continuum ~/.config/tmux/plugins/tmux-continuum
-fi
-if [ ! -d ~/.config/tmux/plugins/tmux-resurrect ]; then
-  git clone https://github.com/tmux-plugins/tmux-resurrect ~/.config/tmux/plugins/tmux-resurrect
-fi
-
 pipx install neovim-remote
 pipx install trash-cli
 pip3 install pynvim --break-system-packages
@@ -191,6 +182,8 @@ mkdir -p "$HOME/.local"
 ln -sfv "$REPO_DIR/scripts" "$HOME/.local/scripts"
 
 go install github.com/sokinpui/wt-go/cmd/wtgo@latest
+go install github.com/sokinpui/itf/cmd/itf@latest
+go install github.com/sokinpui/pcat/cmd/pcat@latest
 env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
