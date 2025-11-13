@@ -2,12 +2,21 @@
 
 set -euo pipefail
 
-SEARCH_DIRECTORIES=(
+INITIAL_DIRECTORIES=(
   ~/projects
   ~/projects/LSCM
   ~/projects/LSCM/CEDD
   ~/dotfiles
+  ~/.asdflaksjfai
 )
+
+SEARCH_DIRECTORIES=()
+
+for dir in "${INITIAL_DIRECTORIES[@]}"; do
+  if [ -d "$dir" ]; then
+    SEARCH_DIRECTORIES+=("$dir")
+  fi
+done
 
 select_directory() {
   find "${SEARCH_DIRECTORIES[@]}" \
