@@ -71,7 +71,7 @@ install_packages() {
     # Update Homebrew
     echo "Updating Homebrew..."
     brew update
-    brew install pipx neovim tmux bat zsh fd colima neofetch ripgrep python3-pip git
+    brew install pipx neovim tmux bat zsh fd colima neofetch ripgrep python3-pip git go
     brew install koekeishiya/formulae/skhd
     brew install koekeishiya/formulae/yabai
     brew install yqrashawn/goku/goku
@@ -110,7 +110,7 @@ install_packages() {
   apt)
     sudo apt update
     sudo apt upgrade -y
-    sudo apt-get install -y tmux neovim vim neofetch ripgrep tldr tree zoxide direnv pipx fd-find python3-pip zsh git --ignore-missing
+    sudo apt-get install -y tmux neovim vim neofetch ripgrep tldr tree zoxide direnv pipx fd-find python3-pip zsh git golang-go --ignore-missing
     sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
       libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
       xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
@@ -123,7 +123,7 @@ install_packages() {
     sudo dnf upgrade -y
     sudo dnf install -y 'dnf-command(copr)'
     dnf copr enable pennbauman/ports
-    sudo dnf install -y pipx neovim vim tmux bat zsh fd-find ripgrep htop tldr zoxide cloc python3-pip git lf --skip-unavailable
+    sudo dnf install -y pipx neovim vim tmux bat zsh fd-find ripgrep htop tldr zoxide cloc python3-pip git lf golang --skip-unavailable
     curl -fsSL https://deno.land/install.sh | sh
     curl -fsSL https://pyenv.run | bash
     ;;
