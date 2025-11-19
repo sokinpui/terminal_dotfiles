@@ -191,6 +191,10 @@ ln -sfv "$REPO_DIR/gitignore_global" "$HOME/.gitignore_global"
 git config --global core.excludesfile "$HOME/.gitignore_global"
 
 mkdir -p "$HOME/.local"
+# if `scripts` exists and is not a symlink, back it up
+if [ -d "$HOME/.local/scripts" ] && [ ! -L "$HOME/.local/scripts" ]; then
+  mv "$HOME/.local/scripts" "$HOME/.local/scripts.bak"
+fi
 ln -sfv "$REPO_DIR/scripts" "$HOME/.local/scripts"
 
 go install github.com/sokinpui/wt-go/cmd/wtgo@latest
