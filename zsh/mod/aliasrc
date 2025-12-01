@@ -238,3 +238,5 @@ skhd() {
 #
 #   command ssh mac -t "tmux-sessionizer"
 # }
+
+alias t=tmux
