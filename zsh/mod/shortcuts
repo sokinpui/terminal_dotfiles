@@ -115,3 +115,17 @@ if [ -z "$TMUX" ]; then
   bindkey -M vicmd '^s' tmux-sessionizer-wrapper
   bindkey -M viins '^s' tmux-sessionizer-wrapper
 fi
+
+
+foreground() {
+  BUFFER="fg"
+  zle accept-line
+}
+zle -N foreground
+if [ -z "$TMUX" ]; then
+  bindkey '^z' foreground
+  bindkey -M vicmd '^z' foreground
+  bindkey -M viins '^z' foreground
+fi
+
+
