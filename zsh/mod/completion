@@ -1,26 +1,23 @@
 #!/usr/bin/env zsh
 
 
-autoload -Uz compinit
-compinit
 fpath=(~/.config/zsh/autoload $fpath)
-autoload -Uz ~/.config/zsh/autoload/*(.:t)
 
-# Define the path for your completion cache file
-# Using XDG_CACHE_HOME is good practice, which you already do.
+local zcache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+if [[ ! -d "$zcache_dir" ]]; then
+  mkdir -p "$zcache_dir"
+fi
+
+autoload -Uz compinit
 local zcompdump_path="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/.zcompdump"
 
-# Check if the dump file exists and is not older than one day.
-# This avoids running compaudit and compdump on every shell start.
 if [[ -s "$zcompdump_path" && (! -f "$zcompdump_path.zwc" || "$zcompdump_path" -nt "$zcompdump_path.zwc") ]]; then
-    # If the dump file is new or updated, load it.
     compinit -i -d "$zcompdump_path"
 else
-    # If the dump file is missing or old, regenerate it.
-    # The -C flag tells compinit to check if files have changed before regenerating.
-    # This is the "heavy lifting" part that will now run infrequently.
     compinit -C -i -d "$zcompdump_path"
 fi
+
+autoload -Uz ~/.config/zsh/autoload/*(.:t)
 
 #   Completion
 ## Hugo completion
