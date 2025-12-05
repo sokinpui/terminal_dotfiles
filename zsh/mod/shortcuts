@@ -104,9 +104,14 @@ zle -N fzf-file-widget
 bindkey -M vicmd '^T' fzf-file-widget
 bindkey -M viins '^T' fzf-file-widget
 
-# tmux-sessionizer-wrapper() {
-#   command tmux-sessionizer
-#   zle reset-prompt
-# }
-# zle -N tmux-sessionizer-wrapper
-# bindkey -s '^a' "tmux-sessionizer\n"
+tmux-sessionizer-wrapper() {
+  BUFFER="tmux-sessionizer"
+  zle accept-line
+}
+zle -N tmux-sessionizer-wrapper
+if [ -z "$TMUX" ]; then
+  stty -ixon
+  bindkey '^s' tmux-sessionizer-wrapper
+  bindkey -M vicmd '^s' tmux-sessionizer-wrapper
+  bindkey -M viins '^s' tmux-sessionizer-wrapper
+fi
