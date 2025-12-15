@@ -35,7 +35,8 @@ detect_os_and_package_manager() {
       arch)
         PACKAGE_MANAGER="pacman"
         ;;
-      fedora)
+      # Added 'ol' (Oracle Linux), 'rhel', and 'centos'
+      fedora | ol | rhel | centos | almalinux | rocky)
         PACKAGE_MANAGER="dnf"
         ;;
       *)
@@ -122,11 +123,23 @@ install_packages() {
     curl -fsSL https://pyenv.run | bash
     ;;
   dnf)
-    sudo dnf update
-    sudo dnf upgrade -y
-    sudo dnf install -y 'dnf-command(copr)'
-    dnf copr enable pennbauman/ports
+    sudo dnf update -y
+
+    # Install basic build tools (needed for pyenv and go compilation)
+    sudo dnf groupinstall -y "Development Tools"
+    sudo dnf install -y openssl-devel bzip2-devel libffi-devel zlib-devel readline-devel sqlite-devel
+
+    # Enable COPR for specific tools if needed (Optional, usually safe on OL)
+    sudo dnf copr enable pennbauman/ports -y
+
+    # Note: On RHEL/OL 'fd' is often named 'fd-find' inside EPEL
     sudo dnf install -y pipx neovim vim tmux bat zsh fd-find ripgrep htop tldr zoxide cloc python3-pip git lf golang --skip-unavailable
+
+    # Symlink fd-find to fd if necessary
+    if command -v fdfind &>/dev/null; then
+      ln -sfv $(which fdfind) ~/.local/bin/fd
+    fi
+
     curl -fsSL https://deno.land/install.sh | sh
     curl -fsSL https://pyenv.run | bash
     ;;
@@ -159,6 +172,8 @@ mkdir -p "$CONFIG_DIR"
 
 echo "Creating symbolic links for configuration files..."
 
+# Note: Kitty might fail on a headless VPS, removed from auto-link if strictly headless,
+# but kept here for consistency with your dotfiles.
 DOTFILES=(nvim AutoRaise tmux kitty bat lf skhd yabai)
 
 for tool in "${DOTFILES[@]}"; do
@@ -185,7 +200,12 @@ ln -sfv "$REPO_DIR/zsh/.zprofile" "$HOME/.zprofile"
 
 pipx install neovim-remote
 pipx install trash-cli
-pip3 install pynvim --break-system-packages
+# Added checks for pip3 break-system-packages flag which is only valid on newer python versions
+if pip3 install --help | grep -q "break-system-packages"; then
+  pip3 install pynvim --break-system-packages
+else
+  pip3 install pynvim
+fi
 
 ln -sfv "$REPO_DIR/gitignore_global" "$HOME/.gitignore_global"
 git config --global core.excludesfile "$HOME/.gitignore_global"
@@ -197,12 +217,15 @@ if [ -d "$HOME/.local/scripts" ] && [ ! -L "$HOME/.local/scripts" ]; then
 fi
 ln -sfv "$REPO_DIR/scripts" "$HOME/.local/scripts"
 
+# Ensure Go bin is in path for the installation of tools
+export PATH=$PATH:$(go env GOPATH)/bin
+
 go install github.com/sokinpui/wt-go/cmd/wtgo@latest
 go install github.com/sokinpui/itf.go/cmd/itf@latest
 go install github.com/sokinpui/pcat.go/cmd/pcat@latest
 env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+~/.fzf/install --all
 
-echo "Setup complete!"
+echo "Setup complete! Please restart your shell."
