@@ -180,11 +180,6 @@ alias conda-init="source $HOME/.local/scripts/conda-init"
 
 alias vpn="export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;export ALL_PROXY=socks5://127.0.0.1:1080;export NO_PROXY=localhost,127.0.0.1"
 
-# alias only if the command z is found
-if command -v zoxide &>/dev/null; then
-  alias z="z"
-fi
-
 alias marta="marta --new-window"
 
 alias pyvenv="python -m venv .env ; source .env/bin/activate"
