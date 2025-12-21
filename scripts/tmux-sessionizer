@@ -7,6 +7,9 @@ INITIAL_DIRECTORIES=(
   ~/projects/LSCM
   ~/projects/LSCM/CEDD
   ~/dotfiles
+  ~/Obsidian
+
+  # for testing
   ~/.asdflaksjfai
 )
 
@@ -54,6 +57,11 @@ create_or_connect_session() {
 }
 
 main() {
+  # start a tmux if not running without attach to the sesosin
+  if ! pgrep tmux &>/dev/null; then
+    tmux new-session -s "None" -d
+  fi
+
   local selected_dir="${1-}"
   local session_name="${2-}"
 
