@@ -23,36 +23,33 @@ detect_os_and_package_manager() {
     return
   fi
 
-  if [ "$os" = "Linux" ]; then
-    OS="linux"
-    if [ -f /etc/os-release ]; then
-      # shellcheck source=/dev/null
-      . /etc/os-release
-      case "$ID" in
-      ubuntu | debian)
-        PACKAGE_MANAGER="apt"
-        ;;
-      arch)
-        PACKAGE_MANAGER="pacman"
-        ;;
-      # Added 'ol' (Oracle Linux), 'rhel', and 'centos'
-      fedora | ol | rhel | centos | almalinux | rocky)
-        PACKAGE_MANAGER="dnf"
-        ;;
-      *)
-        echo "Unsupported Linux distribution: $ID"
-        exit 1
-        ;;
-      esac
-    else
-      echo "Unsupported Linux distribution."
-      exit 1
-    fi
-    return
+  [ "$os" != "Linux" ] && { echo "Unsupported OS: $os"; exit 1; }
+
+  OS="linux"
+  local distro=""
+
+  if command_exists lsb_release; then
+    distro=$(lsb_release -d | awk '{print tolower($2)}')
+  elif [ -f /etc/os-release ]; then
+    . /etc/os-release
+    distro=$ID
   fi
 
-  echo "Unsupported OS: $os"
-  exit 1
+  case "$distro" in
+  ubuntu | debian)
+    PACKAGE_MANAGER="apt"
+    ;;
+  arch)
+    PACKAGE_MANAGER="pacman"
+    ;;
+  fedora | ol | oracle | rhel | centos | almalinux | rocky)
+    PACKAGE_MANAGER="dnf"
+    ;;
+  *)
+    echo "Unsupported Linux distribution: $distro"
+    exit 1
+    ;;
+  esac
 }
 
 install_packages() {
