@@ -122,7 +122,7 @@ install_packages() {
   apt)
     sudo apt update
     sudo apt upgrade -y
-    sudo apt-get install -y tmux neovim vim neofetch ripgrep tldr tree zoxide direnv pipx fd-find python3-pip zsh git golang-go --ignore-missing
+    sudo apt-get install -y tmux unzip neovim vim neofetch ripgrep tldr tree zoxide direnv pipx fd-find python3-pip zsh git golang-go --ignore-missing
     sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
       libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
       xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
@@ -140,7 +140,7 @@ install_packages() {
     sudo dnf copr enable pennbauman/ports -y
 
     # Note: On RHEL/OL 'fd' is often named 'fd-find' inside EPEL
-    sudo dnf install -y pipx neovim vim tmux bat zsh fd-find ripgrep htop tldr zoxide cloc python3-pip git lf golang --skip-unavailable
+    sudo dnf install -y pipx unzip neovim vim tmux bat zsh fd-find ripgrep htop tldr zoxide cloc python3-pip git lf golang --skip-unavailable
 
     # Symlink fd-find to fd if necessary
     if command -v fdfind &>/dev/null; then
