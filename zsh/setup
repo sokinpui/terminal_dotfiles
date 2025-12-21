@@ -128,8 +128,6 @@ install_packages() {
       xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
     create_symlink "$(which fdfind)" "$HOME/.local/bin/fd"
     curl -fsSL https://deno.land/install.sh | sh
-    rm -rf $HOME/.pyenv
-    curl -fsSL https://pyenv.run | bash
     ;;
   dnf)
     sudo dnf update -y
@@ -150,8 +148,6 @@ install_packages() {
     fi
 
     curl -fsSL https://deno.land/install.sh | sh
-    rm -rf $HOME/.pyenv
-    curl -fsSL https://pyenv.run | bash
     ;;
   esac
 }
