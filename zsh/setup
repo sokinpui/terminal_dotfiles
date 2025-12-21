@@ -9,6 +9,14 @@ command_exists() {
   command -v "$1" >/dev/null 2>&1
 }
 
+create_symlink() {
+  local src=$1
+  local dst=$2
+  [ -L "$dst" ] && rm "$dst"
+  [ -e "$dst" ] && [ ! -L "$dst" ] && mv "$dst" "$dst.bak"
+  ln -sfv "$src" "$dst"
+}
+
 detect_os_and_package_manager() {
   local os
   os=$(uname -s)
@@ -115,7 +123,7 @@ install_packages() {
     sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
       libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
       xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
-    ln -sfv $(which fdfind) ~/.local/bin/fd
+    create_symlink "$(which fdfind)" "$HOME/.local/bin/fd"
     curl -fsSL https://deno.land/install.sh | sh
     curl -fsSL https://pyenv.run | bash
     ;;
@@ -134,7 +142,7 @@ install_packages() {
 
     # Symlink fd-find to fd if necessary
     if command -v fdfind &>/dev/null; then
-      ln -sfv $(which fdfind) ~/.local/bin/fd
+      create_symlink "$(which fdfind)" "$HOME/.local/bin/fd"
     fi
 
     curl -fsSL https://deno.land/install.sh | sh
@@ -174,26 +182,18 @@ echo "Creating symbolic links for configuration files..."
 DOTFILES=(nvim AutoRaise tmux kitty bat lf skhd yabai)
 
 for tool in "${DOTFILES[@]}"; do
-  if [ -d "$REPO_DIR/$tool" ] || [ -f "$REPO_DIR/$tool" ]; then
-    ln -sfv "$REPO_DIR/$tool" "$CONFIG_DIR/$tool"
-  else
-    echo "Warning: $tool not found in repository, skipping symlink."
-  fi
+  [ ! -e "$REPO_DIR/$tool" ] && { echo "Warning: $tool not found, skipping."; continue; }
+  create_symlink "$REPO_DIR/$tool" "$CONFIG_DIR/$tool"
 done
 
 echo "Symbolic linking complete! Please check the links and start your terminal tools."
 
-ln -sfv "$REPO_DIR/zsh" "$CONFIG_DIR/zsh"
+create_symlink "$REPO_DIR/zsh" "$CONFIG_DIR/zsh"
 
 echo "Creating symbolic links for zsh configuration files..."
-echo "Removing existing zsh configuration files..."
-mv -f "$HOME/.zprofile" "$HOME/.zprofile.bak" 2>/dev/null || true
-mv -f "$HOME/.zshrc" "$HOME/.zshrc.bak" 2>/dev/null || true
-mv -f "$HOME/.zshenv" "$HOME/.zshenv.bak" 2>/dev/null || true
-
-ln -sfv "$REPO_DIR/zsh/.zshrc" "$HOME/.zshrc"
-ln -sfv "$REPO_DIR/zsh/.zshenv" "$HOME/.zshenv"
-ln -sfv "$REPO_DIR/zsh/.zprofile" "$HOME/.zprofile"
+create_symlink "$REPO_DIR/zsh/.zshrc" "$HOME/.zshrc"
+create_symlink "$REPO_DIR/zsh/.zshenv" "$HOME/.zshenv"
+create_symlink "$REPO_DIR/zsh/.zprofile" "$HOME/.zprofile"
 
 pipx install neovim-remote
 pipx install trash-cli
@@ -204,15 +204,11 @@ else
   pip3 install pynvim
 fi
 
-ln -sfv "$REPO_DIR/gitignore_global" "$HOME/.gitignore_global"
+create_symlink "$REPO_DIR/gitignore_global" "$HOME/.gitignore_global"
 git config --global core.excludesfile "$HOME/.gitignore_global"
 
 mkdir -p "$HOME/.local"
-# if `scripts` exists and is not a symlink, back it up
-if [ -d "$HOME/.local/scripts" ] && [ ! -L "$HOME/.local/scripts" ]; then
-  mv "$HOME/.local/scripts" "$HOME/.local/scripts.bak"
-fi
-ln -sfv "$REPO_DIR/scripts" "$HOME/.local/scripts"
+create_symlink "$REPO_DIR/scripts" "$HOME/.local/scripts"
 
 # Ensure Go bin is in path for the installation of tools
 export PATH=$PATH:$(go env GOPATH)/bin
