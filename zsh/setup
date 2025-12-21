@@ -31,7 +31,10 @@ detect_os_and_package_manager() {
     return
   fi
 
-  [ "$os" != "Linux" ] && { echo "Unsupported OS: $os"; exit 1; }
+  [ "$os" != "Linux" ] && {
+    echo "Unsupported OS: $os"
+    exit 1
+  }
 
   OS="linux"
   local distro=""
@@ -125,6 +128,7 @@ install_packages() {
       xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
     create_symlink "$(which fdfind)" "$HOME/.local/bin/fd"
     curl -fsSL https://deno.land/install.sh | sh
+    rm -rf $HOME/.pyenv
     curl -fsSL https://pyenv.run | bash
     ;;
   dnf)
@@ -146,6 +150,7 @@ install_packages() {
     fi
 
     curl -fsSL https://deno.land/install.sh | sh
+    rm -rf $HOME/.pyenv
     curl -fsSL https://pyenv.run | bash
     ;;
   esac
@@ -182,7 +187,10 @@ echo "Creating symbolic links for configuration files..."
 DOTFILES=(nvim AutoRaise tmux kitty bat lf skhd yabai)
 
 for tool in "${DOTFILES[@]}"; do
-  [ ! -e "$REPO_DIR/$tool" ] && { echo "Warning: $tool not found, skipping."; continue; }
+  [ ! -e "$REPO_DIR/$tool" ] && {
+    echo "Warning: $tool not found, skipping."
+    continue
+  }
   create_symlink "$REPO_DIR/$tool" "$CONFIG_DIR/$tool"
 done
 
