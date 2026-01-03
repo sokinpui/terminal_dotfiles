@@ -34,8 +34,8 @@ cmd - e : yabai -m space --layout bsp
 
 cmd - f2 : $HOME/.config/skhd/moveWindowRightAndFollowFocus.sh
 
-cmd - f4 : $HOME/.config/skhd/resize.sh 0.66
-cmd - f5 : $HOME/.config/skhd/resize.sh 0.33
+cmd - f4 : $HOME/.config/skhd/resize.sh 0.6666
+cmd - f5 : $HOME/.config/skhd/resize.sh 0.3333
 
 # cmd - f4 : $HOME/.config/skhd/left_cycle_resize.sh
 # cmd - f5 : $HOME/.config/skhd/right_cycle_resize.sh
