@@ -5,7 +5,7 @@ local hostname = vim.fn.hostname()
 
 -- table of user and hostname
 local allow_plugins = {
-	["dou"] = "dous-MacBook-Air.local",
+	["dou"] = "MacBookAir",
 	["so"] = "Mac-Studio",
 }
 
