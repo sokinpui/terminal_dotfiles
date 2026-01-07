@@ -218,8 +218,8 @@ create_symlink "$REPO_DIR/scripts" "$HOME/.local/scripts"
 export PATH=$PATH:$(go env GOPATH)/bin
 
 go install github.com/sokinpui/wt-go/cmd/wtgo@latest
-go install github.com/sokinpui/itf.go/cmd/itf@latest
-go install github.com/sokinpui/pcat.go/cmd/pcat@latest
+go install github.com/sokinpui/itf/cmd/itf@latest
+go install github.com/sokinpui/pcat/cmd/pcat@latest
 env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
