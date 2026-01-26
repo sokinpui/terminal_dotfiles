@@ -6,6 +6,8 @@ INITIAL_DIRECTORIES=(
   ~/projects
   ~/projects/LSCM
   ~/projects/LSCM/CEDD
+  ~/tmp
+  ~/CUHK/year4
   ~/dotfiles
   ~/Obsidian
 
