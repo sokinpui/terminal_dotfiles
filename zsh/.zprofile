@@ -43,3 +43,7 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
   export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
 fi
 
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
