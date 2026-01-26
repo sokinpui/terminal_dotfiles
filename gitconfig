@@ -8,6 +8,8 @@
 
 [http "https://gitlab.rnt.lscm/"]
 	sslVerify = false
+        proxy = socks5h://192.168.31.105:9999
+
 [init]
 	defaultBrancha = main
 	defaultBranch = main
