@@ -91,7 +91,7 @@ htmlcov/
 *.local
 
 .direnv
-.envrc
+# .envrc
 
 bin/
 

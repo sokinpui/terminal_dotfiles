@@ -40,7 +40,9 @@ export JAVA_HOME=/opt/homebrew/opt/openjdk
 
 # mac only
 if [[ "$(uname -s)" == "Darwin" ]]; then
-  export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
+  # export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
+  unset DOCKER_HOST
+  docker context use orbstack &> /dev/null
 fi
 
 
