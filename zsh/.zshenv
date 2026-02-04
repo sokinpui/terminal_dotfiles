@@ -1,10 +1,3 @@
-export TERM=xterm-256color
-
-# If you're inside tmux, set TERM for it
-if [ -n "$TMUX" ]; then
-    export TERM=screen-256color
-fi
-
 export PATH="$PATH:$HOME/.config/zsh/bin"
 export PATH=$PATH:$GOPATH/bin
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"

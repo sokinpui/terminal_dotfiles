@@ -149,7 +149,6 @@ alias \
   fd="fd --color auto -i" \
   grep="grep -i --color=auto" \
   rg="rg -i" \
-  htop="TERM=xterm-256color htop" \
   mc="mc -b" \
   df="df -h"
 
