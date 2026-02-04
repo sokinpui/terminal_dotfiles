@@ -42,12 +42,10 @@ set filesep "\n"  # default already
 # leave some space at the top and the bottom of the screen
 set scrolloff 10
 
-# Use the `dim` attribute instead of underline for the cursor in the preview pane
-#set cursorpreviewfmt "\033[7;90m"
-
-# preview with kitty
-set previewer '~/.config/lf/scope'
-set cleaner '~/.config/lf/cleaner'
+set previewer ~/dotfiles/lf/lfpreview
+cmd on-select &{{
+  exec lf -remote 'send redraw'
+}}
 
 # startup command
 # "latest modified first"
@@ -252,10 +250,6 @@ map gb :goto-hugo-blog
 
 map g. set hidden!
 map <backspace> set hidden!
-
-# warp navigation
-# map j !/Users/mac/repo/dotfiles/Mac/lf/wrap_nav.sh down
-# map k !/Users/mac/repo/dotfiles/Mac/lf/wrap_nav.sh up
 
 # move parent directory
 cmd move-parent &{{
