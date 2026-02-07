@@ -4,6 +4,7 @@ set -euo pipefail
 
 INITIAL_DIRECTORIES=(
   ~/projects
+  ~/projects/coder
   ~/projects/LSCM
   ~/projects/LSCM/CEDD
   ~/tmp

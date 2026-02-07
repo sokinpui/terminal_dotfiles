@@ -20,3 +20,4 @@ export LESS='--mouse --wheel-lines=5'
 export PAGER='less -R'
 export MANPAGER='nvim +Man!'
 
+. "$HOME/.cargo/env"
