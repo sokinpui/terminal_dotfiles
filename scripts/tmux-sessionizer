@@ -2,6 +2,11 @@
 
 set -euo pipefail
 
+IGNORED_PATHS=(
+  ~/tmp/*
+  ~/projects/coder
+)
+
 INITIAL_DIRECTORIES=(
   ~/projects
   ~/projects/coder
@@ -10,7 +15,6 @@ INITIAL_DIRECTORIES=(
   ~/tmp
   ~/CUHK/year4
   ~/dotfiles
-  ~/Obsidian
 
   # for testing
   ~/.asdflaksjfai
@@ -25,8 +29,15 @@ for dir in "${INITIAL_DIRECTORIES[@]}"; do
 done
 
 select_directory() {
+
+  local exclusions=()
+  for ignored_path in "${IGNORED_PATHS[@]}"; do
+    exclusions+=("-not" "-path" "$ignored_path")
+  done
+
   find "${SEARCH_DIRECTORIES[@]}" \
     -mindepth 0 -maxdepth 1 -type d \
+    "${exclusions[@]}" \
     -not -path '*/.*' \
     -not -path '*/*.wt' \
     -exec ls -1dt {} + | uniq |
