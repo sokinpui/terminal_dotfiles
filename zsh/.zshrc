@@ -32,6 +32,7 @@ load-mod $HOME/.config/zsh/mod/vim_mode
 load-mod $HOME/.config/zsh/mod/appearance
 load-mod $HOME/.config/zsh/mod/flutter
 load-mod $HOME/.config/zsh/mod/pyenv
+load-mod $HOME/.config/zsh/mod/yazi
 
 # ===============================================================
 
