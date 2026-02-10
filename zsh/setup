@@ -180,7 +180,7 @@ echo "Creating symbolic links for configuration files..."
 
 # Note: Kitty might fail on a headless VPS, removed from auto-link if strictly headless,
 # but kept here for consistency with your dotfiles.
-DOTFILES=(nvim AutoRaise tmux kitty bat lf skhd yabai)
+DOTFILES=(nvim AutoRaise tmux kitty bat lf skhd yabai yazi)
 
 for tool in "${DOTFILES[@]}"; do
   [ ! -e "$REPO_DIR/$tool" ] && {
