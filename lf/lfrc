@@ -19,6 +19,8 @@ set shellopts '-euy'
 set ifs "\n"
 set filesep "\n"  # default already
 
+set dirfirst!
+
 # Dynamically set number of columns
 #cmd on-redraw %{{
 #    if [ "$lf_width" -le 80 ]; then
