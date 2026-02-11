@@ -59,9 +59,6 @@ map sr set reverse!
 # map w
 map i
 
-# use enter for shell commands
-#map <enter> shell
-map <enter> open
 
 # show the result of execution of previous commands
 # map <c-z> !true
@@ -81,11 +78,8 @@ map x make-file-exectable
 #map o &mimeopen $f
 #map O $mimeopen --ask $f
 
-# define a custom 'open' command
-# This command is called when current file is not a directory. You may want to
-# use either file extensions and/or mime types here. Below uses an editor for
-# text files and a file opener for the rest.
-cmd open &{{
+map <enter> open-file
+cmd open-file &{{
     case $(file --mime-type -Lb $f) in
         *) lf -remote "send $id \$$EDITOR \$fx";;
         # inode/x-empty) lf -remote "send $id \$$EDITOR \$fx";;
