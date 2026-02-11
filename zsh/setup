@@ -88,6 +88,7 @@ install_packages() {
     brew install koekeishiya/formulae/yabai
     brew install yqrashawn/goku/goku
     brew tap FelixKratz/formulae
+    brew install duckdb
     brew install borders
     brew install --cask font-jetbrains-mono-nerd-font
     brew install font-lxgw-wenkai
