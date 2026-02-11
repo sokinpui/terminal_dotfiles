@@ -33,6 +33,7 @@ load-mod $HOME/.config/zsh/mod/appearance
 load-mod $HOME/.config/zsh/mod/flutter
 load-mod $HOME/.config/zsh/mod/pyenv
 load-mod $HOME/.config/zsh/mod/yazi
+load-mod $HOME/.config/zsh/mod/pnpm
 
 # ===============================================================
 
@@ -75,3 +76,4 @@ export LC_ALL=en_US.UTF-8
 
 
 load-mod $HOME/.localconfig
+
