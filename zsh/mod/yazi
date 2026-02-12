@@ -13,5 +13,5 @@
 # alias lf='yazicd'
 # alias f='yazicd'
 
-# alias lf="yazi"
+alias lf="yazi"
 alias y="yazi"
