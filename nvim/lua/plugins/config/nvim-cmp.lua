@@ -191,11 +191,11 @@ vim.keymap.set({ "i", "s" }, "<C-k>", function()
 	end
 end, { silent = true })
 
-luasnip.config.set_config({
-	store_selection_keys = "<C-j>",
-	history = true, --keep around last snippet local to jump back
-	updateevents = "TextChanged,TextChangedI",
-})
+-- luasnip.config.set_config({
+-- 	store_selection_keys = "<C-j>",
+-- 	history = true, --keep around last snippet local to jump back
+-- 	updateevents = "TextChanged,TextChangedI",
+-- })
 
 -- Predefined snippet
 
