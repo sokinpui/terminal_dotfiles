@@ -47,4 +47,5 @@ require("lazy").setup({
 		end,
 		ft = { "markdown" },
 	},
+	{ "sokinpui/coder-ask.nvim", opts = {} },
 }, {})
