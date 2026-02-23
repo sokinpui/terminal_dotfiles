@@ -29,7 +29,7 @@ yabai -m config debug_output                off
 # yabai -m rule --add app="NCalc"   manage=off
 yabai -m rule --add app="App Store"  manage=off
 yabai -m rule --add app="Logi Options+"  manage=off
-yabai -m rule --add app="WeChat"  manage=on
+yabai -m rule --add app="WeChat"  manage=off
 # yabai -m rule --add app="哔哩哔哩"   manage=off
 # yabai -m rule --add app="Stickies"   manage=off
 # yabai -m rule --add app="MAT manage=off
@@ -41,6 +41,7 @@ yabai -m rule --add app="Preview"   manage=on
 # yabai -m rule --add app="Notion"   manage=off
 # yabai -m rule --add app="Mail"   manage=off
 yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="V2rayU" manage=off
 yabai -m rule --add app="Karabiner-Elements" manage=off
 yabai -m rule --add app="Karabiner-EventViewer" manage=off
 # yabai -m rule --add app="Finder"   manage=off
