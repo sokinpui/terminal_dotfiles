@@ -54,6 +54,11 @@ find_available_session_name() {
   echo "${tag}_${index}"
 }
 
+is_group_attached() {
+  local group_name="$1"
+  tmux list-sessions -F "#{session_group} #{session_attached}" 2>/dev/null | grep -q "^${group_name} 1"
+}
+
 create_or_connect_session() {
   # group name are unique for each session, a session can have multiple tags
   local group_name="$1"
@@ -70,6 +75,10 @@ create_or_connect_session() {
   local session_name
   session_name=$(find_available_session_name "$tag")
   tmux new-session -d -t "$group_name" -s "$session_name" -c "$target_dir"
+
+  if is_group_attached "$group_name"; then
+    tmux new-window -t "$session_name" -c "$target_dir"
+  fi
 
   if [[ -n "${TMUX-}" ]]; then
     tmux switch-client -t "$session_name"
