@@ -3,6 +3,7 @@
 set -euo pipefail
 
 IGNORED_PATHS=(
+  ~/tmp/*
   ~/projects/coder
 )
 
@@ -43,6 +44,16 @@ select_directory() {
     fzf --height 100% -i --layout=default --header "Select a project directory"
 }
 
+find_available_session_name() {
+  local tag="$1"
+  local index=1
+
+  while tmux has-session -t "${tag}_${index}" 2>/dev/null; do
+    ((index++))
+  done
+  echo "${tag}_${index}"
+}
+
 create_or_connect_session() {
   # group name are unique for each session, a session can have multiple tags
   local group_name="$1"
@@ -57,7 +68,7 @@ create_or_connect_session() {
   fi
 
   local session_name
-  session_name="${tag}_${RANDOM:2}"
+  session_name=$(find_available_session_name "$tag")
   tmux new-session -d -t "$group_name" -s "$session_name" -c "$target_dir"
 
   if [[ -n "${TMUX-}" ]]; then
