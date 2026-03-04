@@ -5,9 +5,11 @@ set -euo pipefail
 IGNORED_PATHS=(
   ~/tmp/*
   ~/projects/coder
+  ~/Obsidian/*
 )
 
 INITIAL_DIRECTORIES=(
+  ~/Docker
   ~/projects
   ~/projects/coder
   ~/projects/LSCM
@@ -15,6 +17,7 @@ INITIAL_DIRECTORIES=(
   ~/tmp
   ~/CUHK/year4
   ~/dotfiles
+  ~/Obsidian
 
   # for testing
   ~/.asdflaksjfai
