@@ -23,7 +23,7 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
 fi
 
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"``
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
 # brew
 export HOMEBREW_NO_AUTO_UPDATE=1
