@@ -72,6 +72,7 @@ cnoreabbrev <expr> WQ getcmdtype() == ':' && getcmdline() =~# '^WQ' ? 'wqa' : 'W
 cnoreabbrev <expr> Wq getcmdtype() == ':' && getcmdline() =~# '^Wq' ? 'wqa' : 'Wq'
 cnoreabbrev <expr> wQ getcmdtype() == ':' && getcmdline() =~# '^wQ' ? 'wqa' : 'wQ'
 cnoreabbrev <expr> wq getcmdtype() == ':' && getcmdline() =~# '^wq' ? 'wqa' : 'wq'
+cnoreabbrev <expr> qw getcmdtype() == ':' && getcmdline() =~# '^qw' ? 'wqa' : 'qw'
 cnoreabbrev <expr> Q getcmdtype() == ':' && getcmdline() =~# '^Q' ? 'q' : 'Q'
 cnoreabbrev <expr> wqa getcmdtype() == ':' && getcmdline() =~# '^wqa' ? 'wa \| q' : 'wqa'
 cnoreabbrev <expr> Wqa getcmdtype() == ':' && getcmdline() =~# '^wqa' ? 'wa \| q' : 'wqa'
