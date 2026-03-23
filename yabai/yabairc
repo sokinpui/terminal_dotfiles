@@ -1,6 +1,7 @@
 # vi: set ft=conf
 
-borders active_color=0xff4eed32 inactive_color=0xff494d64 width=5.0 &
+killall borders 2>/dev/null
+borders active_color=0xff4eed32 inactive_color=0xff494d64 width=5.0 hidpi=on &
 
 yabai -m config layout                      bsp
 yabai -m config auto_balance                off
@@ -61,3 +62,11 @@ yabai -m rule --add app="Obsidian" manage=on
 # yabai -m rule --add app="Private Internet Access" manage=off
 
 # yabai -m rule --add title="^todo$" manage=off grid=4:3:1:1:1:2
+
+# Ignore common transient/popup window roles
+yabai -m rule --add subrole="^AXSystemDialog$" manage=off
+yabai -m rule --add subrole="^AXDialog$" manage=off
+yabai -m rule --add subrole="^AXUnknown$" manage=off
+
+# Specifically target the browser alert in your screenshot
+yabai -m rule --add title="says$" manage=off
