@@ -1,0 +1,93 @@
+# ============================================================================
+# Theme & Colors
+# ============================================================================
+
+foreground = bbc2cf
+background = 282c34
+selection-foreground = bbc2cf
+selection-background = 3e6452
+
+cursor-color = bbc2cf
+# cursor-text-color = 282c34
+
+# Palette (ANSI 16 Colors)
+palette = 0=#2a2e38
+palette = 8=#3f444a
+palette = 1=#ff6c6b
+palette = 9=#ff6655
+palette = 2=#98be65
+palette = 10=#99bb66
+palette = 3=#ecbe7b
+palette = 11=#ecbe7b
+palette = 4=#51afef
+palette = 12=#51afef
+palette = 5=#c678dd
+palette = 13=#c678dd
+palette = 6=#46d9ff
+palette = 14=#46d9ff
+palette = 7=#dfdfdf
+palette = 15=#bbc2cf
+
+# ============================================================================
+# Fonts
+# ============================================================================
+
+# font-family = "JetBrains Mono SemiBold"
+# font-family-bold = "JetBrains Mono ExtraBold"
+# font-family-italic = "JetBrains Mono Bold Italic"
+# font-family-bold-italic = "JetBrains Mono ExtraBold Italic"
+font-size = 12.5
+
+adjust-cell-height = -5
+# Ligatures (Disable)
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+
+# ============================================================================
+# Cursor
+# ============================================================================
+shell-integration-features = no-cursor
+cursor-style = block
+custom-shader = ./ghostty-cursor-shaders/cursor_tail.glsl
+
+
+# ============================================================================
+# Mouse
+# ============================================================================
+mouse-hide-while-typing = true
+
+
+# ============================================================================
+# Window
+# ============================================================================
+window-padding-x = 5
+window-padding-y = 5,2
+window-padding-x = 0
+window-padding-y = 0
+window-decoration = true
+confirm-close-surface = false
+macos-titlebar-style = hidden
+
+
+# ============================================================================
+# Performance & Shell
+# ============================================================================
+command = /bin/zsh --login
+term = xterm-256color
+
+# ============================================================================
+# Keybindings
+# ============================================================================
+macos-option-as-alt = true
+
+keybind = clear
+keybind = super+n=new_window
+keybind = super+w=close_surface
+keybind = super+v=paste_from_clipboard
+keybind = super+c=copy_to_clipboard:mixed
+keybind = super+==increase_font_size:1
+keybind = super+-=decrease_font_size:1
+
+keybind = opt+backspace=text:\x17
+
