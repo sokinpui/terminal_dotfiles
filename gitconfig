@@ -3,14 +3,13 @@
     name = sokinpui
 
 [core]
-	excludesfile = ~/.gitignore_global
+    excludesfile = ~/.gitignore_global
 
 [http "https://gitlab.rnt.lscm/"]
-	sslVerify = false
-        proxy = socks5h://192.168.31.105:9999
+    sslVerify = false
+    proxy = socks5h://192.168.31.105:9999
 
 [init]
-	defaultBrancha = main
-	defaultBranch = main
+    defaultBranch = main
 [credential]
-	helper = store
+    helper = store
