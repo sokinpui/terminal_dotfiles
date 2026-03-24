@@ -3,7 +3,6 @@
     name = sokinpui
 
 [core]
-    pager = bat
 	excludesfile = ~/.gitignore_global
 
 [http "https://gitlab.rnt.lscm/"]

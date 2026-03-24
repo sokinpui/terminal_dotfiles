@@ -16,8 +16,9 @@ export PATH=$HOME/.local/scripts:$PATH
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 
+export MOOR='--statusbar=inverse --no-linenumbers'
 export LESS='--mouse --wheel-lines=5'
-export PAGER='less -R'
-export MANPAGER='nvim +Man!'
+export PAGER='moor'
+export MANPAGER='moor'
 
 . "$HOME/.cargo/env"

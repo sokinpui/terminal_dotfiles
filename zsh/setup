@@ -122,7 +122,6 @@ install_packages() {
     ;;
   apt)
     sudo apt update
-    sudo apt upgrade -y
     sudo apt-get install -y tmux unzip neovim vim neofetch ripgrep tldr tree zoxide direnv pipx fd-find python3-pip zsh git golang-go --ignore-missing
     sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
       libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
@@ -222,6 +221,7 @@ go install github.com/sokinpui/wt-go/cmd/wtgo@latest
 go install github.com/sokinpui/itf/cmd/itf@latest
 go install github.com/sokinpui/pcat/cmd/pcat@latest
 env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest
+go install github.com/walles/moor/v2/cmd/moor@latest
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
