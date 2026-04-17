@@ -63,10 +63,3 @@ yabai -m rule --add app="Obsidian" manage=on
 
 # yabai -m rule --add title="^todo$" manage=off grid=4:3:1:1:1:2
 
-# Ignore common transient/popup window roles
-yabai -m rule --add subrole="^AXSystemDialog$" manage=off
-yabai -m rule --add subrole="^AXDialog$" manage=off
-yabai -m rule --add subrole="^AXUnknown$" manage=off
-
-# Specifically target the browser alert in your screenshot
-yabai -m rule --add title="says$" manage=off

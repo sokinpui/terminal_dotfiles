@@ -16,7 +16,7 @@ export PATH=$HOME/.local/scripts:$PATH
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 
-export MOOR='--statusbar=inverse --no-linenumbers'
+export MOOR='--statusbar=inverse --no-linenumbers --wrap'
 export LESS='--mouse --wheel-lines=5'
 export PAGER='moor'
 export MANPAGER='moor'

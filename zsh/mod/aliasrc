@@ -110,11 +110,6 @@ alias \
   gsw="git switch"
 # gsw="git branch | grep -v \"^\*\" | fzf --height=20% --reverse --info=inline | xargs git checkout"
 
-gi() {
-  git init
-  git add --all $PWD
-  git commit -m "First commit"
-}
 
 # fedora package manager dnf
 alias \
@@ -234,3 +229,5 @@ skhd() {
 # }
 
 alias t=tmux
+
+alias mg="git commit"

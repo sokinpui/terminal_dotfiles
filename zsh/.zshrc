@@ -77,3 +77,8 @@ export LC_ALL=en_US.UTF-8
 
 load-mod $HOME/.localconfig
 
+
+[[ -s "/Users/so/.gvm/scripts/gvm" ]] && source "/Users/so/.gvm/scripts/gvm"
+
+# Added by Antigravity
+export PATH="/Users/so/.antigravity/antigravity/bin:$PATH"
