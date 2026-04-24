@@ -42,10 +42,19 @@ return {
 			end
 
 			-- Map the function to <leader>qf in normal mode
-			vim.keymap.set("n", "<leader>qf", ToggleQuickFix, { desc = "Toggle Quickfix window" })
 			vim.keymap.set("n", "<C-l>", function()
 				ToggleQuickFix()
 			end)
+
+			-- Automatically close quickfix if it's the last window
+			vim.api.nvim_create_autocmd("WinEnter", {
+				group = vim.api.nvim_create_augroup("QuickFixAutoClose", { clear = true }),
+				callback = function()
+					if vim.fn.winnr("$") == 1 and vim.bo.buftype == "quickfix" then
+						vim.cmd("quit")
+					end
+				end,
+			})
 		end,
 	},
 	-- {
