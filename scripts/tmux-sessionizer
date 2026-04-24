@@ -15,7 +15,6 @@ INITIAL_DIRECTORIES=(
   ~/projects/LSCM
   ~/projects/LSCM/odbus
   ~/projects/LSCM/CEDD
-  ~/projects/FYP
   ~/tmp
   ~/CUHK/year4
   ~/dotfiles
