@@ -15,6 +15,16 @@ return {
 		"nvim-lualine/lualine.nvim",
 		-- dependencies = { 'nvim-tree/nvim-web-devicons' },
 		config = function()
+			local function selection_count()
+				local mode = vim.fn.mode()
+				if not mode:find("[vV\22]") then
+					return ""
+				end
+				local lines = math.abs(vim.fn.line(".") - vim.fn.line("v")) + 1
+				local chars = vim.fn.wordcount().visual_chars or 0
+				return string.format("<%d|%d>", lines, chars)
+			end
+
 			require("lualine").setup({
 				options = {
 					icons_enabled = false,
@@ -33,9 +43,17 @@ return {
 					},
 					lualine_c = {},
 					-- lualine_x = {'encoding', 'fileformat', 'filetype'},
-					lualine_x = { "progress" },
-					lualine_y = { "location" },
-					lualine_z = {},
+					lualine_x = {
+						{
+							selection_count,
+							color = { bg = "#61afef", fg = "#282c34", gui = "bold" },
+							cond = function()
+								return vim.fn.mode():find("[vV\22]") ~= nil
+							end,
+						},
+					},
+					lualine_y = { "progress" },
+					lualine_z = { "location" },
 				},
 			})
 		end,
