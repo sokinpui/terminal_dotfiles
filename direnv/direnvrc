@@ -1,0 +1,45 @@
+# ~/.config/direnv/direnvrc
+
+layout_gvm() {
+  local version=$1
+  if [[ -z "$version" ]]; then
+    # Optional: Look for a .go-version file if no version is provided
+    if [[ -f .go-version ]]; then
+      version=$(cat .go-version)
+    else
+      echo "Error: no version specified for layout_gvm"
+      return 1
+    fi
+  fi
+
+  # Path to gvm's go installations (default location)
+  local gvm_go_root="$GVM_ROOT/gos/$version"
+
+  if [[ -d "$gvm_go_root" ]]; then
+    export GOROOT="$gvm_go_root"
+    PATH_add "$gvm_go_root/bin"
+
+    # Optional: Set up a local GOPATH for the project (recommended for older projects)
+    # export GOPATH="$PWD/.direnv/gopath"
+    # PATH_add "$GOPATH/bin"
+
+    echo "Using GVM: $version"
+  else
+    echo "Error: GVM version '$version' not found in $GVM_ROOT/gos/"
+    return 1
+  fi
+}
+
+
+layout_anaconda() {
+  local name=$1
+  local env_path=$(conda info --envs | grep "^$name " | awk '{print $NF}')
+  if [[ -z "$env_path" ]]; then
+    echo "Conda env '$name' not found."
+    return 1
+  fi
+  export CONDA_PREFIX=$env_path
+  export CONDA_DEFAULT_ENV=$name
+  # THIS LINE IS CRUCIAL:
+  PATH_add "$env_path/bin"
+}
