@@ -1,63 +1,58 @@
-local npairs = require'nvim-autopairs'
-local Rule   = require'nvim-autopairs.rule'
-local cond = require'nvim-autopairs.conds'
+local npairs = require("nvim-autopairs")
+local Rule = require("nvim-autopairs.rule")
+local cond = require("nvim-autopairs.conds")
 
 -- cmp config
 local cmp = require("cmp")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-local ts_utils = require("nvim-treesitter.ts_utils")
 
 local ts_node_func_parens_disabled = {
-  -- ecma
-  named_imports = true,
-  -- rust
-  use_declaration = true,
+	-- ecma
+	named_imports = true,
+	-- rust
+	use_declaration = true,
 }
 
 local default_handler = cmp_autopairs.filetypes["*"]["("].handler
 cmp_autopairs.filetypes["*"]["("].handler = function(char, item, bufnr, rules, commit_character)
-  local node_type = ts_utils.get_node_at_cursor():type()
-  if ts_node_func_parens_disabled[node_type] then
-    if item.data then
-      item.data.funcParensDisabled = true
-    else
-      char = ""
-    end
-  end
-  default_handler(char, item, bufnr, rules, commit_character)
+	-- Use Neovim's native API to get the node
+	local node = vim.treesitter.get_node()
+	-- Safely get the type (in case node is nil)
+	local node_type = node and node:type() or ""
+
+	if ts_node_func_parens_disabled[node_type] then
+		if item.data then
+			item.data.funcParensDisabled = true
+		else
+			char = ""
+		end
+	end
+	default_handler(char, item, bufnr, rules, commit_character)
 end
 
-cmp.event:on(
-  "confirm_done",
-  cmp_autopairs.on_confirm_done()
-)
-
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 -- treesitter config
 npairs.setup({
-    check_ts = true,
-    ts_config = {
-        lua = {'string'},-- it will not add a pair on that treesitter node
-        javascript = {'template_string'},
-        java = false,-- don't check treesitter on java
-    }
+	check_ts = true,
+	ts_config = {
+		lua = { "string" }, -- it will not add a pair on that treesitter node
+		javascript = { "template_string" },
+		java = false, -- don't check treesitter on java
+	},
 })
 
-local ts_conds = require('nvim-autopairs.ts-conds')
+local ts_conds = require("nvim-autopairs.ts-conds")
 
 -- press % => %% only while inside a comment or string
 npairs.add_rules({
-  Rule("%", "%", "lua")
-    :with_pair(ts_conds.is_ts_node({'string','comment'})),
-  Rule("$", "$", "lua")
-    :with_pair(ts_conds.is_not_ts_node({'function'}))
+	Rule("%", "%", "lua"):with_pair(ts_conds.is_ts_node({ "string", "comment" })),
+	Rule("$", "$", "lua"):with_pair(ts_conds.is_not_ts_node({ "function" })),
 })
 
-require('nvim-autopairs').setup({
-  enable_check_bracket_line = false
+require("nvim-autopairs").setup({
+	enable_check_bracket_line = false,
 })
-
-
 
 npairs.get_rules("'")[1].not_filetypes = { "scheme", "lisp" }
 npairs.get_rules("'")[1]:with_pair(cond.not_after_text("["))
@@ -121,28 +116,28 @@ npairs.get_rules("'")[1]:with_pair(cond.not_after_text("["))
 -- (|)	*	(*|*)
 -- (*|*)	space	(* | *)
 -- (|)	space	( | )
-function rule2(a1,ins,a2,lang)
-  npairs.add_rule(
-    Rule(ins, ins, lang)
-      :with_pair(function(opts) return a1..a2 == opts.line:sub(opts.col - #a1, opts.col + #a2 - 1) end)
-      :with_move(cond.none())
-      :with_cr(cond.none())
-      :with_del(function(opts)
-        local col = vim.api.nvim_win_get_cursor(0)[2]
-        return a1..ins..ins..a2 == opts.line:sub(col - #a1 - #ins + 1, col + #ins + #a2) -- insert only works for #ins == 1 anyway
-      end)
-  )
+function rule2(a1, ins, a2, lang)
+	npairs.add_rule(Rule(ins, ins, lang)
+		:with_pair(function(opts)
+			return a1 .. a2 == opts.line:sub(opts.col - #a1, opts.col + #a2 - 1)
+		end)
+		:with_move(cond.none())
+		:with_cr(cond.none())
+		:with_del(function(opts)
+			local col = vim.api.nvim_win_get_cursor(0)[2]
+			return a1 .. ins .. ins .. a2 == opts.line:sub(col - #a1 - #ins + 1, col + #ins + #a2) -- insert only works for #ins == 1 anyway
+		end))
 end
 
-rule2('(','*',')','ocaml')
-rule2('(*',' ','*)','ocaml')
-rule2('(',' ',')')
+rule2("(", "*", ")", "ocaml")
+rule2("(*", " ", "*)", "ocaml")
+rule2("(", " ", ")")
 
 npairs.add_rules({
-   Rule('\\'.. '\"', ''),
-   Rule('\\'.. '[', ''),
-   Rule('\\'.. '`', ''),
-   Rule('\\'.. '\'', ''),
-   Rule('\\'.. '{', ''),
-   Rule('\\'.. '(', ''),
+	Rule("\\" .. '"', ""),
+	Rule("\\" .. "[", ""),
+	Rule("\\" .. "`", ""),
+	Rule("\\" .. "'", ""),
+	Rule("\\" .. "{", ""),
+	Rule("\\" .. "(", ""),
 })
