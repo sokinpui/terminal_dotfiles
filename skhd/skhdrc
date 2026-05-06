@@ -18,7 +18,7 @@ cmd - s : yabai -m window --toggle zoom-fullscreen &> /dev/null ; yabai -m windo
 cmd - g : yabai -m window --toggle zoom-parent &> /dev/null ; yabai -m window --focus `yabai -m query --windows --window | jq '.id'`
 
 # cmd - e : yabai -m space --layout bsp
-cmd - e : yabai -m space --balance
+cmd - b : yabai -m space --balance
 
 # i3-style resize
 # alt + ctrl - left : yabai -m window --resize left:-25:0; \
