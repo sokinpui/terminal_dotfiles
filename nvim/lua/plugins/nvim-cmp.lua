@@ -26,17 +26,6 @@ return {
 			-- LSP
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
-
-			-- Snippets
-			"saadparwaiz1/cmp_luasnip",
-			{
-				"L3MON4D3/LuaSnip",
-				dependencies = { "rafamadriz/friendly-snippets" },
-				build = "make install_jsregexp",
-				config = function()
-					require("luasnip.loaders.from_vscode").lazy_load()
-				end,
-			},
 		},
 		config = function()
 			require("plugins.config.nvim-cmp")

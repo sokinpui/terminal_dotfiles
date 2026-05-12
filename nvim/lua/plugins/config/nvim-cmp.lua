@@ -1,5 +1,4 @@
 local cmp = require("cmp")
-local luasnip = require("luasnip")
 
 local t = function(str)
 	return vim.api.nvim_replace_termcodes(str, true, true, true)
@@ -42,7 +41,7 @@ cmp.setup({
 
 	snippet = {
 		expand = function(args)
-			luasnip.lsp_expand(args.body)
+			vim.snippet.expand(args.body)
 		end,
 	},
 
@@ -53,7 +52,6 @@ cmp.setup({
 			-- keyword_length = 0,
 		},
 		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
 		{ name = "path" },
 		{ name = "vimtex" },
 		-- { name = "orgmode" },
@@ -105,12 +103,8 @@ cmp.setup({
 
 		["<CR>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
-				if luasnip.expandable() then
-					luasnip.expand()
-				elseif cmp.visible() and cmp.get_active_entry() then
-					cmp.confirm({
-						select = false,
-					})
+				if cmp.get_active_entry() then
+					cmp.confirm({ select = false })
 				else
 					fallback()
 				end
@@ -130,8 +124,8 @@ cmp.setup({
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() and has_words_before() then
 				cmp.select_next_item()
-			elseif luasnip.locally_jumpable(1) then
-				luasnip.jump(1)
+			elseif vim.snippet.active({ direction = 1 }) then
+				vim.snippet.jump(1)
 			elseif check_backspace() then
 				fallback()
 			else
@@ -142,8 +136,8 @@ cmp.setup({
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
-			elseif luasnip.locally_jumpable(-1) then
-				luasnip.jump(-1)
+			elseif vim.snippet.active({ direction = -1 }) then
+				vim.snippet.jump(-1)
 			else
 				fallback()
 			end
@@ -180,14 +174,14 @@ cmp.setup.cmdline(":", {
 
 -- Snippet
 vim.keymap.set({ "i", "s" }, "<C-j>", function()
-	if luasnip.expand_or_locally_jumpable() then
-		luasnip.expand_or_jump()
+	if vim.snippet.active({ direction = 1 }) then
+		vim.snippet.jump(1)
 	end
 end, { silent = true })
 
 vim.keymap.set({ "i", "s" }, "<C-k>", function()
-	if luasnip.jumpable(-1) then
-		luasnip.jump(-1)
+	if vim.snippet.active({ direction = -1 }) then
+		vim.snippet.jump(-1)
 	end
 end, { silent = true })
 
@@ -198,9 +192,6 @@ end, { silent = true })
 -- })
 
 -- Predefined snippet
-
-require("luasnip.loaders.from_snipmate").lazy_load({ paths = { "~/.config/nvim/snipmates" } })
-
 -- completion ui config
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" }) -- line to fix de background color border
