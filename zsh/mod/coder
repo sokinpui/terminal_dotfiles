@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+source <(coder --completion zsh)
+source <(itf --completion zsh)
+source <(pcat --completion zsh)

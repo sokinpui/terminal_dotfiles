@@ -35,6 +35,9 @@ load-mod $HOME/.config/zsh/mod/pyenv
 load-mod $HOME/.config/zsh/mod/yazi
 load-mod $HOME/.config/zsh/mod/pnpm
 
+load-mod $HOME/.config/zsh/mod/worktree
+load-mod $HOME/.config/zsh/mod/coder
+
 # ===============================================================
 
 
@@ -82,3 +85,4 @@ load-mod $HOME/.localconfig
 
 # Added by Antigravity
 export PATH="/Users/so/.antigravity/antigravity/bin:$PATH"
+
