@@ -9,6 +9,10 @@
     sslVerify = false
     proxy = socks5h://192.168.31.105:9999
 
+[http "https://git.rnt.lscm/"]
+    sslVerify = false
+    proxy = socks5h://192.168.31.105:9999
+
 [init]
     defaultBranch = main
 [credential]
