@@ -6,19 +6,22 @@ IGNORED_PATHS=(
   ~/tmp/*
   ~/projects/coder
   ~/Obsidian/*
+  ~/projects/LSCM/TLFLRC/*
+  ~/projects/LSCM/CEDD_LDAS/*
 )
 
 INITIAL_DIRECTORIES=(
-  ~/Docker
+
   ~/projects
   ~/projects/coder
   ~/projects/LSCM
   ~/projects/LSCM/odbus
-  ~/projects/LSCM/CEDD
+  ~/projects/LSCM/TLFLRC
+  ~/projects/LSCM/CEDD_LDAS
+
   ~/tmp
   ~/CUHK/year4
   ~/dotfiles
-  ~/Obsidian
 
   # for testing
   ~/.asdflaksjfai
