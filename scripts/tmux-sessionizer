@@ -8,7 +8,6 @@ IGNORED_PATHS=(
   ~/Obsidian/*
   ~/projects/LSCM/TLFLRC/*
   ~/projects/LSCM/CEDD_LDAS/*
-  ~/dotfiles
 )
 
 INITIAL_DIRECTORIES=(
