@@ -87,13 +87,16 @@ install_packages() {
     brew install koekeishiya/formulae/skhd
     brew install koekeishiya/formulae/yabai
     brew install yqrashawn/goku/goku
+    brew install yqrashawn/goku/goku
+
+    brew install tree-sitter-cli
+    brew install tree-sitter
+
     brew tap FelixKratz/formulae
-    brew install duckdb
     brew install borders
     brew install --cask font-jetbrains-mono-nerd-font
+
     brew install font-lxgw-wenkai
-    brew install --cask syncthing
-    brew install --cask skim
     brew install --cask discord
     brew install --cask zoom
     brew install --cask obsidian
@@ -106,16 +109,14 @@ install_packages() {
     brew install --cask raycast
     brew install --cask mos
     brew install --cask betterdisplay
-    brew install --cask maccy
-    brew install --cask dropbox
-    brew install onedrive
+
     brew install --cask microsoft-outlook
     brew install --cask microsoft-word
     brew install --cask karabiner-elements
-    brew install pomdtr/tap/ray
-    brew install --cask google-drive
+
     defaults write -g InitialKeyRepeat -int 10
     defaults write -g KeyRepeat -int 1
+
     curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin installer=version-0.40.0
     sudo ln -sf /Applications/kitty.app/Contents/MacOS/kitty /usr/local/bin/kitty
     curl -fsSL https://deno.land/install.sh | sh
