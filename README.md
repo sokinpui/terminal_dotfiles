@@ -66,4 +66,4 @@ Command: nvim
 Arguments: --headless -c "VimtexInverseSearch %line '%file'"
 ```
 
-![](assets/2025-05-06-19-16-45.png)
+![](images/2025-05-06-19-16-45.png)
