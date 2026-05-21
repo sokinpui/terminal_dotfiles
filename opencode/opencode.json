@@ -75,7 +75,8 @@
       "*": "ask",
       "ls *": "allow",
       "echo *": "allow",
-      "grep *": "allow"
+      "grep *": "allow",
+      "cat *": "allow"
     }
   }
 }
