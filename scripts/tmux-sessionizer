@@ -6,7 +6,6 @@ IGNORED_PATHS=(
   ~/tmp/*
   ~/projects/coder
   ~/Obsidian/*
-  ~/projects/LSCM/TLFLRC/*
   ~/projects/LSCM/CEDD_LDAS/*
   ~/dotfiles/*
 )
@@ -17,7 +16,7 @@ INITIAL_DIRECTORIES=(
   ~/projects/coder
   ~/projects/LSCM
   ~/projects/LSCM/odbus
-  ~/projects/LSCM/TLFLRC
+  ~/projects/LSCM/TLFLRC/
   ~/projects/LSCM/CEDD_LDAS
 
   ~/tmp
