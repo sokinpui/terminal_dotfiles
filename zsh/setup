@@ -181,7 +181,7 @@ echo "Creating symbolic links for configuration files..."
 
 # Note: Kitty might fail on a headless VPS, removed from auto-link if strictly headless,
 # but kept here for consistency with your dotfiles.
-DOTFILES=(nvim AutoRaise tmux kitty bat lf skhd yabai yazi)
+DOTFILES=(nvim AutoRaise tmux kitty bat lf skhd yabai yazi git)
 
 for tool in "${DOTFILES[@]}"; do
   [ ! -e "$REPO_DIR/$tool" ] && {
@@ -208,9 +208,6 @@ if pip3 install --help | grep -q "break-system-packages"; then
 else
   pip3 install pynvim
 fi
-
-create_symlink "$REPO_DIR/gitignore_global" "$HOME/.gitignore_global"
-git config --global core.excludesfile "$HOME/.gitignore_global"
 
 mkdir -p "$HOME/.local"
 create_symlink "$REPO_DIR/scripts" "$HOME/.local/scripts"

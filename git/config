@@ -3,7 +3,7 @@
     name = sokinpui
 
 [core]
-    excludesfile = ~/.gitignore_global
+    excludesfile = ~/.config/git/gitignore_global
 
 [http "https://gitlab.rnt.lscm/"]
     sslVerify = false
