@@ -3,7 +3,7 @@
 ## Install Linux config
 
 ```sh
-wget -O- https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/refs/heads/main/zsh/setup | bash
+curl -fsSL https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/refs/heads/main/zsh/setup | bash
 ```
 
 ## After installation, you should...
