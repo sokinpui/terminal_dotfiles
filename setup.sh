@@ -2,7 +2,7 @@
 
 set -e
 
-REPO_DIR="$(pwd)"
+REPO_DIR=$(cd "$(dirname "$0")" && pwd)
 CONFIG_DIR="$HOME/.config"
 
 create_symlink() {
@@ -206,15 +206,15 @@ link_dotfiles() {
   echo "Linking configuration files to $CONFIG_DIR..."
   for item in *; do
     case "$item" in
-    "README.md" | "images" | "scripts" | "zsh") continue ;;
+    "README.md" | "images" | "scripts" | "zsh" | "setup.sh" | "dotfiles") continue ;;
     esac
     create_symlink "$REPO_DIR/$item" "$CONFIG_DIR/$item"
   done
 
   create_symlink "$REPO_DIR/scripts" "$HOME/.local/scripts"
-  create_symlink "$REPO_DIR/zsh/.zshrc" "$HOME/.zshrc"
-  create_symlink "$REPO_DIR/zsh/.zshenv" "$HOME/.zshenv"
-  create_symlink "$REPO_DIR/zsh/.zprofile" "$HOME/.zprofile"
+  create_symlink "$REPO_DIR/zsh/zshrc" "$HOME/.zshrc"
+  create_symlink "$REPO_DIR/zsh/zshenv" "$HOME/.zshenv"
+  create_symlink "$REPO_DIR/zsh/zprofile" "$HOME/.zprofile"
 }
 
 install_python_tools() {
@@ -281,12 +281,10 @@ main() {
   echo "Detected OS: $(uname -s)"
   dispatch_install
 
-  if [ ! -d "dotfiles" ]; then
-    if [ ! -f "zsh/setup" ]; then
-      git clone https://github.com/sokinpui/terminal_dotfiles.git dotfiles
-      cd dotfiles
-      REPO_DIR="$(pwd)"
-    fi
+  if [ ! -f "$REPO_DIR/setup.sh" ] && [ ! -d "$REPO_DIR/.git" ]; then
+    git clone https://github.com/sokinpui/terminal_dotfiles.git dotfiles
+    cd dotfiles
+    REPO_DIR="$(pwd)"
   fi
 
   link_dotfiles
