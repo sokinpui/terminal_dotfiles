@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
 
-mkdir -p "$HOME/.local/bin"
-mkdir -p "$HOME/.local/scripts"
-mkdir -p "$HOME/.config"
-mkdir -p "$HOME/projects"
+set -e
 
-command_exists() {
-  command -v "$1" >/dev/null 2>&1
-}
+REPO_DIR="$(pwd)"
+CONFIG_DIR="$HOME/.config"
 
 create_symlink() {
   local src=$1
@@ -17,45 +13,105 @@ create_symlink() {
   ln -sfv "$src" "$dst"
 }
 
-detect_os_and_package_manager() {
-  local os
-  os=$(uname -s)
+ensure_directories() {
+  mkdir -p "$HOME/.local/bin"
+  mkdir -p "$HOME/.local/scripts"
+  mkdir -p "$HOME/.config"
+  mkdir -p "$HOME/projects"
+}
 
-  if [ "$os" = "Darwin" ]; then
-    OS="macos"
-    if ! command_exists brew; then
-      echo "Homebrew not found. Please install it first."
-      exit 1
-    fi
-    PACKAGE_MANAGER="brew"
+setup_macos() {
+  if ! command -v brew &>/dev/null; then
+    echo "Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  brew update
+
+  brew install \
+    pipx neovim tmux bat zsh fd colima neofetch ripgrep python3-pip git go \
+    tree-sitter-cli tree-sitter font-lxgw-wenkai
+
+  brew tap FelixKratz/formulae
+  brew tap yqrashawn/goku
+  brew install borders skhd yabai goku
+
+  brew install --cask \
+    font-jetbrains-mono-nerd-font discord zoom obsidian google-chrome \
+    logi-options+ visual-studio-code v2rayu wechat whatsapp raycast \
+    mos betterdisplay microsoft-outlook microsoft-word karabiner-elements
+
+  defaults write -g InitialKeyRepeat -int 10
+  defaults write -g KeyRepeat -int 1
+
+  curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin installer=version-0.40.0
+  sudo ln -sf /Applications/kitty.app/Contents/MacOS/kitty /usr/local/bin/kitty
+  curl -fsSL https://deno.land/install.sh | sh
+}
+
+setup_ubuntu() {
+  sudo apt update
+  sudo apt-get install -y \
+    tmux unzip neovim vim neofetch ripgrep tldr tree zoxide direnv pipx \
+    fd-find python3-pip zsh git golang-go build-essential libssl-dev \
+    zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+    libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev \
+    liblzma-dev python3-openssl --ignore-missing
+
+  create_symlink "$(which fdfind)" "$HOME/.local/bin/fd"
+  curl -fsSL https://deno.land/install.sh | sh
+}
+
+setup_fedora() {
+  sudo dnf update -y
+  sudo dnf groupinstall -y "Development Tools"
+  sudo dnf install -y \
+    openssl-devel bzip2-devel libffi-devel zlib-devel \
+    readline-devel sqlite-devel pipx unzip neovim vim tmux bat zsh \
+    fd-find ripgrep htop tldr zoxide cloc python3-pip git lf golang \
+    --skip-unavailable
+
+  if command -v fdfind &>/dev/null; then
+    create_symlink "$(which fdfind)" "$HOME/.local/bin/fd"
+  fi
+
+  curl -fsSL https://deno.land/install.sh | sh
+}
+
+setup_arch() {
+  sudo pacman -Syu --noconfirm
+  sudo pacman -S --noconfirm \
+    base-devel neovim tmux zsh git ripgrep fd bat python-pipx \
+    python-pip unzip wget curl tldr zoxide direnv go deno
+}
+
+dispatch_install() {
+  local os_type
+  os_type=$(uname -s)
+
+  if [ "$os_type" = "Darwin" ]; then
+    setup_macos
     return
   fi
 
-  [ "$os" != "Linux" ] && {
-    echo "Unsupported OS: $os"
+  [ "$os_type" != "Linux" ] && {
+    echo "Unsupported OS: $os_type"
     exit 1
   }
 
-  OS="linux"
-  local distro=""
-
-  if command_exists lsb_release; then
-    distro=$(lsb_release -d | awk '{print tolower($2)}')
-  elif [ -f /etc/os-release ]; then
+  local distro
+  if [ -f /etc/os-release ]; then
     . /etc/os-release
     distro=$ID
+  else
+    distro=$(lsb_release -i | awk '{print tolower($3)}')
   fi
 
   case "$distro" in
-  ubuntu | debian)
-    PACKAGE_MANAGER="apt"
-    ;;
-  arch)
-    PACKAGE_MANAGER="pacman"
-    ;;
-  fedora | ol | oracle | rhel | centos | almalinux | rocky)
-    PACKAGE_MANAGER="dnf"
-    ;;
+  ubuntu | debian) setup_ubuntu ;;
+  arch) setup_arch ;;
+  fedora | ol | rhel | centos | almalinux | rocky) setup_fedora ;;
   *)
     echo "Unsupported Linux distribution: $distro"
     exit 1
@@ -63,165 +119,66 @@ detect_os_and_package_manager() {
   esac
 }
 
-install_packages() {
-  if [ -z "$PACKAGE_MANAGER" ]; then
-    echo "Package manager not set."
-    exit 1
-  fi
+link_dotfiles() {
+  echo "Linking configuration files to $CONFIG_DIR..."
+  for item in *; do
+    case "$item" in
+    "README.md" | "images" | "scripts" | "zsh") continue ;;
+    esac
+    create_symlink "$REPO_DIR/$item" "$CONFIG_DIR/$item"
+  done
 
-  case "$PACKAGE_MANAGER" in
-  brew)
-    if ! command -v brew &>/dev/null; then
-      echo "Homebrew not found. Installing Homebrew..."
-      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    fi
-
-    echo >>$HOME/.zprofile
-    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >>$HOME/.zprofile
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-
-    # Update Homebrew
-    echo "Updating Homebrew..."
-    brew update
-    brew install pipx neovim tmux bat zsh fd colima neofetch ripgrep python3-pip git go
-    brew install koekeishiya/formulae/skhd
-    brew install koekeishiya/formulae/yabai
-    brew install yqrashawn/goku/goku
-    brew install yqrashawn/goku/goku
-
-    brew install tree-sitter-cli
-    brew install tree-sitter
-
-    brew tap FelixKratz/formulae
-    brew install borders
-    brew install --cask font-jetbrains-mono-nerd-font
-
-    brew install font-lxgw-wenkai
-    brew install --cask discord
-    brew install --cask zoom
-    brew install --cask obsidian
-    brew install --cask google-chrome
-    brew install --cask logi-options+
-    brew install --cask visual-studio-code
-    brew install --cask v2rayu
-    brew install --cask wechat
-    brew install --cask whatsapp
-    brew install --cask raycast
-    brew install --cask mos
-    brew install --cask betterdisplay
-
-    brew install --cask microsoft-outlook
-    brew install --cask microsoft-word
-    brew install --cask karabiner-elements
-
-    defaults write -g InitialKeyRepeat -int 10
-    defaults write -g KeyRepeat -int 1
-
-    curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin installer=version-0.40.0
-    sudo ln -sf /Applications/kitty.app/Contents/MacOS/kitty /usr/local/bin/kitty
-    curl -fsSL https://deno.land/install.sh | sh
-    ;;
-  apt)
-    sudo apt update
-    sudo apt-get install -y tmux unzip neovim vim neofetch ripgrep tldr tree zoxide direnv pipx fd-find python3-pip zsh git golang-go --ignore-missing
-    sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
-      libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-      xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
-    create_symlink "$(which fdfind)" "$HOME/.local/bin/fd"
-    curl -fsSL https://deno.land/install.sh | sh
-    ;;
-  dnf)
-    sudo dnf update -y
-
-    # Install basic build tools (needed for pyenv and go compilation)
-    sudo dnf groupinstall -y "Development Tools"
-    sudo dnf install -y openssl-devel bzip2-devel libffi-devel zlib-devel readline-devel sqlite-devel
-
-    # Enable COPR for specific tools if needed (Optional, usually safe on OL)
-    sudo dnf copr enable pennbauman/ports -y
-
-    # Note: On RHEL/OL 'fd' is often named 'fd-find' inside EPEL
-    sudo dnf install -y pipx unzip neovim vim tmux bat zsh fd-find ripgrep htop tldr zoxide cloc python3-pip git lf golang --skip-unavailable
-
-    # Symlink fd-find to fd if necessary
-    if command -v fdfind &>/dev/null; then
-      create_symlink "$(which fdfind)" "$HOME/.local/bin/fd"
-    fi
-
-    curl -fsSL https://deno.land/install.sh | sh
-    ;;
-  esac
+  create_symlink "$REPO_DIR/scripts" "$HOME/.local/scripts"
+  create_symlink "$REPO_DIR/zsh/.zshrc" "$HOME/.zshrc"
+  create_symlink "$REPO_DIR/zsh/.zshenv" "$HOME/.zshenv"
+  create_symlink "$REPO_DIR/zsh/.zprofile" "$HOME/.zprofile"
 }
 
-#### Main Script Execution Starts ####
+install_python_tools() {
+  pipx install neovim-remote
+  pipx install trash-cli
 
-echo "Download essential dependencies..."
-detect_os_and_package_manager
-install_packages
-
-echo "Cloning the repository..."
-if [ ! -d "dotfiles" ]; then
-  git clone https://github.com/sokinpui/terminal_dotfiles.git dotfiles
-fi
-cd dotfiles
-
-echo "Detected OS: $OS with package manager: $PACKAGE_MANAGER"
-
-echo "Installation of dependencies complete!"
-
-REPO_DIR="$(pwd)"
-CONFIG_DIR="$HOME/.config"
-
-echo "Repository directory: $REPO_DIR"
-echo "Configuration directory: $CONFIG_DIR"
-
-mkdir -p "$CONFIG_DIR"
-
-echo "Creating symbolic links for configuration files..."
-
-# Note: Kitty might fail on a headless VPS, removed from auto-link if strictly headless,
-# but kept here for consistency with your dotfiles.
-DOTFILES=(nvim AutoRaise tmux kitty bat lf skhd yabai yazi git)
-
-for tool in "${DOTFILES[@]}"; do
-  [ ! -e "$REPO_DIR/$tool" ] && {
-    echo "Warning: $tool not found, skipping."
-    continue
-  }
-  create_symlink "$REPO_DIR/$tool" "$CONFIG_DIR/$tool"
-done
-
-echo "Symbolic linking complete! Please check the links and start your terminal tools."
-
-create_symlink "$REPO_DIR/zsh" "$CONFIG_DIR/zsh"
-
-echo "Creating symbolic links for zsh configuration files..."
-create_symlink "$REPO_DIR/zsh/.zshrc" "$HOME/.zshrc"
-create_symlink "$REPO_DIR/zsh/.zshenv" "$HOME/.zshenv"
-create_symlink "$REPO_DIR/zsh/.zprofile" "$HOME/.zprofile"
-
-pipx install neovim-remote
-pipx install trash-cli
-# Added checks for pip3 break-system-packages flag which is only valid on newer python versions
-if pip3 install --help | grep -q "break-system-packages"; then
-  pip3 install pynvim --break-system-packages
-else
+  if pip3 install --help | grep -q "break-system-packages"; then
+    pip3 install pynvim --break-system-packages
+    return
+  fi
   pip3 install pynvim
-fi
+}
 
-mkdir -p "$HOME/.local"
-create_symlink "$REPO_DIR/scripts" "$HOME/.local/scripts"
+install_go_tools() {
+  export PATH=$PATH:$(go env GOPATH)/bin
+  env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest
+  go install github.com/walles/moor/v2/cmd/moor@latest
+}
 
-# Ensure Go bin is in path for the installation of tools
-export PATH=$PATH:$(go env GOPATH)/bin
+install_fzf() {
+  if [ -d "$HOME/.fzf" ]; then
+    return
+  fi
+  git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
+  "$HOME/.fzf/install" --all
+}
 
-# go install github.com/sokinpui/wt-go/cmd/wtgo@latest
-# go install github.com/sokinpui/itf/cmd/itf@latest
-# go install github.com/sokinpui/pcat/cmd/pcat@latest
-env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest
-go install github.com/walles/moor/v2/cmd/moor@latest
+main() {
+  ensure_directories
 
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install --all
+  echo "Detected OS: $(uname -s)"
+  dispatch_install
 
-echo "Setup complete! Please restart your shell."
+  if [ ! -d "dotfiles" ]; then
+    if [ ! -f "zsh/setup" ]; then
+      git clone https://github.com/sokinpui/terminal_dotfiles.git dotfiles
+      cd dotfiles
+      REPO_DIR="$(pwd)"
+    fi
+  fi
+
+  link_dotfiles
+  install_python_tools
+  install_go_tools
+  install_fzf
+
+  echo "Setup complete! Please restart your shell."
+}
+
+main "$@"
