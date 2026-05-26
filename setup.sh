@@ -43,7 +43,6 @@ setup_macos() {
     python3-pip \
     git \
     go \
-    tree-sitter-cli \
     tree-sitter \
     font-lxgw-wenkai \
     luarocks
@@ -119,7 +118,6 @@ setup_ubuntu() {
     tk-dev \
     libffi-dev \
     liblzma-dev \
-    ltree-sitter-cli \
     python3-openssl \
     luarocks
 
@@ -158,7 +156,6 @@ setup_fedora() {
     git \
     lf \
     golang \
-    tree-sitter-cli \
     luarocks
 
   sudo dnf remove -y neovim || true
@@ -234,6 +231,16 @@ install_go_tools() {
   go install github.com/walles/moor/v2/cmd/moor@latest
 }
 
+install_rust_tools() {
+  if ! command -v cargo &>/dev/null; then
+    echo "Installing Rust..."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+  fi
+
+  cargo install tree-sitter-cli
+}
+
 install_fzf() {
   if [ -d "$HOME/.fzf" ]; then
     return
@@ -290,6 +297,7 @@ main() {
   link_dotfiles
   install_python_tools
   install_go_tools
+  install_rust_tools
   install_fzf
   install_neovim_source
   install_node_via_nvm
