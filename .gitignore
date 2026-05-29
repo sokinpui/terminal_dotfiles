@@ -4,14 +4,12 @@ zsh/.zcompdump
 zsh/.zsh_history
 tmux/plugins/
 
-tmux/resurrect/*
-!tmux/resurrect/
 zsh/.zcompdump
 zsh/.zsh_history
 tmux/plugins/
 
-zsh-config/.zcompdump
-zsh-config/.zsh_sessions/
+zsh/.zcompdump
+zsh/.zsh_sessions/
 
 .DS_Store
 
@@ -25,3 +23,10 @@ nvim/lazy-lock.json
 zmk-config/.git
 # Git worktrees managed by 'wt' script
 .worktrees/
+
+
+zsh/.zsh_sessions/
+zsh/.zcompdump*
+zsh/*.zwc
+zsh/.python_history
+
