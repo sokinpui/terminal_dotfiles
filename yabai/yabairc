@@ -1,7 +1,8 @@
 # vi: set ft=conf
 
 killall borders 2>/dev/null
-borders active_color=0xff4eed32 inactive_color=0xff494d64 width=5.0 hidpi=on &
+# borders active_color=0xff4eed32 inactive_color=0xff494d64 width=5.0 hidpi=on &
+borders active_color=0xff4eed32 inactive_color=0xff494d64 width=5.0 hidpi=on delay=0.0 &
 
 yabai -m config layout                      bsp
 yabai -m config auto_balance                off
@@ -20,6 +21,8 @@ yabai -m config split_type              auto
 
 yabai -m config mouse_modifier              cmd
 yabai -m config focus_follows_mouse         autofocus
+# yabai -m config focus_follows_mouse         off
+# yabai -m config mouse_follows_focus         off
 # yabai -m config mouse_follows_focus         on
 
 # enable debug on
@@ -29,7 +32,7 @@ yabai -m config debug_output                off
 yabai -m rule --add app="App Store"  manage=off
 yabai -m rule --add app="Logi Options+"  manage=off
 yabai -m rule --add app="WeChat"  manage=off
-yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^System Settings$" manage=on
 yabai -m rule --add app="V2rayU" manage=off
 yabai -m rule --add app="Karabiner-Elements" manage=off
 yabai -m rule --add app="Karabiner-EventViewer" manage=off
@@ -38,4 +41,4 @@ yabai -m rule --add app="Raycast" manage=off
 yabai -m rule --add app="minecraft" manage=off
 yabai -m rule --add app="java" manage=off
 yabai -m rule --add app="Logi Options" manage=off
-
+yabai -m rule --add app="MeshCentral Router" manage=off

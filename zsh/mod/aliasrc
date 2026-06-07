@@ -195,27 +195,27 @@ tmux() {
   tmux new-session -s "None" || tmux attach-session -t "None"
 }
 
-yabai() {
-  # If arguments are provided (e.g., "tmux ls", "tmux attach -t work"),
-  # just run the command as is. The `command` prefix prevents infinite loops.
-  if [ "$#" -gt 0 ]; then
-    command yabai "$@"
-    return
-  fi
-
-  command yabai --restart-service
-}
-
-skhd() {
-  # If arguments are provided (e.g., "tmux ls", "tmux attach -t work"),
-  # just run the command as is. The `command` prefix prevents infinite loops.
-  if [ "$#" -gt 0 ]; then
-    command skhd "$@"
-    return
-  fi
-
-  command skhd --restart-service
-}
+# yabai() {
+#   # If arguments are provided (e.g., "tmux ls", "tmux attach -t work"),
+#   # just run the command as is. The `command` prefix prevents infinite loops.
+#   if [ "$#" -gt 0 ]; then
+#     command yabai "$@"
+#     return
+#   fi
+#
+#   command yabai --restart-service
+# }
+#
+# skhd() {
+#   # If arguments are provided (e.g., "tmux ls", "tmux attach -t work"),
+#   # just run the command as is. The `command` prefix prevents infinite loops.
+#   if [ "$#" -gt 0 ]; then
+#     command skhd "$@"
+#     return
+#   fi
+#
+#   command skhd --restart-service
+# }
 
 # ssh({ name: 'verTag'}) {
 #   # If arguments are provided (e.g., "tmux ls", "tmux attach -t work"),
@@ -227,7 +227,5 @@ skhd() {
 #
 #   command ssh mac -t "tmux-sessionizer"
 # }
-
-alias t=tmux
 
 alias mg="git commit"
