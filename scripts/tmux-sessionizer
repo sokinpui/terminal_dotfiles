@@ -69,7 +69,7 @@ main() {
   if [[ "$selected_dir" == *:* ]]; then
     local host="${selected_dir%%:*}"
     local remote_path="${selected_dir#*:}"
-    ssh -t "$host" "zsh -l -c \"tmux-sessionizer '$remote_path' '$session_name'\""
+    exec ssh -t "$host" "zsh -l -c \"tmux-sessionizer '$remote_path' '$session_name'\""
   fi
 
   local group_name
