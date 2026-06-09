@@ -51,7 +51,10 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
 
 ## sort by modification time
-zstyle ':completion:*' file-sort modification
+# zstyle ':completion:*' file-sort modification
+
+## sort by access time
+zstyle ':completion:*' file-sort access
 
 # Custom completion function
 zstyle ':completion:*' insert-unambiguous no
