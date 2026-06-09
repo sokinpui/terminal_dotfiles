@@ -22,6 +22,27 @@ curl -fsSL https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/refs/hea
 12. keyboard shortcut configuration.
 13. Onedrive setup
 
+## Tmux Sessionizer Configuration
+
+The `tmux-sessionizer` behavior is controlled by `tmux-sessionizer-meta`. You should update this file to match your environment.
+
+- `INITIAL_DIRECTORIES`: List of base directories to search for projects.
+- `IGNORED_PATHS`: Patterns to exclude from the search results.
+- `SSH_HOSTS`: List of SSH hostnames (as defined in your `~/.ssh/config`) to include remote projects in the selection list.
+
+Example:
+```bash
+INITIAL_DIRECTORIES=(
+  ~/projects
+  ~/work
+)
+
+SSH_HOSTS=(
+  dev-server
+  pi-hole
+)
+```
+
 ## macOS system preferences after script
 
 1. keyboard shortcut for switching desktop

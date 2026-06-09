@@ -18,6 +18,19 @@ ensure_directories() {
   mkdir -p "$HOME/.local/scripts"
   mkdir -p "$HOME/.config"
   mkdir -p "$HOME/projects"
+
+  # Ensure default metadata exists if not already present
+  local meta_file="$REPO_DIR/scripts/tmux-sessionizer-meta"
+  if [ ! -f "$meta_file" ]; then
+    cat <<EOF > "$meta_file"
+#!/usr/bin/env bash
+
+IGNORED_PATHS=( ~/tmp/* )
+INITIAL_DIRECTORIES=( ~/projects )
+SSH_HOSTS=( )
+EOF
+    chmod +x "$meta_file"
+  fi
 }
 
 setup_macos() {
