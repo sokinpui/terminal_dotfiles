@@ -30,3 +30,4 @@ zsh/.zcompdump*
 zsh/*.zwc
 zsh/.python_history
 
+scripts/tmux-sessionizer-meta

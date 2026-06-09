@@ -2,53 +2,8 @@
 
 set -euo pipefail
 
-IGNORED_PATHS=(
-  ~/tmp/*
-  ~/projects/coder
-  ~/Obsidian/*
-  ~/projects/LSCM/CEDD_LDAS/*
-  ~/dotfiles/*
-)
-
-INITIAL_DIRECTORIES=(
-
-  ~/projects
-  ~/projects/coder
-  ~/projects/LSCM
-  ~/projects/LSCM/odbus
-  ~/projects/LSCM/TLFLRC/
-  ~/projects/LSCM/CEDD_LDAS
-
-  ~/tmp
-
-  ~/dotfiles
-
-  # for testing
-  ~/.asdflaksjfai
-)
-
-SEARCH_DIRECTORIES=()
-
-for dir in "${INITIAL_DIRECTORIES[@]}"; do
-  if [ -d "$dir" ]; then
-    SEARCH_DIRECTORIES+=("$dir")
-  fi
-done
-
 select_directory() {
-
-  local exclusions=()
-  for ignored_path in "${IGNORED_PATHS[@]}"; do
-    exclusions+=("-not" "-path" "$ignored_path")
-  done
-
-  find "${SEARCH_DIRECTORIES[@]}" \
-    -mindepth 0 -maxdepth 1 -type d \
-    "${exclusions[@]}" \
-    -not -path '*/.*' \
-    -not -path '*/*.wt' \
-    -exec ls -1dt {} + | uniq |
-    fzf --height 100% -i --layout=default --header "Select a project directory"
+  tmux-sessionizer-list | fzf --height 100% -i --layout=default --header "Select a project directory"
 }
 
 find_available_session_name() {
@@ -110,6 +65,12 @@ main() {
   fi
 
   [[ -z "$selected_dir" ]] && echo "No directory selected." >&2 && exit 1
+
+  if [[ "$selected_dir" == *:* ]]; then
+    local host="${selected_dir%%:*}"
+    local remote_path="${selected_dir#*:}"
+    ssh -t "$host" "zsh -l -c \"tmux-sessionizer '$remote_path' '$session_name'\""
+  fi
 
   local group_name
   group_name=$(echo "$selected_dir" | tr . _)
