@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$(dirname "$0")/tmux-sessionizer-meta"
+
+list_local_directories() {
+  local search_directories=()
+
+  for dir in "${INITIAL_DIRECTORIES[@]}"; do
+    [[ -d "$dir" ]] && search_directories+=("$dir")
+  done
+
+  [[ ${#search_directories[@]} -eq 0 ]] && return
+
+  local exclusions=()
+  for ignored_path in "${IGNORED_PATHS[@]}"; do
+    exclusions+=("-not" "-path" "$ignored_path")
+  done
+
+  find "${search_directories[@]}" \
+    -mindepth 0 -maxdepth 1 -type d \
+    "${exclusions[@]}" \
+    -not -path '*/.*' \
+    -not -path '*/*.wt' \
+    -exec ls -1dt {} + | uniq
+}
+
+list_local_directories

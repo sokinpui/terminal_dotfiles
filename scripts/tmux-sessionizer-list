@@ -2,32 +2,14 @@
 
 set -euo pipefail
 
-source "$(dirname "$0")/tmux-sessionizer-meta"
+readonly SCRIPT_DIR="$(dirname "$0")"
+source "$SCRIPT_DIR/tmux-sessionizer-meta"
 
-SEARCH_DIRECTORIES=()
+# 1. List local results
+"$SCRIPT_DIR/tmux-sessionizer-list-local"
 
-for dir in "${INITIAL_DIRECTORIES[@]}"; do
-  if [[ -d "$dir" ]]; then
-    SEARCH_DIRECTORIES+=("$dir")
-  fi
-done
-
-[[ ${#SEARCH_DIRECTORIES[@]} -eq 0 ]] && exit 0
-
-exclusions=()
-for ignored_path in "${IGNORED_PATHS[@]}"; do
-  exclusions+=("-not" "-path" "$ignored_path")
-done
-
-find "${SEARCH_DIRECTORIES[@]}" \
-  -mindepth 0 -maxdepth 1 -type d \
-  "${exclusions[@]}" \
-  -not -path '*/.*' \
-  -not -path '*/*.wt' \
-  -exec ls -1dt {} + | uniq
-
+# 2. List remote results by calling only the local-list script on remotes
 for host in "${SSH_HOSTS[@]}"; do
-  ssh -o ConnectTimeout=2 "$host" "zsh -l -c 'tmux-sessionizer-list'" 2>/dev/null | while read -r line; do
-    echo "$host:$line"
-  done
+  ssh -o ConnectTimeout=2 "$host" "zsh -l -c 'tmux-sessionizer-list-local'" 2>/dev/null |
+    sed "s|^|$host:| "
 done
