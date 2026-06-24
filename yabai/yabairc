@@ -1,6 +1,5 @@
 # vi: set ft=conf
 
-killall borders 2>/dev/null
 # borders active_color=0xff4eed32 inactive_color=0xff494d64 width=5.0 hidpi=on &
 borders active_color=0xff4eed32 inactive_color=0xff494d64 width=5.0 hidpi=on delay=0.0 &
 
