@@ -39,7 +39,7 @@ return {
 			vim.g.llama_config = {
 				-- Point both the FIM and Instruction endpoints to your local server on port 9004
 				endpoint_fim = "http://172.21.14.5:10000/infill",
-				model = "qwen2.5-coder-3b-instruct-q8_0",
+				model = "qwen2.5-coder-1.5b-instruct-q8_0",
 				--
 
 				-- Configure how performance/status info is shown:
