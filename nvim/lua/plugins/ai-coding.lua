@@ -1,0 +1,107 @@
+return {
+	{
+		"nickjvandyke/opencode.nvim",
+		version = "*", -- Latest stable release
+		config = function()
+			---@type opencode.Opts
+			vim.g.opencode_opts = {
+				-- Your configuration, if any; goto definition on the type for details
+			}
+
+			vim.o.autoread = true -- Required for `vim.g.opencode_opts.events.reload`
+
+			-- Recommended/example keymaps
+			vim.keymap.set({ "n", "x" }, "<leader>oa", function()
+				require("opencode").ask("@this: ")
+			end, { desc = "Ask OpenCode…" })
+			vim.keymap.set({ "n", "x" }, "<leader>os", function()
+				require("opencode").select()
+			end, { desc = "Select OpenCode…" })
+
+			vim.keymap.set({ "n", "x" }, "go", function()
+				return require("opencode").operator("@this ")
+			end, { desc = "Append range to OpenCode", expr = true })
+			vim.keymap.set("n", "goo", function()
+				return require("opencode").operator("@this ") .. "_"
+			end, { desc = "Append line to OpenCode", expr = true })
+
+			vim.keymap.set("n", "<S-C-u>", function()
+				require("opencode").command("session.half.page.up")
+			end, { desc = "Scroll OpenCode up" })
+			vim.keymap.set("n", "<S-C-d>", function()
+				require("opencode").command("session.half.page.down")
+			end, { desc = "Scroll OpenCode down" })
+		end,
+	},
+	{
+		"ggml-org/llama.vim",
+		init = function()
+			vim.g.llama_config = {
+				-- Point both the FIM and Instruction endpoints to your local server on port 9004
+				endpoint_fim = "http://172.21.14.5:10000/infill",
+				model = "qwen2.5-coder-3b-instruct-q8_0",
+				--
+
+				-- Configure how performance/status info is shown:
+				-- 0 or false = disabled, 1 = status bar, 2 = inline ghost text (default)
+				show_info = 0,
+
+				-- Automatically suggest code on cursor movement in Insert mode
+				auto_fim = true,
+
+				-- Default FIM keymaps (included here if you want to customize them)
+				keymap_fim_accept_full = "<S-CR>", -- Accept full suggestion
+			}
+		end,
+	},
+	-- {
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	cmd = "Copilot",
+	-- 	build = ":Copilot auth",
+	-- 	-- event = "InsertEnter",
+	-- 	event = {
+	-- 		"InsertEnter",
+	-- 		"BufReadPre",
+	-- 		"BufNewFile",
+	-- 	},
+	-- 	config = function()
+	-- 		require("copilot").setup({
+	-- 			suggestion = {
+	-- 				enabled = true,
+	-- 				auto_trigger = true,
+	-- 				keymap = {
+	-- 					accept = "<S-CR>",
+	-- 					-- accept_word = false,
+	-- 					-- accept_line = false,
+	-- 					-- next = "<C-j>",
+	-- 					-- prev = "<C-k>",
+	-- 					-- dismiss = "<C-]>",
+	-- 				},
+	-- 			},
+	-- 			panel = { enabled = false },
+	-- 			filetypes = {
+	-- 				yaml = true,
+	-- 				markdown = true,
+	-- 				help = false,
+	-- 				gitcommit = true,
+	-- 				gitrebase = false,
+	-- 				hgcommit = false,
+	-- 				svn = false,
+	-- 				cvs = false,
+	-- 				["."] = false,
+	-- 			},
+	-- 		})
+	--
+	-- 		-- local cmp_status_ok, cmp = pcall(require, "cmp")
+	-- 		-- if cmp_status_ok then
+	-- 		-- 	cmp.event:on("menu_opened", function()
+	-- 		-- 		vim.b.copilot_suggestion_hidden = true
+	-- 		-- 	end)
+	-- 		--
+	-- 		-- 	cmp.event:on("menu_closed", function()
+	-- 		-- 		vim.b.copilot_suggestion_hidden = false
+	-- 		-- 	end)
+	-- 		-- end
+	-- 	end,
+	-- },
+}

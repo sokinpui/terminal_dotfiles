@@ -37,7 +37,7 @@ require("lazy").setup({
 	-- require("plugins.latex"),
 	require("plugins.code_tools"),
 	require("plugins.nvim-cmp"),
-	require("plugins.copilot"),
+	require("plugins.ai-coding"),
 	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
