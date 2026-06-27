@@ -9,55 +9,59 @@
         "apiKey": "not-needed"
       },
       "models": {
-        "gemini-3.1-pro-preview": {
+        "aisrp/gemini-3.5-flash": {
+          "name": "Gemini 3.5 Flash",
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
+        "aisrp/gemini-3.1-pro-preview": {
           "name": "Gemini 3.1 Pro (Preview)",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
-        "gemini-pro-latest": {
+        "aisrp/gemini-pro-latest": {
           "name": "Gemini Pro (Latest)",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
-        "gemini-3-pro-preview": {
+        "aisrp/gemini-3-pro-preview": {
           "name": "Gemini 3 Pro (Preview)",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
-        "gemini-3-flash-preview": {
+        "aisrp/gemini-3-flash-preview": {
           "name": "Gemini 3 Flash (Preview)",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
-        "gemini-flash-latest": {
+        "aisrp/gemini-flash-latest": {
           "name": "Gemini Flash (Latest)",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
-        "gemini-3.1-flash-lite-preview": {
+        "aisrp/gemini-3.1-flash-lite-preview": {
           "name": "Gemini 3.1 Flash Lite (Preview)",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
-        "gemini-flash-lite-latest": {
+        "aisrp/gemini-flash-lite-latest": {
           "name": "Gemini Flash Lite (Latest)",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
-        "gemini-2.5-flash": {
+        "aisrp/gemini-2.5-flash": {
           "name": "Gemini 2.5 Flash",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
-        "gemini-2.5-flash-lite": {
+        "aisrp/gemini-2.5-flash-lite": {
           "name": "Gemini 2.5 Flash Lite",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
-        "gemini-2.0-flash": {
+        "aisrp/gemini-2.0-flash": {
           "name": "Gemini 2.0 Flash",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
-        "gemini-2.0-flash-lite": {
+        "aisrp/gemini-2.0-flash-lite": {
           "name": "Gemini 2.0 Flash Lite",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
-        "gemma-4-31b-it": {
+        "aisrp/gemma-4-31b-it": {
           "name": "Gemma 4 31B IT",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
-        "gemma-4-26b-a4b-it": {
+        "aisrp/gemma-4-26b-a4b-it": {
           "name": "Gemma 4 26B A4B IT",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         }
