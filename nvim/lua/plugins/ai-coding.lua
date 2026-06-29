@@ -1,59 +1,112 @@
 return {
+
 	{
-		"nickjvandyke/opencode.nvim",
-		version = "*", -- Latest stable release
+		"milanglacier/minuet-ai.nvim",
 		config = function()
-			---@type opencode.Opts
-			vim.g.opencode_opts = {
-				-- Your configuration, if any; goto definition on the type for details
-			}
+			require("minuet").setup({
+				provider = "openai_fim_compatible",
 
-			vim.o.autoread = true -- Required for `vim.g.opencode_opts.events.reload`
+				context_window = 512,
 
-			-- Recommended/example keymaps
-			vim.keymap.set({ "n", "x" }, "<leader>oa", function()
-				require("opencode").ask("@this: ")
-			end, { desc = "Ask OpenCode…" })
-			vim.keymap.set({ "n", "x" }, "<leader>os", function()
-				require("opencode").select()
-			end, { desc = "Select OpenCode…" })
+				provider_options = {
+					openai_fim_compatible = {
+						api_key = "TERM",
+						name = "Llama.cpp",
+						end_point = "http://172.21.14.5:10000/v1/completions",
 
-			vim.keymap.set({ "n", "x" }, "go", function()
-				return require("opencode").operator("@this ")
-			end, { desc = "Append range to OpenCode", expr = true })
-			vim.keymap.set("n", "goo", function()
-				return require("opencode").operator("@this ") .. "_"
-			end, { desc = "Append line to OpenCode", expr = true })
+						model = "qwen2.5-coder-3b-instruct-fp16",
 
-			vim.keymap.set("n", "<S-C-u>", function()
-				require("opencode").command("session.half.page.up")
-			end, { desc = "Scroll OpenCode up" })
-			vim.keymap.set("n", "<S-C-d>", function()
-				require("opencode").command("session.half.page.down")
-			end, { desc = "Scroll OpenCode down" })
+						-- optional = {
+						-- 	max_tokens = 56,
+						-- 	top_p = 0.9,
+						-- },
+
+						template = {
+							prompt = function(context_before_cursor, context_after_cursor, _)
+								return "<|fim_prefix|>"
+									.. context_before_cursor
+									.. "<|fim_suffix|>"
+									.. context_after_cursor
+									.. "<|fim_middle|>"
+							end,
+							suffix = false,
+						},
+					},
+				},
+
+				virtualtext = {
+					auto_trigger_ft = { "*" },
+
+					keymap = {
+						accept = "<S-CR>",
+						-- accept_line = "<A-a>",
+						-- accept_n_lines = "<A-z>",
+						-- prev = "<A-[>",
+						-- next = "<A-]>",
+						-- dismiss = "<A-e>",
+					},
+				},
+			})
 		end,
 	},
-	{
-		"ggml-org/llama.vim",
-		init = function()
-			vim.g.llama_config = {
-				-- Point both the FIM and Instruction endpoints to your local server on port 9004
-				endpoint_fim = "http://172.21.14.5:10000/infill",
-				model = "qwen2.5-coder-1.5b-instruct-q8_0",
-				--
 
-				-- Configure how performance/status info is shown:
-				-- 0 or false = disabled, 1 = status bar, 2 = inline ghost text (default)
-				show_info = 0,
+	-- {
+	-- 	"nickjvandyke/opencode.nvim",
+	-- 	version = "*", -- Latest stable release
+	-- 	config = function()
+	-- 		---@type opencode.Opts
+	-- 		vim.g.opencode_opts = {
+	-- 			-- Your configuration, if any; goto definition on the type for details
+	-- 		}
+	--
+	-- 		vim.o.autoread = true -- Required for `vim.g.opencode_opts.events.reload`
+	--
+	-- 		-- Recommended/example keymaps
+	-- 		vim.keymap.set({ "n", "x" }, "<leader>oa", function()
+	-- 			require("opencode").ask("@this: ")
+	-- 		end, { desc = "Ask OpenCode…" })
+	-- 		vim.keymap.set({ "n", "x" }, "<leader>os", function()
+	-- 			require("opencode").select()
+	-- 		end, { desc = "Select OpenCode…" })
+	--
+	-- 		vim.keymap.set({ "n", "x" }, "go", function()
+	-- 			return require("opencode").operator("@this ")
+	-- 		end, { desc = "Append range to OpenCode", expr = true })
+	-- 		vim.keymap.set("n", "goo", function()
+	-- 			return require("opencode").operator("@this ") .. "_"
+	-- 		end, { desc = "Append line to OpenCode", expr = true })
+	--
+	-- 		vim.keymap.set("n", "<S-C-u>", function()
+	-- 			require("opencode").command("session.half.page.up")
+	-- 		end, { desc = "Scroll OpenCode up" })
+	-- 		vim.keymap.set("n", "<S-C-d>", function()
+	-- 			require("opencode").command("session.half.page.down")
+	-- 		end, { desc = "Scroll OpenCode down" })
+	-- 	end,
+	-- },
 
-				-- Automatically suggest code on cursor movement in Insert mode
-				auto_fim = true,
+	-- {
+	-- 	"ggml-org/llama.vim",
+	-- 	init = function()
+	-- 		vim.g.llama_config = {
+	-- 			-- Point both the FIM and Instruction endpoints to your local server on port 9004
+	-- 			endpoint_fim = "http://172.21.14.5:10000/infill",
+	-- 			model = "qwen2.5-coder-3b-instruct-q8_0",
+	-- 			--
+	--
+	-- 			-- Configure how performance/status info is shown:
+	-- 			-- 0 or false = disabled, 1 = status bar, 2 = inline ghost text (default)
+	-- 			show_info = 0,
+	--
+	-- 			-- Automatically suggest code on cursor movement in Insert mode
+	-- 			auto_fim = true,
+	--
+	-- 			-- Default FIM keymaps (included here if you want to customize them)
+	-- 			keymap_fim_accept_full = "<S-CR>", -- Accept full suggestion
+	-- 		}
+	-- 	end,
+	-- },
 
-				-- Default FIM keymaps (included here if you want to customize them)
-				keymap_fim_accept_full = "<S-CR>", -- Accept full suggestion
-			}
-		end,
-	},
 	-- {
 	-- 	"zbirenbaum/copilot.lua",
 	-- 	cmd = "Copilot",

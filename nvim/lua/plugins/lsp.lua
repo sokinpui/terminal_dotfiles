@@ -83,11 +83,11 @@ return {
 						spacing = 4,
 						prefix = "●",
 						source = "if_many",
-						update_in_insert = true,
+						update_in_insert = false,
 					},
 					signs = true,
 					underline = true,
-					update_in_insert = true,
+					update_in_insert = false,
 					severity_sort = true,
 					float = {
 						focusable = false,

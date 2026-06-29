@@ -35,7 +35,7 @@ require("lazy").setup({
 	require("plugins.auto-pairs"),
 	require("plugins.fzf"),
 	-- require("plugins.latex"),
-	require("plugins.code_tools"),
+	require("plugins.lsp"),
 	require("plugins.nvim-cmp"),
 	require("plugins.ai-coding"),
 	{

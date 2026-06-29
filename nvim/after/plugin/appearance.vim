@@ -99,3 +99,6 @@ augroup remember_folds
   autocmd BufWinLeave * if expand('%') != '' | mkview | endif
   autocmd BufWinEnter * silent! loadview
 augroup END
+
+highlight! link MinuetVirtualText Comment
+
