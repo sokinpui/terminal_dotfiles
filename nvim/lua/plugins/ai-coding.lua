@@ -1,6 +1,42 @@
 return {
 
 	-- {
+	-- 	"ggml-org/llama.vim",
+	-- 	init = function()
+	-- 		vim.g.llama_config = {
+	-- 			-- Point both the FIM and Instruction endpoints to your local server on port 9004
+	-- 			endpoint_fim = "http://localhost:9004/infill",
+	-- 			-- model = "qwen2.5-coder-3b-instruct-q8_0",
+	-- 			-- Configure how performance/status info is shown:
+	-- 			-- 0 or false = disabled, 1 = status bar, 2 = inline ghost text (default)
+	-- 			show_info = 0,
+	-- 			keymap_fim_accept_full = "<S-CR>",
+	-- 		}
+	-- 	end,
+	-- 	config = function()
+	-- 		-- Function to apply the highlight links
+	-- 		local function set_llama_highlights()
+	-- 			-- Links FIM ghost text suggestions to 'Comment'
+	-- 			vim.api.nvim_set_hl(0, "llama_hl_fim_hint", { link = "Comment" })
+	--
+	-- 			-- (Optional) Links instruction-based virtual text to 'Comment'
+	-- 			vim.api.nvim_set_hl(0, "llama_hl_inst_virt_proc", { link = "Comment" })
+	-- 			vim.api.nvim_set_hl(0, "llama_hl_inst_virt_gen", { link = "Comment" })
+	-- 			vim.api.nvim_set_hl(0, "llama_hl_inst_virt_ready", { link = "Comment" })
+	-- 		end
+	--
+	-- 		-- Apply the highlights immediately on startup
+	-- 		set_llama_highlights()
+	--
+	-- 		-- Set an autocommand so the links are preserved if you switch colorschemes
+	-- 		vim.api.nvim_create_autocmd("ColorScheme", {
+	-- 			pattern = "*",
+	-- 			callback = set_llama_highlights,
+	-- 		})
+	-- 	end,
+	-- },
+
+	-- {
 	-- 	"milanglacier/minuet-ai.nvim",
 	-- 	config = function()
 	-- 		require("minuet").setup({
