@@ -71,7 +71,7 @@ cmp.setup({
 	sorting = {
 		priority_weight = 2,
 		comparators = {
-			require("copilot_cmp.comparators").prioritize,
+			-- require("copilot_cmp.comparators").prioritize,
 
 			-- cmp.config.compare.offset,
 			-- cmp.config.compare.exact,
@@ -114,11 +114,11 @@ cmp.setup({
 		end),
 
 		["<C-j>"] = cmp.mapping(function(fallback)
-			if require("copilot.suggestion").is_visible() then
-				require("copilot.suggestion").accept()
-			else
-				fallback()
-			end
+			-- if require("copilot.suggestion").is_visible() then
+			-- 	require("copilot.suggestion").accept()
+			-- else
+			fallback()
+			-- end
 		end),
 
 		["<Tab>"] = cmp.mapping(function(fallback)
