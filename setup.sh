@@ -15,6 +15,7 @@ create_symlink() {
 
 ensure_directories() {
   mkdir -p "$HOME/.local/bin"
+  mkdir -p "$HOME/.local/man"
   mkdir -p "$HOME/.local/scripts"
   mkdir -p "$HOME/.config"
   mkdir -p "$HOME/projects"
@@ -64,9 +65,10 @@ setup_macos() {
   brew tap yqrashawn/goku
   brew install \
     borders \
-    skhd \
-    yabai \
     goku
+
+  brew install asmvik/formulae/skhd
+  curl -L https://raw.githubusercontent.com/asmvik/yabai/master/scripts/install.sh | sh /dev/stdin ~/.local/bin ~/.local/man
 
   brew install --cask \
     font-jetbrains-mono-nerd-font \
