@@ -45,7 +45,10 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
   docker context use orbstack &> /dev/null
 fi
 
+export TMUX_SESSIONIZER_META_PATH="$HOME/.local/scripts/tmux-sessionizer-meta"
+
 
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
