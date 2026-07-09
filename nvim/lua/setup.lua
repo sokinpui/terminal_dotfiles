@@ -47,5 +47,9 @@ require("lazy").setup({
 		end,
 		ft = { "markdown" },
 	},
-	{ "sokinpui/coder-ask.nvim", opts = {} },
+
+	{
+		dir = "~/projects/coder.nvim",
+		cmd = { "CoderAsk" },
+	},
 }, {})
