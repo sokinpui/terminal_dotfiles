@@ -1,4 +1,8 @@
 return {
+	{
+		dir = "~/projects/coder.nvim",
+		cmd = { "Coder" },
+	},
 
 	-- {
 	-- 	"ggml-org/llama.vim",

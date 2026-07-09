@@ -24,14 +24,14 @@ return {
 				"vimdoc",
 			})
 
-			vim.api.nvim_create_autocmd("FileType", {
-				callback = function(args)
-					pcall(vim.treesitter.start, args.buf)
-
-					vim.opt_local.foldmethod = "expr"
-					vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-				end,
-			})
+			-- vim.api.nvim_create_autocmd("FileType", {
+			-- 	callback = function(args)
+			-- 		pcall(vim.treesitter.start, args.buf)
+			--
+			-- 		vim.opt_local.foldmethod = "expr"
+			-- 		vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+			-- 	end,
+			-- })
 
 			vim.opt.foldlevel = 99
 			vim.opt.foldlevelstart = 99
