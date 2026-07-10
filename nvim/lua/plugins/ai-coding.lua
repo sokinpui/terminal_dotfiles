@@ -2,6 +2,9 @@ return {
 	{
 		dir = "~/projects/coder.nvim",
 		cmd = { "Coder", "CoderChat", "CoderSession" },
+		config = function()
+			require("coder").setup()
+		end,
 	},
 
 	-- {
