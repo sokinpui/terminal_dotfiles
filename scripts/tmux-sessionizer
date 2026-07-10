@@ -8,17 +8,12 @@ select_directory() {
 
 find_available_session_name() {
   local tag="$1"
-  local index=1
 
+  local index=1
   while tmux has-session -t "${tag}_${index}" 2>/dev/null; do
     ((index++))
   done
   echo "${tag}_${index}"
-}
-
-is_group_attached() {
-  local group_name="$1"
-  tmux list-sessions -F "#{session_group} #{session_attached}" 2>/dev/null | grep -q "^${group_name} 1"
 }
 
 create_or_connect_session() {
@@ -29,6 +24,10 @@ create_or_connect_session() {
   # tag is the session name show in tmux
   local tag="$3"
 
+  if [[ -n "${TMUX-}" ]]; then
+    [[ "$(tmux display-message -p '#{session_group}' 2>/dev/null)" == "$group_name" ]] && return
+  fi
+
   if ! tmux has-session -t "$group_name" 2>/dev/null; then
     tmux set-environment -g BASE_DIR "$target_dir"
     tmux new-session -ds "$group_name" -c "$target_dir"
@@ -36,10 +35,10 @@ create_or_connect_session() {
 
   local session_name
   session_name=$(find_available_session_name "$tag")
-  tmux new-session -d -t "$group_name" -s "$session_name" -c "$target_dir"
+  # tmux new-session -d -t "$group_name" -s "$session_name" -c "$target_dir"
 
-  if is_group_attached "$group_name"; then
-    tmux new-window -t "$session_name" -c "$target_dir"
+  if ! tmux has-session -t "$session_name" 2>/dev/null; then
+    tmux new-session -d -t "$group_name" -s "$session_name" -c "$target_dir"
   fi
 
   if [[ -n "${TMUX-}" ]]; then
