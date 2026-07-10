@@ -61,24 +61,33 @@ bindkey -M viins '^f' open-recent-edit-file
 # bindkey -M viins '^y' open-recent-cd
 
 jump-to-dir-in-git-repo() {
-  #
+  local start_dir=$(pwd)
+
   if git rev-parse --is-inside-work-tree &>/dev/null; then
-    cd $(git rev-parse --show-toplevel)
+    cd "$(git rev-parse --show-toplevel)" || return
   fi
 
+  local selected_dir
   if [[ "$(uname)" == "Linux" ]]; then
     selected_dir=$(fd --type=d --strip-cwd-prefix -X stat -c "%Y %n" | sort -nr | cut -d' ' -f2- | fzf --height 40% --reverse)
-  fi
-  if [[ "$(uname)" == "Darwin" ]]; then
+  elif [[ "$(uname)" == "Darwin" ]]; then
     selected_dir=$(fd --type=d --strip-cwd-prefix -X stat -f "%m %N" | sort -nr | cut -d' ' -f2- | fzf --height 40% --reverse)
   fi
-  if [ -z $selected_dir ]; then
+
+  if [[ -z "$selected_dir" ]]; then
+    cd "$start_dir"
     zle reset-prompt
     return
   fi
-  cd $selected_dir
 
-  zle accept-line
+  if [[ -n "$TMUX" ]]; then
+    tmux new-window -c "$PWD/$selected_dir"
+    cd "$start_dir"
+    zle reset-prompt
+  else
+    cd "$selected_dir"
+    zle accept-line
+  fi
 }
 zle -N jump-to-dir-in-git-repo
 bindkey '^g' jump-to-dir-in-git-repo
