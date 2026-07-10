@@ -86,8 +86,8 @@ d() {
 # if user name is mac, then don't alias for this
 alias \
   mv="mv -v" \
-  rm="$HOME/.local/bin/trash-put" \
-  rs="$HOME/.local/bin/trash-restore" \
+  rm="gomi" \
+  rs="gomi -b" \
   cp="cp -r -v"
 
 # git

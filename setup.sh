@@ -23,7 +23,7 @@ ensure_directories() {
   # Ensure default metadata exists if not already present
   local meta_file="$REPO_DIR/scripts/tmux-sessionizer-meta"
   if [ ! -f "$meta_file" ]; then
-    cat <<EOF > "$meta_file"
+    cat <<EOF >"$meta_file"
 #!/usr/bin/env bash
 
 IGNORED_PATHS=( ~/tmp/* )
@@ -231,7 +231,6 @@ link_dotfiles() {
 
 install_python_tools() {
   pipx install neovim-remote
-  pipx install trash-cli
 
   if pip3 install --help | grep -q "break-system-packages"; then
     pip3 install pynvim --break-system-packages
@@ -297,6 +296,10 @@ install_node_via_nvm() {
   fi
 }
 
+install_gomi() {
+  curl -fsSL https://gomi.dev/install | bash
+}
+
 main() {
   ensure_directories
 
@@ -316,6 +319,7 @@ main() {
   install_fzf
   install_neovim_source
   install_node_via_nvm
+  install_gomi
 
   echo "Setup complete! Please restart your shell."
 }

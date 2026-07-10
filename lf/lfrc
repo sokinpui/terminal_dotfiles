@@ -100,7 +100,7 @@ map o :push %touch<space>
 # %mkdir -p ~/.trash
 
 cmd trash ${{
-    $HOME/.local/bin/trash-put $fx
+    gomi $fx
 }}
 
 # move current file or selected files to trash folder
@@ -286,7 +286,7 @@ set period 1
 
 # trash restore
 cmd rs ${{
-  trash-restore
+  gomi -b
 }}
 
 # create new file and edit in editor
