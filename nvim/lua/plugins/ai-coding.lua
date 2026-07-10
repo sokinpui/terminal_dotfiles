@@ -1,7 +1,7 @@
 return {
 	{
 		dir = "~/projects/coder.nvim",
-		cmd = { "Coder" },
+		cmd = { "Coder", "CoderChat", "CoderSession" },
 	},
 
 	-- {

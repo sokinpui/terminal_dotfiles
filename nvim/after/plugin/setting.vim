@@ -54,7 +54,6 @@ set mousescroll=ver:5,hor:5
 "   File buffer
 " enable editing multi buffer without saving
 set hidden
-" keep the current woring directory same as the editin file
 set noautochdir
 " Back to the last curosr when open new buffer
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
