@@ -22,3 +22,7 @@ require("session"):setup({
 })
 
 require("duckdb"):setup()
+
+require("smart-enter"):setup({
+	open_multi = true,
+})
