@@ -1,10 +1,25 @@
 return {
 	{
-		dir = "~/projects/coder.nvim",
-		cmd = { "Coder", "CoderChat", "CoderSession" },
-		config = function()
-			require("coder").setup()
-		end,
+		"sokinpui/coder.nvim",
+		cmd = {
+			"Coder",
+			"CoderChat",
+			"CoderSession",
+			"CoderClose",
+		},
+		keys = {
+			{ "<leader>cc", "<cmd>CoderChat<cr>", desc = "Coder Chat" },
+			{ "<leader>cs", "<cmd>CoderSession<cr>", desc = "Coder Session" },
+			{
+				"<C-j>",
+				"<cmd>Coder<cr>",
+				mode = { "n", "v" },
+				desc = "Coder Prompt (Contextual)",
+			},
+		},
+		opts = {
+			exec_mode = "tmux", -- or "terminal"
+		},
 	},
 
 	-- {
