@@ -146,7 +146,7 @@ setup_ubuntu() {
 
 setup_fedora() {
   sudo dnf update -y
-  sudo dnf group install -y "Development Tools"
+  sudo dnf group install -y development-tools
   sudo dnf install -y \
     openssl-devel \
     bzip2-devel \
