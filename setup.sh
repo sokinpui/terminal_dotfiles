@@ -302,6 +302,26 @@ install_gomi() {
   curl -fsSL https://gomi.dev/install | bash
 }
 
+install_sync_clip() {
+  local repo_url="https://github.com/sokinpui/sync-clip.git"
+  local dest_dir="$HOME/projects/sync-clip"
+  local config_dir="$HOME/.config/sync-clip"
+
+  mkdir -p "$dest_dir"
+  mkdir -p "$config_dir"
+
+  if [ ! -d "$dest_dir/.git" ]; then
+    git clone "$repo_url" "$dest_dir"
+  fi
+
+  pushd "$dest_dir" >/dev/null
+  go install ./cmd/sc ./cmd/scs
+  popd >/dev/null
+
+  touch "$config_dir/scs.conf"
+  touch "$config_dir/sc.conf"
+}
+
 main() {
   if [ ! -f "$REPO_DIR/setup.sh" ] && [ ! -d "$REPO_DIR/.git" ]; then
     git clone https://github.com/sokinpui/terminal_dotfiles.git dotfiles
@@ -322,6 +342,7 @@ main() {
   install_neovim_source
   install_node_via_nvm
   install_gomi
+  install_sync_clip
 
   echo "Setup complete! Please restart your shell."
 }
