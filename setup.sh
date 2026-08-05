@@ -120,6 +120,8 @@ setup_ubuntu() {
     golang-go \
     build-essential \
     libssl-dev \
+    clang \
+    libclang-dev \
     zlib1g-dev \
     libbz2-dev \
     libreadline-dev \
