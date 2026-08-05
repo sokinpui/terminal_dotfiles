@@ -153,6 +153,9 @@ setup_fedora() {
     libffi-devel \
     zlib-devel \
     readline-devel \
+    clang \
+    clang-devel \
+    clang-tools-extra \
     sqlite-devel \
     pipx \
     unzip \
