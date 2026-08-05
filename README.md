@@ -3,7 +3,7 @@
 ## Install Linux config
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/refs/heads/main/zsh/setup | bash
+curl -fsSL https://raw.githubusercontent.com/sokinpui/terminal_dotfiles/refs/heads/main/setup.sh | bash
 ```
 
 ## After installation, you should...
@@ -31,6 +31,7 @@ The `tmux-sessionizer` behavior is controlled by `tmux-sessionizer-meta`. You sh
 - `SSH_HOSTS`: List of SSH hostnames (as defined in your `~/.ssh/config`) to include remote projects in the selection list.
 
 Example:
+
 ```bash
 INITIAL_DIRECTORIES=(
   ~/projects

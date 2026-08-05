@@ -19,6 +19,7 @@ ensure_directories() {
   mkdir -p "$HOME/.local/scripts"
   mkdir -p "$HOME/.config"
   mkdir -p "$HOME/projects"
+  mkdir -p "$REPO_DIR/scripts"
 
   # Ensure default metadata exists if not already present
   local meta_file="$REPO_DIR/scripts/tmux-sessionizer-meta"
@@ -106,9 +107,8 @@ setup_ubuntu() {
     cmake \
     gettext \
     vim \
-    neofetch \
+    fastfatch \
     ripgrep \
-    tldr \
     tree \
     zoxide \
     direnv \
@@ -301,16 +301,16 @@ install_gomi() {
 }
 
 main() {
-  ensure_directories
-
-  echo "Detected OS: $(uname -s)"
-  dispatch_install
-
   if [ ! -f "$REPO_DIR/setup.sh" ] && [ ! -d "$REPO_DIR/.git" ]; then
     git clone https://github.com/sokinpui/terminal_dotfiles.git dotfiles
     cd dotfiles
     REPO_DIR="$(pwd)"
   fi
+
+  ensure_directories
+
+  echo "Detected OS: $(uname -s)"
+  dispatch_install
 
   link_dotfiles
   install_python_tools
