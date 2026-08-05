@@ -107,7 +107,7 @@ setup_ubuntu() {
     cmake \
     gettext \
     vim \
-    fastfatch \
+    fastfetch \
     ripgrep \
     tree \
     zoxide \
