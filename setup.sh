@@ -220,7 +220,7 @@ link_dotfiles() {
   echo "Linking configuration files to $CONFIG_DIR..."
   for item in *; do
     case "$item" in
-    "README.md" | "images" | "scripts" | "zsh" | "setup.sh" | "dotfiles") continue ;;
+    "README.md" | "images" | "setup.sh" | "dotfiles") continue ;;
     esac
     create_symlink "$REPO_DIR/$item" "$CONFIG_DIR/$item"
   done
