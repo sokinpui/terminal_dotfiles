@@ -170,7 +170,6 @@ setup_fedora() {
     cloc \
     python3-pip \
     git \
-    lf \
     golang \
     luarocks
 
@@ -242,7 +241,7 @@ install_python_tools() {
 
 install_go_tools() {
   export PATH=$PATH:$(go env GOPATH)/bin
-  env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest
+  env CGO_ENABLED=0 go install -trimpath -ldflags="-s -w" github.com/gokcehan/lf@latest
   go install github.com/walles/moor/v2/cmd/moor@latest
 }
 
