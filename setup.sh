@@ -156,6 +156,9 @@ setup_fedora() {
     clang \
     clang-devel \
     clang-tools-extra \
+    libX11-devel \
+    libXext-devel \
+    libXfixes-devel \
     sqlite-devel \
     pipx \
     unzip \
