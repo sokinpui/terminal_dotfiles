@@ -96,7 +96,6 @@ setup_macos() {
   brew uninstall neovim || true
 
   sudo ln -sf /Applications/kitty.app/Contents/MacOS/kitty /usr/local/bin/kitty
-  curl -fsSL https://deno.land/install.sh | sh
 }
 
 setup_ubuntu() {
@@ -141,7 +140,6 @@ setup_ubuntu() {
   sudo apt remove -y neovim || true
 
   create_symlink "$(which fdfind)" "$HOME/.local/bin/fd"
-  curl -fsSL https://deno.land/install.sh | sh
 }
 
 setup_fedora() {
@@ -184,8 +182,6 @@ setup_fedora() {
   if command -v fdfind &>/dev/null; then
     create_symlink "$(which fdfind)" "$HOME/.local/bin/fd"
   fi
-
-  curl -fsSL https://deno.land/install.sh | sh
 }
 
 dispatch_install() {
