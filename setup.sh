@@ -59,6 +59,7 @@ setup_macos() {
     git \
     go \
     tree-sitter \
+    yazi \
     font-lxgw-wenkai \
     luarocks
 
@@ -322,6 +323,34 @@ install_sync_clip() {
   touch "$config_dir/sc.conf"
 }
 
+install_yazi() {
+  [ "$(uname -s)" = "Darwin" ] && return
+  command -v yazi &>/dev/null && return
+
+  echo "Installing Yazi..."
+  local arch
+  arch=$(uname -m)
+  local target
+
+  case "$arch" in
+  x86_64) target="x86_64-unknown-linux-gnu" ;;
+  aarch64) target="aarch64-unknown-linux-gnu" ;;
+  *)
+    echo "Unsupported architecture for Yazi: $arch"
+    return
+    ;;
+  esac
+
+  local tmp_dir
+  tmp_dir=$(mktemp -d)
+  local zip_path="$tmp_dir/yazi.zip"
+
+  curl -L "https://github.com/sxyazi/yazi/releases/latest/download/yazi-$target.zip" -o "$zip_path"
+  unzip -q "$zip_path" -d "$tmp_dir"
+  sudo mv "$tmp_dir"/yazi-*/{ya,yazi} /usr/local/bin/
+  rm -rf "$tmp_dir"
+}
+
 main() {
   if [ ! -f "$REPO_DIR/setup.sh" ] && [ ! -d "$REPO_DIR/.git" ]; then
     git clone https://github.com/sokinpui/terminal_dotfiles.git dotfiles
@@ -339,10 +368,11 @@ main() {
   install_go_tools
   install_rust_tools
   install_fzf
-  install_neovim_source
   install_node_via_nvm
   install_gomi
   install_sync_clip
+  install_yazi
+  install_neovim_source
 
   echo "Setup complete! Please restart your shell."
 }
