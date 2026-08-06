@@ -399,7 +399,7 @@ After=local-fs.target
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/kmonad %h/.config/kmonad/config.kbd
+ExecStart=/usr/local/bin/kmonad /home/so/.config/kmonad/config.kbd
 Restart=always
 RestartSec=3
 Nice=-20
