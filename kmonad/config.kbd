@@ -1,0 +1,33 @@
+(defcfg
+  input  (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
+  output (uinput-sink "kmonad")
+  fallthrough true
+  allow-cmd true
+)
+
+(defsrc
+esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  home end  ins  del
+  grv  1    2    3    4    5    6    7    8    9    0    -     =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [     ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '          ret
+  lsft z    x    c    v    b    n    m    ,    .    /               rsft
+  wkup lctl lmet lalt           spc            ralt sys  rctl  pgdn up   pgup
+                                                               left down rght
+)
+
+(defalias
+
+  SPC (tap-next-press spc lsft)
+  ESC (tap-next-press esc lctl)
+  RET (tap-next-press ret lctl)
+)
+
+(deflayer base
+esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  home end  ins  del
+  grv  1    2    3    4    5    6    7    8    9    0    -    =     bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]     \
+  @ESC  a    s    d    f    g    h    j    k    l    ;    '          @RET
+  lalt  z    x    c    v    b    n    m    ,    .    /               ralt
+  wkup lctl lmet lalt           @SPC            lmet  sys  rctl  pgdn up   pgup
+                                                               left down rght
+)

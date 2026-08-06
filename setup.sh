@@ -373,6 +373,47 @@ install_coder() {
   popd >/dev/null
 }
 
+install_kmonad() {
+  [ "$(uname -s)" != "Linux" ] && return
+  command -v kmonad &>/dev/null && return
+
+  echo "Installing KMonad..."
+  local version="0.4.5"
+  local url="https://github.com/kmonad/kmonad/releases/download/${version}/kmonad"
+  local tmp_bin
+  tmp_bin=$(mktemp)
+
+  curl -L "$url" -o "$tmp_bin"
+  sudo mv "$tmp_bin" /usr/local/bin/kmonad
+  sudo chmod +x /usr/local/bin/kmonad
+
+  echo "Setting up KMonad service..."
+  local service_file="$REPO_DIR/kmonad/kmonad.service"
+  local systemd_path="/etc/systemd/system/kmonad.service"
+
+  # Ensure the service file exists with correct content
+  cat <<EOF >"$service_file"
+[Unit]
+Description=KMonad Keyboard Daemon
+After=local-fs.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/kmonad %h/.config/kmonad/config.kbd
+Restart=always
+RestartSec=3
+Nice=-20
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+  sudo cp "$service_file" "$systemd_path"
+  sudo systemctl daemon-reload
+  sudo systemctl enable kmonad
+  sudo systemctl start kmonad
+}
+
 main() {
   if [ ! -f "$REPO_DIR/setup.sh" ] && [ ! -d "$REPO_DIR/.git" ]; then
     git clone https://github.com/sokinpui/terminal_dotfiles.git dotfiles
@@ -395,6 +436,7 @@ main() {
   install_sync_clip
   install_yazi
   install_coder
+  install_kmonad
   install_neovim_source
 
   echo "Setup complete! Please restart your shell."
