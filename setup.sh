@@ -250,6 +250,7 @@ install_go_tools() {
   export PATH=$PATH:$(go env GOPATH)/bin
   env CGO_ENABLED=0 go install -trimpath -ldflags="-s -w" github.com/gokcehan/lf@latest
   go install github.com/walles/moor/v2/cmd/moor@latest
+  go install github.com/sokinpui/worktree/cmd/worktree@latest
 }
 
 install_rust_tools() {
@@ -355,6 +356,23 @@ install_yazi() {
   rm -rf "$tmp_dir"
 }
 
+install_coder() {
+  echo "Installing Coder..."
+  local repo_url="https://github.com/sokinpui/coder.git"
+  local dest_dir="$HOME/projects/coder"
+
+  mkdir -p "$HOME/projects"
+
+  if [ ! -d "$dest_dir" ]; then
+    git clone "$repo_url" "$dest_dir"
+  fi
+
+  pushd "$dest_dir" >/dev/null
+  git pull
+  ./install.sh
+  popd >/dev/null
+}
+
 main() {
   if [ ! -f "$REPO_DIR/setup.sh" ] && [ ! -d "$REPO_DIR/.git" ]; then
     git clone https://github.com/sokinpui/terminal_dotfiles.git dotfiles
@@ -376,6 +394,7 @@ main() {
   install_gomi
   install_sync_clip
   install_yazi
+  install_coder
   install_neovim_source
 
   echo "Setup complete! Please restart your shell."
