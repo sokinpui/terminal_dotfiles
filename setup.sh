@@ -305,7 +305,21 @@ install_node_via_nvm() {
 }
 
 install_gomi() {
+  local target="$HOME/.local/bin/gomi"
+  local legacy="$HOME/bin/gomi"
+
+  if [ -f "$legacy" ]; then
+    mv "$legacy" "$target"
+    rmdir "$HOME/bin" 2>/dev/null || true
+  fi
+
+  [ -f "$target" ] && return
+
   curl -fsSL https://gomi.dev/install | bash
+  if [ -f "$legacy" ]; then
+    mv "$legacy" "$target"
+    rmdir "$HOME/bin" 2>/dev/null || true
+  fi
 }
 
 install_sync_clip() {
