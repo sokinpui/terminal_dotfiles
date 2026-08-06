@@ -145,6 +145,9 @@ setup_ubuntu() {
 
 setup_fedora() {
   sudo dnf update -y
+  sudo dnf install -y fedora-workstation-repositories
+  sudo dnf config-manager setopt google-chrome.enabled=1
+
   sudo dnf group install -y development-tools
   sudo dnf install -y \
     openssl-devel \
@@ -164,6 +167,7 @@ setup_fedora() {
     cmake \
     gettext \
     vim \
+    google-chrome-stable \
     tmux \
     bat \
     zsh \
