@@ -82,6 +82,8 @@ setup_macos() {
     borders
     goku
     skhd
+    direnv
+    zoxide
   )
 
   local casks=(
