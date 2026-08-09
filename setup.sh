@@ -84,6 +84,7 @@ setup_macos() {
     skhd
     direnv
     zoxide
+    sync-clip
   )
 
   local casks=(
@@ -107,12 +108,16 @@ setup_macos() {
 
   brew tap FelixKratz/formulae
   brew trust FelixKratz/formulae
+  brew tap sokinpui/sync-clip
+  brew trust sokinpui/sync-clip
   brew tap yqrashawn/goku
   brew trust yqrashawn/goku
   brew tap asmvik/formulae
   brew trust asmvik/formulae
 
   install_brew_items "formula" "${formulae[@]}"
+
+  brew services start sync-clip
 
   curl -L https://raw.githubusercontent.com/asmvik/yabai/master/scripts/install.sh | sh /dev/stdin ~/.local/bin ~/.local/man
 
@@ -348,6 +353,8 @@ install_gomi() {
 }
 
 install_sync_clip() {
+  [ "$(uname -s)" = "Darwin" ] && return
+
   local repo_url="https://github.com/sokinpui/sync-clip.git"
   local dest_dir="$HOME/projects/sync-clip"
   local config_dir="$HOME/.config/sync-clip"
