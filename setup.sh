@@ -42,9 +42,9 @@ install_brew_items() {
 
   for item in "${items[@]}"; do
     if [ "$mode" = "cask" ]; then
-      brew install --cask "$item" --yes || echo "Failed to install cask: $item. Skipping..."
+      brew install --cask "$item" || echo "Failed to install cask: $item. Skipping..."
     else
-      brew install "$item" --yes || echo "Failed to install: $item. Skipping..."
+      brew install "$item" || echo "Failed to install: $item. Skipping..."
     fi
   done
 }
@@ -58,6 +58,8 @@ setup_macos() {
   if [ -f "/opt/homebrew/bin/brew" ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
+
+  export NONINTERACTIVE=1
 
   brew update
 
@@ -79,6 +81,9 @@ setup_macos() {
     yazi
     font-lxgw-wenkai
     luarocks
+    borders
+    goku
+    skhd
   )
 
   local casks=(
@@ -100,15 +105,15 @@ setup_macos() {
     karabiner-elements
   )
 
+  brew tap FelixKratz/formulae
+  brew trust FelixKratz/formulae
+  brew tap yqrashawn/goku
+  brew trust yqrashawn/goku
+  brew tap asmvik/formulae
+  brew trust asmvik/formulae
+
   install_brew_items "formula" "${formulae[@]}"
 
-  brew tap FelixKratz/formulae
-  brew tap yqrashawn/goku
-  brew install \
-    borders \
-    goku
-
-  brew install asmvik/formulae/skhd
   curl -L https://raw.githubusercontent.com/asmvik/yabai/master/scripts/install.sh | sh /dev/stdin ~/.local/bin ~/.local/man
 
   install_brew_items "cask" "${casks[@]}"
@@ -116,7 +121,7 @@ setup_macos() {
   defaults write -g InitialKeyRepeat -int 10
   defaults write -g KeyRepeat -int 1
 
-  curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin installer=version-0.40.0
+  curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
   brew uninstall neovim || true
 
   sudo ln -sf /Applications/kitty.app/Contents/MacOS/kitty /usr/local/bin/kitty
