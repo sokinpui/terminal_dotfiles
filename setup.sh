@@ -35,33 +35,72 @@ EOF
   fi
 }
 
+install_brew_items() {
+  local mode="$1"
+  shift
+  local items=("$@")
+
+  for item in "${items[@]}"; do
+    if [ "$mode" = "cask" ]; then
+      brew install --cask "$item" || echo "Failed to install cask: $item. Skipping..."
+    else
+      brew install "$item" || echo "Failed to install: $item. Skipping..."
+    fi
+  done
+}
+
 setup_macos() {
   if ! command -v brew &>/dev/null; then
     echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
 
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  if [ -f "/opt/homebrew/bin/brew" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  fi
+
   brew update
 
-  brew install \
-    pipx \
-    tmux \
-    bat \
-    zsh \
-    cmake \
-    gettext \
-    fd \
-    colima \
-    neofetch \
-    ripgrep \
-    python3-pip \
-    git \
-    go \
-    tree-sitter \
-    yazi \
-    font-lxgw-wenkai \
+  local formulae=(
+    pipx
+    tmux
+    bat
+    zsh
+    cmake
+    gettext
+    fd
+    colima
+    neofetch
+    ripgrep
+    python3-pip
+    git
+    go
+    tree-sitter
+    yazi
+    font-lxgw-wenkai
     luarocks
+  )
+
+  local casks=(
+    font-jetbrains-mono-nerd-font
+    discord
+    zoom
+    obsidian
+    google-chrome
+    logi-options+
+    visual-studio-code
+    v2rayu
+    wechat
+    whatsapp
+    raycast
+    mos
+    betterdisplay
+    microsoft-outlook
+    microsoft-word
+    karabiner-elements
+  )
+
+  install_brew_items "formula" "${formulae[@]}"
 
   brew tap FelixKratz/formulae
   brew tap yqrashawn/goku
@@ -72,23 +111,7 @@ setup_macos() {
   brew install asmvik/formulae/skhd
   curl -L https://raw.githubusercontent.com/asmvik/yabai/master/scripts/install.sh | sh /dev/stdin ~/.local/bin ~/.local/man
 
-  brew install --cask \
-    font-jetbrains-mono-nerd-font \
-    discord \
-    zoom \
-    obsidian \
-    google-chrome \
-    logi-options+ \
-    visual-studio-code \
-    v2rayu \
-    wechat \
-    whatsapp \
-    raycast \
-    mos \
-    betterdisplay \
-    microsoft-outlook \
-    microsoft-word \
-    karabiner-elements
+  install_brew_items "cask" "${casks[@]}"
 
   defaults write -g InitialKeyRepeat -int 10
   defaults write -g KeyRepeat -int 1
