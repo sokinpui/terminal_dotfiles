@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 REPO_DIR=$(cd "$(dirname "$0")" && pwd)
 CONFIG_DIR="$HOME/.config"
 
@@ -122,9 +120,6 @@ setup_macos() {
   defaults write -g KeyRepeat -int 1
 
   curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-  brew uninstall neovim || true
-
-  sudo ln -sf /Applications/kitty.app/Contents/MacOS/kitty /usr/local/bin/kitty
 }
 
 setup_ubuntu() {
