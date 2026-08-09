@@ -42,9 +42,9 @@ install_brew_items() {
 
   for item in "${items[@]}"; do
     if [ "$mode" = "cask" ]; then
-      brew install --cask "$item" || echo "Failed to install cask: $item. Skipping..."
+      brew install --cask "$item" --yes || echo "Failed to install cask: $item. Skipping..."
     else
-      brew install "$item" || echo "Failed to install: $item. Skipping..."
+      brew install "$item" --yes || echo "Failed to install: $item. Skipping..."
     fi
   done
 }
