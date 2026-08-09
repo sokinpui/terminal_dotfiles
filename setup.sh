@@ -66,6 +66,7 @@ setup_macos() {
     tmux
     bat
     zsh
+    coreutils
     cmake
     gettext
     fd
