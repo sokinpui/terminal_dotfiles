@@ -1,12 +1,12 @@
 {
- :devices       {;; define devices
-                 ;; vendor_id and product_id can be found in Karabiner EventViewer gui
-                 :black [{:vendor_id 21972 :product_id 1121 }]
-                 }
- :simlayers {
-              :x-mode {:key :x}
-              ; :enter-mode {:key :return_or_enter}
-              }
+ ; :devices       {;; define devices
+ ;                 ;; vendor_id and product_id can be found in Karabiner EventViewer gui
+ ;                 :black [{:vendor_id 21972 :product_id 1121 }]
+ ;                 }
+ ; :simlayers {
+ ;              :x-mode {:key :x}
+ ;              ; :enter-mode {:key :return_or_enter}
+ ;              }
  :main [
 
         {
@@ -26,75 +26,75 @@
                  ]
          }
 
-        {:des "symbolic layer"
-         :rules [
-                 ; active key is held down spacebar
-                 [:##return_or_enter   ["layer-1-hold" 1] nil {
-                                                             :alone [:return_or_enter]
-                                                             :afterup ["layer-1-hold" 0]
-                                                             }]
+        ; {:des "symbolic layer"
+        ;  :rules [
+        ;          ; active key is held down spacebar
+        ;          [:##return_or_enter   ["layer-1-hold" 1] nil {
+        ;                                                      :alone [:return_or_enter]
+        ;                                                      :afterup ["layer-1-hold" 0]
+        ;                                                      }]
+        ;
+        ;          :black
+        ;          :layer-1-hold
+        ;          ; :enter-mode
+        ;
+        ;          [:##a                           :1   ]
+        ;
+        ;          [:##q                           :1]
+        ;          [:##w                           :2   ]
+        ;          [:##e                           :3]
+        ;          [:##r                           :4]
+        ;          [:##t                           :5   ]
+        ;
+        ;          [:##y                           :6]
+        ;          [:##u                           :7]
+        ;          [:##i                           :8   ]
+        ;          [:##o                           :9]
+        ;          [:##p                           :0]
+        ;
+        ;          [:##l                           :9]
+        ;          [:##semicolon                   :0]
+        ;
+        ;          [:##s                           :grave_accent_and_tilde]
+        ;          [:##d                           :!Squote   ]
+        ;          [:##f                           :quote]
+        ;          [:##g                           :equal_sign]
+        ;
+        ;          [:##h                           :hyphen   ]
+        ;          [:##j                           :open_bracket   ]
+        ;          [:##k                           :close_bracket]
+        ;
+        ;          [:##n                           :backslash]
+        ;
+        ;          [:##spacebar                    :tab]
+        ;          [:##left_control                           :!Stab]
+        ;          ]}
 
-                 :black
-                 :layer-1-hold
-                 ; :enter-mode
+        ; {
+        ;  :des "black corne mapping"
+        ;  :rules
+        ;  [
+        ;   [:condi :black]
+        ;   [:##spacebar :left_shift nil {:alone :spacebar}]
+        ;   [:##left_control :left_control nil {:alone :escape}]
+        ;   [:##z :left_option nil {:alone :z}]
+        ;   ]
+        ;  }
 
-                 [:##a                           :1   ]
-
-                 [:##q                           :1]
-                 [:##w                           :2   ]
-                 [:##e                           :3]
-                 [:##r                           :4]
-                 [:##t                           :5   ]
-
-                 [:##y                           :6]
-                 [:##u                           :7]
-                 [:##i                           :8   ]
-                 [:##o                           :9]
-                 [:##p                           :0]
-
-                 [:##l                           :9]
-                 [:##semicolon                   :0]
-
-                 [:##s                           :grave_accent_and_tilde]
-                 [:##d                           :!Squote   ]
-                 [:##f                           :quote]
-                 [:##g                           :equal_sign]
-
-                 [:##h                           :hyphen   ]
-                 [:##j                           :open_bracket   ]
-                 [:##k                           :close_bracket]
-
-                 [:##n                           :backslash]
-
-                 [:##spacebar                    :tab]
-                 [:##left_control                           :!Stab]
-                 ]}
-
-        {
-         :des "black corne mapping"
-         :rules
-         [
-          [:condi :black]
-          [:##spacebar :left_shift nil {:alone :spacebar}]
-          [:##left_control :left_control nil {:alone :escape}]
-          [:##z :left_option nil {:alone :z}]
-          ]
-         }
-
-        {:des "symbolic layer"
-         :rules [
-                 ;; active key is held down spacebar
-                 ; [:x   ["layer-2-hold" 1] nil {
-                 ;                                             :alone [:x]
-                 ;                                             :afterup ["layer-2-hold" 0]
-                 ;                                             }]
-
-                 :black
-                 ; :layer-2-hold
-
-                 [:##h                           :left_arrow  :x-mode]
-                 [:##j                           :down_arrow  :x-mode]
-                 [:##k                           :up_arrow    :x-mode]
-                 [:##l                           :right_arrow :x-mode]
-                 ]}
-        ]}
+        ; {:des "symbolic layer"
+        ;  :rules [
+        ;          ;; active key is held down spacebar
+        ;          ; [:x   ["layer-2-hold" 1] nil {
+        ;          ;                                             :alone [:x]
+        ;          ;                                             :afterup ["layer-2-hold" 0]
+        ;          ;                                             }]
+        ;
+        ;          :black
+        ;          ; :layer-2-hold
+        ;
+        ;          [:##h                           :left_arrow  :x-mode]
+        ;          [:##j                           :down_arrow  :x-mode]
+        ;          [:##k                           :up_arrow    :x-mode]
+        ;          [:##l                           :right_arrow :x-mode]
+        ;          ]}
+]}
