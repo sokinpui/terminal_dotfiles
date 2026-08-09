@@ -81,10 +81,10 @@ setup_macos() {
     font-lxgw-wenkai
     luarocks
     borders
-    goku
     skhd
     direnv
     zoxide
+    yqrashawn/goku/goku
     sync-clip
   )
 
