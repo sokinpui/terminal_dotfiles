@@ -287,13 +287,19 @@ install_go_tools() {
 }
 
 install_rust_tools() {
+  [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
   if ! command -v cargo &>/dev/null; then
     echo "Installing Rust..."
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable
     [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
   fi
 
-  cargo install tree-sitter-cli
+  if command -v rustup &>/dev/null; then
+    rustup default stable
+  fi
+
+  command -v cargo &>/dev/null && cargo install tree-sitter-cli
 }
 
 install_fzf() {
