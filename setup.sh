@@ -69,6 +69,7 @@ setup_macos() {
     coreutils
     cmake
     gettext
+    iproute2mac
     fd
     colima
     neofetch
@@ -84,6 +85,7 @@ setup_macos() {
     skhd
     direnv
     zoxide
+    tlrc
     yqrashawn/goku/goku
     sync-clip
   )
