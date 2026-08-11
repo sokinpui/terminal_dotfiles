@@ -65,6 +65,7 @@ setup_macos() {
     pipx
     tmux
     bat
+    tree
     zsh
     coreutils
     cmake
@@ -201,6 +202,7 @@ setup_fedora() {
     gettext \
     vim \
     google-chrome-stable \
+    tree \
     tmux \
     bat \
     zsh \
