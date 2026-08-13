@@ -63,6 +63,7 @@ setup_macos() {
 
   local formulae=(
     pipx
+    pngpaste
     tmux
     bat
     tree
