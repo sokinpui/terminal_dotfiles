@@ -177,15 +177,6 @@ prepend_previewers = [
 	{ url = "*.duckdb", run = "duckdb" }
 ]
 
-prepend_preloaders = [
-	{ url = "*.csv", run = "duckdb", multi = false },
-	{ url = "*.tsv", run = "duckdb", multi = false },
-	{ url = "*.json", run = "duckdb", multi = false },
-	{ url = "*.parquet", run = "duckdb", multi = false },
-	{ url = "*.txt", run = "duckdb", multi = false },
-	{ url = "*.xlsx", run = "duckdb", multi = false }
-]
-
 [[plugin.prepend_fetchers]]
 name = "git"
 group = "git"
