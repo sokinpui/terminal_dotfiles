@@ -2,24 +2,47 @@ return {
 	{
 		"sokinpui/coder.nvim",
 		cmd = {
+			"CoderToggle",
 			"Coder",
-			"CoderChat",
-			"CoderSession",
+			"CoderDiagnostics",
+			"CoderAddCurrent",
 			"CoderClose",
 		},
 		keys = {
-			{ "<leader>cc", "<cmd>CoderChat<cr>", desc = "Coder Chat" },
-			{ "<leader>cs", "<cmd>CoderSession<cr>", desc = "Coder Session" },
-			{
-				"<C-j>",
-				"<cmd>Coder<cr>",
-				mode = { "n", "v" },
-				desc = "Coder Prompt (Contextual)",
-			},
+			{ "<C-p>", "<cmd>CoderToggle<CR>", mode = { "n", "v" }, desc = "Toggle Coder TUI" },
+			{ "<leader>cd", "<cmd>CoderDiagnostics<CR>", mode = { "n", "v" }, desc = "Send Diagnostics to Coder" },
+			{ "<leader>cc", "<cmd>Coder<CR>", mode = { "n", "v" }, desc = "Open New Coder Session" },
+			{ "<C-p>", "<C-\\><C-n><cmd>CoderToggle<CR>", mode = "t", desc = "Toggle Coder TUI" },
+			{ "<leader>cf", "<cmd>CoderAddCurrent<CR>", desc = "Add current file to Coder context" },
 		},
-		opts = {
-			exec_mode = "tmux", -- or "terminal"
-		},
+		config = function()
+			require("coder").setup({
+				-- Path to the coder executable
+				coder_bin = "coder",
+
+				-- Execution mode: "terminal", "float", or "tmux"
+				exec_mode = "terminal",
+
+				-- Configuration for terminal split drawer
+				terminal = {
+					split = "vertical", -- "vertical" | "horizontal"
+					width = 80,
+					height = 15,
+				},
+
+				-- Configuration for floating window
+				float = {
+					width = 0.75,
+					height = 0.75,
+					prompt_width = 0.6,
+					prompt_height = 0.35,
+					border = "rounded",
+				},
+
+				-- Automatically run checktime when switching away from Coder (applies ITF changes immediately)
+				auto_reload = true,
+			})
+		end,
 	},
 
 	-- {
