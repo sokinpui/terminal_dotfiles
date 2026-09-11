@@ -45,6 +45,7 @@ export ZSHZ_CASE=smart
 
 
 # History
+HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
 HISTSIZE=10000
 SAVEHIST=10000
 setopt HIST_EXPIRE_DUPS_FIRST
