@@ -63,3 +63,31 @@ layout_uv() {
 
   export VIRTUAL_ENV
 }
+
+
+layout_poetry() {
+  PYPROJECT_TOML="${PYPROJECT_TOML:-pyproject.toml}"
+  if [[ ! -f "$PYPROJECT_TOML" ]]; then
+    log_status "No pyproject.toml found. Run poetry init first."
+    return 1
+  fi
+
+  # Find the directory of the virtualenv
+  if [[ -d ".venv" ]]; then
+    VIRTUAL_ENV="$(pwd)/.venv"
+  else
+    VIRTUAL_ENV=$(poetry env info --path 2>/dev/null ; true)
+  fi
+
+  # If it doesn't exist, create it and install all dependencies (including dev)
+  if [[ -z $VIRTUAL_ENV || ! -d $VIRTUAL_ENV ]]; then
+    log_status "No virtual environment found. Running poetry install..."
+    poetry install --with dev
+    VIRTUAL_ENV=$(poetry env info --path)
+  fi
+
+  PATH_add "$VIRTUAL_ENV/bin"
+  export POETRY_ACTIVE=1
+  export VIRTUAL_ENV
+}
+
