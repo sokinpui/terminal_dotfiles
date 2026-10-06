@@ -8,14 +8,14 @@
 HOST="$1"
 
 if [ -z "$HOST" ]; then
-    exit 1
+  exit 1
 fi
 
-COMMAND="kitten ssh -t \"$HOST\" \"zsh -i -c 'tmux-sessionizer'\"; exec \${SHELL:-bash}"
+COMMAND="kitten ssh -t \"$HOST\" \"zsh -l -i -c 'tmux-sessionizer'\"; exec \${SHELL:-bash}"
 SOCKET="${KITTY_LISTEN_ON:-unix:/tmp/kitty}"
 
 if kitten @ --to "$SOCKET" launch --type=tab bash -c "$COMMAND" 2>/dev/null; then
-    exit 0
+  exit 0
 fi
 
 kitty --single-instance bash -c "$COMMAND"
