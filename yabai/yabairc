@@ -41,5 +41,5 @@ yabai -m rule --add app="java" manage=off
 yabai -m rule --add app="Logi Options" manage=off
 yabai -m rule --add app="MeshCentral Router" manage=off
 
-yabai -m signal --add event=system_woke action="yabai -m config focus_follows_mouse autofocus"
-yabai -m signal --add event=display_changed action="yabai -m config focus_follows_mouse autofocus
+# yabai -m signal --add event=system_woke action="yabai -m config focus_follows_mouse autofocus"
+# yabai -m signal --add event=display_changed action="yabai -m config focus_follows_mouse autofocus
