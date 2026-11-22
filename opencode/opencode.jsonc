@@ -33,14 +33,22 @@
       "npm": "@ai-sdk/openai",
       "name": "My Local Server",
       "options": {
-        "baseURL": "http://localhost:9001/v1",
+        "baseURL": "http://localhost:2048/v1",
         "apiKey": "not-needed"
       },
       "models": {
-        "aisrp/gemini-flash-latest": {
+        "gemini-4-hydrogen-search": {
+          "name": "Gemini 4 Hydrogen",
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
+        "gemini-flash-latest-search": {
           "name": "Gemini Flash Latest",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
+        "gemini-flash-lite-latest-search": {
+          "name": "Gemini Flash Lite Latest",
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        }
       }
     }
   },

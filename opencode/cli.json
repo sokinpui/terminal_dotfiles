@@ -1,0 +1,8 @@
+{
+  "$schema": "https://opencode.ai/v2/cli.json",
+  "keybinds": {
+    "input.newline": ["return", "shift+return", "alt+return", "ctrl+j"],
+    "input.submit": ["ctrl+return", "super+return"]
+  }
+}
+
