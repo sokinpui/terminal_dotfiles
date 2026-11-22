@@ -1,0 +1,10 @@
+[settings]
+animate = false
+default_disable = false
+focus_follows_mouse = true
+mouse_follows_focus = false
+outer_gap = 5
+inner_gap = 5
+
+# Optional: disable if you don't want Glide restoring last session's layout on relaunch
+# auto_restore = false
