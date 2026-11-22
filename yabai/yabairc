@@ -40,6 +40,20 @@ yabai -m rule --add app="minecraft" manage=off
 yabai -m rule --add app="java" manage=off
 yabai -m rule --add app="Logi Options" manage=off
 yabai -m rule --add app="MeshCentral Router" manage=off
+yabai -m rule --add app="Telegram" manage=off
+
+yabai -m rule --add subrole="^AXSystemDialog$" manage=off
+yabai -m rule --add title="^(Settings|Preferences|Copy|Move|Info)$" manage=off
 
 # yabai -m signal --add event=system_woke action="yabai -m config focus_follows_mouse autofocus"
-# yabai -m signal --add event=display_changed action="yabai -m config focus_follows_mouse autofocus
+# yabai -m signal --add event=display_changed action="yabai -m config focus_follows_mouse autofocus"
+
+yabai -m signal --add event=system_woke action="yabai -m config focus_follows_mouse off && yabai -m config focus_follows_mouse autofocus"
+yabai -m signal --add event=display_added action="sleep 1 && yabai -m config focus_follows_mouse off && yabai -m config focus_follows_mouse autofocus"
+yabai -m signal --add event=mission_control_exit action="yabai -m config focus_follows_mouse off && yabai -m config focus_follows_mouse autofocus"
+yabai -m signal --add event=display_resized action="sleep 1 && yabai -m config focus_follows_mouse off && yabai -m config focus_follows_mouse autofocus"
+
+yabai -m signal --add event=space_changed action="yabai -m window --focus mouse &>/dev/null"
+
+
+
