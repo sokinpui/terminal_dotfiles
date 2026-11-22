@@ -4,6 +4,7 @@
 
 [core]
     excludesfile = ~/.config/git/gitignore_global
+	quotepath = false
 
 [http "https://gitlab.rnt.lscm/"]
     sslVerify = false
