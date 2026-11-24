@@ -48,12 +48,26 @@ yabai -m rule --add title="^(Settings|Preferences|Copy|Move|Info)$" manage=off
 # yabai -m signal --add event=system_woke action="yabai -m config focus_follows_mouse autofocus"
 # yabai -m signal --add event=display_changed action="yabai -m config focus_follows_mouse autofocus"
 
-yabai -m signal --add event=system_woke action="yabai -m config focus_follows_mouse off && yabai -m config focus_follows_mouse autofocus"
-yabai -m signal --add event=display_added action="sleep 1 && yabai -m config focus_follows_mouse off && yabai -m config focus_follows_mouse autofocus"
-yabai -m signal --add event=mission_control_exit action="yabai -m config focus_follows_mouse off && yabai -m config focus_follows_mouse autofocus"
-yabai -m signal --add event=display_resized action="sleep 1 && yabai -m config focus_follows_mouse off && yabai -m config focus_follows_mouse autofocus"
+# Reset focus_follows_mouse (change 'autofocus' to 'autoraise' if you want hovered windows to raise)
+FFM_RESET="yabai -m config focus_follows_mouse off && yabai -m config focus_follows_mouse autofocus"
 
-yabai -m signal --add event=space_changed action="yabai -m window --focus mouse &>/dev/null"
+# System / Dock / Mission Control
+yabai -m signal --add event=system_woke          action="$FFM_RESET"
+yabai -m signal --add event=dock_did_restart     action="sleep 1 && $FFM_RESET"
+yabai -m signal --add event=mission_control_exit action="$FFM_RESET"
 
+# Display changes
+yabai -m signal --add event=display_added   action="sleep 1 && $FFM_RESET"
+yabai -m signal --add event=display_removed action="sleep 1 && $FFM_RESET"
+yabai -m signal --add event=display_moved   action="sleep 1 && $FFM_RESET"
+yabai -m signal --add event=display_resized action="sleep 1 && $FFM_RESET"
+yabai -m signal --add event=display_changed action="$FFM_RESET"
 
+# Space changes
+yabai -m signal --add event=space_changed action="yabai -m window --focus mouse >/dev/null 2>&1; $FFM_RESET"
 
+# Window / App lifecycle
+yabai -m signal --add event=window_destroyed         action="$FFM_RESET"
+yabai -m signal --add event=application_terminated   action="$FFM_RESET"
+yabai -m signal --add event=application_hidden       action="$FFM_RESET"
+yabai -m signal --add event=application_front_switched action="$FFM_RESET"
